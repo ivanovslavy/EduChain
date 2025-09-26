@@ -1,88 +1,87 @@
-# EduChain
-EduChain – educational blockchain &amp; Web3 platform for teaching children and youth digital skills safely.
-
-# EduChain: Ново поколение дигитални умения за децата на Европа
+# EduChain: Next Generation Digital Skills for Europe's Children
 
 [![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://kid.slavy.space)
 [![Network](https://img.shields.io/badge/Network-Sepolia_Testnet-orange)](https://sepolia.etherscan.io)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Contact](https://img.shields.io/badge/Contact-Open-purple)](https://kid.slavy.space/contact)
 
-## 🌟 Защо EduChain е от критично значение за бъдещето на Европа?
+**🇧🇬 [Български](README-bg.md) | 🇬🇧 English**
 
-Светът около нас се променя със скорост, която училищата трудно догонват. **Днес децата растат в среда, в която Web3, блокчейн и дигиталните активи вече не са далечно бъдеще, а реалност.** Ако училищата не им дадат знанията и уменията да се ориентират и защитят в този нов свят, ние ще ги оставим уязвими и неподготвени.
+## 🌟 Why EduChain is Critical for Europe's Future?
 
-**EduChain е мостът към дигиталното бъдеще на нашите деца** - проект, създаден с ясната мисия да интегрира блокчейн и Web3 технологии в образователния процес на Европейския съюз.
+The world around us is changing at a pace that schools struggle to keep up with. **Today's children are growing up in an environment where Web3, blockchain, and digital assets are no longer distant future concepts, but present reality.** If schools don't provide them with the knowledge and skills to navigate and protect themselves in this new world, we will leave them vulnerable and unprepared.
 
----
-
-## 🎯 Мисия и визия
-
-### Ако искаме децата на Европа да бъдат:
-- **Конкурентоспособни** в утрешната икономика → трябва да започнем днес
-- **Защитени онлайн** → трябва да ги научим да разбират технологиите в дълбочина  
-- **Активни създатели**, а не пасивни потребители → трябва да им дадем правилните инструменти
-
-**EduChain е инвестиция в знания, умения и култура** - проект, който ще промени начина, по който младите хора гледат на дигиталния свят.
+**EduChain is the bridge to our children's digital future** - a project created with the clear mission to integrate blockchain and Web3 technologies into the European Union's educational process.
 
 ---
 
-## 🚀 Какво е EduChain?
+## 🎯 Mission and Vision
 
-EduChain е **първата образователна Web3 платформа в ЕС**, специално проектирана за безопасно обучение на деца и младежи в блокчейн технологии:
+### If we want Europe's children to be:
+- **Competitive** in tomorrow's economy → we must start today
+- **Protected online** → we must teach them to understand technologies in depth  
+- **Active creators**, not passive consumers → we must give them the right tools
 
-### ✨ Ключови характеристики:
-- **🛡️ 100% безопасна sandbox среда** - тестови токени, няма финансов риск
-- **🎓 Ролево-базирана система** - учители управляват, ученици учат чрез практика
-- **🔓 100% open source код** - прозрачност и доверие за партньорите
-- **🌍 Съобразена с ЕС стандарти** - GDPR, образователни изисквания
-
-### 🏗️ Техническа архитектура:
-- **Smart Contracts екосистема** - NFT creation, marketplace, token management
-- **React UI с Web3 интеграция** - без събиране на лични данни
-- **Ethereum-съвместима мрежа** - готовност за mainnet deployment
+**EduChain is an investment in knowledge, skills, and culture** - a project that will transform how young people view the digital world.
 
 ---
 
-## 📊 Live Demo - Тествайте сега!
+## 🚀 What is EduChain?
 
-### 🌐 **Достъпна демо версия:** [kid.slavy.space](https://kid.slavy.space)
-- **Мрежа:** Sepolia Ethereum Testnet
-- **Достъп:** Публичен за тестване и оценка
-- **Функционалности:** Пълен набор от образователни инструменти
+EduChain is **the first educational Web3 platform in the EU**, specifically designed for safe blockchain education for children and youth:
 
-### 💡 Какво можете да тествате:
-- **NFT създаване** - предефинирани и custom дигитални активи
-- **Marketplace търговия** - безопасна търговия между ученици  
-- **Token управление** - разбиране на дигитални валути
-- **Ролево управление** - учителски и ученически интерфейси
+### ✨ Key Features:
+- **🛡️ 100% safe sandbox environment** - test tokens, no financial risk
+- **🎓 Role-based system** - teachers manage, students learn through practice
+- **🔓 100% open source code** - transparency and trust for partners
+- **🌍 EU standards compliant** - GDPR, educational requirements
 
----
-
-## 🎯 Цели и въздействие
-
-### За учениците:
-- **Практически умения** със смарт контракти, NFT и дигитални токени
-- **Разбиране на подписването на транзакции** и контрол върху дигиталните активи
-- **Развитие на отговорност и критическо мислене** - ключови качества в дигиталната икономика
-
-### За учителите:
-- **Нови инструменти и знания** за актуални и практически теми
-- **Подготовка като дигитални наставници** в новия технологичен свят
-- **Предварително обучение**, включено в проектния бюджет
-
-### За Европа:
-- **Лидерство в иновациите** и подготовка за дигиталното бъдеще
-- **Изграждане на поколение създатели**, а не само консуматори на дигитални продукти
-- **Гарантиране на конкурентоспособност** на европейските младежи в глобалната икономика
+### 🏗️ Technical Architecture:
+- **Smart Contracts ecosystem** - NFT creation, marketplace, token management
+- **React UI with Web3 integration** - no personal data collection
+- **Ethereum-compatible network** - ready for mainnet deployment
 
 ---
 
-## 🔗 Smart Contract Адреси (Sepolia Testnet)
+## 📊 Live Demo - Test Now!
 
-Всички smart contract-и са деплойнати и верифицирани на Sepolia testnet:
+### 🌐 **Available demo version:** [kid.slavy.space](https://kid.slavy.space)
+- **Network:** Sepolia Ethereum Testnet
+- **Access:** Public for testing and evaluation
+- **Features:** Complete set of educational tools
 
-| Договор | Адрес | Etherscan |
+### 💡 What you can test:
+- **NFT creation** - predefined and custom digital assets
+- **Marketplace trading** - safe trading between students  
+- **Token management** - understanding digital currencies
+- **Role management** - teacher and student interfaces
+
+---
+
+## 🎯 Goals and Impact
+
+### For Students:
+- **Practical skills** with smart contracts, NFTs, and digital tokens
+- **Understanding transaction signing** and control over digital assets
+- **Development of responsibility and critical thinking** - key qualities in the digital economy
+
+### For Teachers:
+- **New tools and knowledge** for current and practical topics
+- **Preparation as digital mentors** in the new technological world
+- **Pre-training included** in the project budget
+
+### For Europe:
+- **Leadership in innovation** and preparation for the digital future
+- **Building a generation of creators**, not just consumers of digital products
+- **Ensuring competitiveness** of European youth in the global economy
+
+---
+
+## 🔗 Smart Contract Addresses (Sepolia Testnet)
+
+All smart contracts are deployed and verified on Sepolia testnet:
+
+| Contract | Address | Etherscan |
 |---------|--------|-----------|
 | **Whitelist** | `0x7822536B51388a7a1D724d32d935Bef922370674` | [View](https://sepolia.etherscan.io/address/0x7822536B51388a7a1D724d32d935Bef922370674) |
 | **Game NFT (Predefined)** | `0x0081DE8Ed70fD57Da89e5D9Bd2C839676D3Fe6E7` | [View](https://sepolia.etherscan.io/address/0x0081DE8Ed70fD57Da89e5D9Bd2C839676D3Fe6E7) |
@@ -90,95 +89,95 @@ EduChain е **първата образователна Web3 платформа 
 | **Game Token (ERC20)** | `0x91Edcc318A39f9544165989bA9487C5f66C6297F` | [View](https://sepolia.etherscan.io/address/0x91Edcc318A39f9544165989bA9487C5f66C6297F) |
 | **Marketplace** | `0xDc2170b037c1f17e3d449008fc9b8231b01f3603` | [View](https://sepolia.etherscan.io/address/0xDc2170b037c1f17e3d449008fc9b8231b01f3603) |
 
-> **Забележка:** При production deployment ще бъдат използвани mainnet или подходяща Layer 2 мрежа за оптимизация на разходите.
+> **Note:** For production deployment, mainnet or appropriate Layer 2 networks will be used for cost optimization.
 
 ---
 
-## 📈 Проектен план и бюджет
+## 📈 Project Plan and Budget
 
-### ⏱️ Изпълнение (18 месеца):
-- **М1–М3:** Партньорства, педагогически анализ, учебни цели
-- **М4–М9:** Smart contract разработка и тестове  
-- **М10–М12:** React UI разработка и UX дизайн за деца
-- **М13–М15:** Външен одит на системата и довършителни подобрения
-- **М16–М18:** Учебен план, материали и предварителни обучения
+### ⏱️ Execution (18 months):
+- **M1–M3:** Partnerships, pedagogical analysis, educational goals
+- **M4–M9:** Smart contract development and testing  
+- **M10–M12:** React UI development and child-focused UX design
+- **M13–M15:** External system audit and final improvements
+- **M16–M18:** Curriculum, materials, and preliminary training
 
-### 💰 Бюджет (~522,000 €):
-- **Blockchain Developer:** 288,000 €
-- **React Developer:** 144,000 €
-- **Външен одит:** 20,000 €
-- **UX/UI дизайнер:** 15,000 €
-- **Координация и обучения:** 50,000 €
-- **Оборудване и офис:** 5,000 €
+### 💰 Budget (~€522,000):
+- **Blockchain Developer:** €288,000
+- **React Developer:** €144,000
+- **External audit:** €20,000
+- **UX/UI designer:** €15,000
+- **Coordination and training:** €50,000
+- **Equipment and office:** €5,000
 
-### 🔄 Устойчивост:
-**Smart contract разработчикът поема ангажимент** за провеждане на ежегодни обучения за учители и ученици за **първите 3 години** след официалния старт, **финансирани от ЕС**.
-
----
-
-## 🤝 Партньорски възможности
-
-### 🏫 Образователни институции
-Търсим партньорства с училища и университети в ЕС за:
-- **Пилотно внедряване** на Web3 образование
-- **Съвместна разработка** на учебни програми
-- **Обучение на преподаватели** в новите технологии
-
-### 🏛️ Финансиращи организации  
-Отворени сме за дискусии с:
-- **ЕС фондове** и образователни програми
-- **Организации**, заинтересовани от дигитално образование
-- **Регионални власти**, които искат да инвестират в бъдещето
-
-### 👨‍🏫 Учители и експерти
-Търсим:
-- **Педагози** с интерес към технологии
-- **Web3 специалисти** с образователна визия
-- **Изследователи** в областта на дигитално образование
+### 🔄 Sustainability:
+**The smart contract developer commits** to conducting annual training for teachers and students for **the first 3 years** after official launch, **funded by the EU**.
 
 ---
 
-## 📞 Свържете се с нас
+## 🤝 Partnership Opportunities
 
-### 🌐 **Официален контакт:** [kid.slavy.space/contact](https://kid.slavy.space/contact)
+### 🏫 Educational Institutions
+We seek partnerships with EU schools and universities for:
+- **Pilot implementation** of Web3 education
+- **Joint development** of curricula
+- **Teacher training** in new technologies
 
-**Имате въпроси? Искате да се включите?** Използвайте нашата contact форма за:
-- Партньорски запитвания
-- Технически въпроси  
-- Пилотно внедряване
-- Финансиране и подкрепа
+### 🏛️ Funding Organizations  
+We are open to discussions with:
+- **EU funds** and educational programs
+- **Organizations** interested in digital education
+- **Regional authorities** wanting to invest in the future
 
----
-
-## 🔐 Отворен код и прозрачност
-
-### 📂 Публична информация:
-- ✅ Проектна документация и планове
-- ✅ Бюджет разпределение и timeline
-- ✅ Smart contract адреси и спецификации
-- ✅ Demo версия за тестване
-
-### 🔒 Защитен код:
-**Изходният код на smart contract-ите и frontend-а няма да бъдат обявени публично, докато проектът не е завършил.** След това и те ще станат публични под MIT лиценз.
-
-**Защо?** За защита на интелектуалната собственост до завършване на проекта и осигуряване на конкурентно предимство по време на разработката.
+### 👨‍🏫 Teachers and Experts
+We are looking for:
+- **Educators** with interest in technology
+- **Web3 specialists** with educational vision
+- **Researchers** in digital education
 
 ---
 
-## 🌟 Защо точно сега?
+## 📞 Contact Us
 
-**Дигиталната трансформация не чака.** Всеки ден, в който не подготвяме децата си за Web3 света, е изгубена възможност. Конкурентите ни в Азия и САЩ вече правят подобни инвестиции.
+### 🌐 **Official contact:** [kid.slavy.space/contact](https://kid.slavy.space/contact)
 
-**EduChain не е просто още един дигитален инструмент - това е мост към бъдещето на нашите деца.**
-
----
-
-## 📄 Лиценз
-
-Този проект е лицензиран под [MIT License](LICENSE) - отвореният код ще бъде публично достъпен след завършване на проекта.
+**Have questions? Want to get involved?** Use our contact form for:
+- Partnership inquiries
+- Technical questions  
+- Pilot implementation
+- Funding and support
 
 ---
 
-**Направено с ❤️ за бъдещето на европейското образование**
+## 🔐 Open Source and Transparency
 
-> *"Ако искаме Европа да остане лидер в иновациите, трябва да изградим поколение, което знае как да твори, а не просто да консумира дигитални продукти."*
+### 📂 Public Information:
+- ✅ Project documentation and plans
+- ✅ Budget breakdown and timeline
+- ✅ Smart contract addresses and specifications
+- ✅ Demo version for testing
+
+### 🔒 Protected Code:
+**The source code of smart contracts and frontend will not be publicly released until the project is completed.** After completion, they will become public under MIT license.
+
+**Why?** To protect intellectual property until project completion and ensure competitive advantage during development.
+
+---
+
+## 🌟 Why Right Now?
+
+**Digital transformation doesn't wait.** Every day we don't prepare our children for the Web3 world is a lost opportunity. Our competitors in Asia and the US are already making similar investments.
+
+**EduChain is not just another digital tool - it's a bridge to our children's future.**
+
+---
+
+## 📄 License
+
+This project is licensed under [MIT License](LICENSE) - open source code will be publicly available after project completion.
+
+---
+
+**Made with ❤️ for the future of European education**
+
+> *"If we want Europe to remain a leader in innovation, we must build a generation that knows how to create, not just consume digital products."*
