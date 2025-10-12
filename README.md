@@ -185,122 +185,348 @@ All smart contracts are deployed and verified on Sepolia testnet:
 
 ## 📦 Installation & Setup
 
+---
+
+## 🔒 Security Features
+
+### Smart Contract Security:
+- ✅ **ReentrancyGuard** - prevents reentrancy attacks
+- ✅ **Ownable** - centralized admin control for educational environment
+- ✅ **Rate limiting** - prevents spam and abuse (3 purchases/mints per 24h)
+- ✅ **Whitelist system** - only approved students can interact
+- ✅ **Input validation** - prevents malicious data injection
+- ✅ **Pausable contracts** - emergency stop mechanism
+- ✅ **No front-running** - educational environment without MEV
+
+### Frontend Security:
+- ✅ **No private key storage** - wallet-based authentication only
+- ✅ **HTTPS only** - encrypted communication via Let's Encrypt
+- ✅ **No personal data collection** - GDPR compliant by design
+- ✅ **Client-side validation** - prevents invalid transactions before submission
+- ✅ **Copy protection** - NFT images protected from unauthorized downloads
+- ✅ **Secure API integration** - Moralis API with rate limiting
+
+### Educational Safety:
+- ✅ **Testnet only** - no real money at risk
+- ✅ **Teacher oversight** - admin controls for all students
+- ✅ **Transaction limits** - prevents excessive spending
+- ✅ **Faucet cooldown** - 24-hour limit per student
+- ✅ **Marketplace controls** - 3 listings + 3 purchases per day
+
+---
+
+## 🎓 Educational Goals
+
+### For Students (Ages 12-18):
+- **Blockchain fundamentals** - understanding distributed ledger technology
+- **Digital wallet management** - MetaMask usage and security
+- **Smart contract interaction** - reading and executing on-chain code
+- **Transaction signing** - understanding gas, nonce, and confirmations
+- **NFT creation** - minting, metadata, and IPFS storage
+- **Digital asset trading** - marketplace mechanics and pricing
+- **Points system** - gamification and competitive learning
+- **Critical thinking** - evaluating digital scarcity and value
+- **Responsible trading** - ethics in decentralized markets
+- **Real-time data analysis** - reading blockchain explorers
+
+### For Teachers:
+- **New pedagogical tools** - engaging Web3 teaching materials
+- **Digital mentorship skills** - guiding students in blockchain
+- **Admin dashboard** - easy user and permission management
+- **Pre-training program** - 2-day comprehensive onboarding
+- **Curriculum integration** - materials for STEM classes
+- **Progress tracking** - leaderboards and student analytics
+- **Safe environment** - controlled testnet with no financial risk
+
+### For Educational Institutions:
+- **Innovation leadership** - pioneering Web3 education in EU
+- **STEM enhancement** - modern technology in curriculum
+- **Student engagement** - gamified learning experience
+- **Future-ready graduates** - blockchain skills for job market
+- **EU compliance** - GDPR and educational standards
+- **Measurable outcomes** - points, rankings, and achievements
+
+### For Europe:
+- **Competitive workforce** - blockchain skills gap closure
+- **Innovation culture** - fostering creator mindset
+- **Digital sovereignty** - understanding decentralized systems
+- **Economic opportunity** - preparing for Web3 economy
+- **Security awareness** - teaching digital self-defense
+
+---
+
+## 📊 Project Plan & Budget
+
+### ⏱️ Execution Timeline (18 months):
+
+#### Phase 1: Foundation (Months 1-3)
+- **Partnerships** - engage schools and universities
+- **Pedagogical analysis** - curriculum alignment
+- **Educational goals** - define learning outcomes
+- **Technical requirements** - finalize architecture
+- **Budget:** €50,000
+
+#### Phase 2: Development (Months 4-9)
+- **Smart contract development** - all 7 contracts
+- **Security implementation** - ReentrancyGuard, rate limiting
+- **Testnet deployment** - Sepolia testing
+- **Internal testing** - QA and bug fixes
+- **Budget:** €180,000
+
+#### Phase 3: Frontend (Months 10-12)
+- **React UI development** - all pages and components
+- **Web3 integration** - ethers.js implementation
+- **Moralis API** - NFT gallery integration
+- **UX design** - child-friendly interface
+- **Budget:** €100,000
+
+#### Phase 4: Security & Audit (Months 13-15)
+- **External security audit** - professional review
+- **Penetration testing** - vulnerability assessment
+- **Code review** - best practices verification
+- **Final improvements** - audit recommendations
+- **Budget:** €50,000
+
+#### Phase 5: Launch Preparation (Months 16-18)
+- **Curriculum development** - lesson plans and materials
+- **Teacher training program** - 2-day workshops
+- **Pilot schools** - 3-5 institutions
+- **Documentation** - user guides and videos
+- **Budget:** €142,000
+
+### 💰 Budget Breakdown (~€522,000):
+
+| Category | Amount | Description |
+|----------|--------|-------------|
+| **Blockchain Developer** | €288,000 | 18 months @ €16,000/month |
+| **React Developer** | €144,000 | 18 months @ €8,000/month |
+| **External Security Audit** | €20,000 | Professional audit firm |
+| **UX/UI Designer** | €15,000 | Child-focused design |
+| **Project Coordination** | €30,000 | Management and oversight |
+| **Teacher Training** | €20,000 | Workshops and materials |
+| **Equipment & Infrastructure** | €5,000 | Servers, domains, SSL |
+| **Total** | **€522,000** | |
+
+### 🔄 Sustainability Plan:
+
+**Post-Launch Support (3 years):**
+- Annual teacher training workshops
+- Ongoing technical support
+- Curriculum updates
+- New feature development
+- EU-funded sustainability
+
+**Revenue Model (Optional Future):**
+- Licensing to other EU countries
+- Premium features for institutions
+- Certification programs
+- Consulting services
+
+**Long-term Vision:**
+- Mainnet deployment option
+- Layer 2 integration for lower costs
+- Multi-language support (German, French, Spanish)
+- Integration with national education platforms
+
+---
+
+## 🤝 Partnership Opportunities
+
+### 🏫 Educational Institutions
+
+**We seek partnerships with:**
+- Primary and secondary schools (ages 12-18)
+- Universities and technical colleges
+- Vocational training centers
+- STEM-focused educational programs
+
+**What we offer:**
+- Pilot implementation at no cost
+- Teacher training and support
+- Customized curriculum materials
+- Progress tracking and analytics
+- Certificate of participation
+
+**What we need:**
+- 20-50 students per pilot
+- 2-3 dedicated teachers
+- Computer lab with internet
+- 3-month pilot commitment
+
+### 🏛️ Funding Organizations
+
+**Target funding sources:**
+- **EU Horizon Europe** - innovation in education
+- **Erasmus+ Programme** - digital skills development
+- **European Social Fund** - youth employment
+- **National education ministries** - STEM programs
+- **Regional authorities** - digital transformation
+
+**Funding benefits:**
+- Open-source deliverables
+- Measurable impact metrics
+- EU-wide scalability
+- Job market relevance
+- Innovation showcase
+
+### 👨‍🏫 Teachers and Experts
+
+**We are looking for:**
+- Technology-interested educators
+- Web3 and blockchain specialists
+- Educational researchers
+- Curriculum developers
+- UX/UI experts for children
+
+**Collaboration opportunities:**
+- Advisory board membership
+- Curriculum co-creation
+- Pilot program participation
+- Research publications
+- Conference presentations
+
+### 💼 Corporate Partners
+
+**Potential partnerships:**
+- Blockchain companies - technical expertise
+- Educational technology firms - integration
+- Hardware providers - equipment donations
+- Cloud services - infrastructure support
+
+---
+
+## 📞 Contact Us
+
+### 🌐 **Official Website:** [school.slavy.space](https://school.slavy.space)
+### 📧 **Contact Form:** [school.slavy.space/contact](https://school.slavy.space/contact)
+
+**Have questions? Want to get involved?** Use our contact form for:
+
+#### Partnership Inquiries:
+- Educational institutions interested in pilots
+- Funding organizations seeking proposals
+- Teachers wanting to participate
+- Researchers exploring collaboration
+
+#### Technical Questions:
+- Smart contract architecture
+- Frontend implementation
+- Security features
+- API integrations
+
+#### Funding and Support:
+- Grant applications
+- Budget proposals
+- Sustainability plans
+- ROI calculations
+
+#### Media and Press:
+- Interview requests
+- Demo access
+- Press kit materials
+- Success stories
+
+**Response time:** Within 48 hours for all inquiries
+
+---
+
+## 📄 Open Source & Transparency
+
+### 📂 Currently Public:
+- ✅ **Project documentation** - full README in EN/BG
+- ✅ **Budget breakdown** - detailed cost analysis
+- ✅ **Smart contract addresses** - verified on Etherscan
+- ✅ **Live demo** - public testing environment
+- ✅ **Technical architecture** - system design documents
+- ✅ **Educational goals** - learning outcomes
+
+### 🔒 Will Be Public (After Project Completion):
+
+#### Smart Contracts:
+- Complete Solidity source code
+- Deployment scripts
+- Test suites
+- Security audit reports
+
+#### Frontend:
+- Full React application code
+- Component library
+- Styling system
+- Configuration files
+
+#### Documentation:
+- Developer guides
+- API documentation
+- Deployment instructions
+- Contribution guidelines
+
+**License:** MIT License - free for educational use
+
+**Why delayed release?**
+- Protects intellectual property during development
+- Ensures competitive advantage for EU
+- Allows proper security review
+- Enables controlled launch
+
+**Timeline:** Full open-source release within 6 months of project completion
+
+### 🔍 Transparency Commitments:
+- Quarterly progress reports
+- Public budget spending
+- Open pilot results
+- Student feedback surveys
+- Teacher testimonials
+
+---
+
+## 🌟 Why Right Now?
+
+### The Digital Divide is Growing:
+- **Asia** - China, Singapore investing heavily in blockchain education
+- **USA** - Universities offering blockchain degrees since 2018
+- **Europe** - lagging behind in Web3 education
+
+**Every month of delay means:**
+- Our children fall further behind
+- Job opportunities go elsewhere
+- Innovation happens outside EU
+- Digital illiteracy increases
+
+### The Technology is Ready:
+- ✅ Ethereum is mature and stable
+- ✅ Testnets provide safe learning environments
+- ✅ Web3 wallets are user-friendly
+- ✅ Educational tools exist but aren't integrated
+
+### The Demand is Real:
+- Students are already using blockchain (games, NFTs)
+- Parents want digital skills education
+- Employers seek blockchain developers
+- Universities see enrollment in Web3 courses
+
+### The Opportunity is Now:
+**EduChain is not just another digital tool - it's a strategic investment in:**
+- Europe's competitive future
+- Children's digital literacy
+- Innovation culture
+- Economic sovereignty
+- Educational leadership
+
+**The question is not "Should we do this?"**
+
+**The question is "Can we afford NOT to do this?"**
+
+---
+
+## 📄 License
+
+**Current Status:** Proprietary during development
+
+**Future Status:** MIT License after project completion
+
 ### Prerequisites:
 ```bash
 node >= 16.0.0
 npm >= 8.0.0
 MetaMask or compatible Web3 wallet
 
-🔒 Security Features
-Smart Contract Security:
-
-✅ ReentrancyGuard - prevents reentrancy attacks
-✅ Ownable - centralized admin control
-✅ Rate limiting - prevents spam and abuse
-✅ Whitelist system - controlled access
-✅ Input validation - prevents malicious data
-
-Frontend Security:
-
-✅ No private key storage - wallet-based authentication
-✅ HTTPS only - encrypted communication
-✅ No personal data collection - GDPR compliant
-✅ Client-side validation - prevents invalid transactions
-
-
-🎓 Educational Goals
-For Students:
-
-Practical blockchain skills - hands-on experience
-Digital asset management - NFTs and tokens
-Transaction signing - understanding Web3 authentication
-Critical thinking - evaluating digital scarcity
-Responsible trading - marketplace ethics
-
-For Teachers:
-
-New teaching tools - engaging Web3 content
-Digital mentorship - guide students in blockchain
-Pre-training included - comprehensive onboarding
-Admin dashboard - easy user management
-
-For Europe:
-
-Innovation leadership - stay ahead in Web3
-Creator generation - not just consumers
-Competitive workforce - future-ready skills
-
-
-📊 Project Plan & Budget
-⏱️ Timeline (18 months):
-
-M1–M3: Partnerships, pedagogical analysis
-M4–M9: Smart contract development
-M10–M12: React UI and UX design
-M13–M15: Security audit and improvements
-M16–M18: Curriculum and teacher training
-
-💰 Budget (~€522,000):
-
-Blockchain Developer: €288,000
-React Developer: €144,000
-External audit: €20,000
-UX/UI designer: €15,000
-Coordination: €50,000
-Equipment: €5,000
-
-🔄 Sustainability:
-Annual teacher training for 3 years post-launch, EU funded.
-
-🤝 Partnership Opportunities
-🏫 Educational Institutions
-
-Pilot Web3 education programs
-Joint curriculum development
-Teacher training initiatives
-
-🏛️ Funding Organizations
-
-EU educational funds
-Digital education programs
-Regional authorities
-
-👨‍🏫 Teachers and Experts
-
-Technology-interested educators
-Web3 specialists
-Digital education researchers
-
-
-📞 Contact Us
-🌐 Official contact: school.slavy.space/contact
-Questions? Want to partner? Use our contact form for:
-
-Partnership inquiries
-Technical questions
-Pilot programs
-Funding opportunities
-
-
-📄 Open Source & Transparency
-📂 Public Information:
-
-✅ Project documentation
-✅ Budget breakdown
-✅ Smart contract addresses
-✅ Live demo for testing
-
-🔒 Protected Code:
-Source code will be publicly released under MIT License after project completion.
-Why? To protect intellectual property during development and ensure competitive advantage.
-
-🌟 Why Right Now?
-Digital transformation doesn't wait. Every day we don't prepare our children for Web3 is a lost opportunity.
-EduChain is not just another digital tool - it's a bridge to our children's future.
-
-📄 License
-This project will be licensed under MIT License after completion - open source for educational use.
-
-Made with ❤️ for the future of European education
-
-"If we want Europe to remain a leader in innovation, we must build a generation that knows how to create, not just consume digital products."
