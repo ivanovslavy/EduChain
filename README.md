@@ -1,9 +1,9 @@
 # EduChain: Next Generation Digital Skills for Europe's Children
 
-[![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://kid.slavy.space)
+[![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://school.slavy.space)
 [![Network](https://img.shields.io/badge/Network-Sepolia_Testnet-orange)](https://sepolia.etherscan.io)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Contact](https://img.shields.io/badge/Contact-Open-purple)](https://kid.slavy.space/contact)
+[![Contact](https://img.shields.io/badge/Contact-Open-purple)](https://school.slavy.space/contact)
 
 **🇧🇬 [Български](README-bg.md) | 🇬🇧 English**
 
@@ -31,49 +31,114 @@ The world around us is changing at a pace that schools struggle to keep up with.
 EduChain is **the first educational Web3 platform in the EU**, specifically designed for safe blockchain education for children and youth:
 
 ### ✨ Key Features:
-- **🛡️ 100% safe sandbox environment** - test tokens, no financial risk
+- **🛡️ 100% safe sandbox environment** - test tokens on Sepolia testnet, no financial risk
 - **🎓 Role-based system** - teachers manage, students learn through practice
-- **🔓 100% open source code** - transparency and trust for partners
+- **📖 100% open source code** - transparency and trust for partners
 - **🌍 EU standards compliant** - GDPR, educational requirements
+- **⚡ Real-time leaderboards** - live blockchain data with 0 gas fees
+- **🖼️ NFT Gallery with Moralis API** - view and manage digital assets
+- **🎨 Advanced filtering** - educational tools for data analysis
 
-### 🏗️ Technical Architecture:
-- **Smart Contracts ecosystem** - NFT creation, marketplace, token management
-- **React UI with Web3 integration** - no personal data collection
-- **Ethereum-compatible network** - ready for mainnet deployment
+### 🗃️ Technical Architecture:
+
+#### Smart Contracts Ecosystem:
+- **Whitelist Contract** - Role-based access control (Owner → Admin → Student)
+- **GameToken (ERC20)** - Educational token with purchase limits
+- **GameNFTPredefined (ERC721)** - Pre-defined NFT collection (max 50 supply)
+- **GameNFTCustom (ERC721)** - Custom NFTs with batch minting using ERC20 tokens
+- **TokenMarketplace** - Multi-token trading platform (ERC20/ERC721/ERC1155)
+- **TrackingContract** - Real-time leaderboard with live point calculation
+- **ETHFaucet** - Testnet ETH distribution for students
+
+#### Frontend Features:
+- **React 18** with hooks and context API
+- **Web3 integration** with ethers.js v5
+- **Moralis NFT API** - comprehensive NFT gallery with IPFS support
+- **Real-time data** - live blockchain queries with view functions
+- **Dark/Light theme** - accessible UI for all users
+- **Responsive design** - mobile-first approach
 
 ---
 
-## 📊 Live Demo - Test Now!
+## 🎮 How It Works
 
-### 🌐 **Available demo version:** [kid.slavy.space](https://kid.slavy.space)
+### Student Journey:
+
+1. **Connect Wallet** - MetaMask or compatible Web3 wallet
+2. **Get Whitelisted** - Teacher adds student to whitelist
+3. **Claim Testnet ETH** - Use faucet (0.05 ETH per 24h)
+4. **Buy ERC20 Tokens** - Purchase GameToken (0.01 ETH each, max 3 per day)
+5. **Mint NFTs**:
+   - Predefined NFTs: 0.01 ETH each (1 point)
+   - Custom NFTs: 0.03 ETH each OR 1 GameToken (3 points)
+6. **Trade on Marketplace** - List and buy digital assets
+7. **Climb Leaderboard** - Earn points and compete
+
+### Point System:
+- 🪙 **ERC20 Token** = 1 point per token
+- 🖼️ **Predefined NFT** = 1 point per NFT
+- 🎨 **Custom NFT** = 3 points per NFT
+
+### Real-Time Ranking:
+- ✅ Live calculation from blockchain balances
+- ✅ No transaction fees - pure view functions
+- ✅ Auto-refresh every 15-30 seconds
+- ✅ Advanced filters (address search, rank range, sorting)
+
+---
+
+## 🖼️ NFT Gallery Features
+
+### Full Portfolio View (Moralis Integration):
+- **All NFTs** from user's wallet across Sepolia
+- **IPFS support** - automatic gateway conversion
+- **Image zoom modal** - full-size preview with copy protection
+- **Metadata viewer** - JSON preview in modal
+- **Contract links** - direct Etherscan integration
+
+### Smart Filters:
+- ☑️ Only with Images - hide NFTs without media
+- ☑️ School System Only - filter by EduChain contracts
+- ☑️ Custom Contract - filter by specific contract address
+- ☑️ Pagination - 10/25/50/100 items per page
+
+---
+
+## 📊 Leaderboard System
+
+### Two Leaderboard Views:
+
+#### 1. Simple Leaderboard (`/leaderboard`)
+- Top 10/25/50/100 users
+- Auto-refresh every 15 seconds
+- Personal stats card
+- Your current rank display
+
+#### 2. Advanced Rankings (`/rankings`)
+- **All users** with live points
+- **Search by address** - find specific users
+- **Minimum points filter** - show top performers
+- **Rank range** - view positions X to Y
+- **Sort options** - by points, ERC20, NFTs
+- **Pagination** - 10/25/50/100/All items
+- **Auto-refresh** - optional 30s updates
+
+---
+
+## 📈 Live Demo
+
+### 🌐 **Available demo:** [school.slavy.space](https://school.slavy.space)
 - **Network:** Sepolia Ethereum Testnet
 - **Access:** Public for testing and evaluation
-- **Features:** Complete set of educational tools
+- **Features:** Complete educational toolkit
 
-### 💡 What you can test:
+### 🎯 What you can test:
 - **NFT creation** - predefined and custom digital assets
 - **Marketplace trading** - safe trading between students  
 - **Token management** - understanding digital currencies
 - **Role management** - teacher and student interfaces
-
----
-
-## 🎯 Goals and Impact
-
-### For Students:
-- **Practical skills** with smart contracts, NFTs, and digital tokens
-- **Understanding transaction signing** and control over digital assets
-- **Development of responsibility and critical thinking** - key qualities in the digital economy
-
-### For Teachers:
-- **New tools and knowledge** for current and practical topics
-- **Preparation as digital mentors** in the new technological world
-- **Pre-training included** in the project budget
-
-### For Europe:
-- **Leadership in innovation** and preparation for the digital future
-- **Building a generation of creators**, not just consumers of digital products
-- **Ensuring competitiveness** of European youth in the global economy
+- **Real-time leaderboards** - live blockchain data
+- **NFT gallery** - view full portfolio with Moralis API
 
 ---
 
@@ -83,101 +148,45 @@ All smart contracts are deployed and verified on Sepolia testnet:
 
 | Contract | Address | Etherscan |
 |---------|--------|-----------|
-| **Whitelist** | `0x7822536B51388a7a1D724d32d935Bef922370674` | [View](https://sepolia.etherscan.io/address/0x7822536B51388a7a1D724d32d935Bef922370674) |
-| **Game NFT (Predefined)** | `0x0081DE8Ed70fD57Da89e5D9Bd2C839676D3Fe6E7` | [View](https://sepolia.etherscan.io/address/0x0081DE8Ed70fD57Da89e5D9Bd2C839676D3Fe6E7) |
-| **Game NFT (Custom)** | `0x7634c6979EB8F81005e604b6eb30A4c45b0E35ED` | [View](https://sepolia.etherscan.io/address/0x7634c6979EB8F81005e604b6eb30A4c45b0E35ED) |
-| **Game Token (ERC20)** | `0x91Edcc318A39f9544165989bA9487C5f66C6297F` | [View](https://sepolia.etherscan.io/address/0x91Edcc318A39f9544165989bA9487C5f66C6297F) |
-| **Marketplace** | `0xDc2170b037c1f17e3d449008fc9b8231b01f3603` | [View](https://sepolia.etherscan.io/address/0xDc2170b037c1f17e3d449008fc9b8231b01f3603) |
+| **Whitelist** | `0x22c988100927cC175Fb6BC4380bA4692e950a816` | [View](https://sepolia.etherscan.io/address/0x22c988100927cC175Fb6BC4380bA4692e950a816) |
+| **GameToken (ERC20)** | `0x7D8C4B43878f9F2517f96dAFD17b6eeac5648C0A` | [View](https://sepolia.etherscan.io/address/0x7D8C4B43878f9F2517f96dAFD17b6eeac5648C0A) |
+| **GameNFTPredefined** | `0x7F82C5043677DEb86D0B3902C1fF68BF6Dc788A8` | [View](https://sepolia.etherscan.io/address/0x7F82C5043677DEb86D0B3902C1fF68BF6Dc788A8) |
+| **GameNFTCustom** | `0x6ff2737E0593786d51e1700a6DbaBbD39A7431B4` | [View](https://sepolia.etherscan.io/address/0x6ff2737E0593786d51e1700a6DbaBbD39A7431B4) |
+| **TokenMarketplace** | `0x4A22c836fEb32E175c94fdB028abB11DdCCFF532` | [View](https://sepolia.etherscan.io/address/0x4A22c836fEb32E175c94fdB028abB11DdCCFF532) |
+| **TrackingContract** | `TBD - Deploy New` | [Verify After Deploy](https://sepolia.etherscan.io) |
+| **ETHFaucet** | `0xe066707c2f2D12B8067d85a8e73BccFAa940A4d7` | [View](https://sepolia.etherscan.io/address/0xe066707c2f2D12B8067d85a8e73BccFAa940A4d7) |
 
 > **Note:** For production deployment, mainnet or appropriate Layer 2 networks will be used for cost optimization.
 
 ---
 
-## 📈 Project Plan and Budget
+## 🛠️ Technology Stack
 
-### ⏱️ Execution (18 months):
-- **M1–M3:** Partnerships, pedagogical analysis, educational goals
-- **M4–M9:** Smart contract development and testing  
-- **M10–M12:** React UI development and child-focused UX design
-- **M13–M15:** External system audit and final improvements
-- **M16–M18:** Curriculum, materials, and preliminary training
+### Smart Contracts:
+- **Solidity ^0.8.19** - secure and modern
+- **Hardhat** - development environment
+- **OpenZeppelin** - battle-tested contract libraries
+- **ethers.js** - blockchain interaction
 
-### 💰 Budget (~€522,000):
-- **Blockchain Developer:** €288,000
-- **React Developer:** €144,000
-- **External audit:** €20,000
-- **UX/UI designer:** €15,000
-- **Coordination and training:** €50,000
-- **Equipment and office:** €5,000
+### Frontend:
+- **React 18** - modern UI framework
+- **React Router v6** - client-side routing
+- **Context API** - state management
+- **CSS3** - custom theming system
+- **Moralis API** - NFT data aggregation
 
-### 🔄 Sustainability:
-**The smart contract developer commits** to conducting annual training for teachers and students for **the first 3 years** after official launch, **funded by the EU**.
-
----
-
-## 🤝 Partnership Opportunities
-
-### 🏫 Educational Institutions
-We seek partnerships with EU schools and universities for:
-- **Pilot implementation** of Web3 education
-- **Joint development** of curricula
-- **Teacher training** in new technologies
-
-### 🏛️ Funding Organizations  
-We are open to discussions with:
-- **EU funds** and educational programs
-- **Organizations** interested in digital education
-- **Regional authorities** wanting to invest in the future
-
-### 👨‍🏫 Teachers and Experts
-We are looking for:
-- **Educators** with interest in technology
-- **Web3 specialists** with educational vision
-- **Researchers** in digital education
+### Infrastructure:
+- **Ubuntu Server** - Raspberry Pi 5
+- **systemd service** - auto-restart on boot
+- **nginx** - reverse proxy with SSL
+- **Let's Encrypt** - free SSL certificates
 
 ---
 
-## 📞 Contact Us
+## 📦 Installation & Setup
 
-### 🌐 **Official contact:** [kid.slavy.space/contact](https://kid.slavy.space/contact)
-
-**Have questions? Want to get involved?** Use our contact form for:
-- Partnership inquiries
-- Technical questions  
-- Pilot implementation
-- Funding and support
-
----
-
-## 🔐 Open Source and Transparency
-
-### 📂 Public Information:
-- ✅ Project documentation and plans
-- ✅ Budget breakdown and timeline
-- ✅ Smart contract addresses and specifications
-- ✅ Demo version for testing
-
-### 🔒 Protected Code:
-**The source code of smart contracts and frontend will not be publicly released until the project is completed.** After completion, they will become public under MIT license.
-
-**Why?** To protect intellectual property until project completion and ensure competitive advantage during development.
-
----
-
-## 🌟 Why Right Now?
-
-**Digital transformation doesn't wait.** Every day we don't prepare our children for the Web3 world is a lost opportunity. Our competitors in Asia and the US are already making similar investments.
-
-**EduChain is not just another digital tool - it's a bridge to our children's future.**
-
----
-
-## 📄 License
-
-This project is licensed under [MIT License](LICENSE) - open source code will be publicly available after project completion.
-
----
-
-**Made with ❤️ for the future of European education**
-
-> *"If we want Europe to remain a leader in innovation, we must build a generation that knows how to create, not just consume digital products."*
+### Prerequisites:
+```bash
+node >= 16.0.0
+npm >= 8.0.0
+MetaMask or compatible Web3 wallet
