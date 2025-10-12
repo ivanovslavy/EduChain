@@ -190,3 +190,117 @@ All smart contracts are deployed and verified on Sepolia testnet:
 node >= 16.0.0
 npm >= 8.0.0
 MetaMask or compatible Web3 wallet
+
+🔒 Security Features
+Smart Contract Security:
+
+✅ ReentrancyGuard - prevents reentrancy attacks
+✅ Ownable - centralized admin control
+✅ Rate limiting - prevents spam and abuse
+✅ Whitelist system - controlled access
+✅ Input validation - prevents malicious data
+
+Frontend Security:
+
+✅ No private key storage - wallet-based authentication
+✅ HTTPS only - encrypted communication
+✅ No personal data collection - GDPR compliant
+✅ Client-side validation - prevents invalid transactions
+
+
+🎓 Educational Goals
+For Students:
+
+Practical blockchain skills - hands-on experience
+Digital asset management - NFTs and tokens
+Transaction signing - understanding Web3 authentication
+Critical thinking - evaluating digital scarcity
+Responsible trading - marketplace ethics
+
+For Teachers:
+
+New teaching tools - engaging Web3 content
+Digital mentorship - guide students in blockchain
+Pre-training included - comprehensive onboarding
+Admin dashboard - easy user management
+
+For Europe:
+
+Innovation leadership - stay ahead in Web3
+Creator generation - not just consumers
+Competitive workforce - future-ready skills
+
+
+📊 Project Plan & Budget
+⏱️ Timeline (18 months):
+
+M1–M3: Partnerships, pedagogical analysis
+M4–M9: Smart contract development
+M10–M12: React UI and UX design
+M13–M15: Security audit and improvements
+M16–M18: Curriculum and teacher training
+
+💰 Budget (~€522,000):
+
+Blockchain Developer: €288,000
+React Developer: €144,000
+External audit: €20,000
+UX/UI designer: €15,000
+Coordination: €50,000
+Equipment: €5,000
+
+🔄 Sustainability:
+Annual teacher training for 3 years post-launch, EU funded.
+
+🤝 Partnership Opportunities
+🏫 Educational Institutions
+
+Pilot Web3 education programs
+Joint curriculum development
+Teacher training initiatives
+
+🏛️ Funding Organizations
+
+EU educational funds
+Digital education programs
+Regional authorities
+
+👨‍🏫 Teachers and Experts
+
+Technology-interested educators
+Web3 specialists
+Digital education researchers
+
+
+📞 Contact Us
+🌐 Official contact: school.slavy.space/contact
+Questions? Want to partner? Use our contact form for:
+
+Partnership inquiries
+Technical questions
+Pilot programs
+Funding opportunities
+
+
+📄 Open Source & Transparency
+📂 Public Information:
+
+✅ Project documentation
+✅ Budget breakdown
+✅ Smart contract addresses
+✅ Live demo for testing
+
+🔒 Protected Code:
+Source code will be publicly released under MIT License after project completion.
+Why? To protect intellectual property during development and ensure competitive advantage.
+
+🌟 Why Right Now?
+Digital transformation doesn't wait. Every day we don't prepare our children for Web3 is a lost opportunity.
+EduChain is not just another digital tool - it's a bridge to our children's future.
+
+📄 License
+This project will be licensed under MIT License after completion - open source for educational use.
+
+Made with ❤️ for the future of European education
+
+"If we want Europe to remain a leader in innovation, we must build a generation that knows how to create, not just consume digital products."
