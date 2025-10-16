@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Contact](https://img.shields.io/badge/Contact-Open-purple)](https://school.slavy.space/contact)
 
-**Bulgarian | [English](README.md)**
+**English | [Bulgarian](README-bg.md)**
 
 ---
 
