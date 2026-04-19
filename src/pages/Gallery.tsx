@@ -1,11 +1,15 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ZeroAddress } from 'ethers';
-import { PhotoIcon, CurrencyDollarIcon, SparklesIcon, XMarkIcon, TrophyIcon, BanknotesIcon } from '@heroicons/react/24/outline';
+import { PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useWeb3 } from '../context/Web3Context';
 import { useEthersProvider } from '../lib/ethersAdapter';
 import { fmtEth, fmtAmount } from '../lib/format';
 import PageGate from '../components/PageGate';
+import {
+  WalletIcon, TokenIcon, NFTPredefinedIcon, NFTCustomIcon, TrophyIcon, GalleryIcon,
+  type IconProps,
+} from '../components/icons';
 
 type NFTKind = 'predefined' | 'custom';
 
@@ -107,30 +111,30 @@ function GalleryInner() {
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <PhotoIcon className="w-7 h-7" /> {t('gallery.title', 'My Gallery')}
+          <GalleryIcon size={28} /> {t('gallery.title', 'My Gallery')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('gallery.subtitle', 'Your tokens and NFTs.')}</p>
       </header>
 
-      <section className="card mb-4" style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.08), rgba(16,185,129,0.04))' }}>
+      <section className="card mb-4" style={{ background: 'linear-gradient(135deg, rgba(29,158,117,0.08), rgba(239,159,39,0.04))' }}>
         <div className="text-xs uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>
           {t('gallery.portfolio', 'Portfolio balance')}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(37,99,235,0.15)' }}>
-              <BanknotesIcon className="w-5 h-5" style={{ color: 'var(--color-primary)' }} />
+            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'color-mix(in srgb, var(--color-accent-eth) 15%, transparent)' }}>
+              <WalletIcon size={20} />
             </div>
             <div>
               <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>ETH</div>
               <div className="font-display text-2xl font-semibold" style={{ color: 'var(--text-primary)' }}>
-                {fmtEth(ethBalanceRaw)} <span className="text-sm font-normal" style={{ color: 'var(--text-tertiary)' }}>ETH</span>
+                {fmtEth(ethBalanceRaw, 4)} <span className="text-sm font-normal" style={{ color: 'var(--text-tertiary)' }}>ETH</span>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.15)' }}>
-              <CurrencyDollarIcon className="w-5 h-5" style={{ color: '#10b981' }} />
+            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'color-mix(in srgb, var(--color-accent-game) 15%, transparent)' }}>
+              <TokenIcon size={20} />
             </div>
             <div>
               <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>GAME</div>
@@ -143,21 +147,21 @@ function GalleryInner() {
       </section>
 
       <section className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-        <Stat icon={CurrencyDollarIcon} label={t('gallery.tokens', 'GAME tokens')} value={tokenCount} />
-        <Stat icon={PhotoIcon} label={t('gallery.predef', 'Predefined NFTs')} value={predefined.length} />
-        <Stat icon={SparklesIcon} label={t('gallery.custom', 'Custom NFTs')} value={custom.length} />
-        <Stat icon={TrophyIcon} label={t('gallery.points', 'Total points')} value={totalPoints} highlight />
+        <Stat Icon={TokenIcon} label={t('gallery.tokens', 'GAME tokens')} value={tokenCount} />
+        <Stat Icon={NFTPredefinedIcon} label={t('gallery.predef', 'Predefined NFTs')} value={predefined.length} />
+        <Stat Icon={NFTCustomIcon} label={t('gallery.custom', 'Custom NFTs')} value={custom.length} />
+        <Stat Icon={TrophyIcon} label={t('gallery.points', 'Total points')} value={totalPoints} highlight />
       </section>
 
       <div className="flex gap-2 mb-4">
         <button type="button" className={tab === 'predefined' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('predefined')}>
-          <PhotoIcon className="w-4 h-4" /> {t('gallery.tabs.predef', 'Predefined')} ({predefined.length})
+          <NFTPredefinedIcon size={16} color={tab === 'predefined' ? 'currentColor' : undefined} /> {t('gallery.tabs.predef', 'Predefined')} ({predefined.length})
         </button>
         <button type="button" className={tab === 'custom' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('custom')}>
-          <SparklesIcon className="w-4 h-4" /> {t('gallery.tabs.custom', 'Custom')} ({custom.length})
+          <NFTCustomIcon size={16} color={tab === 'custom' ? 'currentColor' : undefined} /> {t('gallery.tabs.custom', 'Custom')} ({custom.length})
         </button>
         <button type="button" className={tab === 'tokens' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('tokens')}>
-          <CurrencyDollarIcon className="w-4 h-4" /> {t('gallery.tabs.tokens', 'Tokens')}
+          <TokenIcon size={16} color={tab === 'tokens' ? 'currentColor' : undefined} /> {t('gallery.tabs.tokens', 'Tokens')}
         </button>
       </div>
 
@@ -187,11 +191,11 @@ function GalleryInner() {
   );
 }
 
-function Stat({ icon: Icon, label, value, highlight }: { icon: any; label: string; value: any; highlight?: boolean }) {
+function Stat({ Icon, label, value, highlight }: { Icon: (p: IconProps) => React.ReactElement; label: string; value: any; highlight?: boolean }) {
   return (
-    <div className="card" style={highlight ? { borderColor: 'var(--color-primary)' } : undefined}>
+    <div className="card" style={highlight ? { borderColor: 'var(--color-accent-points)' } : undefined}>
       <div className="flex items-center gap-1.5 text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>
-        <Icon className="w-3.5 h-3.5" /> {label}
+        <Icon size={14} /> {label}
       </div>
       <div className="font-display text-2xl font-semibold" style={{ color: 'var(--text-primary)' }}>{value}</div>
     </div>
