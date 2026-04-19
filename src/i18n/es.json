@@ -57,10 +57,17 @@
     "tagline": "por GEMBA IT"
   },
   "wallet": {
-    "connect": "Conectar billetera",
+    "connect": "Conectar",
     "connecting": "Conectando…",
     "disconnect": "Desconectar",
-    "wrongNetwork": "Cambiar a Sepolia"
+    "wrongNetwork": "Cambiar a Sepolia",
+    "wrongNetworkPill": "Red incorrecta",
+    "address": "Dirección",
+    "network": "Red",
+    "balance": "Saldo",
+    "copyAddress": "Copiar dirección",
+    "copied": "Dirección copiada",
+    "copyFailed": "Error al copiar"
   },
   "common": {
     "loading": "Cargando…",

@@ -57,10 +57,17 @@
     "tagline": "от GEMBA IT"
   },
   "wallet": {
-    "connect": "Свържи портфейл",
+    "connect": "Свържи",
     "connecting": "Свързване…",
     "disconnect": "Изключи",
-    "wrongNetwork": "Превключи към Sepolia"
+    "wrongNetwork": "Превключи към Sepolia",
+    "wrongNetworkPill": "Грешна мрежа",
+    "address": "Адрес",
+    "network": "Мрежа",
+    "balance": "Баланс",
+    "copyAddress": "Копирай адреса",
+    "copied": "Адресът е копиран",
+    "copyFailed": "Копирането не успя"
   },
   "common": {
     "loading": "Зареждане…",
