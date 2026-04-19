@@ -87,6 +87,12 @@
   "home": {
     "title": "EduChain",
     "subtitle": "An on-chain NFT and token platform for educational use cases on Sepolia.",
+    "description": {
+      "p1": "EduChain is an educational Web3 platform on the Sepolia testnet that turns smart contracts into a game. Connect MetaMask, claim free testnet ETH from the faucet, buy GAME tokens, and mint your own NFTs. Earn points from every transaction and compete with other students on the on-chain leaderboard.",
+      "p2": "The project is built on 7 audited Solidity contracts — whitelist access, ERC20 tokens, two ERC721 NFT collections, a multi-token marketplace, and a tracking/leaderboard contract. Everything is transparent, verifiable, and free to experiment with."
+    },
+    "ctaConnect": "Connect wallet",
+    "ctaGetStarted": "Get started",
     "ctaShop": "Open the shop",
     "ctaGallery": "View gallery",
     "features": {
