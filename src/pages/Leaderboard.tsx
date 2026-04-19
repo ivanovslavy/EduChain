@@ -2,13 +2,12 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
-  TrophyIcon, ArrowRightIcon, UserCircleIcon, SparklesIcon,
+  ArrowRightIcon, UserCircleIcon, SparklesIcon,
 } from '@heroicons/react/24/outline';
 import { useWeb3 } from '../context/Web3Context';
 import PageGate from '../components/PageGate';
 import { fmtPoints, fmtEth, parseTier, shorten } from '../lib/format';
-
-const MEDALS: Record<number, string> = { 1: '🥇', 2: '🥈', 3: '🥉' };
+import { LeaderboardIcon, Medal } from '../components/icons';
 
 interface Row {
   rank: number;
@@ -105,18 +104,22 @@ function LeaderboardInner() {
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <TrophyIcon className="w-7 h-7" /> {t('leaderboard.title', 'Leaderboard')}
+          <LeaderboardIcon size={28} /> {t('leaderboard.title', 'Leaderboard')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('leaderboard.subtitle', 'Top 10 players, live from on-chain points.')}</p>
       </header>
 
       <section className="card mb-6 flex flex-wrap items-center gap-4 justify-between">
         <div className="flex items-center gap-3">
-          <UserCircleIcon className="w-10 h-10" style={{ color: 'var(--text-tertiary)' }} />
+          {myEntry && myEntry.tier > 0 ? (
+            <Medal rank={myEntry.tier} size={44} />
+          ) : (
+            <UserCircleIcon className="w-11 h-11" style={{ color: 'var(--text-tertiary)' }} />
+          )}
           <div>
             <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>{t('leaderboard.you', 'You')}</div>
             <div className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>
-              {myRank ? `#${myRank} ${MEDALS[myRank] ?? ''}` : t('leaderboard.notRanked', 'Not in top 10')}
+              {myRank ? `#${myRank}` : t('leaderboard.notRanked', 'Not in top 10')}
             </div>
           </div>
         </div>
@@ -145,9 +148,9 @@ function LeaderboardInner() {
             const isMe = r.address.toLowerCase() === account?.toLowerCase();
             const tier = parseTier(r.tier);
             return (
-              <div key={r.address} className="card text-center" style={isMe ? { borderColor: 'var(--color-primary)' } : undefined}>
-                <div className="text-3xl mb-1">{MEDALS[r.rank]}</div>
-                <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>#{r.rank}</div>
+              <div key={r.address} className="card text-center flex flex-col items-center" style={isMe ? { borderColor: 'var(--color-accent-eth)' } : undefined}>
+                <Medal rank={r.tier} size={48} title={tier.label} />
+                <div className="text-xs uppercase tracking-wider mt-2" style={{ color: 'var(--text-tertiary)' }}>#{r.rank}</div>
                 <div className="font-mono text-sm mt-1" style={{ color: 'var(--text-primary)' }}>{shorten(r.address)}</div>
                 <div className="font-display text-xl font-semibold mt-1" style={{ color: 'var(--text-primary)' }}>{fmtPoints(r.points)} pts</div>
                 <div className="inline-flex items-center gap-1.5 text-xs mt-1" style={{ color: tier.color }}>
@@ -209,11 +212,16 @@ function RowView({ r, isMe }: { r: Row; isMe: boolean }) {
   return (
     <div
       className="flex items-center gap-3 py-3"
-      style={isMe ? { background: 'color-mix(in srgb, var(--color-primary) 8%, transparent)' } : undefined}
+      style={isMe ? { background: 'color-mix(in srgb, var(--color-accent-eth) 8%, transparent)' } : undefined}
     >
-      <div className="w-10 text-center font-display font-semibold" style={{ color: 'var(--text-primary)' }}>
-        {MEDALS[r.rank] ?? `#${r.rank}`}
+      <div className="w-10 flex items-center justify-center">
+        {r.tier > 0 ? (
+          <Medal rank={r.tier} size={26} title={tier.label} />
+        ) : (
+          <span className="font-display font-semibold text-sm" style={{ color: 'var(--text-tertiary)' }}>#{r.rank}</span>
+        )}
       </div>
+      <div className="w-8 text-center font-display text-xs" style={{ color: 'var(--text-tertiary)' }}>#{r.rank}</div>
       <div className="flex-1 min-w-0">
         <div className="font-mono text-sm truncate" style={{ color: 'var(--text-secondary)' }}>{shorten(r.address)}</div>
         <div className="inline-flex items-center gap-1.5 text-xs mt-0.5" style={{ color: tier.color }}>
