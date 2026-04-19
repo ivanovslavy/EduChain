@@ -1,27 +1,23 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import emailjs from '@emailjs/browser';
 import { Turnstile } from '@marsidev/react-turnstile';
 import {
-  AcademicCapIcon, BookOpenIcon, ClockIcon, EnvelopeIcon,
+  AcademicCapIcon, BookOpenIcon, ClockIcon,
   CheckCircleIcon, ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
+import { ContactIcon } from '../components/icons';
 import { useTheme } from '../context/ThemeContext';
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 const TURNSTILE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string;
+const CONTACT_EMAIL = 'contacts@gembait.com';
 
 export default function Contact() {
   const { t } = useTranslation();
   const { dark } = useTheme();
-  const formRef = useRef<HTMLFormElement>(null);
-  const [data, setData] = useState({ name: '', email: '', subject: '', message: '' });
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState({ name: '', email: '', subject: '', message: '', website: '' });
   const [token, setToken] = useState<string | null>(null);
   const [status, setStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error'; text: string }>({ type: 'idle', text: '' });
-
-  useEffect(() => { if (PUBLIC_KEY) emailjs.init(PUBLIC_KEY); }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setData((d) => ({ ...d, [e.target.name]: e.target.value }));
@@ -31,24 +27,40 @@ export default function Contact() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValid || !formRef.current) return;
+    if (!isValid) return;
     setStatus({ type: 'loading', text: t('contact.status.sending', 'Sending…') });
     try {
-      const res = await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
-      if (res.text === 'OK') {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          email: data.email.trim(),
+          subject: data.subject.trim(),
+          message: data.message.trim(),
+          website: data.website,
+          turnstileToken: token,
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (res.ok && body.success) {
         setStatus({ type: 'success', text: t('contact.status.sent', 'Message sent. We respond within 48 hours.') });
-        setData({ name: '', email: '', subject: '', message: '' });
+        setData({ name: '', email: '', subject: '', message: '', website: '' });
         setToken(null);
+      } else {
+        throw new Error(body.error || 'send_failed');
       }
-    } catch (err) {
-      setStatus({ type: 'error', text: t('contact.status.error', 'Failed to send. Try again or email contact@educhain.eu.') });
+    } catch {
+      setStatus({ type: 'error', text: t('contact.status.error', `Failed to send. Try again or email ${CONTACT_EMAIL}.`) });
     }
   };
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
       <header className="mb-8">
-        <h1 className="font-display text-3xl md:text-4xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{t('contact.title', 'Contact EduChain')}</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-semibold mb-2 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+          <ContactIcon size={28} /> {t('contact.title', 'Contact EduChain')}
+        </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('contact.subtitle', 'Partnerships, pilot programs, or platform questions.')}</p>
       </header>
 
@@ -60,11 +72,11 @@ export default function Contact() {
             body={t('contact.info.courses.body', 'Web3 fundamentals, smart contract security, and live on-chain exercises tailored to your curriculum.')} />
           <InfoCard icon={ClockIcon} title={t('contact.info.response.title', 'Response time')}
             body={t('contact.info.response.body', 'We reply within 48 hours on weekdays.')} />
-          <InfoCard icon={EnvelopeIcon} title={t('contact.info.email.title', 'Email')}
-            body="contact@educhain.eu" />
+          <InfoCard icon={ContactIcon} title={t('contact.info.email.title', 'Email')}
+            body={CONTACT_EMAIL} />
         </div>
 
-        <form ref={formRef} onSubmit={submit} className="card">
+        <form onSubmit={submit} className="card">
           {status.type === 'success' && (
             <div className="rounded-lg p-3 mb-4 flex items-start gap-2 text-sm" style={{ background: 'rgba(16,185,129,0.08)', color: '#059669', border: '1px solid rgba(16,185,129,0.3)' }}>
               <CheckCircleIcon className="w-5 h-5" /> <span>{status.text}</span>
@@ -75,6 +87,17 @@ export default function Contact() {
               <ExclamationTriangleIcon className="w-5 h-5" /> <span>{status.text}</span>
             </div>
           )}
+
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={data.website}
+            onChange={onChange}
+            style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+          />
 
           <Field label={t('contact.form.name', 'Full name')} required>
             <input name="name" type="text" className="form-input" value={data.name} onChange={onChange} required />
@@ -90,7 +113,7 @@ export default function Contact() {
             <div className="text-xs mt-1" style={{ color: 'var(--text-tertiary)' }}>{data.message.length} / 20 min</div>
           </Field>
 
-          <div className="flex justify-center my-4">
+          <div className="flex justify-center my-4" ref={turnstileRef}>
             {TURNSTILE_KEY ? (
               <Turnstile siteKey={TURNSTILE_KEY} onSuccess={setToken} onError={() => setToken(null)} onExpire={() => setToken(null)} options={{ theme: dark ? 'dark' : 'light' }} />
             ) : (
@@ -99,7 +122,16 @@ export default function Contact() {
           </div>
 
           <div className="flex justify-center">
-            <button type="submit" className="btn-flat primary" disabled={!isValid || status.type === 'loading'}>
+            <button
+              type="submit"
+              className="btn-flat primary"
+              disabled={!isValid || status.type === 'loading'}
+              style={{
+                background: 'var(--color-accent-eth)',
+                borderColor: 'var(--color-accent-eth)',
+                color: '#fff',
+              }}
+            >
               {status.type === 'loading' ? t('contact.form.sending', 'Sending…') : t('contact.form.send', 'Send message')}
             </button>
           </div>
