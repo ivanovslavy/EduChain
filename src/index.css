@@ -51,6 +51,17 @@
   --color-dark-accent-700: #cdaacd;
   --color-dark-accent-800: #ddcadd;
   --color-dark-accent-900: #edeaed;
+
+  /* Semantic accent palette — icons, stat chips, small highlights */
+  --color-accent-eth: #1D9E75;
+  --color-accent-game: #EF9F27;
+  --color-accent-nft-pre: #7F77DD;
+  --color-accent-nft-cus: #D4537E;
+  --color-accent-points: #FFD700;
+  --color-accent-info: #378ADD;
+  --color-accent-success: #97C459;
+  --color-accent-danger: #E24B4A;
+  --color-accent-faucet: #D85A30;
 }
 
 @layer base {
