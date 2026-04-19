@@ -153,7 +153,7 @@ function GalleryInner() {
         <Stat Icon={TrophyIcon} label={t('gallery.points', 'Total points')} value={totalPoints} highlight />
       </section>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-2 mb-4 justify-center flex-wrap">
         <button type="button" className={tab === 'predefined' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('predefined')}>
           <NFTPredefinedIcon size={16} color={tab === 'predefined' ? 'currentColor' : undefined} /> {t('gallery.tabs.predef', 'Predefined')} ({predefined.length})
         </button>

@@ -21,13 +21,13 @@ const SEMANTIC = {
   faucet: 'var(--color-accent-faucet)',
   wallet: 'var(--color-accent-eth)',
   trophy: 'var(--color-accent-points)',
-  home: 'currentColor',
+  home: 'var(--color-accent-eth)',
   gallery: 'var(--color-accent-nft-pre)',
   shop: 'var(--color-accent-game)',
   leaderboard: 'var(--color-accent-points)',
   about: 'var(--color-accent-info)',
   contact: 'var(--color-accent-eth)',
-  admin: 'currentColor',
+  admin: 'var(--color-accent-danger)',
 } as const;
 
 type Semantic = keyof typeof SEMANTIC;

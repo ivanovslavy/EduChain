@@ -2,11 +2,8 @@ import { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { formatEther } from 'ethers';
 import toast from 'react-hot-toast';
-import {
-  CurrencyDollarIcon, PhotoIcon, SparklesIcon,
-  ExclamationTriangleIcon,
-} from '@heroicons/react/24/outline';
-import { ShopIcon } from '../components/icons';
+import { SparklesIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { ShopIcon, TokenIcon, NFTPredefinedIcon, NFTCustomIcon, WalletIcon, type IconProps } from '../components/icons';
 import { useWeb3 } from '../context/Web3Context';
 import { useEthersProvider } from '../lib/ethersAdapter';
 import PageGate from '../components/PageGate';
@@ -262,20 +259,30 @@ function ShopInner() {
       </header>
 
       <div className="grid grid-cols-2 gap-3 mb-6">
-        <div className="card">
-          <div className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>{t('shop.eth', 'ETH balance')}</div>
-          <div className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>{fmtEth(ethBalance, 4)} ETH</div>
+        <div className="card flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'color-mix(in srgb, var(--color-accent-eth) 15%, transparent)' }}>
+            <WalletIcon size={20} />
+          </div>
+          <div className="min-w-0">
+            <div className="text-xs uppercase tracking-wider mb-0.5" style={{ color: 'var(--text-tertiary)' }}>{t('shop.eth', 'ETH balance')}</div>
+            <div className="font-display text-xl font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{fmtEth(ethBalance, 4)} ETH</div>
+          </div>
         </div>
-        <div className="card">
-          <div className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>{t('shop.game', 'GAME balance')}</div>
-          <div className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>{fmtEth(tokenStats.userTokenBalance, 2)} GAME</div>
+        <div className="card flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'color-mix(in srgb, var(--color-accent-game) 15%, transparent)' }}>
+            <TokenIcon size={20} />
+          </div>
+          <div className="min-w-0">
+            <div className="text-xs uppercase tracking-wider mb-0.5" style={{ color: 'var(--text-tertiary)' }}>{t('shop.game', 'GAME balance')}</div>
+            <div className="font-display text-xl font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{fmtEth(tokenStats.userTokenBalance, 2)} GAME</div>
+          </div>
         </div>
       </div>
 
-      <div className="flex gap-2 mb-4">
-        <TabButton active={tab === 'erc20'} onClick={() => setTab('erc20')} icon={CurrencyDollarIcon} label={t('shop.tabs.buy_tokens', 'Buy Tokens')} />
-        <TabButton active={tab === 'predef'} onClick={() => setTab('predef')} icon={PhotoIcon} label={t('shop.tabs.mint_predefined', 'Predefined NFT')} />
-        <TabButton active={tab === 'custom'} onClick={() => setTab('custom')} icon={SparklesIcon} label={t('shop.tabs.mint_custom', 'Custom NFT')} />
+      <div className="flex gap-2 mb-4 justify-center flex-wrap">
+        <TabButton active={tab === 'erc20'} onClick={() => setTab('erc20')} Icon={TokenIcon} label={t('shop.tabs.buy_tokens', 'Buy Tokens')} />
+        <TabButton active={tab === 'predef'} onClick={() => setTab('predef')} Icon={NFTPredefinedIcon} label={t('shop.tabs.mint_predefined', 'Predefined NFT')} />
+        <TabButton active={tab === 'custom'} onClick={() => setTab('custom')} Icon={NFTCustomIcon} label={t('shop.tabs.mint_custom', 'Custom NFT')} />
       </div>
 
       {tab === 'erc20' && (
@@ -298,9 +305,18 @@ function ShopInner() {
             {' · '}
             {t('shop.erc20.cost', 'Total: {{cost}} ETH', { cost: totalCostEth })}
           </div>
-          <button type="button" className="btn-flat primary" onClick={buyTokens} disabled={loading || tokenUserStats.remainingBuys === 0}>
-            {loading ? t('shop.busy', 'Working…') : t('shop.erc20.cta', 'Buy tokens')}
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="button"
+              className="btn-flat primary"
+              onClick={buyTokens}
+              disabled={loading || tokenUserStats.remainingBuys === 0}
+              style={{ background: 'var(--color-accent-game)', borderColor: 'var(--color-accent-game)', color: '#fff' }}
+            >
+              <TokenIcon size={16} color="currentColor" />
+              {loading ? t('shop.busy', 'Working…') : t('shop.erc20.cta', 'Buy tokens')}
+            </button>
+          </div>
           <Limits24 items={[
             { label: t('shop.erc20.purchases', 'Purchases'), value: `${tokenUserStats.buysThisWindow} / ${tokenStats.buysPer24h}` },
             { label: t('shop.erc20.tokensToday', 'Tokens today'), value: `${tokenUserStats.tokensThisWindow} / ${tokenStats.maxPer24h}` },
@@ -335,9 +351,18 @@ function ShopInner() {
               last: preStats.nextTokenId + Math.max(0, parseInt(prePredefQuantity || '1') - 1),
             })}
           </div>
-          <button type="button" className="btn-flat primary" onClick={mintPredefined} disabled={loading || preUserStats.remainingMints === 0 || preStats.remainingSupply === 0}>
-            {loading ? t('shop.busy', 'Working…') : t('shop.predef.cta', 'Mint {{q}} ({{p}} ETH)', { q: prePredefQuantity, p: predefTotal })}
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="button"
+              className="btn-flat primary"
+              onClick={mintPredefined}
+              disabled={loading || preUserStats.remainingMints === 0 || preStats.remainingSupply === 0}
+              style={{ background: 'var(--color-accent-nft-pre)', borderColor: 'var(--color-accent-nft-pre)', color: '#fff' }}
+            >
+              <NFTPredefinedIcon size={16} color="currentColor" />
+              {loading ? t('shop.busy', 'Working…') : t('shop.predef.cta', 'Mint {{q}} ({{p}} ETH)', { q: prePredefQuantity, p: predefTotal })}
+            </button>
+          </div>
           <Limits24 items={[
             { label: t('shop.predef.mintsToday', 'Mints today'), value: `${preUserStats.mintsThisWindow}` },
             { label: t('shop.predef.remMints', 'Remaining mints'), value: preUserStats.remainingMints },
@@ -411,9 +436,18 @@ function ShopInner() {
               <div className="text-xs mb-3" style={{ color: 'var(--text-tertiary)' }}>
                 {t('shop.custom.total_eth', 'Total: {{cost}} ETH', { cost: customEthTotal })}
               </div>
-              <button type="button" className="btn-flat primary" onClick={mintCustomEth} disabled={loading || cusUserStats.remainingMints === 0}>
-                {loading ? t('shop.busy', 'Working…') : t('shop.custom.mint_with_eth', 'Mint {{q}} NFTs ({{cost}} ETH)', { q: customQuantity, cost: customEthTotal })}
-              </button>
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  className="btn-flat primary"
+                  onClick={mintCustomEth}
+                  disabled={loading || cusUserStats.remainingMints === 0}
+                  style={{ background: 'var(--color-accent-nft-cus)', borderColor: 'var(--color-accent-nft-cus)', color: '#fff' }}
+                >
+                  <NFTCustomIcon size={16} color="currentColor" />
+                  {loading ? t('shop.busy', 'Working…') : t('shop.custom.mint_with_eth', 'Mint {{q}} NFTs ({{cost}} ETH)', { q: customQuantity, cost: customEthTotal })}
+                </button>
+              </div>
               <Limits24 items={[
                 { label: t('shop.predef.mintsToday', 'Mints today'), value: cusUserStats.mintsThisWindow },
                 { label: t('shop.predef.remMints', 'Remaining mints'), value: cusUserStats.remainingMints },
@@ -459,11 +493,20 @@ function ShopInner() {
                       {t('shop.custom.total_game', 'Total: {{cost}} GAME', { cost: customTokenTotal })}
                       {needsApprove && ` · ${t('shop.custom.willApprove', 'Step 1/2: approve, Step 2/2: mint')}`}
                     </div>
-                    <button type="button" className="btn-flat primary" onClick={mintCustomTokens} disabled={loading || cusUserStats.remainingMints === 0}>
-                      {loading
-                        ? t('shop.busy', 'Working…')
-                        : t('shop.custom.batch_mint', 'Batch Mint {{qty}} ({{price}} GAME)', { qty: String(customQuantity), price: customTokenTotal })}
-                    </button>
+                    <div className="flex justify-center">
+                      <button
+                        type="button"
+                        className="btn-flat primary"
+                        onClick={mintCustomTokens}
+                        disabled={loading || cusUserStats.remainingMints === 0}
+                        style={{ background: 'var(--color-accent-nft-cus)', borderColor: 'var(--color-accent-nft-cus)', color: '#fff' }}
+                      >
+                        <NFTCustomIcon size={16} color="currentColor" />
+                        {loading
+                          ? t('shop.busy', 'Working…')
+                          : t('shop.custom.batch_mint', 'Batch Mint {{qty}} ({{price}} GAME)', { qty: String(customQuantity), price: customTokenTotal })}
+                      </button>
+                    </div>
                   </>
                 );
               })()}
@@ -480,10 +523,10 @@ function ShopInner() {
   );
 }
 
-function TabButton({ active, onClick, icon: Icon, label }: { active: boolean; onClick: () => void; icon: any; label: string }) {
+function TabButton({ active, onClick, Icon, label }: { active: boolean; onClick: () => void; Icon: (p: IconProps) => React.ReactElement; label: string }) {
   return (
     <button type="button" onClick={onClick} className={active ? 'btn-flat primary' : 'btn-flat'}>
-      <Icon className="w-4 h-4" /> {label}
+      <Icon size={16} color={active ? 'currentColor' : undefined} /> {label}
     </button>
   );
 }

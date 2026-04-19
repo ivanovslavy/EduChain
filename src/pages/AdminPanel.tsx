@@ -2,12 +2,13 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Contract } from 'ethers';
 import {
-  ShieldCheckIcon, BookOpenIcon, PencilSquareIcon,
+  BookOpenIcon, PencilSquareIcon,
   ArrowTopRightOnSquareIcon, UserGroupIcon, CurrencyDollarIcon,
   PhotoIcon, SparklesIcon, BuildingStorefrontIcon, ChartBarIcon, BanknotesIcon,
 } from '@heroicons/react/24/outline';
 import { useWeb3 } from '../context/Web3Context';
 import PageGate from '../components/PageGate';
+import { AdminIcon } from '../components/icons';
 import FunctionForm, { AbiFragment, isReadFn } from '../components/FunctionForm';
 
 import WhitelistABI from '../contracts/abis/Whitelist.json';
@@ -99,9 +100,11 @@ function categorize(fns: AbiFragment[], cats: typeof READ_CATEGORIES) {
   return ordered;
 }
 
+const OWNER_ONLY_WRITE = /^(transferOwnership|renounceOwnership|addAdmin|removeAdmin|setOwner)$/;
+
 function AdminInner() {
   const { t } = useTranslation();
-  const { account, contracts } = useWeb3();
+  const { account, contracts, isOwner } = useWeb3();
   const [activeKey, setActiveKey] = useState<ContractKey>('whitelist');
   const [mode, setMode] = useState<'read' | 'write'>('read');
   const [filter, setFilter] = useState('');
@@ -111,26 +114,30 @@ function AdminInner() {
   const address = (contracts as any)[activeKey]?.target as string | undefined;
 
   const functions = useMemo(() => extractFunctions(activeDef.abi), [activeDef]);
+  const visibleFunctions = useMemo(
+    () => (isOwner ? functions : functions.filter((f) => !OWNER_ONLY_WRITE.test(f.name))),
+    [functions, isOwner],
+  );
   const filtered = useMemo(() => {
     const q = filter.trim().toLowerCase();
-    return functions
+    return visibleFunctions
       .filter((f) => (mode === 'read' ? isReadFn(f) : !isReadFn(f)))
       .filter((f) => !q || f.name.toLowerCase().includes(q));
-  }, [functions, mode, filter]);
+  }, [visibleFunctions, mode, filter]);
 
   const grouped = useMemo(
     () => categorize(filtered, mode === 'read' ? READ_CATEGORIES : WRITE_CATEGORIES),
     [filtered, mode],
   );
 
-  const readCount = functions.filter(isReadFn).length;
-  const writeCount = functions.length - readCount;
+  const readCount = visibleFunctions.filter(isReadFn).length;
+  const writeCount = visibleFunctions.length - readCount;
 
   return (
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <ShieldCheckIcon className="w-7 h-7" /> {t('admin.title', 'Admin Panel')}
+          <AdminIcon size={28} /> {t('admin.title', 'Admin Panel')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>
           {t('admin.subtitle', 'Call any function on any deployed contract.')}

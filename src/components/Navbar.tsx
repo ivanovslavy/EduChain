@@ -51,13 +51,13 @@ export default function Navbar() {
       className="sticky top-0 z-40 backdrop-blur"
       style={{ background: 'color-mix(in srgb, var(--bg-primary) 85%, transparent)', borderBottom: '1px solid var(--border-color)' }}
     >
-      <nav className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-        <NavLink to={`/${lang}`} end className="flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+      <nav className="relative h-16 px-4 flex items-center">
+        <NavLink to={`/${lang}`} end className="flex items-center gap-2 shrink-0" style={{ color: 'var(--text-primary)' }}>
           <GembaLogo className="w-7 h-7" />
           <span className="font-display font-semibold text-base">EduChain</span>
         </NavLink>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-4 whitespace-nowrap">
           {links.map(({ to, label, Icon }) => (
             <NavLink key={to} to={to} end={to === `/${lang}`} className={`${linkClass({ isActive: false })} inline-flex items-center gap-1.5`} style={({ isActive }) => linkStyle(isActive)}>
               <Icon size={14} />
@@ -66,7 +66,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-2 shrink-0">
           <div className="hidden sm:flex items-center gap-2">
             <LanguageSwitcher />
             <ThemeToggle />

@@ -2,12 +2,10 @@ import { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Contract, formatEther, parseEther, ZeroAddress, isAddress } from 'ethers';
 import toast from 'react-hot-toast';
-import {
-  MagnifyingGlassIcon, PlusIcon, ListBulletIcon,
-  XMarkIcon, LockClosedIcon,
-} from '@heroicons/react/24/outline';
+import { XMarkIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
-import { MarketplaceIcon } from '../components/icons';
+import { Search, Plus, List } from 'lucide-react';
+import { MarketplaceIcon, TrophyIcon, WalletIcon, type IconProps } from '../components/icons';
 import { useWeb3 } from '../context/Web3Context';
 import { useEthersSigner } from '../lib/ethersAdapter';
 import PageGate from '../components/PageGate';
@@ -43,7 +41,7 @@ const typeLabel = (t: number) => (t === 0 ? 'ERC20' : t === 1 ? 'ERC721' : '—'
 
 function MarketplaceInner() {
   const { t } = useTranslation();
-  const { account, contracts, addresses } = useWeb3();
+  const { account, contracts, addresses, isWhitelisted } = useWeb3();
   const signer = useEthersSigner();
   const { execute } = useTxToast();
 
@@ -281,15 +279,21 @@ function MarketplaceInner() {
       </header>
 
       <section className="grid grid-cols-3 gap-3 mb-6">
-        <Stat label={t('marketplace.stats.sales', 'Total sales')} value={`${parseFloat(formatEther(stats.totalSalesETH)).toFixed(3)} ETH`} />
-        <Stat label={t('marketplace.stats.txs', 'Transactions')} value={stats.totalTransactions} />
-        <Stat label={t('marketplace.stats.active', 'Active listings')} value={stats.activeListingsCount} />
+        <Stat Icon={WalletIcon} label={t('marketplace.stats.sales', 'Total sales')} value={`${parseFloat(formatEther(stats.totalSalesETH)).toFixed(3)} ETH`} />
+        <Stat Icon={TrophyIcon} label={t('marketplace.stats.txs', 'Transactions')} value={stats.totalTransactions} />
+        <Stat Icon={MarketplaceIcon} label={t('marketplace.stats.active', 'Active listings')} value={stats.activeListingsCount} />
       </section>
 
-      <div className="flex gap-2 mb-4 flex-wrap">
-        <button type="button" className={tab === 'browse' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('browse')}><MagnifyingGlassIcon className="w-4 h-4" /> {t('marketplace.tabs.browse', 'Browse')}</button>
-        <button type="button" className={tab === 'create' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('create')}><PlusIcon className="w-4 h-4" /> {t('marketplace.tabs.create', 'Create')}</button>
-        <button type="button" className={tab === 'mine' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('mine')}><ListBulletIcon className="w-4 h-4" /> {t('marketplace.tabs.mine', 'My listings')} ({mine.length})</button>
+      <div className="flex gap-2 mb-4 flex-wrap justify-center">
+        <button type="button" className={tab === 'browse' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('browse')}>
+          <Search size={16} color={tab === 'browse' ? 'currentColor' : 'var(--color-accent-eth)'} /> {t('marketplace.tabs.browse', 'Browse')}
+        </button>
+        <button type="button" className={tab === 'create' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('create')}>
+          <Plus size={16} color={tab === 'create' ? 'currentColor' : 'var(--color-accent-success)'} /> {t('marketplace.tabs.create', 'Create')}
+        </button>
+        <button type="button" className={tab === 'mine' ? 'btn-flat primary' : 'btn-flat'} onClick={() => setTab('mine')}>
+          <List size={16} color={tab === 'mine' ? 'currentColor' : 'var(--color-accent-nft-pre)'} /> {t('marketplace.tabs.mine', 'My listings')} ({mine.length})
+        </button>
       </div>
 
       {tab === 'browse' && (
@@ -394,8 +398,15 @@ function MarketplaceInner() {
               <input className="form-input" type="text" placeholder={t('marketplace.create.buyerPlaceholder', 'Leave empty for public sale')} value={allowedBuyer} onChange={(e) => setAllowedBuyer(e.target.value)} />
             </div>
           </div>
-          <div className="mt-4">
-            <button type="button" className="btn-flat primary" onClick={createListing} disabled={loading}>
+          <div className="mt-4 flex justify-center">
+            <button
+              type="button"
+              className="btn-flat primary"
+              onClick={createListing}
+              disabled={loading}
+              style={{ background: 'var(--color-accent-eth)', borderColor: 'var(--color-accent-eth)', color: '#fff' }}
+            >
+              <Plus size={16} color="currentColor" />
               {loading ? t('marketplace.create.busy', 'Creating…') : t('marketplace.create.cta', 'Create listing')}
             </button>
           </div>
@@ -442,28 +453,31 @@ function MarketplaceInner() {
           onBuy={purchase}
           loading={loading}
           account={account}
+          isWhitelisted={isWhitelisted}
         />
       )}
     </>
   );
 }
 
-function Stat({ label, value }: { label: string; value: any }) {
+function Stat({ Icon, label, value }: { Icon: (p: IconProps) => React.ReactElement; label: string; value: any }) {
   return (
     <div className="card">
-      <div className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>{label}</div>
+      <div className="flex items-center gap-1.5 text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>
+        <Icon size={14} /> {label}
+      </div>
       <div className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>{value}</div>
     </div>
   );
 }
 
-function ListingLightbox({ listing, onClose, onBuy, loading, account }: {
-  listing: Listing; onClose: () => void; onBuy: (l: Listing) => void; loading: boolean; account: string | undefined;
+function ListingLightbox({ listing, onClose, onBuy, loading, account, isWhitelisted }: {
+  listing: Listing; onClose: () => void; onBuy: (l: Listing) => void; loading: boolean; account: string | undefined; isWhitelisted: boolean;
 }) {
   const { t } = useTranslation();
   const isOwner = listing.seller.toLowerCase() === account?.toLowerCase();
   const restricted = listing.allowedBuyer !== ZeroAddress && listing.allowedBuyer.toLowerCase() !== account?.toLowerCase();
-  const canBuy = !isOwner && !restricted;
+  const canBuy = !isOwner && !restricted && isWhitelisted;
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -550,11 +564,15 @@ function ListingLightbox({ listing, onClose, onBuy, loading, account }: {
             <div className="text-center" style={{ color: 'var(--text-tertiary)' }}>{t('marketplace.ownListing', 'This is your listing')}</div>
           ) : restricted ? (
             <div className="text-center" style={{ color: '#f59e0b' }}>{t('marketplace.notAllowed', 'This listing is restricted to a specific buyer.')}</div>
-          ) : canBuy ? (
+          ) : !isWhitelisted ? (
+            <div className="text-center text-sm" style={{ color: '#f59e0b' }}>
+              {t('marketplace.notWhitelisted', 'This address must be on the whitelist to purchase. Admin or owner status alone is not enough — add the address via Admin → Whitelist → addToWhitelist.')}
+            </div>
+          ) : (
             <button type="button" className="btn-flat primary w-full justify-center" onClick={() => onBuy(listing)} disabled={loading}>
               {loading ? t('marketplace.buying', 'Buying…') : t('marketplace.buyNow', 'Buy now')}
             </button>
-          ) : null}
+          )}
         </div>
       </div>
     </div>

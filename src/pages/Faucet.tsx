@@ -126,14 +126,28 @@ function FaucetInner() {
                 {t('faucet.depleted', 'Faucet depleted — ask admin to refill.')}
               </div>
             ) : canClaim ? (
-              <button type="button" className="btn-flat primary w-full justify-center" onClick={claim} disabled={loading}>
+              <button
+                type="button"
+                className="btn-flat primary w-full justify-center"
+                onClick={claim}
+                disabled={loading}
+                style={{ background: 'var(--color-accent-faucet)', borderColor: 'var(--color-accent-faucet)', color: '#fff' }}
+              >
                 <ArrowDownTrayIcon className="w-4 h-4" />
                 {loading ? t('faucet.claiming', 'Claiming…') : t('faucet.claim', 'Claim ETH now')}
               </button>
             ) : (
-              <div className="rounded-lg p-3 text-sm flex items-center gap-2" style={{ background: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}>
-                <ClockIcon className="w-4 h-4" />
-                {t('faucet.cooldown', 'Next claim in')} <span className="font-mono" style={{ color: 'var(--text-primary)' }}>{formatCountdown(secondsUntilNext)}</span>
+              <div
+                className="rounded-lg p-3 text-sm flex items-center gap-2"
+                style={{
+                  background: 'color-mix(in srgb, var(--color-accent-faucet) 8%, var(--bg-secondary))',
+                  color: 'var(--text-secondary)',
+                  border: '1px solid color-mix(in srgb, var(--color-accent-faucet) 25%, transparent)',
+                }}
+              >
+                <ClockIcon className="w-4 h-4" style={{ color: 'var(--color-accent-faucet)' }} />
+                {t('faucet.cooldown', 'Next claim in')}{' '}
+                <span className="font-mono font-semibold" style={{ color: 'var(--color-accent-faucet)' }}>{formatCountdown(secondsUntilNext)}</span>
               </div>
             )}
           </div>
