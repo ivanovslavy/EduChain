@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { formatEther } from 'ethers';
 import toast from 'react-hot-toast';
 import {
-  CurrencyDollarIcon, PhotoIcon, SparklesIcon, ShoppingBagIcon,
+  CurrencyDollarIcon, PhotoIcon, SparklesIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
+import { ShopIcon } from '../components/icons';
 import { useWeb3 } from '../context/Web3Context';
 import { useEthersProvider } from '../lib/ethersAdapter';
 import PageGate from '../components/PageGate';
@@ -255,7 +256,7 @@ function ShopInner() {
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <ShoppingBagIcon className="w-7 h-7" /> {t('shop.title', 'Token & NFT Shop')}
+          <ShopIcon size={28} /> {t('shop.title', 'Token & NFT Shop')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('shop.subtitle', 'Buy GAME tokens and mint NFTs.')}</p>
       </header>

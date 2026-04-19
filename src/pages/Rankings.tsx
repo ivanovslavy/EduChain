@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  ArrowPathIcon, MagnifyingGlassIcon, ClipboardDocumentIcon, ChartBarIcon,
+  ArrowPathIcon, MagnifyingGlassIcon, ClipboardDocumentIcon,
 } from '@heroicons/react/24/outline';
+import { TrackingIcon } from '../components/icons';
 import { useWeb3 } from '../context/Web3Context';
 import PageGate from '../components/PageGate';
 import { fmtPoints, fmtEth, parseTier, shorten } from '../lib/format';
@@ -125,7 +126,7 @@ function RankingsInner() {
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <ChartBarIcon className="w-7 h-7" /> {t('rankings.title', 'Rankings')}
+          <TrackingIcon size={28} /> {t('rankings.title', 'Rankings')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('rankings.subtitle', 'Full paginated leaderboard with filters and sort.')}</p>
       </header>

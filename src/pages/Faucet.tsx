@@ -1,9 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  BeakerIcon, ClockIcon, BanknotesIcon, ArrowDownTrayIcon,
+  ClockIcon, BanknotesIcon, ArrowDownTrayIcon,
   ChartBarIcon, UserGroupIcon,
 } from '@heroicons/react/24/outline';
+import { FaucetIcon } from '../components/icons';
 import { useWeb3 } from '../context/Web3Context';
 import { useEthersProvider } from '../lib/ethersAdapter';
 import PageGate from '../components/PageGate';
@@ -102,7 +103,7 @@ function FaucetInner() {
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <BeakerIcon className="w-7 h-7" /> {t('faucet.title', 'ETH Faucet')}
+          <FaucetIcon size={28} /> {t('faucet.title', 'ETH Faucet')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('faucet.subtitle', 'Free Sepolia ETH for whitelisted users.')}</p>
       </header>

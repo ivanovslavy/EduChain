@@ -7,6 +7,12 @@ import WalletButton from './WalletButton';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useWeb3 } from '../context/Web3Context';
+import {
+  HomeIcon, GalleryIcon, ShopIcon, MarketplaceIcon, LeaderboardIcon,
+  FaucetIcon, AboutIcon, ContactIcon, AdminIcon, type IconProps,
+} from './icons';
+
+type NavIcon = (p: IconProps) => React.ReactElement;
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -14,24 +20,24 @@ export default function Navbar() {
   const { isConnected, isWhitelisted, isOwner, isAdmin } = useWeb3();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const publicLinks: Array<{ to: string; label: string }> = [
-    { to: `/${lang}`, label: t('nav.home', 'Home') },
-    { to: `/${lang}/about`, label: t('nav.about', 'About') },
-    { to: `/${lang}/contact`, label: t('nav.contact', 'Contact') },
+  const publicLinks: Array<{ to: string; label: string; Icon: NavIcon }> = [
+    { to: `/${lang}`, label: t('nav.home', 'Home'), Icon: HomeIcon },
+    { to: `/${lang}/about`, label: t('nav.about', 'About'), Icon: AboutIcon },
+    { to: `/${lang}/contact`, label: t('nav.contact', 'Contact'), Icon: ContactIcon },
   ];
-  const memberLinks: Array<{ to: string; label: string }> = [
-    { to: `/${lang}`, label: t('nav.home', 'Home') },
-    { to: `/${lang}/gallery`, label: t('nav.gallery', 'Gallery') },
-    { to: `/${lang}/shop`, label: t('nav.shop', 'Shop') },
-    { to: `/${lang}/marketplace`, label: t('nav.marketplace', 'Marketplace') },
-    { to: `/${lang}/leaderboard`, label: t('nav.leaderboard', 'Leaderboard') },
-    { to: `/${lang}/faucet`, label: t('nav.faucet', 'Faucet') },
-    { to: `/${lang}/about`, label: t('nav.about', 'About') },
-    { to: `/${lang}/contact`, label: t('nav.contact', 'Contact') },
+  const memberLinks: Array<{ to: string; label: string; Icon: NavIcon }> = [
+    { to: `/${lang}`, label: t('nav.home', 'Home'), Icon: HomeIcon },
+    { to: `/${lang}/gallery`, label: t('nav.gallery', 'Gallery'), Icon: GalleryIcon },
+    { to: `/${lang}/shop`, label: t('nav.shop', 'Shop'), Icon: ShopIcon },
+    { to: `/${lang}/marketplace`, label: t('nav.marketplace', 'Marketplace'), Icon: MarketplaceIcon },
+    { to: `/${lang}/leaderboard`, label: t('nav.leaderboard', 'Leaderboard'), Icon: LeaderboardIcon },
+    { to: `/${lang}/faucet`, label: t('nav.faucet', 'Faucet'), Icon: FaucetIcon },
+    { to: `/${lang}/about`, label: t('nav.about', 'About'), Icon: AboutIcon },
+    { to: `/${lang}/contact`, label: t('nav.contact', 'Contact'), Icon: ContactIcon },
   ];
   const hasMemberAccess = isConnected && (isWhitelisted || isAdmin || isOwner);
   const links = hasMemberAccess ? memberLinks : publicLinks;
-  if (isOwner || isAdmin) links.push({ to: `/${lang}/admin`, label: t('nav.admin', 'Admin') });
+  if (isOwner || isAdmin) links.push({ to: `/${lang}/admin`, label: t('nav.admin', 'Admin'), Icon: AdminIcon });
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     'text-sm transition-colors';
@@ -51,10 +57,11 @@ export default function Navbar() {
           <span className="font-display font-semibold text-base">EduChain</span>
         </NavLink>
 
-        <div className="hidden md:flex items-center gap-5">
-          {links.map((l) => (
-            <NavLink key={l.to} to={l.to} end={l.to === `/${lang}`} className={linkClass} style={({ isActive }) => linkStyle(isActive)}>
-              {l.label}
+        <div className="hidden md:flex items-center gap-4">
+          {links.map(({ to, label, Icon }) => (
+            <NavLink key={to} to={to} end={to === `/${lang}`} className={`${linkClass({ isActive: false })} inline-flex items-center gap-1.5`} style={({ isActive }) => linkStyle(isActive)}>
+              <Icon size={14} />
+              <span>{label}</span>
             </NavLink>
           ))}
         </div>
@@ -79,17 +86,18 @@ export default function Navbar() {
 
       {mobileOpen && (
         <div className="md:hidden border-t" style={{ borderColor: 'var(--border-color)', background: 'var(--bg-primary)' }}>
-          <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-2">
-            {links.map((l) => (
+          <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-1">
+            {links.map(({ to, label, Icon }) => (
               <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.to === `/${lang}`}
+                key={to}
+                to={to}
+                end={to === `/${lang}`}
                 onClick={() => setMobileOpen(false)}
-                className="py-2 text-sm"
+                className="py-2 text-sm inline-flex items-center gap-2"
                 style={({ isActive }) => linkStyle(isActive)}
               >
-                {l.label}
+                <Icon size={14} />
+                <span>{label}</span>
               </NavLink>
             ))}
             <div className="flex items-center gap-2 pt-2 border-t" style={{ borderColor: 'var(--border-color)' }}>

@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Contract, formatEther, parseEther, ZeroAddress, isAddress } from 'ethers';
 import toast from 'react-hot-toast';
 import {
-  BuildingStorefrontIcon, MagnifyingGlassIcon, PlusIcon, ListBulletIcon,
+  MagnifyingGlassIcon, PlusIcon, ListBulletIcon,
   XMarkIcon, LockClosedIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
+import { MarketplaceIcon } from '../components/icons';
 import { useWeb3 } from '../context/Web3Context';
 import { useEthersSigner } from '../lib/ethersAdapter';
 import PageGate from '../components/PageGate';
@@ -274,7 +275,7 @@ function MarketplaceInner() {
     <>
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold mb-1 inline-flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <BuildingStorefrontIcon className="w-7 h-7" /> {t('marketplace.title', 'Marketplace')}
+          <MarketplaceIcon size={28} /> {t('marketplace.title', 'Marketplace')}
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>{t('marketplace.subtitle', 'Trade GAME tokens and NFTs.')}</p>
       </header>
