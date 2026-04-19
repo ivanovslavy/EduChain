@@ -1,0 +1,564 @@
+{
+  "meta": {
+    "title": "EduChain — Educational Blockchain Platform by GEMBA IT",
+    "description": "Safe, educational Web3 platform for young learners. Mint NFTs, earn GAME tokens, and trade on a curated marketplace — all on Ethereum Sepolia testnet. Built by GEMBA IT."
+  },
+  "seo": {
+    "home": {
+      "title": "Home",
+      "description": "Enter the EduChain learning universe. Mint NFTs, earn GAME tokens, and rise on the leaderboard. Safe Web3 education for everyone."
+    },
+    "gallery": {
+      "title": "My Collection",
+      "description": "View your EduChain NFT collection. Predefined and custom NFTs you have minted or bought on the marketplace."
+    },
+    "marketplace": {
+      "title": "Marketplace",
+      "description": "Buy and sell NFTs and GAME tokens on the EduChain marketplace. Peer-to-peer trading with rate limits for safe learning."
+    },
+    "shop": {
+      "title": "Token Shop",
+      "description": "Buy GAME tokens with ETH. Mint predefined NFTs directly or batch-mint custom NFTs with your GAME tokens."
+    },
+    "faucet": {
+      "title": "ETH Faucet",
+      "description": "Claim free 0.05 ETH every 24 hours. Sepolia testnet faucet for whitelisted EduChain learners."
+    },
+    "leaderboard": {
+      "title": "Leaderboard",
+      "description": "Top EduChain players ranked by on-chain holdings. Points computed live from Sepolia: 1pt per token, 10pt per Predefined NFT, 30pt per Custom NFT."
+    },
+    "rankings": {
+      "title": "Full Rankings",
+      "description": "Complete EduChain rankings with search, filter, and sort by points, tokens, or NFT type."
+    },
+    "about": {
+      "title": "About",
+      "description": "About EduChain — our mission to teach Web3 to young learners through hands-on, safe blockchain interactions. Built by GEMBA IT."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Contact EduChain — request a course, partner with us, or join as a learner. We respond within 48 hours."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "shop": "Shop",
+    "marketplace": "Marketplace",
+    "leaderboard": "Leaderboard",
+    "faucet": "Faucet",
+    "about": "About",
+    "contact": "Contact",
+    "admin": "Admin",
+    "rankings": "Rankings"
+  },
+  "footer": {
+    "tagline": "by GEMBA IT"
+  },
+  "wallet": {
+    "connect": "Connect Wallet",
+    "connecting": "Connecting…",
+    "disconnect": "Disconnect",
+    "wrongNetwork": "Switch to Sepolia"
+  },
+  "common": {
+    "loading": "Loading…",
+    "refresh": "Refresh",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "errors": {
+    "notConnected": "Connect your wallet to continue.",
+    "wrongChain": "Switch to Sepolia to continue.",
+    "notWhitelisted": "Your wallet is not whitelisted yet.",
+    "txFailed": "Transaction failed.",
+    "txSuccess": "Transaction confirmed."
+  },
+  "home": {
+    "title": "EduChain",
+    "subtitle": "An on-chain NFT and token platform for educational use cases on Sepolia.",
+    "ctaShop": "Open the shop",
+    "ctaGallery": "View gallery",
+    "features": {
+      "shop": {
+        "title": "Token shop",
+        "body": "Buy GAME tokens and mint NFTs directly from the contract."
+      },
+      "marketplace": {
+        "title": "Marketplace",
+        "body": "List, buy and trade tokens and NFTs with other students."
+      },
+      "gallery": {
+        "title": "Gallery",
+        "body": "Track your tokens, predefined NFTs and custom NFTs."
+      },
+      "faucet": {
+        "title": "ETH Faucet",
+        "body": "Claim 0.05 Sepolia ETH every 24 hours."
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "body": "Compete on points: tokens, predefined and custom NFTs."
+      }
+    },
+    "stats": {
+      "tokens": "GAME = 1 pt",
+      "predef": "Predefined NFT = 10 pts",
+      "custom": "Custom NFT = 30 pts",
+      "users": "Tracked users",
+      "predefined": "Predefined NFTs minted",
+      "yourPoints": "Your points"
+    },
+    "connectHint": "Connect your wallet (top-right) to start.",
+    "notWhitelisted": {
+      "title": "You are not whitelisted yet",
+      "body": "Ask an admin to add your address to the whitelist before you can mint or trade."
+    },
+    "scoring": {
+      "title": "How points work",
+      "body": "Each GAME token is worth 1 point, each Predefined NFT 10 points and each Custom NFT 30 points.",
+      "erc20": "ERC20 token",
+      "predefined": "Predefined NFT",
+      "custom": "Custom NFT",
+      "cta": "See leaderboard"
+    }
+  },
+  "about": {
+    "title": "About EduChain",
+    "subtitle": "Seven contracts on Sepolia powering an educational web3 experience.",
+    "contracts": "Smart contracts",
+    "etherscan": "Etherscan",
+    "how": {
+      "title": "How it works",
+      "step1": "Get whitelisted by an admin.",
+      "step2": "Use the faucet for Sepolia ETH every 24h.",
+      "step3": "Buy GAME tokens and mint NFTs in the shop.",
+      "step4": "Trade with peers in the marketplace.",
+      "step5": "Climb the leaderboard."
+    },
+    "back": "Back to home",
+    "contractsTitle": "The 7 contracts",
+    "cta": "Contact us",
+    "howSteps": {
+      "1": "An admin adds your address to the whitelist.",
+      "2": "Grab 0.05 ETH from the faucet (every 24h).",
+      "3": "Buy GAME tokens or mint NFTs in the shop.",
+      "4": "List items in the marketplace, or batch-mint custom NFTs with GAME.",
+      "5": "Climb the leaderboard: tokens × 1 pt, predefined NFTs × 10, custom NFTs × 30."
+    },
+    "howTitle": "How it works",
+    "intro": "EduChain is a learn-by-doing Web3 platform built around 7 audited Solidity contracts on Sepolia: a Whitelist gate, an ERC20 token, two ERC721 NFT collections, a multi-token marketplace, a tracking + leaderboard contract, and an ETH faucet."
+  },
+  "contact": {
+    "title": "Contact EduChain",
+    "subtitle": "Partnerships, pilot programs, or platform questions.",
+    "info": {
+      "participate": {
+        "title": "Participate",
+        "body": "Schools and educators can run a pilot — we onboard your students and provide training."
+      },
+      "courses": {
+        "title": "Courses",
+        "body": "Web3 fundamentals, smart contract security, and live on-chain exercises tailored to your curriculum."
+      },
+      "response": {
+        "title": "Response time",
+        "body": "We reply within 48 hours on weekdays."
+      },
+      "email": {
+        "title": "Email"
+      }
+    },
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending…",
+      "turnstileMissing": "Turnstile not configured"
+    },
+    "status": {
+      "sending": "Sending…",
+      "sent": "Message sent. We respond within 48 hours.",
+      "error": "Failed to send. Try again or email contact@educhain.eu."
+    }
+  },
+  "gallery": {
+    "title": "My Gallery",
+    "subtitle": "Your tokens and NFTs.",
+    "tokens": "GAME tokens",
+    "predef": "Predefined NFTs",
+    "custom": "Custom NFTs",
+    "points": "Total points",
+    "pts": "pts",
+    "tabs": {
+      "predef": "Predefined",
+      "custom": "Custom",
+      "tokens": "Tokens"
+    },
+    "empty": "No NFTs yet — head to the shop.",
+    "tokenUri": "Token URI",
+    "portfolio": "Portfolio balance",
+    "ethNote": "Used for gas and ETH-priced mints."
+  },
+  "marketplace": {
+    "title": "Marketplace",
+    "subtitle": "List, buy and trade tokens and NFTs.",
+    "tabs": {
+      "browse": "Browse",
+      "create": "Create listing",
+      "mine": "My listings"
+    },
+    "empty": "No listings.",
+    "buy": "Buy",
+    "cancel": "Cancel listing",
+    "create": {
+      "amount": "Amount",
+      "busy": "Creating…",
+      "buyer": "Allowed buyer (optional)",
+      "buyerPlaceholder": "Leave empty for public sale",
+      "contract": "Token contract address",
+      "cta": "Create listing",
+      "price": "Price (ETH)",
+      "title": "Create new listing",
+      "tokenId": "Token ID"
+    },
+    "kind": {
+      "erc20": "ERC20",
+      "erc721": "ERC721",
+      "erc1155": "ERC1155"
+    },
+    "description": "Description",
+    "attributes": "Attributes",
+    "metadataJson": "Metadata",
+    "viewRaw": "View raw",
+    "contract": "Contract",
+    "viewContract": "View contract",
+    "allowedBuyer": "Private buyer",
+    "amount": "Amount",
+    "buying": "Buying…",
+    "buyNow": "Buy now",
+    "cancelConfirm": "Cancel this listing?",
+    "errors": {
+      "buyer": "Invalid buyer address",
+      "contract": "Invalid contract address",
+      "fields": "Fill all required fields",
+      "tokenId": "Token ID required"
+    },
+    "filter": "Filter",
+    "filters": {
+      "all": "All"
+    },
+    "mine": {
+      "empty": "You have no active listings."
+    },
+    "notAllowed": "This listing is restricted to a specific buyer.",
+    "ownListing": "This is your listing",
+    "private": "Private sale",
+    "seller": "Seller",
+    "stats": {
+      "active": "Active listings",
+      "sales": "Total sales",
+      "txs": "Transactions"
+    },
+    "tokenId": "Token ID"
+  },
+  "shop": {
+    "title": "Token Shop",
+    "subtitle": "Buy GAME tokens and mint NFTs.",
+    "tabs": {
+      "tokens": "GAME tokens",
+      "predef": "Predefined NFT",
+      "custom": "Custom NFT",
+      "buy_tokens": "Buy Tokens",
+      "mint_custom": "Custom NFT",
+      "mint_predefined": "Predefined NFT"
+    },
+    "buy": "Buy",
+    "mint": "Mint",
+    "amount": "Amount",
+    "price": "Price",
+    "limit24h": "24h limit",
+    "custom": {
+      "creative_info": "Creative mode: mint a one-off custom NFT using your own tokenURI (IPFS or HTTPS). Pay in ETH.",
+      "batch_warning": "Batch mode: mint many copies at once, paid in GAME tokens. Uses a fixed preset tokenURI.",
+      "mint_with_eth": "Mint {{q}} NFTs ({{cost}} ETH)",
+      "batch_mint": "Batch Mint {{qty}} ({{price}} GAME)",
+      "allowance": "Current allowance",
+      "batch_info": "Uses GAME tokens instead of ETH. {{price}} GAME per NFT. First approval required.",
+      "batchPrice": "Price / NFT",
+      "maxBatch": "Max batch",
+      "mode_batch": "Batch Mint (GAME)",
+      "mode_creative": "Creative Mint (ETH)",
+      "price": "Price / NFT",
+      "quantity": "Quantity",
+      "remaining": "Remaining supply",
+      "title": "Mint Custom NFT",
+      "tokenUri": "Token URI (metadata)",
+      "total_eth": "Total: {{cost}} ETH",
+      "total_game": "Total: {{cost}} GAME",
+      "uri_placeholder": "ipfs://... (optional, leave blank for default)",
+      "willApprove": "Step 1/2: approve, Step 2/2: mint"
+    },
+    "busy": "Working…",
+    "erc20": {
+      "amount": "Amount (whole tokens)",
+      "cost": "Total: {{cost}} ETH",
+      "cta": "Buy tokens",
+      "maxPerPurchase": "Max {{n}} per purchase",
+      "price": "Price",
+      "purchases": "Purchases",
+      "remPurchases": "Remaining purchases",
+      "remTokens": "Remaining tokens",
+      "title": "Buy GAME tokens",
+      "tokensToday": "Tokens today"
+    },
+    "errors": {
+      "amount": "Enter a positive amount",
+      "maxBatch": "Max {{n}} per batch",
+      "maxPerPurchase": "Max {{n}} per purchase"
+    },
+    "eth": "ETH balance",
+    "game": "GAME balance",
+    "points": "Points / NFT",
+    "predef": {
+      "cta": "Mint {{q}} ({{p}} ETH)",
+      "maxBatch": "Max batch size",
+      "mintsToday": "Mints today",
+      "price": "Price",
+      "quantity": "Quantity",
+      "remMints": "Remaining mints",
+      "supply": "Supply",
+      "title": "Mint Predefined NFT",
+      "total": "Total: {{cost}} ETH — tokens #{{first}}..#{{last}}",
+      "yourBal": "Your NFTs"
+    }
+  },
+  "faucet": {
+    "title": "ETH Faucet",
+    "subtitle": "Claim Sepolia ETH every 24 hours.",
+    "claim": "Claim 0.05 ETH",
+    "nextIn": "Next claim in",
+    "balance": "Faucet balance",
+    "claimedTotal": "You claimed",
+    "wait": "Please wait",
+    "activeUsers": "Unique claimers",
+    "claiming": "Claiming…",
+    "contractStats": "Faucet status",
+    "cooldown": "Next claim in",
+    "depleted": "Faucet depleted — ask admin to refill.",
+    "distributed": "Distributed",
+    "lastClaim": "Last claim",
+    "requests": "Claims",
+    "totalClaims": "Total claims",
+    "totalReceived": "Total received",
+    "youGet": "You will receive",
+    "yourBalance": "Your wallet ETH",
+    "yourStats": "Your faucet activity"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "Top players ranked by on-chain points.",
+    "yourRank": "Your rank",
+    "yourPoints": "Your points",
+    "rank": "Rank",
+    "player": "Player",
+    "points": "Points",
+    "scoring": {
+      "custom": "Custom NFT",
+      "erc20": "ERC20 token",
+      "example": "Example: 5 tokens + 2 predefined + 1 custom = 5 + 20 + 30 = 55 pts.",
+      "predefined": "Predefined NFT",
+      "title": "How points work"
+    },
+    "empty": "No players yet.",
+    "fullTop10": "Top 10",
+    "netWorth": "Net worth",
+    "notRanked": "Not in top 10",
+    "tier": "Tier",
+    "viewFull": "View full rankings",
+    "you": "You"
+  },
+  "rankings": {
+    "title": "Full Rankings",
+    "subtitle": "Every player on EduChain.",
+    "search": "Search address",
+    "minPoints": "Min points",
+    "rankFrom": "Rank from",
+    "rankTo": "Rank to",
+    "sort": "Sort",
+    "pageSize": "Page size",
+    "autoRefresh": "Auto-refresh",
+    "copy": "Copy",
+    "empty": "No matching results.",
+    "filters": {
+      "activeOnly": "Whitelist status",
+      "activeOnlyLabel": "Active only",
+      "autoRefresh": "Auto-refresh (30s)",
+      "clear": "Clear",
+      "minPoints": "Min. points",
+      "opt": {
+        "all": "All tiers",
+        "asc": "Low to high",
+        "bronze": "Bronze",
+        "desc": "High to low",
+        "erc20": "ERC20",
+        "gold": "Gold",
+        "netWorth": "Net worth",
+        "nftCus": "NFT Custom",
+        "nftPre": "NFT Predefined",
+        "platinum": "Platinum",
+        "points": "Points",
+        "silver": "Silver",
+        "tierSort": "Tier",
+        "unranked": "Unranked"
+      },
+      "perPage": "Per page",
+      "search": "Search address",
+      "sortBy": "Sort by",
+      "sortOrder": "Order",
+      "tier": "Tier",
+      "title": "Filters"
+    },
+    "pager": {
+      "first": "« First",
+      "last": "Last »",
+      "next": "Next ›",
+      "page": "Page",
+      "prev": "‹ Prev"
+    },
+    "stats": {
+      "filtered": "After filters",
+      "shown": "On this page",
+      "total": "Tracked users",
+      "updated": "Updated"
+    },
+    "table": {
+      "address": "Address",
+      "inactive": "inactive",
+      "netWorth": "Net worth",
+      "nftCus": "NFT Cus",
+      "nftPre": "NFT Pre",
+      "points": "Points",
+      "tier": "Tier"
+    }
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "subtitle": "Call any function on any deployed contract.",
+    "contract": "Contract",
+    "read": "Read",
+    "write": "Write",
+    "filter": "Filter functions…",
+    "noContract": "Contract not available on this network.",
+    "noFunctions": "No matching functions.",
+    "signedAs": "Signed in as",
+    "form": {
+      "read": "Read",
+      "write": "Write",
+      "value": "Value (ETH)",
+      "result": "Result"
+    },
+    "tx": {
+      "pending": "Submitting {{name}}…",
+      "success": "{{name}} confirmed",
+      "hash": "Tx confirmed: {{hash}}"
+    },
+    "viewOnEtherscan": "View on Etherscan",
+    "readFns": "read",
+    "writeFns": "write",
+    "desc": {
+      "whitelist": "Access gate. Add, remove, and check whitelisted users and admins.",
+      "gameToken": "GAME ERC20 token. Transfers, balances, and supply operations.",
+      "gameNFTPredefined": "Curated NFT collection with fixed tokenURIs. Worth 10 points each.",
+      "gameNFTCustom": "User-created NFTs with custom metadata. Worth 30 points each.",
+      "marketplace": "Peer-to-peer marketplace for tokens and NFTs between whitelisted users.",
+      "trackingContract": "Leaderboard, points, and tier tracking for all users.",
+      "ethFaucet": "Dispenses 0.05 Sepolia ETH every 24h to whitelisted users."
+    },
+    "cat": {
+      "roles": "Roles & access",
+      "balances": "Balances & supply",
+      "stats": "Stats & leaderboard",
+      "metadata": "Token metadata",
+      "listings": "Listings",
+      "limits": "Limits & config",
+      "governance": "Governance & ownership",
+      "configure": "Configuration",
+      "mint_burn": "Mint & burn",
+      "user_actions": "User actions",
+      "other": "Other"
+    }
+  },
+  "gate": {
+    "notConnectedTitle": "Wallet not connected",
+    "notConnectedBody": "Connect your wallet to access this page.",
+    "wrongChainTitle": "Wrong network",
+    "wrongChainBody": "Switch to Sepolia to use this dApp.",
+    "notWhitelistedTitle": "Access denied",
+    "notWhitelistedBody": "Only whitelisted users can access this page. Ask an admin to add your address.",
+    "notAdminTitle": "Admin only",
+    "notAdminBody": "This page is restricted to admins and the contract owner.",
+    "notOwnerTitle": "Owner only",
+    "notOwnerBody": "This page is restricted to the contract owner."
+  },
+  "tx": {
+    "pending": {
+      "default": "Submitting transaction...",
+      "buyTokens": "Buying GAME tokens...",
+      "mintPredefined": "Minting predefined NFT...",
+      "mintCustom": "Minting custom NFT...",
+      "approve": "Approving GAME tokens...",
+      "batchMint": "Batch minting NFTs...",
+      "createListing": "Creating listing...",
+      "cancelListing": "Cancelling listing...",
+      "purchase": "Purchasing listing...",
+      "update_stats": "Updating leaderboard stats...",
+      "claimEth": "Claiming ETH from faucet...",
+      "approve_tokens": "Approving token spending...",
+      "buy_tokens": "Buying tokens...",
+      "cancel_listing": "Cancelling listing...",
+      "claim_faucet": "Claiming ETH...",
+      "create_listing": "Creating marketplace listing...",
+      "mint_custom_eth": "Minting Custom NFT...",
+      "mint_custom_tok": "Minting with GAME tokens...",
+      "mint_predefined": "Minting Predefined NFT..."
+    },
+    "success": {
+      "default": "Transaction confirmed",
+      "buyTokens": "Tokens purchased",
+      "mintPredefined": "Predefined NFT minted",
+      "mintCustom": "Custom NFT minted",
+      "approve": "Approval confirmed",
+      "batchMint": "Batch mint confirmed",
+      "createListing": "Listing created",
+      "cancelListing": "Listing cancelled",
+      "purchase": "Purchase confirmed",
+      "update_stats": "Stats updated",
+      "claimEth": "0.05 ETH claimed",
+      "approve_tokens": "Approval granted",
+      "buy_tokens": "Tokens purchased",
+      "cancel_listing": "Listing cancelled",
+      "claim_faucet": "ETH claimed",
+      "create_listing": "Listing created",
+      "mint_custom_eth": "Custom NFT minted",
+      "mint_custom_tok": "Custom NFT minted with tokens",
+      "mint_predefined": "Predefined NFT minted"
+    },
+    "error": {
+      "prefix": "Transaction failed"
+    },
+    "view_on_etherscan": "View on Sepolia Etherscan"
+  }
+}

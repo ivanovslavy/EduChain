@@ -1,0 +1,9 @@
+{
+  "whitelist":         "0x513E438f503DDC99c8040df21fEda0b85201AEa0",
+  "gameToken":         "0x04542084507Cf43819Fb28D687976b4517cDD3Fa",
+  "gameNFTPredefined": "0xccc3cB6aC4fa1BD69ff2cE350DF49ff5E7083bcE",
+  "gameNFTCustom":     "0x77E092a4Bcd95F3B7f150A33A3D1e795c330BaD7",
+  "marketplace":       "0x8EEcE7E9F604c89562409702E71CD01094eddFc7",
+  "trackingContract":  "0x038aa50d5ffF095cf91801c0ede71505F7ad46d4",
+  "ethFaucet":         "0xE819230934BbE7886b48f99D2D29b67E0531f4fD"
+}
