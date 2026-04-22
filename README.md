@@ -44,7 +44,7 @@ EduChain is a comprehensive educational Web3 platform built for schools, univers
 
 EduChain is built for the Ethereum ecosystem, by people who believe that education is ecosystem infrastructure. It is an open-source public good designed to strengthen Ethereum's foundations by creating the next generation of informed users, responsible developers, and critical thinkers. The platform does not extract value from the ecosystem — it gives back. Every line of code, every curriculum module, and every deployed contract is freely available. EduChain exists to grow the Ethereum community, reduce the barrier to entry, and establish Web3 literacy as a fundamental skill for the digital age.
 
-EduChain was developed by GEMBA IT to introduce blockchain technologies, decentralised finance, and digital asset management into the formal and informal education sectors across Europe. The platform operates entirely on the Ethereum Sepolia testnet, meaning no real cryptocurrency is ever at risk. Students and teachers learn by doing: they claim testnet ETH, buy tokens, mint NFTs, and trade on a curated marketplace, all under the supervision of trained educators. Every interaction is a real Ethereum transaction — with gas, confirmation times, and on-chain visibility — but the environment is a safe sandbox.
+EduChain was developed by GEMBA IT to introduce blockchain technologies, decentralised finance, and digital asset management into the formal and informal education sectors across Europe. The platform operates entirely on the Ethereum Sepolia testnet, meaning no real value is ever at risk. Students and teachers learn by doing: they claim testnet ETH, buy tokens, mint NFTs, and trade on a curated marketplace, all under the supervision of trained educators. Every interaction is a real Ethereum transaction — with gas, confirmation times, and on-chain visibility — but the environment is a safe sandbox.
 
 EduChain addresses a structural gap in European education. While Web3 technologies increasingly shape the digital economy, most school curricula and teacher training programmes have not yet integrated them. EduChain closes this gap with a turnkey solution: production-grade smart contracts, a polished web application, a detailed teacher training curriculum, and a structured 16-hour student programme. The project is positioned for adoption by ministries of education, regional authorities, universities, vocational training centres, coding bootcamps, private academies, and Ethereum-ecosystem initiatives, wherever they may be located. Its open-source foundation and GDPR-compliant design make it suitable for integration into publicly funded education systems anywhere, and its Ethereum-native architecture keeps it tightly aligned with ecosystem tooling and standards.
 
@@ -70,7 +70,7 @@ EduChain is not a commercial product seeking customers. It is a community resour
 
 The Ethereum ecosystem is only as strong as the people who use, build, and understand it. Without a continuous influx of new users, developers, and advocates who understand not just how to interact with the network but why it matters, the ecosystem cannot sustain itself. Education is not a peripheral activity — it is core infrastructure.
 
-At the same time, the global shift toward decentralised technologies is no longer speculative. Banking, supply chain verification, credentialing, digital identity, intellectual property registration, and content monetisation are all being rebuilt on blockchain infrastructure. The European Union has formally recognised this trajectory through the Markets in Crypto-Assets Regulation (MiCA), the European Blockchain Services Infrastructure (EBSI), and digital identity initiatives such as the European Digital Identity Wallet.
+At the same time, the global shift toward decentralised technologies is no longer speculative. Banking, supply chain verification, credentialing, digital identity, intellectual property registration, and content monetisation are all being rebuilt on blockchain infrastructure. The European Union has formally recognised this trajectory through the MiCA framework (the EU regulation for digital-asset markets), the European Blockchain Services Infrastructure (EBSI), and digital identity initiatives such as the European Digital Identity Wallet.
 
 If Europe does not begin preparing students for this environment, four outcomes follow.
 
@@ -201,13 +201,13 @@ The curriculum is designed for students aged twelve and above. It can be deliver
 
 ### Module 1: Introduction to Web3 and Blockchain Foundations (2 hours)
 
-Students examine how the internet has evolved from Web1 (static pages you read) through Web2 (platforms you write to but do not own) to Web3 (networks where ownership is cryptographically guaranteed). Blockchain is presented through the analogy of a shared public ledger that no single party controls. Key principles are introduced: decentralisation, transparency, and immutability. Smart contracts are framed as self-executing agreements, often illustrated with the vending machine analogy.
+Students examine how the internet has evolved from Web1 (static pages you read) through Web2 (platforms you write to but do not own) to Web3 (networks where ownership is mathematically verifiable on-chain). Blockchain is presented through the analogy of a shared public ledger that no single party controls. Key principles are introduced: decentralisation, transparency, and immutability. Smart contracts are framed as self-executing agreements, often illustrated with the vending machine analogy.
 
 Practical work: each student connects MetaMask to the Sepolia testnet and opens the EduChain platform. Discussion follows on the benefits and risks of decentralisation in everyday life.
 
-### Module 2: Cryptocurrency Wallets and Smart Contracts in Practice (2 hours)
+### Module 2: Web3 Wallets and Smart Contracts in Practice (2 hours)
 
-The second module moves from concept to action. MetaMask is explored in depth: what private keys actually are, why seed phrases must never be shared or photographed, and how transactions are cryptographically signed. Students observe what happens when they click "mint" or "buy" on a dApp, tracing the transaction through the mempool to confirmation on Etherscan.
+The second module moves from concept to action. MetaMask is explored in depth: what private keys actually are, why seed phrases must never be shared or photographed, and how transactions are digitally signed using public-key proofs. Students observe what happens when they click "mint" or "buy" on a dApp, tracing the transaction through the mempool to confirmation on Etherscan.
 
 Practical work: students claim their first testnet ETH from the platform faucet and purchase their first GameToken. Each student then locates their transaction on Sepolia Etherscan and interprets its fields.
 
@@ -250,7 +250,7 @@ In the third and fourth hours, students work on their individual final project. 
 A student who completes the full programme can:
 
 - Explain blockchain fundamentals and the evolution of the internet.
-- Create, secure, and operate a cryptocurrency wallet.
+- Create, secure, and operate a Web3 wallet.
 - Read, interpret, and verify on-chain transactions.
 - Distinguish fungible from non-fungible tokens and explain the use cases for each.
 - Create and publish original digital assets on decentralised storage.
