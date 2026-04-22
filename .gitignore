@@ -1,29 +1,10 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Whitelist-style: ignore everything at the repo root, then re-include
+# only the hardhat project (blockchain/), the root README, the LICENSE,
+# and this .gitignore itself. The frontend code in src/, public/, server/,
+# etc. stays on disk but is never pushed to GitHub.
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-/dist
-
-# typescript build cache
-*.tsbuildinfo
-
-# misc
-.DS_Store
-.env
-.env.server
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/blockchain

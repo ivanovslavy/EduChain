@@ -1,0 +1,104 @@
+{
+  "network": {
+    "name": "sepolia",
+    "chainId": 11155111
+  },
+  "deployer": "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298",
+  "timestamp": "2026-04-19T05:13:38.732Z",
+  "config": {
+    "gameTokenName": "EduChain Game Token",
+    "gameTokenSymbol": "GAME",
+    "gameTokenPrice": "10000000000000000",
+    "predefinedBaseURI": "ipfs://bafybeiexamplepredefined/",
+    "predefinedPrice": "10000000000000000",
+    "predefinedMaxSupply": "50",
+    "customBaseURI": "ipfs://bafybeiexamplecustom/",
+    "customEthPrice": "30000000000000000",
+    "customTokenPrice": "1000000000000000000",
+    "faucetClaimAmount": "50000000000000000",
+    "faucetCooldown": "86400",
+    "faucetInitialFund": "100000000000000000"
+  },
+  "contracts": {
+    "Whitelist": {
+      "address": "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+      "args": [
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298"
+      ],
+      "txHash": "0x144c26f3ec6e0217aec1d9d944676569960f56311b6a8f86c6db7639eddae7ea",
+      "blockNumber": 10688800
+    },
+    "GameToken": {
+      "address": "0x7D6e965cb778d3a752c3e44Ad7379D11Ab42617E",
+      "args": [
+        "EduChain Game Token",
+        "GAME",
+        "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298",
+        "10000000000000000"
+      ],
+      "txHash": "0xb659562df2c6646748751570cbca4b943f25e7a4525a863f969047c3a9f86071",
+      "blockNumber": 10688801
+    },
+    "GameNFTPredefined": {
+      "address": "0xb35950cEF86630db97d3819d9f37d04eA84C369F",
+      "args": [
+        "EduChain Predefined NFTs",
+        "EDUPRE",
+        "ipfs://bafybeiexamplepredefined/",
+        "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298",
+        "10000000000000000",
+        "50"
+      ],
+      "txHash": "0x9f02366a7f79bcb165d53e9c0133565621bbfffa60696384411eb830495f3496",
+      "blockNumber": 10688802
+    },
+    "GameNFTCustom": {
+      "address": "0x121734A73a56196DabB2D5E775C0E1ff8605BB93",
+      "args": [
+        "EduChain Custom NFTs",
+        "EDUCUS",
+        "ipfs://bafybeiexamplecustom/",
+        "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298",
+        "30000000000000000",
+        "1000000000000000000"
+      ],
+      "txHash": "0x61adcfd8aa977db6b32723f475f81a192bea2cef7415476b454c3782e40678e7",
+      "blockNumber": 10688803
+    },
+    "TokenMarketplace": {
+      "address": "0x34Ed7a529fD868A0396e1CA6D822C2E196728C6F",
+      "args": [
+        "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298"
+      ],
+      "txHash": "0xbb2e9432a8b631fb0f0af246b20c288ab4d8b69508a324d3c08e1d8db4f00401",
+      "blockNumber": 10688805
+    },
+    "TrackingContract": {
+      "address": "0x730f41641f20D37525608e850081Ccbb9c7e33Cf",
+      "args": [
+        "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+        "0x7D6e965cb778d3a752c3e44Ad7379D11Ab42617E",
+        "0xb35950cEF86630db97d3819d9f37d04eA84C369F",
+        "0x121734A73a56196DabB2D5E775C0E1ff8605BB93",
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298"
+      ],
+      "txHash": "0x158f9de59772aa3ef99de58356f1ddd06708dfbdba8884b752d0e88377769e10",
+      "blockNumber": 10688806
+    },
+    "ETHFaucet": {
+      "address": "0x78B97D7aC70E7c929CaC458EF7D61A9772D90830",
+      "args": [
+        "0x50062C90Ea031dA26597C200D5046F41C295d6b6",
+        "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298",
+        "50000000000000000",
+        "86400"
+      ],
+      "txHash": "0x2cb15730984865f2f6a26c47fecfbed5abf37f027dd000229e6b357fc4dd79ab",
+      "blockNumber": 10688807
+    }
+  }
+}

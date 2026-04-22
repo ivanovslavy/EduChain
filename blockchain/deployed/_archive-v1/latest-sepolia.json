@@ -1,0 +1,86 @@
+{
+  "network": {
+    "name": "sepolia",
+    "chainId": "11155111"
+  },
+  "deployer": {
+    "address": "0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298",
+    "balance": "149.763752532408779186"
+  },
+  "timestamp": "2025-10-01T21:12:43.089Z",
+  "contracts": {
+    "Whitelist": {
+      "address": "0xD822c6EAe418aC0Df76573bc999f25ed79f5487B",
+      "name": "Whitelist - User Access Control",
+      "description": "Manages whitelisted users and provides statistics"
+    },
+    "GameToken": {
+      "address": "0xb82Ba334D89fD07cb4445B0b156c2696099A0dC4",
+      "name": "GameToken - ERC20 Token",
+      "description": "ERC20 token with purchase limits and sales tracking",
+      "price": "0.01 ETH per token",
+      "symbol": "GAME"
+    },
+    "GameNFTPredefined": {
+      "address": "0xe8f43769AAB632e716f57A7202d8B07f082ae89f",
+      "name": "GameNFTPredefined - Predefined NFT Collection",
+      "description": "ERC721 with predefined metadata, max 50 supply",
+      "price": "0.01 ETH per mint",
+      "symbol": "GNFTPRE",
+      "maxSupply": 50
+    },
+    "GameNFTCustom": {
+      "address": "0xA1707e386AFE52CC324D7544E0C7057a2785dD52",
+      "name": "GameNFTCustom - Custom NFT with Batch Minting",
+      "description": "ERC721 with custom metadata and batch minting functionality",
+      "ethPrice": "0.03 ETH per mint (regular)",
+      "batchPrice": "1 GAME token per NFT (batch minting - NO ETH)",
+      "symbol": "GNFTCUS"
+    },
+    "TokenMarketplace": {
+      "address": "0xFfE71b0dD485A107BFBabA9edda3bbf54dF9616d",
+      "name": "TokenMarketplace - Multi-Token Trading Platform",
+      "description": "Marketplace for ERC20, ERC721, and ERC1155 tokens"
+    },
+    "TrackingContract": {
+      "address": "0xD32481b4A759793101C2Aad9ca1F534F5F39BEB6",
+      "name": "TrackingContract - User Points & Leaderboard System",
+      "description": "Tracks user balances and provides leaderboard functionality",
+      "pointsSystem": "ERC20=1pt, NFT Predefined=10pt, NFT Custom=30pt"
+    },
+    "ETHFaucet": {
+      "address": "0x1E52C7dfb7e1cfc13d6fE983c0Cc97c0b04Ff130",
+      "name": "ETHFaucet - ETH Distribution for Whitelisted Users",
+      "description": "Faucet that distributes ETH to whitelisted users",
+      "amount": "0.05 ETH per 24 hours",
+      "initialFunding": "0.5 ETH"
+    }
+  },
+  "configuration": {
+    "tokenPricing": {
+      "erc20": "0.01 ETH per token",
+      "nftPredefined": "0.01 ETH per mint",
+      "nftCustomRegular": "0.03 ETH per mint",
+      "nftCustomBatch": "1 GAME token per NFT (NO ETH)"
+    },
+    "limits": {
+      "erc20Purchases": "3 per 24 hours",
+      "erc20MaxPerPurchase": "3 tokens per purchase",
+      "erc20MaxPer24Hours": "3 tokens per 24 hours",
+      "nftMints": "3 per 24 hours",
+      "marketplaceListing": "3 per 24 hours",
+      "marketplacePurchase": "3 per 24 hours",
+      "ethFaucet": "0.05 ETH per 24 hours"
+    },
+    "pointsSystem": {
+      "erc20": 1,
+      "nftPredefined": 10,
+      "nftCustom": 30
+    }
+  },
+  "verification": {
+    "whitelistedUsers": "1",
+    "faucetBalance": "0.5",
+    "configurationsVerified": true
+  }
+}
