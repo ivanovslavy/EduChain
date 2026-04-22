@@ -133,7 +133,7 @@ EduChain combines a safe sandbox environment with production-grade tooling.
 
 ### Smart Contract Ecosystem
 
-The platform consists of seven production-grade, immutable smart contracts, all deployed and source-verified on Sepolia testnet. Contracts are written in Solidity 0.8.28, use OpenZeppelin v5 libraries, and target the Cancun EVM. They use custom errors instead of revert strings for gas efficiency and machine-readable error handling.
+EduChain follows a testnet-first, risk-free deployment model. The platform consists of seven production-grade, immutable smart contracts, all deployed to Ethereum Sepolia and verified on Etherscan, with full source code and compiled ABIs published in this repository. Contracts are written in Solidity 0.8.28, use OpenZeppelin v5 libraries, and target the Cancun EVM. They use custom errors instead of revert strings for gas efficiency and machine-readable error handling.
 
 **Whitelist.** The access control registry. Maintains separate sets of whitelisted users, blacklisted users, and administrators. Every downstream contract queries this registry before allowing a user action. Uses OpenZeppelin's EnumerableSet for O(1) membership checks and gap-free pagination.
 
@@ -384,7 +384,7 @@ For all partnership inquiries, contact [contacts@gembait.com](mailto:contacts@ge
 
 ## Funding and Ecosystem Support
 
-EduChain is designed to satisfy the criteria of major ecosystem grant programmes and public funding instruments. The project is not seeking commercial return — it is seeking adoption, partners, and sustainable funding to continue its mission of growing the Ethereum community through education.
+EduChain is seeking **non-dilutive capital** — grants, ecosystem support, and public funding rather than equity investment or commercial partnership. The project is designed to satisfy the criteria of major ecosystem grant programmes and public funding instruments. It is not seeking commercial return — it is seeking adoption, partners, and sustainable funding to continue its mission of growing the Ethereum community through education.
 
 ### Ethereum Foundation Programmes
 
@@ -455,6 +455,7 @@ The commitment to open source extends beyond code:
 - All deployed contract addresses are public — every transaction is auditable on-chain.
 - All compiled ABIs are published alongside the contracts — anyone can build their own frontend, integration, classroom dashboard, or analytics on top of the existing deployment without involving GEMBA EOOD.
 - Curriculum materials are released under Creative Commons Attribution-ShareAlike 4.0 International — free to adapt, translate, and redistribute.
+- Vendor-neutral by design — EduChain teaches open Ethereum standards rather than the features of any specific commercial wallet, marketplace, or infrastructure provider, so knowledge and code are transferable across the ecosystem.
 - No vendor lock-in — any school, university, or training centre can fork and redeploy EduChain without involving the current operator.
 
 EduChain exists to grow Ethereum, not to capture value from it. Success is measured not in revenue, but in the number of students, teachers, and institutions who adopt the programme and the number of new builders who enter the ecosystem through it.
