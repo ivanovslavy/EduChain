@@ -6,7 +6,7 @@
 ---
 
 [![Live Demo](https://img.shields.io/badge/Demo-educhain.gembait.com-2563eb)](https://educhain.gembait.com)
-[![Network](https://img.shields.io/badge/Network-Sepolia_Testnet-f59e0b)](https://sepolia.etherscan.io)
+[![Network](https://img.shields.io/badge/Network-GembaBlockchain_Testnet-f59e0b)](https://testnet.gembascan.io)
 [![License](https://img.shields.io/badge/License-MIT-10b981)](LICENSE)
 [![Built by GEMBA IT](https://img.shields.io/badge/Built_by-GEMBA_IT-111827)](https://gembait.com)
 
@@ -44,7 +44,7 @@ EduChain is a comprehensive educational Web3 platform built for schools, univers
 
 EduChain is built for the Ethereum ecosystem, by people who believe that education is ecosystem infrastructure. It is an open-source public good designed to strengthen Ethereum's foundations by creating the next generation of informed users, responsible developers, and critical thinkers. The platform does not extract value from the ecosystem — it gives back. Every line of code, every curriculum module, and every deployed contract is freely available. EduChain exists to grow the Ethereum community, reduce the barrier to entry, and establish Web3 literacy as a fundamental skill for the digital age.
 
-EduChain was developed by GEMBA IT to introduce blockchain technologies, decentralised finance, and digital asset management into the formal and informal education sectors across Europe. The platform operates entirely on the Ethereum Sepolia testnet, meaning no real value is ever at risk. Students and teachers learn by doing: they claim testnet ETH, buy tokens, mint NFTs, and trade on a curated marketplace, all under the supervision of trained educators. Every interaction is a real Ethereum transaction — with gas, confirmation times, and on-chain visibility — but the environment is a safe sandbox.
+EduChain was developed by GEMBA IT to introduce blockchain technologies, decentralised finance, and digital asset management into the formal and informal education sectors across Europe. The platform operates entirely on the GembaBlockchain testnet, meaning no real value is ever at risk. Students and teachers learn by doing: they claim testnet GMB, buy tokens, mint NFTs, and trade on a curated marketplace, all under the supervision of trained educators. Every interaction is a real Ethereum transaction — with gas, confirmation times, and on-chain visibility — but the environment is a safe sandbox.
 
 EduChain addresses a structural gap in European education. While Web3 technologies increasingly shape the digital economy, most school curricula and teacher training programmes have not yet integrated them. EduChain closes this gap with a turnkey solution: production-grade smart contracts, a polished web application, a detailed teacher training curriculum, and a structured 16-hour student programme. The project is positioned for adoption by ministries of education, regional authorities, universities, vocational training centres, coding bootcamps, private academies, and Ethereum-ecosystem initiatives, wherever they may be located. Its open-source foundation and GDPR-compliant design make it suitable for integration into publicly funded education systems anywhere, and its Ethereum-native architecture keeps it tightly aligned with ecosystem tooling and standards.
 
@@ -54,9 +54,9 @@ EduChain addresses a structural gap in European education. While Web3 technologi
 
 EduChain is not a commercial product seeking customers. It is a community resource seeking adoption. Our commitments are as follows.
 
-**Open source, forever.** All smart contracts are source-verified on Etherscan and licensed under MIT. All compiled ABIs, deployment scripts, and on-chain addresses are public. All curriculum materials are released under Creative Commons Attribution-ShareAlike 4.0 International. Anyone can fork, audit, modify, translate, or redeploy EduChain without asking permission.
+**Open source, forever.** All smart contracts are source-verified on GembaScan and licensed under MIT. All compiled ABIs, deployment scripts, and on-chain addresses are public. All curriculum materials are released under Creative Commons Attribution-ShareAlike 4.0 International. Anyone can fork, audit, modify, translate, or redeploy EduChain without asking permission.
 
-**Testnet-first, risk-free.** EduChain operates exclusively on the Ethereum Sepolia testnet. No real value is ever at risk. This is a deliberate design choice that lets schools, universities, and public institutions adopt the platform without financial exposure or regulatory concern, while still teaching the full mechanics of a live Ethereum network.
+**Testnet-first, risk-free.** EduChain operates exclusively on the GembaBlockchain testnet. No real value is ever at risk. This is a deliberate design choice that lets schools, universities, and public institutions adopt the platform without financial exposure or regulatory concern, while still teaching the full mechanics of a live Ethereum network.
 
 **Vendor-neutral.** EduChain teaches principles, not products. Students learn how Ethereum itself works — wallets, transactions, gas, smart contracts, token standards, decentralised storage — rather than how to use a specific commercial wallet, marketplace, or infrastructure provider. They leave with transferable knowledge that applies anywhere in the ecosystem.
 
@@ -107,7 +107,7 @@ EduChain is designed as a modular solution that adapts to diverse educational co
 
 EduChain combines a safe sandbox environment with production-grade tooling.
 
-**Testnet-only environment.** All financial interactions take place on the Ethereum Sepolia testnet. Real money is never exchanged. Students experiment freely with buying, minting, trading, and transferring digital assets without financial risk.
+**Testnet-only environment.** All financial interactions take place on the GembaBlockchain testnet. Real money is never exchanged. Students experiment freely with buying, minting, trading, and transferring digital assets without financial risk.
 
 **Role-based access control.** Three distinct roles structure the experience. The Owner controls system-wide configuration. Administrators, typically teachers or course leaders, manage the whitelist and guide students. Whitelisted students interact with the platform under controlled conditions.
 
@@ -121,7 +121,7 @@ EduChain combines a safe sandbox environment with production-grade tooling.
 
 **Peer-to-peer marketplace.** Students list their tokens and NFTs for sale at chosen prices. Private listings can be restricted to a specific buyer address. All sales settle on-chain with escrow-style asset custody during the listing period.
 
-**ETH faucet for testnet activity.** Whitelisted students claim a fixed amount of testnet ETH every twenty-four hours, enabling continuous engagement with the platform without external funding.
+**ETH faucet for testnet activity.** Whitelisted students claim a fixed amount of testnet GMB every twenty-four hours, enabling continuous engagement with the platform without external funding.
 
 **Admin dashboard.** Teachers and administrators interact with the contracts through a dynamic, ABI-driven function panel. Every writable contract function is exposed as a form with typed inputs. Owner-only and admin-only functions are separated by role, and the active wallet's permissions determine what is shown.
 
@@ -133,7 +133,7 @@ EduChain combines a safe sandbox environment with production-grade tooling.
 
 ### Smart Contract Ecosystem
 
-EduChain follows a testnet-first, risk-free deployment model. The platform consists of seven production-grade, immutable smart contracts, all deployed to Ethereum Sepolia and verified on Etherscan, with full source code and compiled ABIs published in this repository. Contracts are written in Solidity 0.8.28, use OpenZeppelin v5 libraries, and target the Cancun EVM. They use custom errors instead of revert strings for gas efficiency and machine-readable error handling.
+EduChain follows a testnet-first, risk-free deployment model. The platform consists of seven production-grade, immutable smart contracts, all deployed to GembaBlockchain testnet and verified on GembaScan, with full source code and compiled ABIs published in this repository. Contracts are written in Solidity 0.8.28, use OpenZeppelin v5 libraries, and target the Cancun EVM. They use custom errors instead of revert strings for gas efficiency and machine-readable error handling.
 
 **Whitelist.** The access control registry. Maintains separate sets of whitelisted users, blacklisted users, and administrators. Every downstream contract queries this registry before allowing a user action. Uses OpenZeppelin's EnumerableSet for O(1) membership checks and gap-free pagination.
 
@@ -147,11 +147,11 @@ EduChain follows a testnet-first, risk-free deployment model. The platform consi
 
 **TrackingContract.** The live leaderboard aggregator. Reads balances directly from the GameToken and NFT contracts on every query, computes points from an owner-configurable formula, and returns both raw balances and derived metrics (total points, tier rank from Bronze to Platinum, net worth in ETH). No cached state, no manual update function.
 
-**ETHFaucet.** Distributes testnet ETH to whitelisted users. Per-user cooldown enforced in seconds. Contract-level ceilings prevent accidental misconfiguration: claim amounts cannot exceed one ETH and cooldown cannot exceed one week.
+**ETHFaucet.** Distributes testnet GMB to whitelisted users. Per-user cooldown enforced in seconds. Contract-level ceilings prevent accidental misconfiguration: claim amounts cannot exceed one ETH and cooldown cannot exceed one week.
 
-### Why Sepolia Testnet
+### Why GembaBlockchain Testnet
 
-EduChain is deployed on Ethereum Sepolia for three deliberate reasons.
+EduChain is deployed on GembaBlockchain testnet for three deliberate reasons.
 
 **Safety.** No real funds are ever at risk. Schools, ministries, and public institutions can adopt EduChain without financial liability or regulatory exposure. This is what makes the platform genuinely deployable in the public sector.
 
@@ -173,7 +173,7 @@ A central principle of EduChain: teachers are trained first. Students cannot be 
 
 A three-day residential programme conducted in major regional cities. Teachers arrive with a laptop and leave with a certificate, a configured wallet, and practical experience administering a live educational blockchain platform.
 
-**Day one: foundations.** The evolution from Web1 to Web3 is examined not as ideology but as technological progression. Teachers learn blockchain fundamentals: how consensus works, what makes data immutable, and why decentralisation matters for education. MetaMask is installed, configured, and secured. Private keys and seed phrases are explained with emphasis on what never to do. Each participant completes their first Sepolia transaction. Gas fees and transaction mechanics are demystified through direct observation on Etherscan.
+**Day one: foundations.** The evolution from Web1 to Web3 is examined not as ideology but as technological progression. Teachers learn blockchain fundamentals: how consensus works, what makes data immutable, and why decentralisation matters for education. MetaMask is installed, configured, and secured. Private keys and seed phrases are explained with emphasis on what never to do. Each participant completes their first GembaBlockchain transaction. Gas fees and transaction mechanics are demystified through direct observation on GembaScan.
 
 **Day two: smart contracts and digital assets.** The day moves from passive observation to active interaction. Teachers study ERC-20 as a standard for interchangeable tokens and ERC-721 as a standard for unique digital objects. Each participant deploys a test token and mints their first NFT. IPFS is introduced as the decentralised storage layer that makes NFT metadata permanent. Teachers practise uploading files to Pinata, obtaining content identifiers, and linking them to smart contracts. The marketplace is explored through listing, buying, and cancelling operations.
 
@@ -203,19 +203,19 @@ The curriculum is designed for students aged twelve and above. It can be deliver
 
 Students examine how the internet has evolved from Web1 (static pages you read) through Web2 (platforms you write to but do not own) to Web3 (networks where ownership is mathematically verifiable on-chain). Blockchain is presented through the analogy of a shared public ledger that no single party controls. Key principles are introduced: decentralisation, transparency, and immutability. Smart contracts are framed as self-executing agreements, often illustrated with the vending machine analogy.
 
-Practical work: each student connects MetaMask to the Sepolia testnet and opens the EduChain platform. Discussion follows on the benefits and risks of decentralisation in everyday life.
+Practical work: each student connects MetaMask to the GembaBlockchain testnet and opens the EduChain platform. Discussion follows on the benefits and risks of decentralisation in everyday life.
 
 ### Module 2: Web3 Wallets and Smart Contracts in Practice (2 hours)
 
-The second module moves from concept to action. MetaMask is explored in depth: what private keys actually are, why seed phrases must never be shared or photographed, and how transactions are digitally signed using public-key proofs. Students observe what happens when they click "mint" or "buy" on a dApp, tracing the transaction through the mempool to confirmation on Etherscan.
+The second module moves from concept to action. MetaMask is explored in depth: what private keys actually are, why seed phrases must never be shared or photographed, and how transactions are digitally signed using public-key proofs. Students observe what happens when they click "mint" or "buy" on a dApp, tracing the transaction through the mempool to confirmation on GembaScan.
 
-Practical work: students claim their first testnet ETH from the platform faucet and purchase their first GameToken. Each student then locates their transaction on Sepolia Etherscan and interprets its fields.
+Practical work: students claim their first testnet GMB from the platform faucet and purchase their first GameToken. Each student then locates their transaction on GembaScan and interprets its fields.
 
 ### Module 3: ERC-20 Tokens and Decentralised Trading (2 hours)
 
 Students study the ERC-20 standard in detail: what makes a token fungible, what decimals mean, and how total supply differs from circulating supply. Liquidity pools are introduced through accessible analogies, and price discovery is explained through order mechanics. The fixed-price design of the EduChain GameToken provides a controlled environment for observing these concepts without the volatility of live markets.
 
-Practical work: students buy and sell GameToken on the platform, observe how their wallet balance changes, and use Etherscan to verify every movement on-chain.
+Practical work: students buy and sell GameToken on the platform, observe how their wallet balance changes, and use GembaScan to verify every movement on-chain.
 
 ### Module 4: Non-Fungible Tokens and Digital Art (ERC-721) (2 hours)
 
@@ -231,7 +231,7 @@ Practical work: each student lists an NFT for sale priced in GameTokens. Student
 
 ### Module 6: Security, Key Management, and Scam Recognition (2 hours)
 
-The sixth module is the most consequential for the student's future. Private key management is revisited with greater depth: hardware wallets, cold storage, and the trade-offs of each approach. Approve functions are examined as a frequent vector for fraud. Common scam patterns are studied in detail: phishing, fake airdrops, malicious token approvals, rug pulls, and liquidity exploits. Students practise distinguishing verified contracts from unverified ones, reading contract source on Etherscan, and identifying suspicious patterns.
+The sixth module is the most consequential for the student's future. Private key management is revisited with greater depth: hardware wallets, cold storage, and the trade-offs of each approach. Approve functions are examined as a frequent vector for fraud. Common scam patterns are studied in detail: phishing, fake airdrops, malicious token approvals, rug pulls, and liquidity exploits. Students practise distinguishing verified contracts from unverified ones, reading contract source on GembaScan, and identifying suspicious patterns.
 
 Practical work: a simulated scam scenario is run in the classroom. Students must identify the attack vector before authorising a transaction. Transaction approval is practised with attention to allowance limits and contract addresses.
 
@@ -264,11 +264,11 @@ A student who completes the full programme can:
 
 ## Platform Tour
 
-The live platform is available at [educhain.gembait.com](https://educhain.gembait.com). Evaluation does not require registration or payment — a Sepolia testnet wallet and whitelist approval suffice.
+The live platform is available at [educhain.gembait.com](https://educhain.gembait.com). Evaluation does not require registration or payment — a GembaBlockchain testnet wallet and whitelist approval suffice.
 
 **Home page.** Presents the platform mission, links to the curriculum and teacher programme, and displays live on-chain statistics including total whitelisted users, total NFTs minted, and current marketplace activity.
 
-**Gallery.** Shows the connected user's complete NFT collection across both Predefined and Custom contracts. Each card displays the NFT image, name, contract badge, and token ID. Clicking opens a lightbox with full metadata, trait grid, contract link to Etherscan, and IPFS metadata JSON link.
+**Gallery.** Shows the connected user's complete NFT collection across both Predefined and Custom contracts. Each card displays the NFT image, name, contract badge, and token ID. Clicking opens a lightbox with full metadata, trait grid, contract link to GembaScan, and IPFS metadata JSON link.
 
 **Token Shop.** Three tabs. The first allows purchase of GameToken at fixed ETH price. The second allows minting of Predefined NFTs at fixed ETH price. The third handles Custom NFTs with two sub-modes: Creative Mint (user supplies own IPFS URI, pays in ETH) and Batch Mint (pays in GameTokens, uses default metadata for cheaper experimentation).
 
@@ -278,9 +278,9 @@ The live platform is available at [educhain.gembait.com](https://educhain.gembai
 
 **Full Rankings.** Displays every tracked user with client-side filters and sorting. Users can search by address, filter by minimum points or tier, and sort by points, token count, or net worth. Pagination supports page sizes from ten to one hundred.
 
-**Faucet.** Allows whitelisted users to claim testnet ETH once every twenty-four hours. Shows countdown to next eligible claim, total claims made, cumulative ETH received, and current faucet balance.
+**Faucet.** Allows whitelisted users to claim testnet GMB once every twenty-four hours. Shows countdown to next eligible claim, total claims made, cumulative ETH received, and current faucet balance.
 
-**Admin Panel.** Restricted to administrators and the owner. Provides a dynamic, ABI-driven interface to every contract. Functions are organised by contract, separated into Read and Write tabs, and filtered by role. Each function renders as a form with typed inputs and an Execute button that produces pending, confirmed, and rejected transaction toasts with Etherscan links.
+**Admin Panel.** Restricted to administrators and the owner. Provides a dynamic, ABI-driven interface to every contract. Functions are organised by contract, separated into Read and Write tabs, and filtered by role. Each function renders as a form with typed inputs and an Execute button that produces pending, confirmed, and rejected transaction toasts with GembaScan links.
 
 **Contact.** Provides a simple form for partnership inquiries, pilot programme requests, technical questions, and funding discussions.
 
@@ -288,19 +288,19 @@ The live platform is available at [educhain.gembait.com](https://educhain.gembai
 
 ## Smart Contract Addresses
 
-All seven contracts are deployed and source-verified on Ethereum Sepolia testnet.
+All seven contracts are deployed and source-verified on GembaBlockchain testnet.
 
 | Contract | Address | Purpose |
 | --- | --- | --- |
-| Whitelist | [`0x50062C90Ea031dA26597C200D5046F41C295d6b6`](https://sepolia.etherscan.io/address/0x50062C90Ea031dA26597C200D5046F41C295d6b6) | Access control registry |
-| GameToken | [`0x7D6e965cb778d3a752c3e44Ad7379D11Ab42617E`](https://sepolia.etherscan.io/address/0x7D6e965cb778d3a752c3e44Ad7379D11Ab42617E) | ERC-20 in-platform currency |
-| GameNFTPredefined | [`0xb35950cEF86630db97d3819d9f37d04eA84C369F`](https://sepolia.etherscan.io/address/0xb35950cEF86630db97d3819d9f37d04eA84C369F) | ERC-721A fixed-supply collection |
-| GameNFTCustom | [`0x121734A73a56196DabB2D5E775C0E1ff8605BB93`](https://sepolia.etherscan.io/address/0x121734A73a56196DabB2D5E775C0E1ff8605BB93) | ERC-721A user-minted collection |
-| TokenMarketplace | [`0x34Ed7a529fD868A0396e1CA6D822C2E196728C6F`](https://sepolia.etherscan.io/address/0x34Ed7a529fD868A0396e1CA6D822C2E196728C6F) | Peer-to-peer trading venue |
-| TrackingContract | [`0x730f41641f20D37525608e850081Ccbb9c7e33Cf`](https://sepolia.etherscan.io/address/0x730f41641f20D37525608e850081Ccbb9c7e33Cf) | Live leaderboard aggregator |
-| ETHFaucet | [`0x78B97D7aC70E7c929CaC458EF7D61A9772D90830`](https://sepolia.etherscan.io/address/0x78B97D7aC70E7c929CaC458EF7D61A9772D90830) | Testnet ETH dispenser |
+| Whitelist | [`0x1e7D76fE34584df2d2029E5304AB575D79Dc8108`](https://testnet.gembascan.io/address/0x1e7D76fE34584df2d2029E5304AB575D79Dc8108) | Access control registry |
+| GameToken | [`0xe778ee7559907961F24B6F3C31E9792199EC608D`](https://testnet.gembascan.io/address/0xe778ee7559907961F24B6F3C31E9792199EC608D) | ERC-20 in-platform currency |
+| GameNFTPredefined | [`0x1113D032460A55Fb91808BD07566397502185012`](https://testnet.gembascan.io/address/0x1113D032460A55Fb91808BD07566397502185012) | ERC-721A fixed-supply collection |
+| GameNFTCustom | [`0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3`](https://testnet.gembascan.io/address/0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3) | ERC-721A user-minted collection |
+| TokenMarketplace | [`0xF61647866ad7be8137230Ad688092D2f3F4A1666`](https://testnet.gembascan.io/address/0xF61647866ad7be8137230Ad688092D2f3F4A1666) | Peer-to-peer trading venue |
+| TrackingContract | [`0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF`](https://testnet.gembascan.io/address/0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF) | Live leaderboard aggregator |
+| ETHFaucet | [`0x7Ff43282d7939418a3f0A308E2d48Dd93536044e`](https://testnet.gembascan.io/address/0x7Ff43282d7939418a3f0A308E2d48Dd93536044e) | Testnet ETH dispenser |
 
-Deployer: [`0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298`](https://sepolia.etherscan.io/address/0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298) · Last deployment: 19 April 2026.
+Deployer: [`0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298`](https://testnet.gembascan.io/address/0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298) · Last deployment: 19 April 2026.
 
 For deployment at scale or to production environments, the same contracts can be redeployed to mainnet, any EVM-compatible Layer 2 (Polygon, Arbitrum, Optimism, Base, zkSync), or a consortium chain as the operating institution prefers.
 
@@ -357,12 +357,12 @@ Quick start:
 git clone https://github.com/ivanovslavy/EduChain.git
 cd EduChain/blockchain
 npm install
-cp .env.example .env       # then fill in RPC + Etherscan + deployer keys
+cp .env.example .env       # then fill in RPC + GembaScan + deployer keys
 npx hardhat compile
-npx hardhat run scripts/deploy.js --network sepolia
+npx hardhat run scripts/deploy.js --network gemba
 ```
 
-All seven contracts deploy in dependency order, wire themselves together, fund the faucet, whitelist the deployer, extract ABIs into `blockchain/abi/`, save deployment records to `blockchain/deployed/`, and verify every contract on Etherscan in a single command.
+All seven contracts deploy in dependency order, wire themselves together, fund the faucet, whitelist the deployer, extract ABIs into `blockchain/abi/`, save deployment records to `blockchain/deployed/`, and verify every contract on GembaScan in a single command.
 
 ---
 
@@ -437,7 +437,7 @@ EduChain is designed for long-term operation beyond initial funding cycles.
 EduChain is designed to be self-sustaining, but its primary purpose is ecosystem contribution. Every certified teacher becomes an advocate for Ethereum in their classroom. Every student who completes the programme leaves with:
 
 - A wallet that they understand and control.
-- Deployed NFTs on the Sepolia testnet.
+- Deployed NFTs on the GembaBlockchain testnet.
 - Practical experience with transactions, gas fees, and contract interactions.
 - Critical-thinking skills to evaluate Web3 projects safely.
 
@@ -451,7 +451,7 @@ EduChain operates under full transparency. This repository contains the complete
 
 The commitment to open source extends beyond code:
 
-- All smart contracts are source-verified on Etherscan — anyone can inspect exactly what the platform does.
+- All smart contracts are source-verified on GembaScan — anyone can inspect exactly what the platform does.
 - All deployed contract addresses are public — every transaction is auditable on-chain.
 - All compiled ABIs are published alongside the contracts — anyone can build their own frontend, integration, classroom dashboard, or analytics on top of the existing deployment without involving GEMBA EOOD.
 - Curriculum materials are released under Creative Commons Attribution-ShareAlike 4.0 International — free to adapt, translate, and redistribute.

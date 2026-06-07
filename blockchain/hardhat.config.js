@@ -36,7 +36,15 @@ module.exports = {
       accounts: PRIVATE_KEYS.length > 0 ? PRIVATE_KEYS : undefined,
     },
 
-    // Sepolia — tiered RPC fallback
+    // GembaBlockchain testnet (gemba-testnet-1) — the production target.
+    gemba: {
+      url: process.env.GEMBA_RPC_URL || "https://testnet.gembascan.io/rpc",
+      accounts: PRIVATE_KEYS.length > 0 ? PRIVATE_KEYS : [],
+      chainId: 821207,
+      timeout: 120000,
+    },
+
+    // Sepolia — tiered RPC fallback (legacy; kept for reference)
     sepolia: {
       url: ALCHEMY_API_KEY
         ? `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`
@@ -105,6 +113,7 @@ module.exports = {
       bscTestnet: BSCSCAN_API_KEY,
       polygon:    POLYGONSCAN_API_KEY,
       amoy:       POLYGONSCAN_API_KEY,
+      gemba:      "gembascan", // Blockscout needs no key; any non-empty string works
     },
     customChains: [
       {
@@ -113,6 +122,14 @@ module.exports = {
         urls: {
           apiURL: "https://api-amoy.polygonscan.com/api",
           browserURL: "https://amoy.polygonscan.com",
+        },
+      },
+      {
+        network: "gemba",
+        chainId: 821207,
+        urls: {
+          apiURL: "https://testnet.gembascan.io/api",
+          browserURL: "https://testnet.gembascan.io",
         },
       },
     ],
