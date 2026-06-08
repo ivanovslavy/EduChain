@@ -55,7 +55,7 @@
       "blockNumber": 16891
     },
     "GameNFTCustom": {
-      "address": "0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3",
+      "address": "0x385335b67d8c6C3cb7114D4a907Ca6017391279B",
       "args": [
         "EduChain Custom NFTs",
         "EDUCUS",
@@ -78,12 +78,12 @@
       "blockNumber": 16893
     },
     "TrackingContract": {
-      "address": "0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF",
+      "address": "0x9A3C2b9785d424348AEA49a94331c11DA8544259",
       "args": [
         "0x1e7D76fE34584df2d2029E5304AB575D79Dc8108",
         "0xe778ee7559907961F24B6F3C31E9792199EC608D",
         "0x1113D032460A55Fb91808BD07566397502185012",
-        "0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3",
+        "0x385335b67d8c6C3cb7114D4a907Ca6017391279B",
         "0x5578c75F22dE0bf1caA4BdD46BA28406C696a5dC"
       ],
       "txHash": "0x8f15893202c6ce56583e68774e365243abfdabed93734420f6ed25bac89595c5",

@@ -125,6 +125,20 @@ contract GameNFTCustom is ERC721A, Ownable, ReentrancyGuard {
         uint256 tokensPaid,
         string tokenURI_
     );
+    event MintedWithETHMulti(
+        address indexed to,
+        uint256 indexed firstTokenId,
+        uint256 quantity,
+        uint256 ethPaid,
+        string[] tokenURIs_
+    );
+    event MintedWithTokensMulti(
+        address indexed to,
+        uint256 indexed firstTokenId,
+        uint256 quantity,
+        uint256 tokensPaid,
+        string[] tokenURIs_
+    );
     event EthMintPriceChanged(uint256 oldValue, uint256 newValue);
     event TokenMintPriceChanged(uint256 oldValue, uint256 newValue);
     event PaymentTokenChanged(address indexed oldToken, address indexed newToken);
@@ -156,6 +170,7 @@ contract GameNFTCustom is ERC721A, Ownable, ReentrancyGuard {
     error InvalidMaxSupply();
     error NonexistentToken(uint256 tokenId);
     error OwnershipNotRenounceable();
+    error EmptyURIArray();
 
     // ─────────────────────────────────────────────────────────────
     // Construction
@@ -265,6 +280,75 @@ contract GameNFTCustom is ERC721A, Ownable, ReentrancyGuard {
         emit MintedWithTokens(to, firstTokenId, quantity, cost, tokenURI_);
     }
 
+    /**
+     * @notice Mint NFTs to `to`, paying in ETH, with a DISTINCT metadata URI per token.
+     * @dev    `quantity` is derived from `tokenURIs_.length`; token i receives
+     *         `tokenURIs_[i]` (empty entry => baseURI fallback). Strict CEI +
+     *         nonReentrant, mirroring `mintWithETH`.
+     * @param  to          Recipient. Non-zero.
+     * @param  tokenURIs_  One metadata URI per NFT (length = quantity, 1..maxBatchSize).
+     */
+    function mintWithETHMulti(address to, string[] calldata tokenURIs_)
+        external
+        payable
+        nonReentrant
+    {
+        uint256 quantity = tokenURIs_.length;
+        if (quantity == 0) revert EmptyURIArray();
+        _preMintChecks(to, quantity);
+
+        uint256 cost = quantity * ethMintPrice;
+        if (msg.value < cost) revert InsufficientPayment(msg.value, cost);
+
+        _applyMintLimits(quantity);
+
+        totalSalesETH += cost;
+        totalEthMints += quantity;
+
+        uint256 firstTokenId = _nextTokenId();
+        _mint(to, quantity);
+        _storeCustomURIs(firstTokenId, tokenURIs_);
+
+        if (msg.value > cost) {
+            (bool ok, ) = msg.sender.call{value: msg.value - cost}("");
+            if (!ok) revert RefundFailed();
+        }
+
+        emit MintedWithETHMulti(to, firstTokenId, quantity, cost, tokenURIs_);
+    }
+
+    /**
+     * @notice Mint NFTs to `to`, paying in the configured ERC-20, with a DISTINCT
+     *         metadata URI per token. `quantity` = `tokenURIs_.length`.
+     * @dev    Caller must approve `quantity * tokenMintPrice`. Strict CEI +
+     *         nonReentrant, mirroring `mintWithTokens` (payment pulled LAST).
+     */
+    function mintWithTokensMulti(address to, string[] calldata tokenURIs_)
+        external
+        nonReentrant
+    {
+        if (address(paymentToken) == address(0)) revert PaymentTokenNotSet();
+        uint256 quantity = tokenURIs_.length;
+        if (quantity == 0) revert EmptyURIArray();
+        _preMintChecks(to, quantity);
+
+        uint256 cost = quantity * tokenMintPrice;
+
+        _applyMintLimits(quantity);
+
+        totalSalesTokens += cost;
+        totalTokenMints  += quantity;
+
+        uint256 firstTokenId = _nextTokenId();
+        _mint(to, quantity);
+        _storeCustomURIs(firstTokenId, tokenURIs_);
+
+        // Pull payment LAST (interactions).
+        paymentToken.safeTransferFrom(msg.sender, address(this), cost);
+
+        emit MintedWithTokensMulti(to, firstTokenId, quantity, cost, tokenURIs_);
+    }
+
     function _preMintChecks(address to, uint256 quantity) private view {
         if (!whitelist.checkWhitelist(msg.sender)) revert NotWhitelisted(msg.sender);
         if (to == address(0)) revert ZeroAddress();
@@ -301,6 +385,17 @@ contract GameNFTCustom is ERC721A, Ownable, ReentrancyGuard {
         if (bytes(tokenURI_).length == 0) return;
         for (uint256 i = 0; i < quantity; ++i) {
             _tokenURIs[firstTokenId + i] = tokenURI_;
+        }
+    }
+
+    /// @dev Persists a DISTINCT URI per token in the batch. An empty entry is a
+    ///      no-op for that token (baseURI fallback). Mirrors `_storeCustomURI`.
+    function _storeCustomURIs(uint256 firstTokenId, string[] calldata uris) private {
+        uint256 n = uris.length;
+        for (uint256 i = 0; i < n; ++i) {
+            if (bytes(uris[i]).length > 0) {
+                _tokenURIs[firstTokenId + i] = uris[i];
+            }
         }
     }
 
