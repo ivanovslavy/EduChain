@@ -38,7 +38,7 @@ module.exports = {
 
     // GembaBlockchain testnet (gemba-testnet-1) — the production target.
     gemba: {
-      url: process.env.GEMBA_RPC_URL || "https://testnet.gembascan.io/rpc",
+      url: process.env.GEMBA_RPC_URL || "https://rpc1.gembascan.io",
       accounts: PRIVATE_KEYS.length > 0 ? PRIVATE_KEYS : [],
       chainId: 821207,
       timeout: 120000,
