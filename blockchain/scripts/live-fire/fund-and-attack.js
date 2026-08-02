@@ -117,6 +117,49 @@ async function main() {
     } catch { record("rejecting-seller griefing", "DEFEATED", "purchase reverted (fail-closed); griefing noted"); }
   }
 
+  // ── ATTACK 6: fee-on-transfer escrow drain (expected CONFIRMED) ──────────
+  {
+    const Fee = await ethers.getContractFactory("FeeOnTransferERC20", deployer);
+    const fee = await Fee.deploy(1000); await fee.waitForDeployment(); // 10% fee
+    const feeAddr = await fee.getAddress();
+    const mkAddr = await mk.getAddress();
+    // two whitelisted sellers escrow 100 each; mint is fee-free (from==0)
+    for (const s of [alice, bob]) {
+      await (await fee.mint(s.address, P("100"))).wait();
+      await (await fee.connect(s).approve(mkAddr, P("100"))).wait();
+      await (await mk.connect(s).createERC20Listing(feeAddr, P("100"), P("0.001"), ethers.ZeroAddress)).wait();
+    }
+    const bobListingId = (await mk.nextListingId()) - 1n;
+    const aliceListingId = bobListingId - 1n;
+    const escrow = await fee.balanceOf(mkAddr);
+    const drift = escrow < P("200");
+    // first purchase drains escrow further (outbound fee); second cannot be paid out
+    await (await mk.connect(mallory).purchaseListing(aliceListingId, { value: P("0.001") })).wait();
+    let secondReverted = false;
+    try { await (await mk.connect(mallory).purchaseListing(bobListingId, { value: P("0.001") })).wait(); }
+    catch { secondReverted = true; }
+    if (drift && secondReverted)
+      record("fee-on-transfer drain", "CONFIRMED", `escrow ${ethers.formatEther(escrow)} < 200 claimed; 2nd listing unredeemable`);
+    else
+      record("fee-on-transfer drain", "DEFEATED", `drift=${drift} secondReverted=${secondReverted}`);
+  }
+
+  // ── ATTACK 7: NFT sent directly into the marketplace is stuck (expected CONFIRMED) ─
+  {
+    const M721 = await ethers.getContractFactory("MockERC721", deployer);
+    const nft = await M721.deploy(); await nft.waitForDeployment();
+    const mkAddr = await mk.getAddress();
+    await (await nft.mint(alice.address)).wait(); // token 0 to alice
+    // alice safeTransfers it straight into the marketplace (no listing)
+    await (await nft.connect(alice)["safeTransferFrom(address,address,uint256)"](alice.address, mkAddr, 0)).wait();
+    const owner0 = await nft.ownerOf(0);
+    const activeAfter = await mk.activeListingsCount();
+    const stuck = owner0.toLowerCase() === mkAddr.toLowerCase();
+    // no listing exists for it and there is no owner rescue/sweep function → locked
+    if (stuck) record("stuck NFT (no rescue)", "CONFIRMED", `NFT held by marketplace, activeListings=${activeAfter}, no sweep fn`);
+    else record("stuck NFT (no rescue)", "DEFEATED", `owner=${owner0}`);
+  }
+
   console.log("\n=== SUMMARY ===");
   for (const r of results) console.log(`  ${r.status.padEnd(10)} ${r.name}`);
   const out = path.join(__dirname, "attack-results.json");
