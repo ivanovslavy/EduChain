@@ -19,7 +19,7 @@ const CONFIG = {
   predefinedSymbol:   "EDUPRE",
   predefinedBaseURI:  "ipfs://bafybeiaoqjtxd7ptabsz67afmenvuf45tgqlwgorjttkaz7zxkmvjuoeqa/",
   predefinedPrice:    ethers.parseEther("0.01"),
-  predefinedMaxSupply: 50n,
+  predefinedMaxSupply: 10000n,   // matches the Kotkata metadata collection (0.json..9999.json)
 
   // Custom NFT — same metadata CID as the fallback for empty-URI mints (real art
   // instead of a dead placeholder; custom mints normally carry their own URI).
