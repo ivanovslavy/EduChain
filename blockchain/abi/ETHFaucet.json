@@ -264,10 +264,6 @@
       "type": "event"
     },
     {
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
       "inputs": [],
       "name": "MAX_CLAIM_AMOUNT",
       "outputs": [

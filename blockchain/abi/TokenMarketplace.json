@@ -18,6 +18,11 @@
       "type": "constructor"
     },
     {
+      "inputs": [],
+      "name": "AssetInActiveListing",
+      "type": "error"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -36,6 +41,11 @@
     {
       "inputs": [],
       "name": "CannotBuyOwnListing",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EscrowVerificationFailed",
       "type": "error"
     },
     {
@@ -127,6 +137,11 @@
         }
       ],
       "name": "ListingInactive",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoFreeBalance",
       "type": "error"
     },
     {
@@ -227,6 +242,11 @@
     },
     {
       "inputs": [],
+      "name": "UnsolicitedTransfer",
+      "type": "error"
+    },
+    {
+      "inputs": [],
       "name": "ZeroAddress",
       "type": "error"
     },
@@ -238,6 +258,11 @@
     {
       "inputs": [],
       "name": "ZeroPrice",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroReceived",
       "type": "error"
     },
     {
@@ -1095,6 +1120,52 @@
       "name": "renounceOwnership",
       "outputs": [],
       "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "rescueERC20",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "rescueERC721",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {

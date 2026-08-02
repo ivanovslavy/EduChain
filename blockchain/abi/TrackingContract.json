@@ -54,6 +54,11 @@
       "type": "error"
     },
     {
+      "inputs": [],
+      "name": "InvalidWeight",
+      "type": "error"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
@@ -163,6 +168,19 @@
     {
       "inputs": [],
       "name": "MAX_BATCH_VIEW",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_POINTS_WEIGHT",
       "outputs": [
         {
           "internalType": "uint256",
