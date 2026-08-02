@@ -12,17 +12,20 @@ const CONFIG = {
   gameTokenSymbol: "GAME",
   gameTokenPrice:  ethers.parseEther("0.01"),   // 0.01 ETH per whole token
 
-  // Predefined NFT
+  // Predefined NFT — real metadata: the Kotkata collection (10k Sphynx-cat JSONs,
+  // <id>.json on IPFS/Filebase, images at bafybeihblwcb…). Matches this contract's
+  // tokenURI scheme baseURI + tokenId + ".json" (verified 0.json..49.json → 200).
   predefinedName:     "EduChain Predefined NFTs",
   predefinedSymbol:   "EDUPRE",
-  predefinedBaseURI:  "ipfs://bafybeiexamplepredefined/",
+  predefinedBaseURI:  "ipfs://bafybeiaoqjtxd7ptabsz67afmenvuf45tgqlwgorjttkaz7zxkmvjuoeqa/",
   predefinedPrice:    ethers.parseEther("0.01"),
   predefinedMaxSupply: 50n,
 
-  // Custom NFT
+  // Custom NFT — same metadata CID as the fallback for empty-URI mints (real art
+  // instead of a dead placeholder; custom mints normally carry their own URI).
   customName:       "EduChain Custom NFTs",
   customSymbol:     "EDUCUS",
-  customBaseURI:    "ipfs://bafybeiexamplecustom/",
+  customBaseURI:    "ipfs://bafybeiaoqjtxd7ptabsz67afmenvuf45tgqlwgorjttkaz7zxkmvjuoeqa/",
   customEthPrice:   ethers.parseEther("0.03"),
   customTokenPrice: ethers.parseEther("1"),     // 1 GAME per NFT (1e18 wei)
 
