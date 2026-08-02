@@ -11,3 +11,16 @@ typechain-types/
 
 *.log
 .DS_Store
+
+# Foundry
+out-forge/
+cache-forge/
+lib/
+
+# Generated audit outputs (regenerable; not source)
+slither-report.txt
+slither-report.md
+scripts/live-fire/snapshot-before.json
+scripts/live-fire/snapshot-after.json
+scripts/live-fire/live-fire-deployed.json
+scripts/live-fire/attack-results.json
