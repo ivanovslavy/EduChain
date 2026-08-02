@@ -139,7 +139,7 @@ funding wallet used to provision the distributor once.
 | A2 | 🔴 | **Fee-on-transfer drain**: recorded requested, not received amount | record `balanceAfter − balanceBefore`; per-token `_escrowedERC20` accounting |
 | A3 | 🟠 | **Stuck NFT**: `onERC721Received` accepted any transfer, no rescue | reject unsolicited safe-transfers + owner `rescueERC721/rescueERC20` (escrow-guarded) |
 | A4 | 🟠 | **Blacklisted admin keeps power** | `onlyOwnerOrAdmin` now rejects a blacklisted admin |
-| A5 | 🟠 | **Stranded paymentToken** in `GameNFTCustom` | added `withdrawTokens(address token)` overload |
+| A5 | 🟠 | **Stranded paymentToken** in `GameNFTCustom` | added `sweepToken(address)` (distinct name, not an overload → clean ABI/UI) |
 | A6 | 🟢 | `ETHFaucet.fallback()` swallowed mistyped ETH | removed `fallback()` → such calls now revert |
 | A7 | 🟢 | `TrackingContract.setPointsFormula` unbounded | `MAX_POINTS_WEIGHT` bound on each weight |
 | M1 | 🟢 | `GameToken.mintToContract` uncapped | `MAX_SUPPLY` cap (100M) |

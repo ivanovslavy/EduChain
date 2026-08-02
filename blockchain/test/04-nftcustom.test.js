@@ -34,7 +34,7 @@ describe("GameNFTCustom", () => {
       .to.emit(nftCustom, "MintedWithTokens");
     expect(await nftCustom.balanceOf(alice.address)).to.equal(1n);
     // owner can withdraw the collected GAME
-    await expect(nftCustom.connect(owner)["withdrawTokens()"]()).to.emit(nftCustom, "TokensWithdrawn");
+    await expect(nftCustom.connect(owner).withdrawTokens()).to.emit(nftCustom, "TokensWithdrawn");
   });
 
   it("access + limits: non-whitelisted blocked, batch + daily caps enforced", async () => {
@@ -72,12 +72,12 @@ describe("GameNFTCustom", () => {
       const Mock = await ethers.getContractFactory("MockERC20");
       const other = await Mock.deploy();
       await nftCustom.connect(owner).setPaymentToken(await other.getAddress());
-      await expect(nftCustom.connect(owner)["withdrawTokens()"]())
+      await expect(nftCustom.connect(owner).withdrawTokens())
         .to.be.revertedWithCustomError(nftCustom, "NothingToWithdraw");
 
-      // A5: but the explicit-token overload recovers the stranded GAME
+      // A5: but sweepToken(address) recovers the stranded GAME
       const ownerBefore = await gameToken.balanceOf(owner.address);
-      await expect(nftCustom.connect(owner)["withdrawTokens(address)"](await gameToken.getAddress()))
+      await expect(nftCustom.connect(owner).sweepToken(await gameToken.getAddress()))
         .to.emit(nftCustom, "TokensWithdrawn");
       expect(await gameToken.balanceOf(await nftCustom.getAddress())).to.equal(0n);
       expect(await gameToken.balanceOf(owner.address)).to.equal(ownerBefore + collected);
