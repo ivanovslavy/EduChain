@@ -10,7 +10,8 @@ Three layers, plus an optional on-chain "live-fire" layer:
 |-------|------|--------------|
 | Unit / access / attacks / invariants | Hardhat + Mocha/Chai | 80 tests over every function, guard, event, boundary — plus real attacker contracts |
 | Property fuzzing + stateful invariants | Foundry (`forge`) | 3 fuzz tests × 10 000 runs, 4 invariants × 12 800 calls |
-| Static analysis | Slither | detector sweep over the production contracts |
+| Static analysis | Slither | 0 high-severity over the production contracts |
+| Symbolic execution | Mythril | all 7 production contracts — 0 issues |
 | **Live-fire (optional)** | Hardhat scripts | the same attacks as REAL transactions on gemba testnet 821207 |
 
 **No production contract is modified by any of this.** The attacker/mock contracts
@@ -103,10 +104,22 @@ Fuzz depth is set in `foundry.toml` (`runs = 10000`, invariant `runs=256 depth=5
 ./slither.sh          # writes slither-report.txt, production contracts only
 ```
 
-Baseline result: **65 informational/low findings, 0 high-severity** (no
-reentrancy-eth, arbitrary-send, suicidal, delegatecall, tx-origin). The notable
-low items — `calls-inside-a-loop` in `TrackingContract` leaderboard views and
-`block.timestamp` in the rate-limit windows — corroborate code-review items L8/M-series.
+Result: **0 high-severity** (no reentrancy-eth, arbitrary-send, suicidal,
+delegatecall, tx-origin). The notable low items — `calls-inside-a-loop` in
+`TrackingContract` leaderboard views and `block.timestamp` in the rate-limit
+windows — corroborate code-review items L8/M-series. The `reentrancy-benign`/events
+items (e.g. `TokenMarketplace.createERC721Listing`) write state after the escrow
+transfer but are guarded by `nonReentrant` + CEI and move no attacker value.
+
+## 3b. Mythril (symbolic execution)
+
+```bash
+# myth-solc.json carries the OZ/erc721a remappings + optimizer
+for C in Whitelist GameToken GameNFTPredefined GameNFTCustom TokenMarketplace TrackingContract ETHFaucet; do
+  myth analyze contracts/$C.sol --solc-json myth-solc.json --solv 0.8.28 --execution-timeout 200
+done
+```
+All 7 production contracts return "No issues were detected."
 
 ---
 
