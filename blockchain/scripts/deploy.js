@@ -301,7 +301,10 @@ async function main() {
   //    PHASE 4 — Etherscan verification (after delay)
   // ═════════════════════════════════════════════════════════════
 
-  const isPublicNetwork = network.name === "sepolia" || network.name === "mainnet";
+  // L5: include "gemba" so a deploy auto-verifies on GembaScan (Blockscout) too —
+  // the etherscan/customChains config already points `gemba` at testnet.gembascan.io.
+  const isPublicNetwork =
+    network.name === "sepolia" || network.name === "mainnet" || network.name === "gemba";
   if (isPublicNetwork) {
     console.log("\n" + "─".repeat(72));
     console.log(` PHASE 4 — Etherscan verification (waiting ${CONFIG.verifyDelaySeconds}s for indexing)`);
