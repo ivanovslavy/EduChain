@@ -34,7 +34,7 @@ describe("GameNFTCustom", () => {
       .to.emit(nftCustom, "MintedWithTokens");
     expect(await nftCustom.balanceOf(alice.address)).to.equal(1n);
     // owner can withdraw the collected GAME
-    await expect(nftCustom.connect(owner).withdrawTokens()).to.emit(nftCustom, "TokensWithdrawn");
+    await expect(nftCustom.connect(owner)["withdrawTokens()"]()).to.emit(nftCustom, "TokensWithdrawn");
   });
 
   it("access + limits: non-whitelisted blocked, batch + daily caps enforced", async () => {
@@ -58,23 +58,29 @@ describe("GameNFTCustom", () => {
     await expect(nftCustom.connect(alice).mintWithETH(alice.address, 1, "u", { value: price })).to.not.be.reverted;
   });
 
-  describe("SECURITY PROBE — withdrawTokens only drains the CURRENT paymentToken", () => {
-    it("changing paymentToken strands the previously-collected token balance", async () => {
+  describe("A5 FIX — withdrawTokens(address) recovers a token stranded by a swap", () => {
+    it("the old paymentToken balance is recoverable after the payment token changes", async () => {
       const { nftCustom, gameToken, owner, alice } = await loadFixture(deployEcosystem);
       await buyGame(gameToken, alice, 1);
       const cost = await nftCustom.tokenMintPrice();
       await gameToken.connect(alice).approve(await nftCustom.getAddress(), cost);
       await nftCustom.connect(alice).mintWithTokens(alice.address, 1, "u");
-      const stuck = await gameToken.balanceOf(await nftCustom.getAddress());
-      expect(stuck).to.equal(cost);
-      // owner points paymentToken elsewhere; old GAME balance is now unreachable via withdrawTokens
+      const collected = await gameToken.balanceOf(await nftCustom.getAddress());
+      expect(collected).to.equal(cost);
+
+      // owner swaps the payment token → the no-arg withdrawTokens now targets the new token
       const Mock = await ethers.getContractFactory("MockERC20");
       const other = await Mock.deploy();
       await nftCustom.connect(owner).setPaymentToken(await other.getAddress());
-      await expect(nftCustom.connect(owner).withdrawTokens())
+      await expect(nftCustom.connect(owner)["withdrawTokens()"]())
         .to.be.revertedWithCustomError(nftCustom, "NothingToWithdraw");
-      expect(await gameToken.balanceOf(await nftCustom.getAddress())).to.equal(stuck);
-      console.log(`      ${ethers.formatEther(stuck)} GAME stranded after paymentToken swap`);
+
+      // A5: but the explicit-token overload recovers the stranded GAME
+      const ownerBefore = await gameToken.balanceOf(owner.address);
+      await expect(nftCustom.connect(owner)["withdrawTokens(address)"](await gameToken.getAddress()))
+        .to.emit(nftCustom, "TokensWithdrawn");
+      expect(await gameToken.balanceOf(await nftCustom.getAddress())).to.equal(0n);
+      expect(await gameToken.balanceOf(owner.address)).to.equal(ownerBefore + collected);
     });
   });
 

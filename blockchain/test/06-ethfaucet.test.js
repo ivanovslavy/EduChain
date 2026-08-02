@@ -58,15 +58,18 @@ describe("ETHFaucet", () => {
       .to.be.revertedWithCustomError(faucet, "NothingToWithdraw");
   });
 
-  describe("SECURITY PROBE — fallback() swallows mistaken ETH-bearing calls", () => {
-    it("a call with bad calldata + ETH is accepted as a donation (funds lost to sender)", async () => {
+  describe("A6 FIX — a mistyped ETH-bearing call now reverts (no silent swallow)", () => {
+    it("a call with bad calldata + ETH reverts; a plain send still funds", async () => {
       const { faucet, alice } = await loadFixture(deployEcosystem);
+      // bad calldata + value → no fallback → revert (funds stay with the sender)
       await expect(alice.sendTransaction({
         to: await faucet.getAddress(),
         data: "0xdeadbeef",
         value: ethers.parseEther("0.02"),
-      })).to.emit(faucet, "Funded");
-      console.log("      fallback() accepted a mistyped ETH-bearing call as a donation");
+      })).to.be.reverted;
+      // a plain ETH send (empty calldata) still hits receive() and funds the faucet
+      await expect(alice.sendTransaction({ to: await faucet.getAddress(), value: ethers.parseEther("0.02") }))
+        .to.emit(faucet, "Funded");
     });
   });
 

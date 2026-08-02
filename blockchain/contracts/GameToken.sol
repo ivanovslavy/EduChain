@@ -50,6 +50,10 @@ contract GameToken is ERC20, Ownable, ReentrancyGuard {
     /// @notice Initial supply minted to the contract at deployment: 1,000,000 tokens.
     uint256 public constant INITIAL_SUPPLY = 1_000_000 * 1e18;
 
+    /// @notice M1: hard cap on total supply. `mintToContract` refills are bounded
+    ///         by this, so the sale token can never be inflated without limit.
+    uint256 public constant MAX_SUPPLY = 100_000_000 * 1e18;
+
     /// @notice Canonical whitelist contract. Set at construction, never changed.
     IWhitelist public immutable whitelist;
 
@@ -123,6 +127,7 @@ contract GameToken is ERC20, Ownable, ReentrancyGuard {
     error RefundFailed();
     error NothingToWithdraw();
     error InvalidPrice();
+    error ExceedsMaxSupply(uint256 requested, uint256 remaining);
 
     // ─────────────────────────────────────────────────────────────
     // Construction
@@ -364,6 +369,11 @@ contract GameToken is ERC20, Ownable, ReentrancyGuard {
      */
     function mintToContract(uint256 amount) external onlyOwner {
         if (amount == 0) revert ZeroAmount();
+        // M1: enforce the hard supply cap.
+        uint256 supply = totalSupply();
+        if (supply + amount > MAX_SUPPLY) {
+            revert ExceedsMaxSupply(amount, MAX_SUPPLY > supply ? MAX_SUPPLY - supply : 0);
+        }
         _mint(address(this), amount);
         emit ContractRefilled(amount);
     }

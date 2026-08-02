@@ -57,7 +57,13 @@ contract TrackingContract is Ownable {
     string public constant VERSION = "2.0.0";
 
     /// @notice Maximum users per batch view call. Guards against RPC gas cap.
-    uint256 public constant MAX_BATCH_VIEW = 500;
+    /// @dev L8: lowered 500 → 100. Each entry does ~6 external calls, so 500 could
+    ///      exceed a node's eth_call gas cap; 100 keeps the leaderboard view safe.
+    uint256 public constant MAX_BATCH_VIEW = 100;
+
+    /// @notice A7: upper bound on each points weight to keep `balance * weight`
+    ///         from overflowing when a leaderboard entry is read.
+    uint256 public constant MAX_POINTS_WEIGHT = 1e12;
 
     IWhitelist       public immutable whitelist;
     IERC20           public immutable gameToken;
@@ -107,6 +113,7 @@ contract TrackingContract is Ownable {
     error BatchTooLarge(uint256 size, uint256 max);
     error InvalidTierOrdering();
     error OwnershipNotRenounceable();
+    error InvalidWeight();
 
     // ─────────────────────────────────────────────────────────────
     // Construction
@@ -311,6 +318,12 @@ contract TrackingContract is Ownable {
         uint256 newPointsPerPredefined,
         uint256 newPointsPerCustom
     ) external onlyOwner {
+        // A7: bound each weight so a leaderboard read can't overflow.
+        if (
+            newPointsPerERC20 > MAX_POINTS_WEIGHT ||
+            newPointsPerPredefined > MAX_POINTS_WEIGHT ||
+            newPointsPerCustom > MAX_POINTS_WEIGHT
+        ) revert InvalidWeight();
         pointsPerERC20      = newPointsPerERC20;
         pointsPerPredefined = newPointsPerPredefined;
         pointsPerCustom     = newPointsPerCustom;

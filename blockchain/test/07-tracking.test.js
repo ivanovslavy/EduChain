@@ -38,17 +38,16 @@ describe("TrackingContract", () => {
     await expect(tracking.connect(owner).setTierThresholds(1, 2, 3, 4)).to.not.be.reverted;
   });
 
-  describe("SECURITY PROBE — setPointsFormula has no bounds", () => {
-    it("an enormous points weight can overflow the points computation on read", async () => {
-      const { tracking, gameToken, owner, alice } = await loadFixture(deployEcosystem);
-      await buyGame(gameToken, alice, 1);
-      // weight = 2^255 → 1 whole GAME * weight is fine, but any user with >1 whole
-      // token would overflow. Here we just document the missing validation.
-      await tracking.connect(owner).setPointsFormula(2n ** 255n, 10, 30);
-      // reading a user with exactly 1 whole token: 1 * 2^255 = 2^255 (no overflow yet)
-      const e = await tracking.getUserEntry(alice.address);
-      expect(e.totalPoints).to.equal(2n ** 255n);
-      console.log("      setPointsFormula accepted 2^255 weight with no validation (overflow risk on read)");
+  describe("A7 FIX — setPointsFormula bounds each weight", () => {
+    it("a weight above MAX_POINTS_WEIGHT reverts; a bounded weight is accepted", async () => {
+      const { tracking, owner } = await loadFixture(deployEcosystem);
+      const cap = await tracking.MAX_POINTS_WEIGHT();
+      await expect(tracking.connect(owner).setPointsFormula(2n ** 255n, 10, 30))
+        .to.be.revertedWithCustomError(tracking, "InvalidWeight");
+      await expect(tracking.connect(owner).setPointsFormula(cap + 1n, 1, 1))
+        .to.be.revertedWithCustomError(tracking, "InvalidWeight");
+      await expect(tracking.connect(owner).setPointsFormula(cap, 10, 30))
+        .to.emit(tracking, "PointsFormulaChanged");
     });
   });
 

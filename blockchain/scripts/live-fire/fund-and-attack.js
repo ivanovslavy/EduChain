@@ -53,18 +53,16 @@ async function main() {
     record("outsider faucet claim", "CONFIRMED", "outsider claimed (unexpected!)");
   } catch { record("outsider locked out", "DEFEATED", "claim reverted for non-whitelisted"); }
 
-  // ── ATTACK 2: bait-and-switch with a fake ERC721 (expected CONFIRMED) ─────
+  // ── ATTACK 2: bait-and-switch with a fake ERC721 (A1 FIX → expected DEFEATED) ─
   {
     const Mal = await ethers.getContractFactory("MaliciousERC721", deployer);
     const mal = await Mal.deploy(); await mal.waitForDeployment();
     await (await mal.setFakeOwner(mallory.address)).wait();
-    await (await mk.connect(mallory).createERC721Listing(await mal.getAddress(), 0, P("0.001"), ethers.ZeroAddress)).wait();
-    const before = await provider.getBalance(mallory.address);
-    const id = (await mk.nextListingId()) - 1n;
-    await (await mk.connect(bob).purchaseListing(id, { value: P("0.001") })).wait();
-    const after = await provider.getBalance(mallory.address);
-    if (after > before) record("bait-and-switch (fake NFT)", "CONFIRMED", "buyer paid, got no asset");
-    else record("bait-and-switch (fake NFT)", "DEFEATED", "attacker not paid");
+    try {
+      // the no-op transferFrom leaves the NFT out of escrow → ownerOf != marketplace → revert
+      await (await mk.connect(mallory).createERC721Listing(await mal.getAddress(), 0, P("0.001"), ethers.ZeroAddress)).wait();
+      record("bait-and-switch (fake NFT)", "CONFIRMED", "listing of a fake NFT succeeded (unexpected!)");
+    } catch { record("bait-and-switch (fake NFT)", "DEFEATED", "listing reverted — escrow verification (A1)"); }
   }
 
   // ── ATTACK 3: reentrant faucet claimer (expected DEFEATED) ───────────────
@@ -117,7 +115,7 @@ async function main() {
     } catch { record("rejecting-seller griefing", "DEFEATED", "purchase reverted (fail-closed); griefing noted"); }
   }
 
-  // ── ATTACK 6: fee-on-transfer escrow drain (expected CONFIRMED) ──────────
+  // ── ATTACK 6: fee-on-transfer (A2 FIX → expected DEFEATED, every listing redeemable) ─
   {
     const Fee = await ethers.getContractFactory("FeeOnTransferERC20", deployer);
     const fee = await Fee.deploy(1000); await fee.waitForDeployment(); // 10% fee
@@ -132,32 +130,41 @@ async function main() {
     const bobListingId = (await mk.nextListingId()) - 1n;
     const aliceListingId = bobListingId - 1n;
     const escrow = await fee.balanceOf(mkAddr);
-    const drift = escrow < P("200");
-    // first purchase drains escrow further (outbound fee); second cannot be paid out
-    await (await mk.connect(mallory).purchaseListing(aliceListingId, { value: P("0.001") })).wait();
-    let secondReverted = false;
-    try { await (await mk.connect(mallory).purchaseListing(bobListingId, { value: P("0.001") })).wait(); }
-    catch { secondReverted = true; }
-    if (drift && secondReverted)
-      record("fee-on-transfer drain", "CONFIRMED", `escrow ${ethers.formatEther(escrow)} < 200 claimed; 2nd listing unredeemable`);
+    const recorded = (await mk.listings(aliceListingId)).amount + (await mk.listings(bobListingId)).amount;
+    // both purchases must now succeed — each listing records what it actually escrowed
+    let bothRedeemable = true;
+    try {
+      await (await mk.connect(mallory).purchaseListing(aliceListingId, { value: P("0.001") })).wait();
+      await (await mk.connect(mallory).purchaseListing(bobListingId, { value: P("0.001") })).wait();
+    } catch { bothRedeemable = false; }
+    if (bothRedeemable && escrow === recorded)
+      record("fee-on-transfer drain", "DEFEATED", `escrow ${ethers.formatEther(escrow)} == recorded; both listings redeemable (A2)`);
     else
-      record("fee-on-transfer drain", "DEFEATED", `drift=${drift} secondReverted=${secondReverted}`);
+      record("fee-on-transfer drain", "CONFIRMED", `bothRedeemable=${bothRedeemable} escrow=${ethers.formatEther(escrow)} recorded=${ethers.formatEther(recorded)}`);
   }
 
-  // ── ATTACK 7: NFT sent directly into the marketplace is stuck (expected CONFIRMED) ─
+  // ── ATTACK 7: direct NFT transfer into the marketplace (A3 FIX → expected DEFEATED) ─
   {
     const M721 = await ethers.getContractFactory("MockERC721", deployer);
     const nft = await M721.deploy(); await nft.waitForDeployment();
     const mkAddr = await mk.getAddress();
     await (await nft.mint(alice.address)).wait(); // token 0 to alice
-    // alice safeTransfers it straight into the marketplace (no listing)
-    await (await nft.connect(alice)["safeTransferFrom(address,address,uint256)"](alice.address, mkAddr, 0)).wait();
-    const owner0 = await nft.ownerOf(0);
-    const activeAfter = await mk.activeListingsCount();
-    const stuck = owner0.toLowerCase() === mkAddr.toLowerCase();
-    // no listing exists for it and there is no owner rescue/sweep function → locked
-    if (stuck) record("stuck NFT (no rescue)", "CONFIRMED", `NFT held by marketplace, activeListings=${activeAfter}, no sweep fn`);
-    else record("stuck NFT (no rescue)", "DEFEATED", `owner=${owner0}`);
+    let rejected = false;
+    try {
+      // unsolicited safeTransfer is now rejected by onERC721Received
+      await (await nft.connect(alice)["safeTransferFrom(address,address,uint256)"](alice.address, mkAddr, 0)).wait();
+    } catch { rejected = true; }
+    // a stray plain transferFrom can't be blocked, but the owner can rescue it
+    let rescued = false;
+    if (!rejected) {
+      // (shouldn't happen) fall through
+    } else {
+      await (await nft.connect(alice).transferFrom(alice.address, mkAddr, 0)).wait();
+      await (await mk.rescueERC721(await nft.getAddress(), 0, alice.address)).wait();
+      rescued = (await nft.ownerOf(0)).toLowerCase() === alice.address.toLowerCase();
+    }
+    if (rejected && rescued) record("stuck NFT (no rescue)", "DEFEATED", "unsolicited safeTransfer rejected; stray transfer rescued (A3)");
+    else record("stuck NFT (no rescue)", "CONFIRMED", `rejected=${rejected} rescued=${rescued}`);
   }
 
   console.log("\n=== SUMMARY ===");

@@ -90,14 +90,23 @@ describe("GameToken", () => {
     });
   });
 
-  describe("SECURITY PROBE — M1: uncapped owner mint", () => {
-    it("mintToContract has NO supply cap (documents the finding)", async () => {
+  describe("M1 FIX — mintToContract is capped by MAX_SUPPLY", () => {
+    it("refills within the cap succeed; refills past MAX_SUPPLY revert", async () => {
       const { gameToken, owner } = await loadFixture(deployEcosystem);
-      const before = await gameToken.totalSupply();
-      const huge = ethers.parseEther("1000000000000"); // 1e12 tokens
-      await expect(gameToken.connect(owner).mintToContract(huge)).to.emit(gameToken, "ContractRefilled");
-      expect(await gameToken.totalSupply()).to.equal(before + huge);
-      console.log("      mintToContract accepted 1e12 extra tokens — unbounded inflation (M1)");
+      const cap = await gameToken.MAX_SUPPLY();
+      const supply = await gameToken.totalSupply();
+      // a modest refill within the cap works
+      await expect(gameToken.connect(owner).mintToContract(ethers.parseEther("1000")))
+        .to.emit(gameToken, "ContractRefilled");
+      // minting past the cap reverts
+      const over = cap - (await gameToken.totalSupply()) + 1n;
+      await expect(gameToken.connect(owner).mintToContract(over))
+        .to.be.revertedWithCustomError(gameToken, "ExceedsMaxSupply");
+      // 1e12 tokens (the old exploit amount) is now firmly over the cap
+      await expect(gameToken.connect(owner).mintToContract(ethers.parseEther("1000000000000")))
+        .to.be.revertedWithCustomError(gameToken, "ExceedsMaxSupply");
+      expect(cap).to.equal(ethers.parseEther("100000000"));
+      expect(supply).to.equal(ethers.parseEther("1000000"));
     });
   });
 

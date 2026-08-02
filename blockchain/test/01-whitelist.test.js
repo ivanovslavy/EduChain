@@ -89,22 +89,15 @@ describe("Whitelist", () => {
     });
   });
 
-  describe("SECURITY PROBE — blacklisted admin retains admin power", () => {
-    // onlyOwnerOrAdmin checks _admins.contains only; the blacklist does NOT
-    // strip the admin role. A blacklisted teacher can still manage the whitelist.
-    it("documents that a blacklisted admin can STILL modify the whitelist", async () => {
+  describe("A4 FIX — a blacklisted admin loses admin power", () => {
+    it("a blacklisted admin can no longer modify the whitelist", async () => {
       const { whitelist, owner, admin, outsider } = await loadFixture(deployEcosystem);
       await whitelist.connect(owner).addToBlacklist(admin.address);
-      // If this SUCCEEDS, the finding is real (authorization gap).
-      let stillAdmin = true;
-      try {
-        await whitelist.connect(admin).addToWhitelist(outsider.address);
-      } catch {
-        stillAdmin = false;
-      }
-      // Record the observed behaviour; the audit report interprets it.
-      console.log(`      blacklisted admin can still whitelist: ${stillAdmin}`);
-      expect(stillAdmin).to.equal(true); // current behaviour == finding present
+      await expect(whitelist.connect(admin).addToWhitelist(outsider.address))
+        .to.be.revertedWithCustomError(whitelist, "NotAuthorized");
+      // un-blacklisting restores the admin's power
+      await whitelist.connect(owner).removeFromBlacklist(admin.address);
+      await expect(whitelist.connect(admin).addToWhitelist(outsider.address)).to.not.be.reverted;
     });
   });
 

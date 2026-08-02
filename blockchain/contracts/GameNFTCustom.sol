@@ -594,6 +594,17 @@ contract GameNFTCustom is ERC721A, Ownable, ReentrancyGuard {
         emit TokensWithdrawn(owner(), balance);
     }
 
+    /// @notice A5: withdraw ANY ERC-20 held by the contract — including a token that
+    ///         was the `paymentToken` before a swap and would otherwise be stranded
+    ///         (the no-arg `withdrawTokens` only drains the CURRENT paymentToken).
+    function withdrawTokens(address token) external onlyOwner nonReentrant {
+        if (token == address(0)) revert ZeroAddress();
+        uint256 balance = IERC20(token).balanceOf(address(this));
+        if (balance == 0) revert NothingToWithdraw();
+        IERC20(token).safeTransfer(owner(), balance);
+        emit TokensWithdrawn(owner(), balance);
+    }
+
     // ═════════════════════════════════════════════════════════════
     //              DISABLED — renounceOwnership
     // ═════════════════════════════════════════════════════════════

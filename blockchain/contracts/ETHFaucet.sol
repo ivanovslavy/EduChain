@@ -188,10 +188,9 @@ contract ETHFaucet is Ownable, ReentrancyGuard {
         emit Funded(msg.sender, msg.value);
     }
 
-    /// @dev Fallback mirrors receive for compatibility with odd senders.
-    fallback() external payable {
-        emit Funded(msg.sender, msg.value);
-    }
+    // A6: no `fallback()`. A call with non-matching calldata (a mistyped function
+    // or wrong ABI) now REVERTS instead of silently swallowing the attached ETH as
+    // a donation. Plain ETH sends (empty calldata) still hit `receive()`.
 
     // ═════════════════════════════════════════════════════════════
     //                      VIEW QUERIES

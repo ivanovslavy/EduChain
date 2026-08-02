@@ -119,27 +119,20 @@ describe("ATTACKS — outsider (NOT whitelisted) is locked out everywhere", () =
   });
 });
 
-describe("ATTACKS — CONFIRMED findings (attack SUCCEEDS)", () => {
-  it("BAIT-AND-SWITCH: buyer pays for a fake ERC721 and receives nothing", async () => {
-    const { marketplace, owner, whitelist, mallory, bob } = await loadFixture(deployEcosystem);
+describe("ATTACKS — previously-CONFIRMED findings, now DEFEATED by the fixes", () => {
+  it("A1 bait-and-switch: listing a fake ERC721 now REVERTS (escrow verification)", async () => {
+    const { marketplace, mallory } = await loadFixture(deployEcosystem);
     const Mal = await ethers.getContractFactory("MaliciousERC721");
     const mal = await Mal.deploy();
-    await mal.setFakeOwner(mallory.address);       // ownerOf() lies → mallory "owns" it
+    await mal.setFakeOwner(mallory.address);       // ownerOf() lies → passes the initial check
     const price = ethers.parseEther("1");
-    await marketplace.connect(mallory).createERC721Listing(await mal.getAddress(), 0, price, ethers.ZeroAddress);
-
-    const malloryBefore = await ethers.provider.getBalance(mallory.address);
-    await marketplace.connect(bob).purchaseListing(1, { value: price });
-    const malloryAfter = await ethers.provider.getBalance(mallory.address);
-
-    expect(malloryAfter - malloryBefore).to.equal(price);  // attacker got paid
-    expect(await mal.transferFromCalls()).to.equal(2n);    // both "transfers" were no-ops
-    // bob paid `price` and received no real asset → CONFIRMED payment-for-nothing.
-    console.log("      CONFIRMED: buyer paid 1 ETH for a fake NFT, received nothing");
+    // transferFrom is a no-op → the NFT never lands in escrow → ownerOf != marketplace → revert.
+    await expect(marketplace.connect(mallory).createERC721Listing(await mal.getAddress(), 0, price, ethers.ZeroAddress))
+      .to.be.revertedWithCustomError(marketplace, "EscrowVerificationFailed");
   });
 
-  it("FEE-ON-TRANSFER: escrow accounting drifts → later purchase cannot be paid out", async () => {
-    const { marketplace, owner, whitelist, alice, bob, carol } = await loadFixture(deployEcosystem);
+  it("A2 fee-on-transfer: received-amount accounting keeps EVERY listing redeemable", async () => {
+    const { marketplace, alice, bob, carol } = await loadFixture(deployEcosystem);
     const Fee = await ethers.getContractFactory("FeeOnTransferERC20");
     const fee = await Fee.deploy(1000); // 10% fee
     const mAddr = await marketplace.getAddress();
@@ -148,29 +141,40 @@ describe("ATTACKS — CONFIRMED findings (attack SUCCEEDS)", () => {
       await fee.connect(u).approve(mAddr, ethers.parseEther("100"));
       await marketplace.connect(u).createERC20Listing(await fee.getAddress(), ethers.parseEther("100"), ethers.parseEther("1"), ethers.ZeroAddress);
     }
-    const escrow = await fee.balanceOf(mAddr);
-    // Two listings each RECORD 100, but escrow holds only ~180 (10% skimmed twice).
-    expect(escrow).to.be.lt(ethers.parseEther("200"));
-    console.log(`      escrow holds ${ethers.formatEther(escrow)} but listings claim 200`);
+    // Each listing now records the RECEIVED 90 (not the requested 100); escrow == sum.
+    expect(await fee.balanceOf(mAddr)).to.equal(ethers.parseEther("180"));
+    expect((await marketplace.listings(1)).amount).to.equal(ethers.parseEther("90"));
 
-    // First buyer succeeds (drains escrow further via the outbound 10% fee).
+    // BOTH purchases succeed — no listing is stranded.
     await marketplace.connect(carol).purchaseListing(1, { value: ethers.parseEther("1") });
-    // Second buyer cannot be paid the full 100 → purchase reverts (funds locked).
-    await expect(marketplace.connect(carol).purchaseListing(2, { value: ethers.parseEther("1") }))
-      .to.be.reverted;
-    console.log("      CONFIRMED: 2nd listing unredeemable — fee-on-transfer accounting drain");
+    await marketplace.connect(carol).purchaseListing(2, { value: ethers.parseEther("1") });
+    // carol receives 81 per listing (90 minus the token's own 10% outbound fee) — inherent
+    // to the fee-on-transfer token, not a marketplace defect.
+    expect(await fee.balanceOf(carol.address)).to.equal(ethers.parseEther("162"));
+    expect(await fee.balanceOf(mAddr)).to.equal(0n);
   });
 
-  it("STUCK NFT: a direct safeTransfer into the marketplace is accepted with no rescue path", async () => {
-    const { marketplace, alice } = await loadFixture(deployEcosystem);
+  it("A3 stuck NFT: direct safeTransfer REVERTS; a stray plain-transfer is rescuable; escrow is protected", async () => {
+    const { marketplace, owner, alice } = await loadFixture(deployEcosystem);
     const Mock721 = await ethers.getContractFactory("MockERC721");
     const erc721 = await Mock721.deploy();
-    await erc721.mint(alice.address); // token 0
     const mAddr = await marketplace.getAddress();
-    await erc721.connect(alice)["safeTransferFrom(address,address,uint256)"](alice.address, mAddr, 0);
+    await erc721.mint(alice.address); // token 0
+
+    // 1) unsolicited safeTransfer is rejected outright
+    await expect(erc721.connect(alice)["safeTransferFrom(address,address,uint256)"](alice.address, mAddr, 0))
+      .to.be.revertedWithCustomError(marketplace, "UnsolicitedTransfer");
+
+    // 2) a plain transferFrom can't be blocked by any contract, but the owner can rescue it
+    await erc721.connect(alice).transferFrom(alice.address, mAddr, 0);
     expect(await erc721.ownerOf(0)).to.equal(mAddr);
-    // No listing exists for it and there is no owner rescue function → permanently stuck.
-    expect(await marketplace.activeListingsCount()).to.equal(0n);
-    console.log("      CONFIRMED: NFT sent directly to marketplace is stuck forever (no sweep)");
+    await marketplace.connect(owner).rescueERC721(await erc721.getAddress(), 0, alice.address);
+    expect(await erc721.ownerOf(0)).to.equal(alice.address);
+
+    // 3) rescue REFUSES an NFT that backs a live listing (escrow can't be swept)
+    await erc721.connect(alice).approve(mAddr, 0);
+    await marketplace.connect(alice).createERC721Listing(await erc721.getAddress(), 0, ethers.parseEther("1"), ethers.ZeroAddress);
+    await expect(marketplace.connect(owner).rescueERC721(await erc721.getAddress(), 0, owner.address))
+      .to.be.revertedWithCustomError(marketplace, "AssetInActiveListing");
   });
 });

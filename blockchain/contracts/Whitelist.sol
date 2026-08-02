@@ -107,7 +107,12 @@ contract Whitelist is Ownable {
     // ─────────────────────────────────────────────────────────────
 
     modifier onlyOwnerOrAdmin() {
-        if (msg.sender != owner() && !_admins.contains(msg.sender)) revert NotAuthorized();
+        // A4: a blacklisted admin is NOT authorized — the blacklist overrides the
+        // admin role, mirroring how it already overrides the whitelist.
+        if (
+            msg.sender != owner() &&
+            !(_admins.contains(msg.sender) && !_blacklisted.contains(msg.sender))
+        ) revert NotAuthorized();
         _;
     }
 

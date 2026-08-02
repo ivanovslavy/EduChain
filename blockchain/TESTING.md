@@ -131,18 +131,20 @@ funding wallet used to provision the distributor once.
 
 ---
 
-## Findings surfaced by this suite (beyond the original code review)
+## Findings surfaced by this suite — and how each was FIXED
 
-| # | Severity | Finding |
-|---|----------|---------|
-| A1 | 🔴 | **Bait-and-switch**: marketplace pays a seller for a fake ERC721 that never enters escrow; buyer gets nothing. Contradicts the contract's "bait-and-switch is impossible" claim. |
-| A2 | 🔴 | **Fee-on-transfer drain**: `createERC20Listing` records the requested amount, not the amount received; shared escrow pool leaves a later listing unredeemable. |
-| A3 | 🟠 | **Stuck NFT**: `onERC721Received` accepts any direct transfer with no rescue path → asset locked forever. |
-| A4 | 🟠 | **Blacklisted admin keeps power**: `onlyOwnerOrAdmin` ignores the blacklist. |
-| A5 | 🟠 | **Stranded paymentToken**: `GameNFTCustom.withdrawTokens` only drains the current token; a swap locks the prior balance. |
-| A6 | 🟢 | `ETHFaucet.fallback()` swallows mistyped ETH-bearing calls as donations. |
-| A7 | 🟢 | `TrackingContract.setPointsFormula` has no bounds (overflow risk on read). |
-| — | — | plus the original code review's H1 (now closed), M1 (uncapped mint, reproduced). |
+| # | Sev | Finding | Fix (all applied) |
+|---|-----|---------|-------------------|
+| A1 | 🔴 | **Bait-and-switch**: marketplace paid for a fake ERC721 that never escrowed | post-escrow `ownerOf == address(this)` assert on list + delivery assert on purchase |
+| A2 | 🔴 | **Fee-on-transfer drain**: recorded requested, not received amount | record `balanceAfter − balanceBefore`; per-token `_escrowedERC20` accounting |
+| A3 | 🟠 | **Stuck NFT**: `onERC721Received` accepted any transfer, no rescue | reject unsolicited safe-transfers + owner `rescueERC721/rescueERC20` (escrow-guarded) |
+| A4 | 🟠 | **Blacklisted admin keeps power** | `onlyOwnerOrAdmin` now rejects a blacklisted admin |
+| A5 | 🟠 | **Stranded paymentToken** in `GameNFTCustom` | added `withdrawTokens(address token)` overload |
+| A6 | 🟢 | `ETHFaucet.fallback()` swallowed mistyped ETH | removed `fallback()` → such calls now revert |
+| A7 | 🟢 | `TrackingContract.setPointsFormula` unbounded | `MAX_POINTS_WEIGHT` bound on each weight |
+| M1 | 🟢 | `GameToken.mintToContract` uncapped | `MAX_SUPPLY` cap (100M) |
+| L8 | 🟢 | Leaderboard view gas (`calls-in-loop`) | `MAX_BATCH_VIEW` 500 → 100 |
 
-All findings are **recorded only** — no contract was modified. Remediation is a
-separate, authorized step.
+**Status: all fixed and verified** — 80 Hardhat + 7 Foundry green, and the live-fire
+run reports every scenario DEFEATED on gemba testnet after redeploy. Each fix
+preserves existing behaviour (happy-path + invariant suites unchanged and passing).

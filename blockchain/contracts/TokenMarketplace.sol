@@ -95,6 +95,14 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
     /// @dev Append-only history of every listing ID created by each seller.
     mapping(address => uint256[]) private _sellerListings;
 
+    /// @dev A3: (tokenContract,tokenId) currently backing an ACTIVE ERC-721 listing.
+    ///      Guards rescue so escrowed assets can never be swept out.
+    mapping(bytes32 => bool) private _escrowedNFT;
+
+    /// @dev A2/A3: ERC-20 currently locked as escrow per token (actual received
+    ///      amounts). Rescue may only take the surplus above this.
+    mapping(address => uint256) private _escrowedERC20;
+
     /// @dev Packed per-user rate-limit state. One slot.
     struct UserMarketInfo {
         uint64 listingWindowStart;
@@ -172,6 +180,11 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
     error InsufficientAllowance(uint256 requested, uint256 available);
     error TransferFailed();
     error OwnershipNotRenounceable();
+    error EscrowVerificationFailed();  // A1: asset did not actually enter/leave escrow
+    error ZeroReceived();              // A2: fee-on-transfer left nothing in escrow
+    error AssetInActiveListing();      // A3: rescue refused — asset backs a live listing
+    error NoFreeBalance();             // A3: rescue amount exceeds un-escrowed surplus
+    error UnsolicitedTransfer();       // A3: direct safeTransfer into the marketplace
 
     // ─────────────────────────────────────────────────────────────
     // Construction
@@ -235,6 +248,11 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
         // Escrow the NFT. Caller must have approved this contract.
         nft.transferFrom(msg.sender, address(this), tokenId);
 
+        // A1: verify the NFT ACTUALLY entered escrow. A malicious/lying ERC-721
+        // whose transferFrom is a no-op (or whose ownerOf lies) fails here → revert.
+        if (nft.ownerOf(tokenId) != address(this)) revert EscrowVerificationFailed();
+        _escrowedNFT[_nftKey(tokenContract_, tokenId)] = true;
+
         emit ListingCreated(
             listingId,
             msg.sender,
@@ -245,6 +263,11 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
             price,
             allowedBuyer
         );
+    }
+
+    /// @dev A3: escrow key for an (ERC-721 contract, tokenId) pair.
+    function _nftKey(address token, uint256 tokenId) private pure returns (bytes32) {
+        return keccak256(abi.encodePacked(token, tokenId));
     }
 
     /**
@@ -290,8 +313,16 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
         _sellerListings[msg.sender].push(listingId);
         unchecked { ++totalListingsEverCreated; }
 
-        // Escrow the tokens.
+        // A2: escrow the tokens and record the ACTUALLY-RECEIVED amount, not the
+        // requested one. A fee-on-transfer / deflationary token delivers less than
+        // `amount`; storing the received figure keeps each listing's payout exact
+        // and prevents draining the shared escrow pool.
+        uint256 balBefore = token.balanceOf(address(this));
         token.safeTransferFrom(msg.sender, address(this), amount);
+        uint256 received = token.balanceOf(address(this)) - balBefore;
+        if (received == 0) revert ZeroReceived();
+        listings[listingId].amount = received;
+        _escrowedERC20[tokenContract_] += received;
 
         emit ListingCreated(
             listingId,
@@ -299,7 +330,7 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
             tokenContract_,
             TokenType.ERC20,
             0,
-            amount,
+            received,
             price,
             allowedBuyer
         );
@@ -352,6 +383,11 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
         // Effects.
         l.isActive = false;
         _activeListings.remove(listingId);
+        if (tType == TokenType.ERC721) {
+            _escrowedNFT[_nftKey(tokenContract, tokenId)] = false;
+        } else {
+            _escrowedERC20[tokenContract] -= amount;
+        }
 
         totalSalesETH      += price;
         totalTransactions  += 1;
@@ -371,6 +407,8 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
         // 2) Deliver asset to buyer.
         if (tType == TokenType.ERC721) {
             IERC721(tokenContract).transferFrom(address(this), msg.sender, tokenId);
+            // A1: confirm the buyer really received the NFT.
+            if (IERC721(tokenContract).ownerOf(tokenId) != msg.sender) revert EscrowVerificationFailed();
         } else {
             IERC20(tokenContract).safeTransfer(msg.sender, amount);
         }
@@ -442,8 +480,10 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
         _activeListings.remove(listingId);
 
         if (tType == TokenType.ERC721) {
+            _escrowedNFT[_nftKey(tokenContract, tokenId)] = false;
             IERC721(tokenContract).transferFrom(address(this), seller, tokenId);
         } else {
+            _escrowedERC20[tokenContract] -= amount;
             IERC20(tokenContract).safeTransfer(seller, amount);
         }
 
@@ -622,13 +662,52 @@ contract TokenMarketplace is IERC721Receiver, Ownable, ReentrancyGuard {
     // ═════════════════════════════════════════════════════════════
 
     /// @inheritdoc IERC721Receiver
+    /// @dev A3: the marketplace escrows via plain `transferFrom` (no receiver hook),
+    ///      so it never needs to accept a `safeTransferFrom`. Rejecting them stops
+    ///      NFTs being parked here by an unsolicited safe-transfer. Assets that still
+    ///      arrive via a plain `transferFrom` are recoverable with `rescueERC721`.
     function onERC721Received(address, address, uint256, bytes calldata)
         external
         pure
         override
         returns (bytes4)
     {
-        return IERC721Receiver.onERC721Received.selector;
+        revert UnsolicitedTransfer();
+    }
+
+    // ═════════════════════════════════════════════════════════════
+    //                    OWNER: asset rescue (A3)
+    // ═════════════════════════════════════════════════════════════
+
+    /**
+     * @notice Recover an ERC-721 that ended up in the contract WITHOUT backing an
+     *         active listing (e.g. sent via a stray plain `transferFrom`).
+     * @dev    Refuses to move any NFT that backs a live listing → escrow is safe.
+     */
+    function rescueERC721(address token, uint256 tokenId, address to)
+        external
+        onlyOwner
+        nonReentrant
+    {
+        if (to == address(0)) revert ZeroAddress();
+        if (_escrowedNFT[_nftKey(token, tokenId)]) revert AssetInActiveListing();
+        IERC721(token).transferFrom(address(this), to, tokenId);
+    }
+
+    /**
+     * @notice Recover ERC-20 surplus NOT locked as listing escrow.
+     * @dev    Only the balance above `_escrowedERC20[token]` can be swept.
+     */
+    function rescueERC20(address token, uint256 amount, address to)
+        external
+        onlyOwner
+        nonReentrant
+    {
+        if (to == address(0)) revert ZeroAddress();
+        if (amount == 0) revert ZeroAmount();
+        uint256 free = IERC20(token).balanceOf(address(this)) - _escrowedERC20[token];
+        if (amount > free) revert NoFreeBalance();
+        IERC20(token).safeTransfer(to, amount);
     }
 
     // ═════════════════════════════════════════════════════════════
