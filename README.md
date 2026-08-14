@@ -70,7 +70,7 @@ EduChain is not a commercial product seeking customers. It is a community resour
 
 The Ethereum ecosystem is only as strong as the people who use, build, and understand it. Without a continuous influx of new users, developers, and advocates who understand not just how to interact with the network but why it matters, the ecosystem cannot sustain itself. Education is not a peripheral activity — it is core infrastructure.
 
-At the same time, the global shift toward decentralised technologies is no longer speculative. Banking, supply chain verification, credentialing, digital identity, intellectual property registration, and content monetisation are all being rebuilt on blockchain infrastructure. The European Union has formally recognised this trajectory through the MiCA framework (the EU regulation for digital-asset markets), the European Blockchain Services Infrastructure (EBSI), and digital identity initiatives such as the European Digital Identity Wallet.
+At the same time, the global shift toward decentralised technologies is no longer speculative. Banking, supply chain verification, credentialing, digital identity, intellectual property registration, and content monetisation are all being rebuilt on blockchain infrastructure. The European Union has formally recognised this trajectory through the European Blockchain Services Infrastructure (EBSI), and digital identity initiatives such as the European Digital Identity Wallet.
 
 If Europe does not begin preparing students for this environment, four outcomes follow.
 
@@ -121,7 +121,7 @@ EduChain combines a safe sandbox environment with production-grade tooling.
 
 **Peer-to-peer marketplace.** Students list their tokens and NFTs for sale at chosen prices. Private listings can be restricted to a specific buyer address. All sales settle on-chain with escrow-style asset custody during the listing period.
 
-**ETH faucet for testnet activity.** Whitelisted students claim a fixed amount of testnet GMB every twenty-four hours, enabling continuous engagement with the platform without external funding.
+**GMB faucet for testnet activity.** Whitelisted students claim a fixed amount of testnet GMB every twenty-four hours, enabling continuous engagement with the platform without external funding.
 
 **Admin dashboard.** Teachers and administrators interact with the contracts through a dynamic, ABI-driven function panel. Every writable contract function is exposed as a form with typed inputs. Owner-only and admin-only functions are separated by role, and the active wallet's permissions determine what is shown.
 
@@ -137,17 +137,17 @@ EduChain follows a testnet-first, risk-free deployment model. The platform consi
 
 **Whitelist.** The access control registry. Maintains separate sets of whitelisted users, blacklisted users, and administrators. Every downstream contract queries this registry before allowing a user action. Uses OpenZeppelin's EnumerableSet for O(1) membership checks and gap-free pagination.
 
-**GameToken.** An ERC-20 fungible token used as in-platform currency. Whitelisted users purchase whole tokens with ETH at a fixed price. Three independent rate limits protect against spam: maximum tokens per purchase, maximum purchases per day, and maximum tokens per day. Per-user accounting is packed into a single storage slot for gas efficiency.
+**GameToken.** An ERC-20 fungible token used as in-platform currency. Whitelisted users purchase whole tokens with testnet GMB at a fixed price. Three independent rate limits protect against spam: maximum tokens per purchase, maximum purchases per day, and maximum tokens per day. Per-user accounting is packed into a single storage slot for gas efficiency.
 
 **GameNFTPredefined.** An ERC-721A non-fungible token collection with a fixed maximum supply. Metadata follows a deterministic pattern: `baseURI + tokenId + ".json"`. ERC-721A enables gas-efficient batch minting, so a user can mint multiple NFTs in a single transaction.
 
-**GameNFTCustom.** An ERC-721A collection where users supply their own IPFS metadata URIs at mint time. Supports two payment modes: ETH or GameToken (ERC-20). When a URI is provided, it is stored per-token and cannot be changed afterwards, guaranteeing metadata immutability.
+**GameNFTCustom.** An ERC-721A collection where users supply their own IPFS metadata URIs at mint time. Supports two payment modes: testnet GMB or GameToken (ERC-20). When a URI is provided, it is stored per-token and cannot be changed afterwards, guaranteeing metadata immutability.
 
 **TokenMarketplace.** A peer-to-peer trading venue supporting ERC-20 and ERC-721 listings. Assets are escrowed in the marketplace at listing time and delivered to the buyer on purchase. Optional private listings restrict sales to a single allowed buyer address.
 
-**TrackingContract.** The live leaderboard aggregator. Reads balances directly from the GameToken and NFT contracts on every query, computes points from an owner-configurable formula, and returns both raw balances and derived metrics (total points, tier rank from Bronze to Platinum, net worth in ETH). No cached state, no manual update function.
+**TrackingContract.** The live leaderboard aggregator. Reads balances directly from the GameToken and NFT contracts on every query, computes points from an owner-configurable formula, and returns both raw balances and derived metrics (total points, tier rank from Bronze to Platinum, net worth in GMB). No cached state, no manual update function.
 
-**ETHFaucet.** Distributes testnet GMB to whitelisted users. Per-user cooldown enforced in seconds. Contract-level ceilings prevent accidental misconfiguration: claim amounts cannot exceed one ETH and cooldown cannot exceed one week.
+**ETHFaucet.** Distributes testnet GMB to whitelisted users. Per-user cooldown enforced in seconds. Contract-level ceilings prevent accidental misconfiguration: claim amounts cannot exceed one GMB and cooldown cannot exceed one week.
 
 ### Why GembaBlockchain Testnet
 
@@ -270,15 +270,15 @@ The live platform is available at [educhain.gembait.com](https://educhain.gembai
 
 **Gallery.** Shows the connected user's complete NFT collection across both Predefined and Custom contracts. Each card displays the NFT image, name, contract badge, and token ID. Clicking opens a lightbox with full metadata, trait grid, contract link to GembaScan, and IPFS metadata JSON link.
 
-**Token Shop.** Three tabs. The first allows purchase of GameToken at fixed ETH price. The second allows minting of Predefined NFTs at fixed ETH price. The third handles Custom NFTs with two sub-modes: Creative Mint (user supplies own IPFS URI, pays in ETH) and Batch Mint (pays in GameTokens, uses default metadata for cheaper experimentation).
+**Token Shop.** Three tabs. The first allows purchase of GameToken at a fixed testnet-GMB price. The second allows minting of Predefined NFTs at a fixed testnet-GMB price. The third handles Custom NFTs with two sub-modes: Creative Mint (user supplies own IPFS URI, pays in testnet GMB) and Batch Mint (pays in GameTokens, uses default metadata for cheaper experimentation).
 
 **Marketplace.** Displays all active listings with full NFT metadata rendered in each card. Filters allow viewing by token type or by seller. Each listing includes a Buy button (disabled for the seller), a Cancel button (only for the seller), and a View Details modal with complete information including private buyer restrictions where applicable.
 
-**Leaderboard.** Shows the top ten users ranked by live points calculated on the blockchain. Each entry displays shortened address, tier badge, points total, and net worth in ETH. Auto-refreshes every thirty seconds.
+**Leaderboard.** Shows the top ten users ranked by live points calculated on the blockchain. Each entry displays shortened address, tier badge, points total, and net worth in GMB. Auto-refreshes every thirty seconds.
 
 **Full Rankings.** Displays every tracked user with client-side filters and sorting. Users can search by address, filter by minimum points or tier, and sort by points, token count, or net worth. Pagination supports page sizes from ten to one hundred.
 
-**Faucet.** Allows whitelisted users to claim testnet GMB once every twenty-four hours. Shows countdown to next eligible claim, total claims made, cumulative ETH received, and current faucet balance.
+**Faucet.** Allows whitelisted users to claim testnet GMB once every twenty-four hours. Shows countdown to next eligible claim, total claims made, cumulative GMB received, and current faucet balance.
 
 **Admin Panel.** Restricted to administrators and the owner. Provides a dynamic, ABI-driven interface to every contract. Functions are organised by contract, separated into Read and Write tabs, and filtered by role. Each function renders as a form with typed inputs and an Execute button that produces pending, confirmed, and rejected transaction toasts with GembaScan links.
 
@@ -298,7 +298,7 @@ All seven contracts are deployed and source-verified on GembaBlockchain testnet.
 | GameNFTCustom | [`0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3`](https://testnet.gembascan.io/address/0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3) | ERC-721A user-minted collection |
 | TokenMarketplace | [`0xF61647866ad7be8137230Ad688092D2f3F4A1666`](https://testnet.gembascan.io/address/0xF61647866ad7be8137230Ad688092D2f3F4A1666) | Peer-to-peer trading venue |
 | TrackingContract | [`0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF`](https://testnet.gembascan.io/address/0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF) | Live leaderboard aggregator |
-| ETHFaucet | [`0x7Ff43282d7939418a3f0A308E2d48Dd93536044e`](https://testnet.gembascan.io/address/0x7Ff43282d7939418a3f0A308E2d48Dd93536044e) | Testnet ETH dispenser |
+| ETHFaucet | [`0x7Ff43282d7939418a3f0A308E2d48Dd93536044e`](https://testnet.gembascan.io/address/0x7Ff43282d7939418a3f0A308E2d48Dd93536044e) | Testnet GMB dispenser |
 
 Deployer: [`0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298`](https://testnet.gembascan.io/address/0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298) · Last deployment: 19 April 2026.
 
@@ -341,9 +341,9 @@ For deployment at scale or to production environments, the same contracts can be
 
 **Platform security.** The application never stores or requests private keys. All authentication is wallet-based. Communication is TLS-encrypted. No user-identifiable data is collected without explicit consent. The platform operates in compliance with the GDPR and the EU Data Act.
 
-**Classroom safety.** Testnet-only operation means no real financial exposure. Rate limits prevent students from making large or rapid-fire mistakes. Whitelist gating ensures only approved participants can interact with the contracts. Teachers can remove a student from the whitelist at any time, immediately halting their ability to mint, trade, or claim ETH.
+**Classroom safety.** Testnet-only operation means no real financial exposure. Rate limits prevent students from making large or rapid-fire mistakes. Whitelist gating ensures only approved participants can interact with the contracts. Teachers can remove a student from the whitelist at any time, immediately halting their ability to mint, trade, or claim testnet GMB.
 
-**Regulatory positioning.** EduChain is an educational tool and does not constitute a financial product under MiCA. The GameToken has no real-world exchange value and no path to listing on any exchange. NFTs minted on the platform carry explicit metadata identifying them as educational artefacts.
+**Regulatory positioning.** EduChain is an educational tool and does not constitute a financial product. The GameToken has no real-world exchange value and no path to listing on any exchange. NFTs minted on the platform carry explicit metadata identifying them as educational artefacts.
 
 ---
 
