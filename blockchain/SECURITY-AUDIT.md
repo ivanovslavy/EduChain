@@ -134,3 +134,91 @@ medium-severity vulnerabilities and are safe for their intended educational use.
 **Slavcho Ivanov**
 Tech Lead, GembaIT
 2026-08-02
+
+---
+
+## 9. CertificateRegistry — added and audited 2026-10-31
+
+**Scope.** `contracts/CertificateRegistry.sol` (15 376 B source), deployed at
+[`0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4`](https://testnet.gembascan.io/address/0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4#code)
+on GembaBlockchain testnet 821207 and source-verified there. Owner
+`0x5578c75F22dE0bf1caA4BdD46BA28406C696a5dC` (the existing cold deployer), issuer
+`0x13f1b11dc5DcAcC6f05983655B04885882E824c8` (a new hot key, created for this and nothing else).
+
+**Design decisions that are the security.**
+
+* **Soulbound.** `transferFrom`, `safeTransferFrom`, `approve` and `setApprovalForAll` all revert;
+  `_update` refuses any move where `from != address(0)`, so minting works and nothing else does.
+  Not even the owner can move a certificate. A credential that can be sold certifies nothing.
+* **No external calls, no payable functions.** `_mint` is used rather than `_safeMint` precisely so
+  that issuing cannot call out to a recipient contract. With no value and no calls out there is no
+  reentrancy surface at all — not a guarded one, an absent one.
+* **Role separation.** The hot key on the server can call exactly one function, `issue()`. Revocation,
+  role changes and the base URI are owner-only, and the owner key is not on the server. A full
+  compromise of the API host therefore bounds the damage to certificates nobody earned — visible in
+  the event log and revocable.
+* **No personal data on-chain.** The record is a `bytes32` hash of the certificate's contents plus
+  the date, the score, a course id and a revocation flag. The readable fields live off-chain where
+  they can be corrected and erased; the hash proves a presented certificate is the one issued.
+  `setBaseURI` is the only function in the ABI that takes a string, and a test asserts that.
+* **One hash, one serial.** `tokenOfHash` makes the same certificate impossible to issue twice, and
+  `issue` reverts naming the existing serial.
+* **Reinstatement exists.** Refusing to undo an administrative mistake is worse than allowing it:
+  both events stay in the log for ever, so nothing is hidden by a reinstatement.
+
+**Static analysis.**
+
+| tool | result |
+|---|---|
+| Slither 0.11.3 (solc 0.8.28, OZ 5.6.1 — the exact version the build uses) | 2 findings, both Low, both by design |
+| Mythril 0.24.8 | **no issues detected** |
+
+The two Slither findings are `missing-zero-check` on `initialIssuer` (constructor) and on
+`setIssuer`. Both are **intentional**: `address(0)` is the documented way to switch issuing OFF, and
+a test asserts that `issue()` then reverts. A third finding on the first run — `dead-code` for an
+overridden `_baseURI()` — was **real and was removed**; `tokenURI` is overridden directly, so an
+override of `_baseURI` was code nothing called.
+
+🔑 A note on method: the first Slither re-run after that fix still reported the dead code. It was a
+stale `crytic-export` cache, not a stale fix. The check also lies; clear the cache before believing
+a second run.
+
+**Tests.** 39 Hardhat + 7 Foundry properties × 10 000 runs + 8 red canaries + a 72-check end-to-end
+suite against the live chain. See `TESTING.md` §5.
+
+**Not audited externally.** As with the rest of this document: this is a self-audit, signed below.
+An external audit remains scoped for any deployment beyond a testnet.
+
+---
+
+## 10. Web-tier hardening, 2026-10-31 (outside the contracts, inside the threat model)
+
+* **Content-Security-Policy, enforced.** Deployed first as `Content-Security-Policy-Report-Only`,
+  measured with a real Chromium over all 60 page/language combinations twice (with and without a
+  connected wallet), and flipped to enforcing only after both sweeps reported **zero** violations.
+  Scripts are `'self'` plus Cloudflare Turnstile — no `'unsafe-inline'`, no `'unsafe-eval'`.
+  `'unsafe-inline'` is granted for STYLES only, because `react-hot-toast`,
+  `react-loading-skeleton` and the wallet modal's web components inject `<style>` elements and
+  support neither a nonce nor a stable hash; that was the only directive any page ever violated
+  (300 × `style-src-elem`). `frame-ancestors 'none'`, `object-src 'none'`, `base-uri 'self'`,
+  `form-action 'self'`.
+* **The IPFS upload endpoint is no longer public.** It had **no authentication at all** — 30 uploads
+  per hour per IP, and the IP comes from `X-Forwarded-For` behind `trust proxy`, which is a header,
+  not a fact. Now: a wallet signature over a canonical message that includes the sha256 of the image
+  (so a captured signature cannot be replayed with a different file), checked against the on-chain
+  `Whitelist`; the file type decided by its BYTES rather than the declared MIME (JPEG/PNG/WebP only —
+  a scriptable SVG declared as `image/png` is refused); EXIF/XMP/IPTC stripped losslessly before
+  anything is pinned, and an upload that cannot be cleaned is REFUSED; a quota per wallet as well as
+  per IP. 14/14 security checks, each one an attempt a stranger can make against the live endpoint.
+* **Dependencies.** 26 high/critical advisories down to 14, including the one that mattered here:
+  `proxy-addr`'s IP-spoofing advisory, which is exactly the control the IPFS endpoint used to lean
+  on. `express` 5.2.1→5.3.0, `nodemailer` 8→10.3.1 (CRLF injection), `react-router-dom`
+  7.14.1→7.18.5 (arbitrary constructor via turbo-stream), `vite` 8.0.8→8.3.5, `wagmi`/`viem`/
+  `@walletconnect/ethereum-provider` lifted, `ws` pinned to ^8.22.0 by override. The remaining 14 all
+  trace to one root: `zod` 3 under `@reown/appkit`, whose fix is a major version jump inside the
+  wallet-connection path. **Accepted, not fixed** — it is a client-side DoS in the visitor's own tab,
+  and lifting it blind in a path that cannot be tested headlessly would be the riskier change.
+* **A third-party gateway removed from the path.** NFT images were rendered through the public
+  `ipfs.io` gateway while the platform pins to its own node. That both broke the gallery whenever
+  ipfs.io was down (it was, from 2026-09-21) and told a third party which CIDs each visitor was
+  reading. One place now decides, and it is ours.

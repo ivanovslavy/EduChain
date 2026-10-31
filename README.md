@@ -19,24 +19,31 @@ EduChain is a comprehensive educational Web3 platform built for schools, univers
 ## Table of Contents
 
 1. [About the Project](#about-the-project)
-2. [Our Commitment to the Ethereum Ecosystem](#our-commitment-to-the-ethereum-ecosystem)
-3. [Why Web3 Education Matters Now](#why-web3-education-matters-now)
-4. [Who This Platform Is For](#who-this-platform-is-for)
-5. [Platform Features](#platform-features)
-6. [Technical Architecture](#technical-architecture)
-7. [Teacher Training Programme](#teacher-training-programme)
-8. [Student Curriculum (16 Hours)](#student-curriculum-16-hours)
-9. [Platform Tour](#platform-tour)
-10. [Smart Contract Addresses](#smart-contract-addresses)
-11. [Technology Stack](#technology-stack)
-12. [Security and Compliance](#security-and-compliance)
-13. [For Developers](#for-developers)
-14. [Partnership Opportunities](#partnership-opportunities)
-15. [Funding and Ecosystem Support](#funding-and-ecosystem-support)
-16. [Sustainability](#sustainability)
-17. [Open Source and Transparency](#open-source-and-transparency)
-18. [Contact](#contact)
-19. [License](#license)
+2. [Platform Features](#platform-features)
+3. [Technical Architecture](#technical-architecture)
+4. [Platform Tour](#platform-tour)
+5. [Smart Contract Addresses](#smart-contract-addresses)
+6. [Technology Stack](#technology-stack)
+7. [Security and Compliance](#security-and-compliance)
+8. [For Developers](#for-developers)
+9. [Contact](#contact)
+10. [License](#license)
+
+### Also in `docs/`
+
+The positioning, the syllabus and the funding material were moved out of this README on 2026-10-31,
+so that the README documents the product and each of those documents keeps its own job:
+
+| document | what it is |
+|---|---|
+| [`docs/curriculum.md`](docs/curriculum.md) | the seven-module, sixteen-hour student syllabus |
+| [`docs/teacher-training.md`](docs/teacher-training.md) | the **planned** teacher-training programme — none of it is implemented in the platform |
+| [`docs/audiences.md`](docs/audiences.md) | who the platform is for, by segment |
+| [`docs/why-web3-education.md`](docs/why-web3-education.md) | the policy rationale |
+| [`docs/ethereum-commitment.md`](docs/ethereum-commitment.md) | the standing commitments to the Ethereum ecosystem |
+| [`docs/partnerships.md`](docs/partnerships.md) · [`docs/funding.md`](docs/funding.md) · [`docs/sustainability.md`](docs/sustainability.md) · [`docs/open-source.md`](docs/open-source.md) | partnership, funding, sustainability and transparency |
+| [`docs/redeploy.md`](docs/redeploy.md) | how to bring the whole deployment back after a chain restart |
+| [`docs/certificates.md`](docs/certificates.md) | the certificate exam: how it works, what is stored, what goes on-chain |
 
 ---
 
@@ -47,59 +54,6 @@ EduChain is built for the Ethereum ecosystem, by people who believe that educati
 EduChain was developed by GEMBA IT to introduce blockchain technologies, decentralised finance, and digital asset management into the formal and informal education sectors across Europe. The platform operates entirely on the GembaBlockchain testnet, meaning no real value is ever at risk. Students and teachers learn by doing: they claim testnet GMB, buy tokens, mint NFTs, and trade on a curated marketplace, all under the supervision of trained educators. Every interaction is a real Ethereum transaction — with gas, confirmation times, and on-chain visibility — but the environment is a safe sandbox.
 
 EduChain addresses a structural gap in European education. While Web3 technologies increasingly shape the digital economy, most school curricula and teacher training programmes have not yet integrated them. EduChain closes this gap with a turnkey solution: production-grade smart contracts, a polished web application, a detailed teacher training curriculum, and a structured 16-hour student programme. The project is positioned for adoption by ministries of education, regional authorities, universities, vocational training centres, coding bootcamps, private academies, and Ethereum-ecosystem initiatives, wherever they may be located. Its open-source foundation and GDPR-compliant design make it suitable for integration into publicly funded education systems anywhere, and its Ethereum-native architecture keeps it tightly aligned with ecosystem tooling and standards.
-
----
-
-## Our Commitment to the Ethereum Ecosystem
-
-EduChain is not a commercial product seeking customers. It is a community resource seeking adoption. Our commitments are as follows.
-
-**Open source, forever.** All smart contracts are source-verified on GembaScan and licensed under MIT. All compiled ABIs, deployment scripts, and on-chain addresses are public. All curriculum materials are released under Creative Commons Attribution-ShareAlike 4.0 International. Anyone can fork, audit, modify, translate, or redeploy EduChain without asking permission.
-
-**Testnet-first, risk-free.** EduChain operates exclusively on the GembaBlockchain testnet. No real value is ever at risk. This is a deliberate design choice that lets schools, universities, and public institutions adopt the platform without financial exposure or regulatory concern, while still teaching the full mechanics of a live Ethereum network.
-
-**Vendor-neutral.** EduChain teaches principles, not products. Students learn how Ethereum itself works — wallets, transactions, gas, smart contracts, token standards, decentralised storage — rather than how to use a specific commercial wallet, marketplace, or infrastructure provider. They leave with transferable knowledge that applies anywhere in the ecosystem.
-
-**Built for the public.** The platform is designed for adoption by public institutions — ministries, universities, regional authorities — with GDPR-compliant architecture, a multilingual user interface, and alignment with EU digital education priorities. It is equally usable by private schools, non-profits, and any educator who wants to teach Ethereum seriously.
-
-**Long-term stewardship.** GEMBA EOOD, the company that built EduChain, commits to technical stewardship of the platform. A transition plan to a non-profit foundation, university consortium, or Ethereum-ecosystem organisation is actively developed, ensuring the project outlives any single organisation's involvement.
-
----
-
-## Why Web3 Education Matters Now
-
-The Ethereum ecosystem is only as strong as the people who use, build, and understand it. Without a continuous influx of new users, developers, and advocates who understand not just how to interact with the network but why it matters, the ecosystem cannot sustain itself. Education is not a peripheral activity — it is core infrastructure.
-
-At the same time, the global shift toward decentralised technologies is no longer speculative. Banking, supply chain verification, credentialing, digital identity, intellectual property registration, and content monetisation are all being rebuilt on blockchain infrastructure. The European Union has formally recognised this trajectory through the European Blockchain Services Infrastructure (EBSI), and digital identity initiatives such as the European Digital Identity Wallet.
-
-If Europe does not begin preparing students for this environment, four outcomes follow.
-
-1. **Competitiveness.** European graduates will enter the workforce less prepared than peers trained in jurisdictions where Web3 education is already mainstream.
-2. **Safety.** A generation will face digital finance tools, tokenised assets, and decentralised identity systems without the critical thinking skills to navigate them safely, leaving them exposed to fraud, scams, and exploitation.
-3. **Leadership.** Europe will cede leadership in a technology sector it could otherwise define, with innovation concentrating elsewhere.
-4. **Ecosystem growth.** Ethereum specifically needs new builders. Every student who completes EduChain leaves not merely knowing what a smart contract is, but having deployed one. They become potential contributors to the ecosystem — whether as developers, project founders, auditors, educators, or informed community members.
-
-EduChain treats Web3 literacy as a core competence, alongside internet literacy, financial literacy, and media literacy. It teaches not only how blockchain works, but also how to evaluate risk, recognise fraudulent patterns, and make informed decisions in a decentralised environment.
-
----
-
-## Who This Platform Is For
-
-EduChain is designed as a modular solution that adapts to diverse educational contexts.
-
-**Primary and secondary schools.** The 16-hour student programme fits into technology, informatics, or elective courses for students aged 12 and above. Teachers use the admin dashboard to manage student access, monitor progress, and deliver lessons.
-
-**Universities and colleges.** Computer science, economics, business administration, and law faculties can integrate EduChain into modules on fintech, digital law, decentralised finance, and software engineering. The smart contracts themselves are teaching material for advanced courses.
-
-**Vocational training centres.** Students preparing for careers in software development, finance, or digital business gain practical exposure to blockchain tools that are increasingly expected in these fields.
-
-**Coding bootcamps and academies.** EduChain serves as a complete curriculum module for short-form intensive courses in blockchain and Web3 development.
-
-**Training programmes for adults.** Ministries of labour, chambers of commerce, public libraries, and reskilling programmes can use EduChain to train employees and citizens in sectors undergoing digital transformation.
-
-**Research institutions.** The live leaderboard, on-chain event logs, and open smart contract source make EduChain a useful research instrument for studying user behaviour, gamification in education, and decentralised systems design.
-
-**Non-profits and civic initiatives.** Any organisation running an educational programme — from after-school coding clubs to national digital-literacy campaigns — can deploy EduChain without fees, without contracts, and without vendor commitments.
 
 ---
 
@@ -133,7 +87,7 @@ EduChain combines a safe sandbox environment with production-grade tooling.
 
 ### Smart Contract Ecosystem
 
-EduChain follows a testnet-first, risk-free deployment model. The platform consists of seven production-grade, immutable smart contracts, all deployed to GembaBlockchain testnet and verified on GembaScan, with full source code and compiled ABIs published in this repository. Contracts are written in Solidity 0.8.28, use OpenZeppelin v5 libraries, and target the Cancun EVM. They use custom errors instead of revert strings for gas efficiency and machine-readable error handling.
+EduChain follows a testnet-first, risk-free deployment model. The platform consists of eight production-grade, immutable smart contracts, all deployed to GembaBlockchain testnet and verified on GembaScan, with full source code and compiled ABIs published in this repository. Contracts are written in Solidity 0.8.28, use OpenZeppelin v5 libraries, and target the Cancun EVM. They use custom errors instead of revert strings for gas efficiency and machine-readable error handling.
 
 **Whitelist.** The access control registry. Maintains separate sets of whitelisted users, blacklisted users, and administrators. Every downstream contract queries this registry before allowing a user action. Uses OpenZeppelin's EnumerableSet for O(1) membership checks and gap-free pagination.
 
@@ -149,6 +103,20 @@ EduChain follows a testnet-first, risk-free deployment model. The platform consi
 
 **ETHFaucet.** Distributes testnet GMB to whitelisted users. Per-user cooldown enforced in seconds. Contract-level ceilings prevent accidental misconfiguration: claim amounts cannot exceed one GMB and cooldown cannot exceed one week.
 
+**CertificateRegistry** (added 2026-10-31). Course certificates, as a soulbound ERC-721 plus a public registry. Transfers and approvals are refused at the contract level: a diploma that can be sold certifies nothing. What is stored on-chain is a 32-byte hash of the certificate's contents, the date, the score and whether it has been revoked — and nothing else. **No personal data of any kind is written to the chain**, because a public chain is permanent and world-readable and a name written into it could never be corrected or erased. The readable fields live in EduChain's own database and on the PDF, where they can be. Two keys, deliberately separated: a hot `issuer` key on the server whose only power is `issue()`, and the cold `owner` key — not on the server — which is the only one that can revoke. See [`docs/certificates.md`](docs/certificates.md).
+
+### The server tier
+
+Two small Node processes sit behind the same Apache vhost, both bound to localhost:
+
+**The static server** (`static-server.cjs`, port 3085) serves the built SPA with real HTTP semantics — a 301 for a bare `/`, a 404 for an unknown path, and a per-route `<head>` so crawlers see the right title and description without running JavaScript.
+
+**The API** (`server/index.cjs`, port 3088) is deliberately tiny: a contact form (Turnstile + rate limit, forwarded by SMTP, stored nowhere), an IPFS pinning endpoint, and the certificates module.
+
+**IPFS is ours.** EduChain runs its own Kubo node and pins to it directly; the public read gateway is `ipfs.gembait.com`. No third-party pinning service is used, and since 2026-10-31 the pinning endpoint requires a wallet signature checked against the on-chain whitelist, decides the file type from the bytes rather than from the declared MIME, and strips EXIF/XMP/IPTC before anything is pinned — IPFS is permanent and public, so a photograph's GPS coordinates must never get there.
+
+**The certificates module** (`server/certificates/`) is the only part of EduChain with a database: a SQLite file holding the minimum needed to issue and verify a certificate, with a retention schedule. It is self-contained on purpose, so it can be lifted onto its own subdomain later.
+
 ### Why GembaBlockchain Testnet
 
 EduChain is deployed on GembaBlockchain testnet for three deliberate reasons.
@@ -161,104 +129,7 @@ EduChain is deployed on GembaBlockchain testnet for three deliberate reasons.
 
 ### Platform Architecture
 
-The web application is built with React 19 and TypeScript, served through Vite 8, and styled with Tailwind CSS v4 design tokens. Wallet connection is handled by wagmi v3, low-level chain interactions by viem v2, and contract calls by ethers v6. Internationalisation is handled by react-i18next, and NFT gallery enrichment by Moralis's NFT API. The frontend is hosted behind Apache with Cloudflare as CDN and SSL terminator. The production domain is [educhain.gembait.com](https://educhain.gembait.com).
-
----
-
-## Teacher Training Programme
-
-A central principle of EduChain: teachers are trained first. Students cannot be guided through Web3 by someone who has not personally mastered it. The training programme is delivered in two formats to accommodate institutional preferences.
-
-### Option One: In-Person Intensive
-
-A three-day residential programme conducted in major regional cities. Teachers arrive with a laptop and leave with a certificate, a configured wallet, and practical experience administering a live educational blockchain platform.
-
-**Day one: foundations.** The evolution from Web1 to Web3 is examined not as ideology but as technological progression. Teachers learn blockchain fundamentals: how consensus works, what makes data immutable, and why decentralisation matters for education. MetaMask is installed, configured, and secured. Private keys and seed phrases are explained with emphasis on what never to do. Each participant completes their first GembaBlockchain transaction. Gas fees and transaction mechanics are demystified through direct observation on GembaScan.
-
-**Day two: smart contracts and digital assets.** The day moves from passive observation to active interaction. Teachers study ERC-20 as a standard for interchangeable tokens and ERC-721 as a standard for unique digital objects. Each participant deploys a test token and mints their first NFT. IPFS is introduced as the decentralised storage layer that makes NFT metadata permanent. Teachers practise uploading files to Pinata, obtaining content identifiers, and linking them to smart contracts. The marketplace is explored through listing, buying, and cancelling operations.
-
-**Day three: pedagogy and administration.** The third day shifts from learner to educator. Teachers tour the EduChain admin dashboard, practise whitelisting students, monitor progress, and rehearse common classroom scenarios. Security education is central: how to recognise scams, what approve functions actually authorise, and how to teach students to be cautious without making them fearful. Teachers learn to integrate AI assistants as analytical tools. The day concludes with a practical assessment covering platform administration and pedagogical scenarios.
-
-**Certification.** Teachers who pass the final assessment receive an EduChain Blockchain Educator Certificate, issued both as a signed PDF and as an on-chain NFT credential.
-
-### Option Two: Online Self-Paced Course
-
-For teachers unable to attend in-person seminars, an equivalent self-paced course is available through a custom learning management system.
-
-The course comprises eight modules totalling approximately fifteen hours of video, interactive exercises, and assessed practice. Module topics mirror the in-person curriculum: Web3 foundations, wallets and security, smart contracts, digital assets, platform administration, teaching strategies, scam prevention, and AI-assisted blockchain analysis.
-
-Assessment is distributed: each module ends with a quiz requiring seventy percent to pass, and a comprehensive final test requires eighty percent. A practical assignment requires the teacher to administer a test classroom on the live platform. Monthly Q&A webinars with the EduChain founder provide direct support, and a dedicated community forum enables peer consultation. Certification upon successful completion is equivalent in authority to the in-person certificate.
-
-### Post-Training Support
-
-Certified teachers receive continuing professional development: quarterly updates on platform changes and Web3 developments, priority support for classroom incidents, and inclusion in an educator network for sharing curriculum innovations. Annual recertification ensures alignment with evolving blockchain standards and regulatory frameworks.
-
----
-
-## Student Curriculum (16 Hours)
-
-The curriculum is designed for students aged twelve and above. It can be delivered as a standalone elective course, integrated into existing informatics or economics programmes, or adapted for shorter bootcamp formats. The programme progresses from conceptual foundations to independent creation, culminating in a final project each student presents to their peers.
-
-### Module 1: Introduction to Web3 and Blockchain Foundations (2 hours)
-
-Students examine how the internet has evolved from Web1 (static pages you read) through Web2 (platforms you write to but do not own) to Web3 (networks where ownership is mathematically verifiable on-chain). Blockchain is presented through the analogy of a shared public ledger that no single party controls. Key principles are introduced: decentralisation, transparency, and immutability. Smart contracts are framed as self-executing agreements, often illustrated with the vending machine analogy.
-
-Practical work: each student connects MetaMask to the GembaBlockchain testnet and opens the EduChain platform. Discussion follows on the benefits and risks of decentralisation in everyday life.
-
-### Module 2: Web3 Wallets and Smart Contracts in Practice (2 hours)
-
-The second module moves from concept to action. MetaMask is explored in depth: what private keys actually are, why seed phrases must never be shared or photographed, and how transactions are digitally signed using public-key proofs. Students observe what happens when they click "mint" or "buy" on a dApp, tracing the transaction through the mempool to confirmation on GembaScan.
-
-Practical work: students claim their first testnet GMB from the platform faucet and purchase their first GameToken. Each student then locates their transaction on GembaScan and interprets its fields.
-
-### Module 3: ERC-20 Tokens and Decentralised Trading (2 hours)
-
-Students study the ERC-20 standard in detail: what makes a token fungible, what decimals mean, and how total supply differs from circulating supply. Liquidity pools are introduced through accessible analogies, and price discovery is explained through order mechanics. The fixed-price design of the EduChain GameToken provides a controlled environment for observing these concepts without the volatility of live markets.
-
-Practical work: students buy and sell GameToken on the platform, observe how their wallet balance changes, and use GembaScan to verify every movement on-chain.
-
-### Module 4: Non-Fungible Tokens and Digital Art (ERC-721) (2 hours)
-
-The fourth module introduces the ERC-721 standard. Students learn what makes a token unique, how tokenId and metadata interact, and why the metadata JSON file is the actual artistic payload of most NFTs. IPFS is explained as the decentralised filesystem that makes digital assets permanent. Students practise with Pinata, uploading an image and a metadata file, obtaining content identifiers, and assembling a valid tokenURI.
-
-Practical work: each student creates an original image, writes a structured metadata JSON file with attributes such as name, description, and rarity, uploads both to IPFS via Pinata, and mints a Custom NFT on the EduChain platform. The newly minted NFT appears in the gallery within seconds.
-
-### Module 5: Economics of Tokens and NFTs (2 hours)
-
-Students learn to move assets between wallets, approve third parties to spend on their behalf, and list items for sale on the marketplace. Pricing strategy is examined: how to value a digital asset when there is no obvious reference point. The gamified points system is explored as a microeconomic exercise, demonstrating how reputation, rank, and scarcity interact.
-
-Practical work: each student lists an NFT for sale priced in GameTokens. Students purchase one another's NFTs. A time-boxed competition rewards whoever reaches the highest leaderboard position by the end of class. Post-competition discussion examines which strategies proved most effective and why.
-
-### Module 6: Security, Key Management, and Scam Recognition (2 hours)
-
-The sixth module is the most consequential for the student's future. Private key management is revisited with greater depth: hardware wallets, cold storage, and the trade-offs of each approach. Approve functions are examined as a frequent vector for fraud. Common scam patterns are studied in detail: phishing, fake airdrops, malicious token approvals, rug pulls, and liquidity exploits. Students practise distinguishing verified contracts from unverified ones, reading contract source on GembaScan, and identifying suspicious patterns.
-
-Practical work: a simulated scam scenario is run in the classroom. Students must identify the attack vector before authorising a transaction. Transaction approval is practised with attention to allowance limits and contract addresses.
-
-### Module 7: Final Project and AI as Blockchain Assistant (4 hours)
-
-The final module synthesises every prior lesson into a presented project.
-
-In the first hour, students create an advanced NFT collection with rich metadata, integrating attributes such as traits, rarity tiers, and narrative elements. Pinata file management is refined. Discussion examines common mistakes in NFT projects and how to avoid them.
-
-In the second hour, students use AI assistants to analyse smart contract source code. A standard OpenZeppelin template is examined alongside a deliberately crafted scam contract. Students practise using AI to identify risks, not to replace their own judgement but to augment it. The concept of AI as daily Web3 infrastructure is introduced.
-
-In the third and fourth hours, students work on their individual final project. Each project has three components: a small NFT collection with a coherent narrative, an economic strategy intended to reach a target leaderboard position, and a market integration plan. Students work individually with teacher support and AI assistance. The course concludes with each student presenting their project to the class, followed by a forward-looking discussion on continuing Web3 education, and the award of course completion certificates as on-chain NFTs.
-
-### Learning Outcomes
-
-A student who completes the full programme can:
-
-- Explain blockchain fundamentals and the evolution of the internet.
-- Create, secure, and operate a Web3 wallet.
-- Read, interpret, and verify on-chain transactions.
-- Distinguish fungible from non-fungible tokens and explain the use cases for each.
-- Create and publish original digital assets on decentralised storage.
-- Buy, sell, and trade digital assets through peer-to-peer markets.
-- Recognise common scams and apply defensive practices.
-- Use AI tools as analytical assistants for smart contract evaluation.
-- Describe the economic dynamics of tokenised systems.
-- Present a completed Web3 project to peers.
+The web application is built with React 19 and TypeScript, served through Vite 8, and styled with Tailwind CSS v4 design tokens. Wallet connection is handled by wagmi v3, low-level chain interactions by viem v2, and contract calls by ethers v6. Internationalisation is handled by react-i18next. The NFT gallery reads the chain itself — it enumerates `Transfer` events and fetches each `tokenURI` directly, with no third-party NFT API in the path. The frontend is hosted behind Apache with Cloudflare as CDN and SSL terminator. The production domain is [educhain.gembait.com](https://educhain.gembait.com).
 
 ---
 
@@ -282,29 +153,39 @@ The live platform is available at [educhain.gembait.com](https://educhain.gembai
 
 **Admin Panel.** Restricted to administrators and the owner. Provides a dynamic, ABI-driven interface to every contract. Functions are organised by contract, separated into Read and Write tabs, and filtered by role. Each function renders as a form with typed inputs and an Execute button that produces pending, confirmed, and rejected transaction toasts with GembaScan links.
 
+**Certificates.** Visible once a wallet is connected. A 20-question exam drawn at random from a bank of 65 across five topics and three difficulty levels, one question per screen, with a progress bar and no going back. The e-mail address is confirmed with a code before the exam starts, so a certificate can never be addressed to somebody else's inbox. At 80 % or above the certificate is issued: a PDF by e-mail, a soulbound token on-chain, and a public verification page. The correct answers never leave the server — not in an API response, not in the bundle, and not even in the result screen after a failed attempt.
+
+**Verify.** Public, no wallet needed: anybody can type a certificate serial (or scan the QR on the PDF) and get a straight answer. Validity is read from the chain, not from our database, so our opinion cannot differ from the record. The page shows the name, the course, the date and the score — never an e-mail address.
+
 **Contact.** Provides a simple form for partnership inquiries, pilot programme requests, technical questions, and funding discussions.
 
 ---
 
 ## Smart Contract Addresses
 
-All seven contracts are deployed and source-verified on GembaBlockchain testnet.
+All eight contracts are deployed and source-verified on **GembaBlockchain testnet (chain id 821207)**.
+Every address below is read from `src/contracts/addresses.json`, which is the file the application
+itself loads — so this table cannot drift from what the site uses without the site breaking too.
 
-| Contract | Address | Purpose |
-| --- | --- | --- |
-| Whitelist | [`0x1e7D76fE34584df2d2029E5304AB575D79Dc8108`](https://testnet.gembascan.io/address/0x1e7D76fE34584df2d2029E5304AB575D79Dc8108) | Access control registry |
-| GameToken | [`0xe778ee7559907961F24B6F3C31E9792199EC608D`](https://testnet.gembascan.io/address/0xe778ee7559907961F24B6F3C31E9792199EC608D) | ERC-20 in-platform currency |
-| GameNFTPredefined | [`0x1113D032460A55Fb91808BD07566397502185012`](https://testnet.gembascan.io/address/0x1113D032460A55Fb91808BD07566397502185012) | ERC-721A fixed-supply collection |
-| GameNFTCustom | [`0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3`](https://testnet.gembascan.io/address/0xba17A76635B4069BF8ca9E3516225a6A1a6e15a3) | ERC-721A user-minted collection |
-| TokenMarketplace | [`0xF61647866ad7be8137230Ad688092D2f3F4A1666`](https://testnet.gembascan.io/address/0xF61647866ad7be8137230Ad688092D2f3F4A1666) | Peer-to-peer trading venue |
-| TrackingContract | [`0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF`](https://testnet.gembascan.io/address/0xc9af98AD8ae78086620821F9Ceb05842Dd7950CF) | Live leaderboard aggregator |
-| ETHFaucet | [`0x7Ff43282d7939418a3f0A308E2d48Dd93536044e`](https://testnet.gembascan.io/address/0x7Ff43282d7939418a3f0A308E2d48Dd93536044e) | Testnet GMB dispenser |
+| Contract | Address | What it does |
+|---|---|---|
+| Whitelist | [`0x76D8ddb79F91df2FB494Ef5375A67F778860AcFE`](https://testnet.gembascan.io/address/0x76D8ddb79F91df2FB494Ef5375A67F778860AcFE#code) | Access gate: who may use the platform, and who may administer it. |
+| GameToken | [`0x7C9FFE16984b4fd7d006E806ce60C80d1089caA9`](https://testnet.gembascan.io/address/0x7C9FFE16984b4fd7d006E806ce60C80d1089caA9#code) | The GAME ERC-20 token students buy with test GMB. |
+| GameNFTPredefined | [`0x8c05d9Ff72a1053b838BC7a945Aa203d700F0371`](https://testnet.gembascan.io/address/0x8c05d9Ff72a1053b838BC7a945Aa203d700F0371#code) | The curated ERC-721 collection (fixed metadata on IPFS). |
+| GameNFTCustom | [`0x8838300d9F56d463E90356403E1E479a6DA62cFf`](https://testnet.gembascan.io/address/0x8838300d9F56d463E90356403E1E479a6DA62cFf#code) | Student-created ERC-721s with their own metadata. |
+| TokenMarketplace | [`0x965d745e3fc0a7c2c9648dDaed0eb6EF276e8972`](https://testnet.gembascan.io/address/0x965d745e3fc0a7c2c9648dDaed0eb6EF276e8972#code) | Peer-to-peer trading between whitelisted users. |
+| TrackingContract | [`0x9f5349e8514726b394fDEcEf16C1E8122f909397`](https://testnet.gembascan.io/address/0x9f5349e8514726b394fDEcEf16C1E8122f909397#code) | Points, ranks and the leaderboard. |
+| ETHFaucet | [`0x76c46FF20A2770e564052A60dcB3990f2D8082AB`](https://testnet.gembascan.io/address/0x76c46FF20A2770e564052A60dcB3990f2D8082AB#code) | 0.05 GMB per 24 hours, to whitelisted users. |
+| CertificateRegistry | [`0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4`](https://testnet.gembascan.io/address/0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4#code) | Course certificates: a soulbound ERC-721 plus a public registry. Only a HASH of the certificate is stored on-chain — no personal data. |
 
-Deployer: [`0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298`](https://testnet.gembascan.io/address/0x8eB8Bf106EbC9834a2586D04F73866C7436Ce298) · Last deployment: 19 April 2026.
+Deployer / owner: [`0x5578c75F22dE0bf1caA4BdD46BA28406C696a5dC`](https://testnet.gembascan.io/address/0x5578c75F22dE0bf1caA4BdD46BA28406C696a5dC)
+Core stack deployed 2026-08-02; CertificateRegistry deployed 2026-10-31.
+Explorer: <https://testnet.gembascan.io>
 
-For deployment at scale or to production environments, the same contracts can be redeployed to mainnet, any EVM-compatible Layer 2 (Polygon, Arbitrum, Optimism, Base, zkSync), or a consortium chain as the operating institution prefers.
-
----
+> **This is a testnet.** The GMB used for gas has no monetary value and neither do the tokens and
+> NFTs. GEMBA runs the chain, and it has been restarted before — a restart wipes every contract and
+> needs a redeploy. `blockchain/scripts/` plus the documented redeploy procedure make that a
+> fifteen-minute job rather than a project; see `docs/redeploy.md`.
 
 ## Technology Stack
 
@@ -362,103 +243,7 @@ npx hardhat compile
 npx hardhat run scripts/deploy.js --network gemba
 ```
 
-All seven contracts deploy in dependency order, wire themselves together, fund the faucet, whitelist the deployer, extract ABIs into `blockchain/abi/`, save deployment records to `blockchain/deployed/`, and verify every contract on GembaScan in a single command.
-
----
-
-## Partnership Opportunities
-
-EduChain welcomes partnerships that advance its mission of making Ethereum education free, accessible, and rigorous. Partnership here means collaboration on the platform's growth — not commercial licensing. EduChain has no paid tiers, no white-label product, and no customer-acquisition funnel. GEMBA EOOD is the creator and current steward of the project; partners are those who help make it better and more widely adopted.
-
-**Educational institutions.** Ministries of education, regional authorities, universities, schools, and vocational training centres can pilot EduChain, integrate it into their curricula, and contribute feedback that shapes its evolution. Research partnerships with universities examine topics including gamification in education, on-chain reputation systems, privacy-preserving credentials, and the pedagogy of decentralised systems. Jointly published papers and co-supervised theses are supported.
-
-**Non-profit organisations and civic institutions.** Foundations, public libraries, youth clubs, national digital-literacy campaigns, and educational non-profits can deploy EduChain for their own programmes without fees. We actively support adoption by organisations whose mission aligns with open access to blockchain education.
-
-**Ethereum developers and the ecosystem.** Solidity and EVM developers, auditors, frontend engineers, translators, and curriculum contributors are invited to contribute to the project directly. Improvements to the contracts, new platform features, security audits, translations, and curriculum extensions are all welcome through GitHub. Contributors become part of a growing community of people building educational infrastructure for Ethereum.
-
-**Technology partners.** Wallet providers, IPFS pinning services, RPC infrastructure providers, and AI-assistant platforms are welcome to discuss integrations that enrich the learning experience.
-
-For all partnership inquiries, contact [contacts@gembait.com](mailto:contacts@gembait.com).
-
----
-
-## Funding and Ecosystem Support
-
-EduChain is seeking **non-dilutive capital** — grants, ecosystem support, and public funding rather than equity investment or commercial partnership. The project is designed to satisfy the criteria of major ecosystem grant programmes and public funding instruments. It is not seeking commercial return — it is seeking adoption, partners, and sustainable funding to continue its mission of growing the Ethereum community through education.
-
-### Ethereum Foundation Programmes
-
-EduChain fits the Ethereum Foundation's priorities for public goods, developer onboarding, and ecosystem education.
-
-**Ecosystem Support Program (ESP).** EduChain is a production-grade, source-verified contribution to the ecosystem that directly addresses Ethereum's long-term need for new users and builders. The project aligns with ESP's focus on tooling, education, and public goods that strengthen Ethereum at the protocol and community level.
-
-**Academic Grants Round.** The 16-hour curriculum, teacher-training programme, and research-instrument capabilities of the live leaderboard and on-chain event logs make EduChain a natural fit for EF's academic grants, whether pursued directly by universities or jointly with GEMBA EOOD.
-
-**Public Goods funding.** EduChain is open-source, non-commercial, and built for adoption rather than extraction. It produces positive externalities — informed users, trained teachers, new developers — that accrue to the entire Ethereum ecosystem, not to any single operator.
-
-**Devcon scholarships and community initiatives.** Certified teachers and advanced students are strong candidates for Devcon scholarships, developer bootcamp sponsorships, and ecosystem community programmes. EduChain actively supports its graduates in engaging with the wider Ethereum community.
-
-### European Union Programmes
-
-EduChain is explicitly designed to satisfy the criteria of major European Union funding programmes.
-
-**Digital Europe Programme.** EduChain aligns with the Digital Skills priority, particularly advanced digital skills in emerging technologies. The platform is deployable as a national competence-framework component.
-
-**Erasmus+ Programme.** The teacher-training curriculum and cross-institutional partnerships satisfy Key Action 2 criteria for cooperation partnerships in school, VET, adult, and higher education.
-
-**Horizon Europe.** The research potential of EduChain (gamification, on-chain credentials, behavioural studies in decentralised systems) aligns with Cluster 2: Culture, Creativity and Inclusive Society, and Cluster 4: Digital, Industry and Space.
-
-**European Social Fund Plus (ESF+).** As a reskilling and upskilling instrument, EduChain fits ESF+ priorities for workforce digital transformation.
-
-**National Recovery and Resilience Plans.** Most EU member states have allocated significant recovery funds to digital education. EduChain is a turnkey deliverable that can be integrated directly into these plans.
-
-**Regional Operational Programmes.** Regional ERDF funds frequently support digital transformation in education. EduChain deployment at regional level is a suitable application target.
-
-### Collaboration
-
-GEMBA EOOD will prepare, upon request, a tailored application package for any of the above programmes, including project plan, budget, impact assessment, sustainability plan, and consortium structure. Co-applications with universities, non-profits, ministries, and ecosystem partners are explicitly supported — EduChain is strongest when it is adopted widely, and the funding path that reflects that is the one we want to pursue.
-
----
-
-## Sustainability
-
-EduChain is designed for long-term operation beyond initial funding cycles.
-
-**Technical sustainability.** Smart contracts are immutable and self-custodying: once deployed, they continue to operate indefinitely without ongoing intervention. Frontend hosting costs are modest (approximately 50 EUR per month at current scale) and scale linearly with traffic. The codebase is open source, enabling the community or successor organisations to maintain and evolve it.
-
-**Pedagogical sustainability.** Curriculum materials are released under Creative Commons Attribution-ShareAlike, enabling free adaptation by educators worldwide. The teacher certification programme creates a growing network of qualified educators who can train new teachers, reducing per-student training cost over time.
-
-**Financial sustainability.** Following initial grant funding, operations are supported through a combination of: voluntary contributions from institutions that deploy EduChain, in-kind contributions from the Ethereum developer community, and renewed grant cycles as the programme expands. EduChain is deliberately not structured as a revenue-seeking entity.
-
-**Governance sustainability.** GEMBA EOOD commits to technical stewardship of EduChain for the foreseeable future. A transition plan is actively developed for the project's long-term home, whether that be a non-profit foundation, a university consortium, or an Ethereum-ecosystem organisation.
-
-### Giving Back to Ethereum
-
-EduChain is designed to be self-sustaining, but its primary purpose is ecosystem contribution. Every certified teacher becomes an advocate for Ethereum in their classroom. Every student who completes the programme leaves with:
-
-- A wallet that they understand and control.
-- Deployed NFTs on the GembaBlockchain testnet.
-- Practical experience with transactions, gas fees, and contract interactions.
-- Critical-thinking skills to evaluate Web3 projects safely.
-
-These are not merely educational outcomes — they are ecosystem-growth metrics. Over a five-year horizon, a single cohort of 1,000 trained teachers can reach 100,000 students. That is 100,000 people who understand Ethereum, who can participate safely, and who can contribute to the ecosystem's future as builders, users, or informed citizens.
-
----
-
-## Open Source and Transparency
-
-EduChain operates under full transparency. This repository contains the complete smart contract source code, deployment scripts, compiled ABIs, and platform architecture documentation.
-
-The commitment to open source extends beyond code:
-
-- All smart contracts are source-verified on GembaScan — anyone can inspect exactly what the platform does.
-- All deployed contract addresses are public — every transaction is auditable on-chain.
-- All compiled ABIs are published alongside the contracts — anyone can build their own frontend, integration, classroom dashboard, or analytics on top of the existing deployment without involving GEMBA EOOD.
-- Curriculum materials are released under Creative Commons Attribution-ShareAlike 4.0 International — free to adapt, translate, and redistribute.
-- Vendor-neutral by design — EduChain teaches open Ethereum standards rather than the features of any specific commercial wallet, marketplace, or infrastructure provider, so knowledge and code are transferable across the ecosystem.
-- No vendor lock-in — any school, university, or training centre can fork and redeploy EduChain without involving the current operator.
-
-EduChain exists to grow Ethereum, not to capture value from it. Success is measured not in revenue, but in the number of students, teachers, and institutions who adopt the programme and the number of new builders who enter the ecosystem through it.
+The seven core contracts deploy in dependency order, wire themselves together, fund the faucet, whitelist the deployer, extract ABIs into `blockchain/abi/`, save deployment records to `blockchain/deployed/`, and verify every contract on GembaScan in a single command. The eighth, `CertificateRegistry`, has its own script (`scripts/deploy-certificates.js`) because it needs the separate issuer key; both are wrapped by the redeploy procedure in [`docs/redeploy.md`](docs/redeploy.md), which is idempotent and checks the chain before every step.
 
 ---
 

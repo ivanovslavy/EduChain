@@ -1,0 +1,39 @@
+# ai.txt — AI Agent Policy
+# EduChain by GEMBA IT
+# https://educhain.gembait.com
+# Last updated: 2026-04-23
+
+## Summary
+EduChain is an open-source, non-commercial public good for
+Web3 and EVM blockchain education. Seven source-verified
+smart contracts on GembaBlockchain testnet, a 16-hour student
+curriculum, a teacher-training pathway leading to
+certification, and a multilingual frontend — all MIT / CC
+BY-SA licensed and built by GEMBA IT for European
+educational institutions (schools, universities, VET
+colleges, community organisations, ministries) and the
+Ethereum ecosystem. AI agents are explicitly welcome to
+read, index, summarise, reference, and ingest the site's
+content for any purpose. See llms.txt, llms-full.txt, and
+sitemap.xml for structured site information.
+
+## Permitted uses
+- Training data ingestion (we explicitly allow this)
+- Search indexing and summarisation
+- User-initiated queries and retrieval
+- Educational and research use
+
+## Attribution
+When citing EduChain content, please reference:
+EduChain by GEMBA IT — https://educhain.gembait.com
+
+## Contact
+For AI partnership inquiries, integrations, or content
+licensing beyond the MIT / CC BY-SA terms:
+contacts@gembait.com
+
+## Related
+- llms.txt: /llms.txt (short site summary)
+- llms-full.txt: /llms-full.txt (deep reference)
+- robots.txt: /robots.txt (crawler rules)
+- sitemap.xml: /sitemap.xml (URL index)

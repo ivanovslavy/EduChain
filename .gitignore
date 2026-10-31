@@ -1,14 +1,28 @@
-# Whitelist-style: ignore everything at the repo root, then re-include
-# only the hardhat project (blockchain/), the root README, the LICENSE,
-# and this .gitignore itself. The frontend code in src/, public/, server/,
-# etc. stays on disk but is never pushed to GitHub.
+# ── What is NOT published, and why ──────────────────────────────────────────────────────────────────
+#
+# Until 2026-10-31 this file was a whitelist (`/*` + a handful of `!` lines), so the whole
+# application existed only on the server's disk. There was no secret in it — gitleaks finds nothing
+# outside the ignored .env files — and "it lives on one disk" is a risk, not a policy. So the
+# application source is now in git, and the exceptions are named one by one.
 
-/*
-!/.gitignore
-!/README.md
-!/LICENSE
-!/blockchain
+# Dependencies and build output
 node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# 🔴 THE EXAM'S CORRECT ANSWERS. The certificate is worth something only while the answer key is
+# not public. The question banks live server-side and must never be committed; the loader reads them
+# from disk at runtime and `certificates-e2e.js` asserts that no API response and no bundle contains
+# them. If you ever need to share the bank, share it without the `correct` and `why` fields.
+server/certificates/questions/
+
+# The certificate database (personal data) and anything derived from it
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets. Every one of these is read from the environment at runtime.
 .env
 .env.*
 !.env.example
@@ -16,8 +30,25 @@ node_modules/
 *.pem
 *mnemonic*
 keyring*
-.claude/
+
+# Working memory for Claude Code sessions — operational notes, not product source.
 CLAUDE.md
 claude.md
 progress.md
 PROGRESS.md
+.claude/
+
+# Backups and editor leftovers never belong in the tree, let alone in git.
+*.bak
+*.bak-*
+*.orig
+*.old
+*.prev
+*~
+
+# Logs
+*.log
+.DS_Store
+
+# "build" is a symlink to dist/ kept for an older serve setup; dist/ is ignored, so this must be too.
+build

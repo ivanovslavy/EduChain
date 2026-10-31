@@ -99,6 +99,22 @@
       ],
       "txHash": "0x33241b9c43ca1d51fab615f556aa9c92d5be94ffec0eff40c875898a202f4230",
       "blockNumber": 1360711
+    },
+    "CertificateRegistry": {
+      "address": "0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4",
+      "args": [
+        "0x5578c75F22dE0bf1caA4BdD46BA28406C696a5dC",
+        "0x13f1b11dc5DcAcC6f05983655B04885882E824c8",
+        "https://educhain.gembait.com/api/certificates/token/"
+      ],
+      "txHash": "0x84885d157023cdbc1d2ab09d2b2e5000d056088e56e9f892eeaa6fd6dada5104",
+      "blockNumber": 4704701,
+      "type": "soulbound ERC-721 + public registry — course certificates; only a content HASH on-chain, no personal data",
+      "verified": "https://testnet.gembascan.io/address/0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4#code"
     }
+  },
+  "configuration": {
+    "certificateIssuer": "0x13f1b11dc5DcAcC6f05983655B04885882E824c8 — HOT key on the server (blockchain/.env CERT_ISSUER_PRIVATE_KEY); may ONLY call issue(). Revocation and role changes are owner-only.",
+    "certificateBaseURI": "https://educhain.gembait.com/api/certificates/token/"
   }
 }

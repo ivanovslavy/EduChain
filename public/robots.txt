@@ -1,0 +1,246 @@
+# educhain.gembait.com — open to search engines and AI crawlers.
+# Standardised 2026-08-11: one posture across every Gemba property.
+
+User-agent: *
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+# Search, AI and assistant crawlers — named explicitly so access does not
+# depend on wildcard inheritance. Content is public and may be indexed,
+# summarised and used for retrieval.
+
+User-agent: Googlebot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Bingbot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: DuckDuckBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Applebot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: GPTBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: ChatGPT-User
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: OAI-SearchBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: ClaudeBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Claude-User
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Claude-SearchBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Claude-Web
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: anthropic-ai
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: PerplexityBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Perplexity-User
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Google-Extended
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Applebot-Extended
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Bingbot-Extended
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: CCBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Amazonbot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Bytespider
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: MistralAI-User
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: cohere-ai
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: YouBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: DuckAssistBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Diffbot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: ImagesiftBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Timpibot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: omgili
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: AI2Bot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: PetalBot
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+User-agent: Webzio-Extended
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /bg/admin
+Disallow: /es/admin
+Allow: /
+
+Sitemap: https://educhain.gembait.com/sitemap.xml

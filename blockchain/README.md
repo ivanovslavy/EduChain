@@ -1,6 +1,6 @@
 # EduChain — Smart Contracts
 
-Hardhat project holding the seven Solidity contracts that power the [EduChain](https://educhain.gembait.com) platform. All contracts are deployed on the GembaBlockchain testnet (chain ID 821207).
+Hardhat project holding the eight Solidity contracts that power the [EduChain](https://educhain.gembait.com) platform. All contracts are deployed on the GembaBlockchain testnet (chain ID 821207).
 
 Part of [EduChain](../README.md) — an open-source public good for Ethereum education. For the platform overview, curriculum, and funding context, see the [root README](../README.md).
 
@@ -35,7 +35,7 @@ If `GEMBA_RPC_URL` is not set, the public `https://rpc1.gembascan.io` endpoint i
 
 ```bash
 npm run compile              # compile all contracts
-npm run test                 # run the test suite (when tests are added)
+npm run test                 # 119 Hardhat tests (10 spec files); forge test adds 14 fuzz/invariant runs
 npm run node                 # local hardhat node on :8545
 
 # Deploy the full stack to GembaBlockchain
@@ -58,6 +58,7 @@ Deployment output is written to `deployed/latest.json` and to a timestamped snap
 | `TokenMarketplace.sol` | Non-custodial P2P marketplace for GAME and both NFT collections. Fixed-price listings with `ReentrancyGuard` + `SafeERC20`. |
 | `TrackingContract.sol` | Aggregates per-address activity (buys, mints, trades) and exposes leaderboard queries. |
 | `ETHFaucet.sol` | Drip faucet — sends 0.05 testnet GMB per claim, with a 24-hour cooldown per address. |
+| `CertificateRegistry.sol` | Course certificates: a soulbound ERC-721 plus a public registry. Transfers and approvals revert. Only a hash of the certificate is stored on-chain — no personal data. Two separated keys: a hot `issuer` that may only `issue()`, and a cold `owner` that may revoke. |
 
 All contracts compile with:
 
@@ -69,7 +70,7 @@ evmVersion: cancun
 
 ## Deployed on GembaBlockchain
 
-See [`../README.md`](../README.md#smart-contract-addresses) for the address table, or inspect `deployed/latest.json` for the full deployment record (including constructor arguments, tx hashes, and block numbers).
+See [`../README.md`](../README.md#smart-contract-addresses) for the address table (read from `src/contracts/addresses.json`, so it cannot drift from what the app loads), or inspect `deployed/latest.json` for the full deployment record (including constructor arguments, tx hashes, and block numbers).
 
 ## Architecture notes
 

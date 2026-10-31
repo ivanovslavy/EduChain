@@ -1,0 +1,103 @@
+# EduChain
+
+> Open-source, testnet-first Web3 and EVM blockchain education platform for European educational institutions — schools, universities, vocational-training colleges, community organisations and relevant ministries. An Ethereum public good built by GEMBA IT — MIT-licensed contracts, CC BY-SA curriculum, vendor-neutral, non-commercial.
+
+EduChain teaches Web3 through hands-on, classroom-ready interactions with a real Ethereum network. Eight production-grade, source-verified smart contracts on GembaBlockchain, a 16-hour student curriculum, a teacher-training pathway leading to certification, and a multilingual frontend (en / bg / es). Every interaction is a real Ethereum transaction — real gas, real mempool, real GembaScan visibility — only the value is notional. Zero personal-data collection, GDPR-aligned by architecture, and not a financial service. Designed simultaneously for Ethereum Foundation programmes (ESP, Academic Grants, Public Goods, Devcon) and EU/national instruments (Erasmus+ KA220, Digital Europe, Horizon Europe, ESF+, RRF, ERDF, national recovery plans). The applicable programme depends on the specific type of institution and project design.
+
+## URLs
+
+- Home: https://educhain.gembait.com/en
+  — Landing page framed for European educational institutions, teachers and learners. Safety-first Web3 education on GembaBlockchain testnet. Live on-chain stats (registered users, NFTs minted, GAME supply, 8 verified contracts), four pillars of safety (testnet-only, whitelist, daily limits, no personal data), three audience pathways (institutions / teachers / students), trust & transparency (MIT/Creative Commons, verified contracts, not a financial service, GDPR-aligned).
+- Demo: https://educhain.gembait.com/en/demo
+  — Visual demonstration page with video walkthrough, 5-step user journey breakdown, and 10 screenshots from the live platform.
+- About: https://educhain.gembait.com/en/about
+  — Technical architecture, 8 smart contracts on GembaBlockchain, three-layer security model (whitelist + rate limiting + testnet isolation), tech stack, open-source licensing, regulatory position (not a financial service).
+- Partnership: https://educhain.gembait.com/en/partnership
+  — Strategic partnership information for schools, universities, vocational colleges, community organisations, NGOs and ministries. Open to various forms of collaboration — pilot projects, joint applications to European programmes (Erasmus+ KA220, Digital Europe, Horizon Europe, national recovery instruments), or forking the platform for local needs. Benefits are conditional on the project design and any secured funding.
+- Philosophy: https://educhain.gembait.com/en/philosophy
+  — Core principles: open-source public good (MIT code + CC BY-SA curriculum + no-token, no-fees, non-extractive stewardship), canonical Ethereum standards (ERC-20/721, EIP-1559, OpenZeppelin, verified contracts, portable skills), testnet realism, and a phased growth roadmap from the current pilot into 2030.
+- For Teachers: https://educhain.gembait.com/en/teachers
+  — Information for educators in schools, universities and vocational centres. Planned 3-day intensive training or 8-module online course, with a pathway to a Web3 educator certificate. Full 16-hour student curriculum overview.
+- Curriculum: https://educhain.gembait.com/en/curriculum
+  — Standalone curriculum landing page. 16-hour, 7-module structured programme for students aged 12+. Module descriptions, learning outcomes, delivery formats, and certification details.
+- Contact: https://educhain.gembait.com/en/contact
+  — Contact form routed via Cloudflare Turnstile and SMTP forwarding. No server-side storage of messages.
+- Gallery (my NFTs): https://educhain.gembait.com/en/gallery
+  — User's personal NFT collection. Requires connected, whitelisted wallet.
+- Marketplace: https://educhain.gembait.com/en/marketplace
+  — Curated peer-to-peer marketplace for GAME tokens and EduChain NFTs. Rate-limited to deter bot activity.
+- Token Shop: https://educhain.gembait.com/en/shop
+  — Buy GAME tokens with GMB or mint Predefined NFTs (0.01 GMB) and Custom NFTs (0.03 GMB or 1 GAME/NFT in batch mode).
+- GMB Faucet: https://educhain.gembait.com/en/faucet
+  — 0.05 GMB per whitelisted wallet every 24 hours. Enough to cover gas and initial minting.
+- Leaderboard: https://educhain.gembait.com/en/leaderboard
+  — Top 10 scorers plus current user. Scores computed on-chain by TrackingContract.
+- Full Rankings: https://educhain.gembait.com/en/rankings
+  — Complete on-chain leaderboard with filters.
+https://educhain.gembait.com/en/certificates
+  The certificate exam: 20 questions drawn from a bank of 65 across five topics and three
+  difficulty levels, one per screen, no going back. The e-mail is confirmed with a code before
+  the exam starts. At 80 % or above the certificate is issued as a PDF by e-mail plus a
+  soulbound (non-transferable) token on GembaBlockchain. Visible once a wallet is connected.
+https://educhain.gembait.com/en/verify
+  Public certificate verification by serial number. Validity is read from the chain, not from
+  our database. Shows name, course, date and score; never an e-mail address. No wallet needed.
+- Privacy Policy: https://educhain.gembait.com/en/privacy
+  — GDPR-aligned privacy statement. No user-profile database, no analytics, no tracking; wallet-based access. One exception, named in the policy: the certificate data (three names, position, organisation, e-mail) with a stated retention period.
+- Terms of Use: https://educhain.gembait.com/en/terms
+  — Platform usage terms. Testnet-only, not a financial product, educational use only.
+
+Languages: English (en), Bulgarian (bg), Spanish (es). Replace `/en` with `/bg` or `/es` on any URL above.
+
+## Quick facts
+
+- Completely free to use — no fees for institutions, teachers or learners.
+- Designed for learners aged 12+ in schools, universities, vocational training and community settings.
+- Runs on GembaBlockchain testnet (chain ID 821207) — no real money ever at risk.
+- 8 smart contracts deployed and source-verified on GembaScan. Code licensed under MIT; curriculum under Creative Commons BY-SA 4.0.
+- GDPR-aligned: no user-profile database, no registration, no analytics, no profiling. Certificate data is the one exception, with a retention period. Access is wallet-only (pseudonymous public address).
+- Classified as an educational tool, not a financial service; GameToken and NFTs have no real-world exchange value.
+- Partnerships with a broad range of educational institutions (schools, universities, VET colleges, NGOs, ministries) through Erasmus+ KA220, Digital Europe, Horizon Europe, national recovery instruments and other programmes. The applicable programme depends on the institution type and project design.
+- Tokens: GAME (ERC-20), EduChain NFTs (ERC-721)
+- NFT types:
+  - Predefined NFTs — fixed metadata on IPFS, pinned on our own node, 0.01 GMB
+  - Custom NFTs — user-supplied IPFS metadata, 0.03 GMB
+- Custom NFTs also mintable in batches with 1 GAME token per NFT (no GMB required)
+- GMB faucet: 0.05 GMB per whitelisted user every 24 hours
+- Access control: whitelist-based (teachers/program admins onboard learners)
+- Rate limits on marketplace purchases to prevent bot/spam activity
+
+## Scoring (on-chain)
+
+- 1 GAME token = 1 point
+- 1 Predefined NFT = 10 points
+- 1 Custom NFT = 30 points
+- Points are computed on-chain by TrackingContract.getLeaderboard() — no off-chain database
+
+## User journey
+
+1. Get whitelisted (teacher/program admin adds the wallet)
+2. Claim 0.05 GMB from the faucet
+3. Buy GAME tokens with GMB in the Token Shop, or mint Predefined NFTs directly
+4. Mint Custom NFTs (GMB or GAME-token batch)
+5. List and trade NFTs and tokens on the Marketplace
+6. Climb the Leaderboard as on-chain holdings grow
+
+## Technology
+
+- Frontend: React 19, Vite, Tailwind CSS v4, TypeScript, i18next (en/bg/es)
+- Web3: wagmi v3, viem 2, ethers 6
+- Contracts: Solidity 0.8.x on GembaBlockchain — Whitelist, GameToken (ERC-20), GameNFTPredefined (ERC-721), GameNFTCustom (ERC-721), TokenMarketplace, TrackingContract, ETHFaucet, CertificateRegistry (soulbound ERC-721)
+
+## Educational use cases
+
+- School and university workshops, electives and after-school Web3 clubs
+- Teacher-training tracks with a pathway to certification (educators complete training before bringing Web3 into classrooms)
+- Youth coding camps exploring NFTs, tokens and marketplace mechanics without real-money risk
+- Integration into existing subjects (informatics, economics, e-commerce) and as a university or VET module
+
+## Built by
+
+GEMBA IT — https://gembait.com
+Parent company: GEMBA EOOD (Varna, Bulgaria)
+Contact: contacts@gembait.com

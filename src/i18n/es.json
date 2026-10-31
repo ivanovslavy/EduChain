@@ -1,0 +1,1812 @@
+{
+  "banner": {
+    "safety": "Herramienta educativa. Todo funciona en una red de prueba: los tokens y NFT no tienen valor y no se negocian en ningún sitio."
+  },
+  "meta": {
+    "title": "EduChain — Plataforma Blockchain Educativa por GEMBA IT",
+    "description": "Plataforma Web3 educativa y segura para jóvenes aprendices. Acuña NFT, gana tokens GAME y opera en un mercado curado — todo en la red de pruebas GembaBlockchain. Construido por GEMBA IT."
+  },
+  "seo": {
+    "home": {
+      "title": "EduChain — Educación Web3 para centros europeos en GembaBlockchain",
+      "description": "Plataforma abierta de educación en Web3 y blockchain EVM. Currículo de 16 horas, formación de docentes, fidelidad completa a GembaBlockchain. Segura, basada en testnet, sin riesgo financiero."
+    },
+    "gallery": {
+      "title": "Mi colección de NFT — EduChain",
+      "description": "Tu colección personal de NFT de EduChain en la testnet GembaBlockchain. NFT predefinidos y personalizados, acuñados o comprados dentro de la plataforma educativa — con trazabilidad on-chain completa."
+    },
+    "marketplace": {
+      "title": "Mercado — EduChain | Comercio P2P en GembaBlockchain",
+      "description": "Comercio P2P curado de tokens GAME y NFT de EduChain en GembaBlockchain. Con límites de tasa y protección por lista blanca — un entorno seguro para que los estudiantes practiquen transacciones reales on-chain."
+    },
+    "shop": {
+      "title": "Tienda de tokens — EduChain | GAME y NFT en GembaBlockchain",
+      "description": "Compra tokens GAME con GMB o acuña NFT predefinidos y personalizados. Cada compra es una transacción real de GembaBlockchain — en un entorno educativo sin valor monetario real."
+    },
+    "faucet": {
+      "title": "Faucet GMB — EduChain | 0,05 GMB cada 24 h",
+      "description": "Faucet de GembaBlockchain testnet para aprendices en lista blanca. 0,05 GMB cada 24 horas — suficiente para gas, compra de tokens y acuñación de NFT del currículo."
+    },
+    "leaderboard": {
+      "title": "Clasificación — EduChain | En vivo desde GembaBlockchain",
+      "description": "Los mejores aprendices de EduChain, calculados en vivo a partir de saldos on-chain en GembaBlockchain. Puntuación: 1 pt por token GAME, 10 pt por NFT predefinido, 30 pt por NFT personalizado. Sin estado cacheado."
+    },
+    "rankings": {
+      "title": "Clasificación completa — EduChain | Filtros y orden",
+      "description": "Clasificación completa de EduChain con búsqueda, filtros y ordenación por puntos, tokens GAME, NFT predefinidos o personalizados. Abierta, transparente, verificable públicamente."
+    },
+    "about": {
+      "title": "Acerca de EduChain — arquitectura, smart contracts, seguridad",
+      "description": "7 smart contracts de producción en GembaBlockchain (OpenZeppelin v5, ERC-721A). Modelo de seguridad en tres capas, pila tecnológica de 4 categorías, código abierto MIT. EduChain está diseñado para ser auditado y bifurcado."
+    },
+    "contact": {
+      "title": "Contacto — EduChain | Alianzas y fondos UE",
+      "description": "Contacta con el equipo de EduChain para programas piloto, alianzas escolares, solicitudes Erasmus+ KA220 o preguntas técnicas. Respuesta en 48 horas. Sin datos personales almacenados en servidor."
+    },
+    "partnership": {
+      "title": "Alianza — EduChain | Web3 para centros europeos",
+      "description": "Alianza estratégica para implantar EduChain. Alineación con Erasmus+ KA220, Digital Europe y Horizon Europe. Para directores, ministerios y evaluadores de subvenciones. Piloto → KA220 → ejecución 24 meses."
+    },
+    "teachers": {
+      "title": "Para docentes — EduChain | Web3 en el aula",
+      "description": "EduChain para profesorado de informática, comercio electrónico, economía y emprendimiento. Intensivo presencial de 3 días o curso en línea de 8 módulos, certificación Web3 prevista, currículo de 16 horas para el alumnado."
+    },
+    "privacy": {
+      "title": "Política de privacidad — EduChain | RGPD",
+      "description": "EduChain no recopila datos personales para perfiles: sin registro, sin analítica. Excepción: los datos del certificado, con un plazo de conservación declarado. Acceso únicamente mediante un monedero Web3 anónimo. Política minimalista totalmente conforme al RGPD."
+    },
+    "terms": {
+      "title": "Condiciones de uso — EduChain | Testnet, MIT, CC BY-SA",
+      "description": "Condiciones de uso de EduChain: clasificada como herramienta educativa, licencia MIT para el código, CC BY-SA para contenidos formativos, limitación de responsabilidad en entorno testnet."
+    },
+    "curriculum": {
+      "title": "Currículo — EduChain | 16 horas de Web3 para el alumnado",
+      "description": "Currículo estructurado de 16 horas en 7 módulos — desde los fundamentos de Web3 hasta un proyecto final. Para alumnado desde 12 años. Doble certificado previsto (PDF + NFT on-chain), más de 4 formatos de entrega."
+    },
+    "demo": {
+      "title": "Demo — EduChain en acción | Vídeo y capturas",
+      "description": "Recorrido en vídeo y 10 capturas de la plataforma EduChain — desde conectar un monedero Web3 hasta acuñar un NFT y subir en la clasificación. Enlaces a GitHub y GembaScan."
+    },
+    "philosophy": {
+      "title": "Filosofía y principios — EduChain",
+      "description": "Por qué EduChain está construida así. Principios de bien común de código abierto, estándares canónicos de Ethereum, realismo testnet y crecimiento por fases."
+    },
+    "certificates": {
+      "title": "Certificados",
+      "description": "Examen y certificado de fundamentos de blockchain y Web3 de EduChain: 20 preguntas, certificado en PDF y registro intransferible en GembaBlockchain."
+    },
+    "verify": {
+      "title": "Verificar un certificado",
+      "description": "Comprueba si un certificado de EduChain es válido mediante su número. La comprobación lee el estado directamente de GembaBlockchain."
+    }
+  },
+  "nav": {
+    "home": "Inicio",
+    "gallery": "Galería",
+    "shop": "Tienda",
+    "marketplace": "Mercado",
+    "leaderboard": "Clasificación",
+    "faucet": "Faucet",
+    "about": "Acerca",
+    "contact": "Contacto",
+    "admin": "Admin",
+    "rankings": "Ranking",
+    "partnership": "Alianza",
+    "teachers": "Para docentes",
+    "privacy": "Privacidad",
+    "terms": "Condiciones",
+    "curriculum": "Currículo",
+    "demo": "Demo",
+    "philosophy": "Filosofía",
+    "certificates": "Certificados"
+  },
+  "footer": {
+    "tagline": "por GEMBA IT"
+  },
+  "wallet": {
+    "connect": "Conectar",
+    "connecting": "Conectando…",
+    "disconnect": "Desconectar",
+    "wrongNetwork": "Cambiar a GembaBlockchain",
+    "wrongNetworkPill": "Red incorrecta",
+    "address": "Dirección",
+    "network": "Red",
+    "balance": "Saldo",
+    "copyAddress": "Copiar dirección",
+    "copied": "Dirección copiada",
+    "copyFailed": "Error al copiar"
+  },
+  "common": {
+    "loading": "Cargando…",
+    "refresh": "Actualizar",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "submit": "Enviar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "all": "Todos",
+    "yes": "Sí",
+    "no": "No",
+    "outcome": "Resultado:",
+    "loadError": "No se pudieron cargar los datos on-chain. Comprueba tu conexión de cartera y red, e inténtalo de nuevo.",
+    "retry": "Reintentar"
+  },
+  "errors": {
+    "notConnected": "Conecta tu monedero para continuar.",
+    "wrongChain": "Cambia a GembaBlockchain para continuar.",
+    "notWhitelisted": "Tu dirección todavía no está en la lista blanca.",
+    "txFailed": "La transacción ha fallado.",
+    "txSuccess": "Transacción confirmada."
+  },
+  "home": {
+    "title": "EduChain",
+    "hero": {
+      "eyebrow": "Plataforma Web3 educativa",
+      "headline": "Bienvenido a EduChain",
+      "headlineAccent": "educación en Web3 y blockchain EVM",
+      "subtitle": "Un entorno testnet seguro donde estudiantes desde los 12 años crean sus propios activos digitales, aprenden a reconocer estafas y se preparan para la economía digital — con apoyo pedagógico de docentes formados.",
+      "ctaPrimary": "Descubre la plataforma",
+      "ctaSecondary": "Para centros y docentes"
+    },
+    "mission": {
+      "body": "Una iniciativa no comercial de GEMBA IT — un estudio tecnológico con sede en Varna, Bulgaria. EduChain existe únicamente con fines educativos — sin producto comercial, sin tarifas y sin instrumentos financieros. Los costes de desarrollo y operación son cubiertos íntegramente por GEMBA EOOD, programas públicos y financiación europea para la educación. Nuestro único objetivo es educar a la próxima generación de estudiantes y ciudadanos europeos sobre Web3 y la blockchain EVM."
+    },
+    "trust": {
+      "title": "Abierto y transparente",
+      "subtitle": "El código de la plataforma es público. La posición regulatoria es clara. Cualquiera puede verificar.",
+      "opensource": {
+        "title": "Código abierto",
+        "body": "Los smart contracts están bajo licencia MIT. Los materiales educativos bajo Creative Commons. El código está publicado en GitHub."
+      },
+      "verified": {
+        "title": "Contratos verificados",
+        "body": "Los 8 smart contracts están verificados en GembaScan. Cada función se puede inspeccionar públicamente."
+      },
+      "financial": {
+        "title": "No es un producto financiero",
+        "body": "Clasificada como herramienta educativa, no como producto financiero. Sin valor de intercambio, sin servicio de inversión."
+      },
+      "gdpr": {
+        "title": "Conforme al RGPD",
+        "body": "Recogida de datos mínima. Sin seguimiento, perfilado ni publicidad. Derechos RGPD completos para los usuarios."
+      }
+    },
+    "stats": {
+      "users": "Usuarios registrados",
+      "nfts": "NFT acuñados",
+      "tokens": "Tokens GAME en circulación",
+      "contracts": "Smart contracts verificados"
+    },
+    "what": {
+      "title": "¿Qué es EduChain?",
+      "p1": "EduChain es una plataforma educativa Web3 gamificada desarrollada por GEMBA IT, un estudio tecnológico búlgaro. El alumnado explora la tecnología blockchain, los activos digitales y la economía descentralizada en un entorno totalmente controlado y seguro.",
+      "p2": "La plataforma funciona íntegramente sobre la testnet GembaBlockchain — una red de pruebas donde no se intercambia dinero real. El alumnado interactúa con las mismas tecnologías que operan en las redes reales, pero sin riesgo financiero."
+    },
+    "features": {
+      "title": "Qué hace el alumnado",
+      "subtitle": "La práctica es la base del aprendizaje. Cada concepto se prueba, no solo se explica.",
+      "shop": {
+        "title": "Compra y acuña",
+        "body": "El alumnado compra tokens GAME y acuña sus propios NFT — primero predefinidos, después con contenido personal subido a IPFS."
+      },
+      "gallery": {
+        "title": "Ver la propiedad",
+        "body": "Cada activo digital creado o comprado aparece en una galería personal — con metadatos, atributos y enlaces a la blockchain."
+      },
+      "marketplace": {
+        "title": "Comercio entre pares",
+        "body": "Un mercado descentralizado peer-to-peer donde los estudiantes listan, compran y venden activos entre ellos."
+      },
+      "leaderboard": {
+        "title": "Seguir el progreso",
+        "body": "Una clasificación on-chain en vivo con sistema de puntos, rangos y gamificación — competencia sana en el aula."
+      }
+    },
+    "safety": {
+      "title": "Seguridad por diseño",
+      "subtitle": "Diseñada para que estudiantes y familias estén tranquilos.",
+      "item1": {
+        "title": "Solo testnet",
+        "body": "Nunca se intercambia dinero real. Tokens y NFT no tienen valor monetario."
+      },
+      "item2": {
+        "title": "Acceso por lista blanca",
+        "body": "Solo el alumnado aprobado por el docente puede interactuar con la plataforma. Retirada con un clic."
+      },
+      "item3": {
+        "title": "Límites diarios",
+        "body": "Límites de transacción integrados — ningún estudiante puede cometer un error grande o precipitado."
+      },
+      "item4": {
+        "title": "Sin datos personales",
+        "body": "Sin registro, sin base de datos de usuarios. El acceso es mediante un monedero Web3 anónimo."
+      }
+    },
+    "audiences": {
+      "title": "Para quién es EduChain",
+      "subtitle": "Personas distintas, necesidades distintas — cada una encuentra su camino en la plataforma.",
+      "schools": {
+        "title": "Para centros educativos",
+        "body": "Un camino hacia una alianza europea — Erasmus+ KA220 como posible programa de cofinanciación, con el rol de coordinador para el centro y un presupuesto considerable para un proyecto de 24 meses.",
+        "cta": "Alianza"
+      },
+      "teachers": {
+        "title": "Para docentes",
+        "body": "Certificación prevista como docente Web3, un currículo de 16 horas y un panel de administración para el aula.",
+        "cta": "Para docentes"
+      },
+      "students": {
+        "title": "Para estudiantes",
+        "body": "Conecta un monedero, reclama GMB testnet, acuña tu primer NFT. El camino Web3 aprendiendo haciendo.",
+        "cta": "Empezar"
+      }
+    },
+    "cta": {
+      "title": "Qué sigue",
+      "subtitle": "Elige el camino que te sea relevante.",
+      "schoolsTitle": "¿Director o coordinadora?",
+      "schoolsBody": "Descubre cómo una alianza Erasmus+ puede aportar un beneficio real a tu centro.",
+      "schoolsCta": "Alianza con EduChain",
+      "teachersTitle": "¿Docente?",
+      "teachersBody": "Aprende cómo enseñar Web3 en un entorno seguro — la certificación de docentes Web3 está prevista.",
+      "teachersCta": "Ver para docentes",
+      "exploreTitle": "¿Quieres ver la plataforma?",
+      "exploreBody": "Explora la arquitectura técnica, los 8 smart contracts y cómo funciona todo en vivo.",
+      "exploreCta": "Acerca de EduChain"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Documentación técnica",
+      "title": "Acerca de EduChain",
+      "subtitle": "La plataforma en detalle — arquitectura, smart contracts, mecanismos de seguridad y pila tecnológica. Todo es verificable públicamente y funciona sobre la testnet GembaBlockchain.",
+      "ctaExplorer": "Ver en GembaScan",
+      "ctaGithub": "Repositorio GitHub"
+    },
+    "overview": {
+      "title": "Visión general",
+      "p1": "EduChain es un sandbox Web3 seguro construido sobre la testnet GembaBlockchain. La plataforma la componen 8 smart contracts interconectados que cubren control de acceso, activos digitales, comercio peer-to-peer, clasificación y distribución de GMB de prueba.",
+      "p2": "Todos los contratos están escritos en Solidity 0.8.28, compilados contra el EVM Cancun, y utilizan primitivas auditadas de OpenZeppelin v5. Cada contrato está verificado públicamente en GembaScan y el código fuente se puede revisar línea a línea.",
+      "p3": "El frontend es una aplicación React 19 + TypeScript con Tailwind v4, alojada en Hetzner con CDN de Cloudflare. La interacción con la blockchain se realiza mediante wagmi + viem + ethers."
+    },
+    "journey": {
+      "title": "Cómo se usa la plataforma",
+      "subtitle": "El recorrido del alumno — desde cero hasta participar en la clasificación.",
+      "step1": {
+        "number": "01",
+        "title": "Aprobación en lista blanca",
+        "body": "Un administrador (docente o coordinador) añade la dirección del alumno al contrato Whitelist. Sin esta aprobación, los demás contratos rechazan cualquier interacción."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Obtener GMB de prueba",
+        "body": "Desde el ETHFaucet el alumno reclama 0,05 GMB cada 24 horas. Estos fondos se usan para las tarifas de gas de las transacciones siguientes."
+      },
+      "step3": {
+        "number": "03",
+        "title": "Comprar tokens GAME y acuñar NFT",
+        "body": "En la Tienda de tokens el alumno compra tokens GAME con GMB de prueba o acuña sus propios NFT — predefinidos o con contenido personal subido a IPFS."
+      },
+      "step4": {
+        "number": "04",
+        "title": "Comerciar en el mercado",
+        "body": "En el Mercado el alumno lista tokens o NFT a la venta, compra a otros estudiantes o acepta acuerdos privados con un comprador concreto."
+      },
+      "step5": {
+        "number": "05",
+        "title": "Subir en la clasificación",
+        "body": "TrackingContract lee los saldos en tiempo real y calcula puntos: 1 punto por token GAME, 10 por NFT predefinido, 30 por NFT personalizado. Los rangos de Bronce a Platino se basan en el total."
+      }
+    },
+    "contracts": {
+      "title": "Siete smart contracts",
+      "subtitle": "Cada contrato tiene una responsabilidad clara y un código fuente verificable públicamente.",
+      "whitelist": {
+        "title": "Whitelist",
+        "role": "Control de acceso",
+        "body": "Un registro de direcciones aprobadas, una lista negra para usuarios suspendidos y múltiples administradores. Todos los demás contratos lo consultan antes de permitir una acción. Usa OpenZeppelin EnumerableSet para comprobaciones de pertenencia O(1)."
+      },
+      "gameToken": {
+        "title": "GameToken",
+        "role": "Moneda ERC-20 de la plataforma",
+        "body": "Un token fungible que los usuarios en lista blanca compran con GMB de prueba a precio fijo. Tres límites de tasa independientes: máximo tokens por compra, máximo compras por día, máximo tokens por día. La contabilidad por usuario va empaquetada en un único slot de almacenamiento para eficiencia de gas."
+      },
+      "gameNFTPredefined": {
+        "title": "GameNFTPredefined",
+        "role": "Colección ERC-721A con suministro fijo",
+        "body": "Una colección de NFT con metadatos predefinidos. El URI sigue la plantilla determinista baseURI + tokenId + \".json\". ERC-721A permite acuñación por lotes eficiente en gas en una sola transacción."
+      },
+      "gameNFTCustom": {
+        "title": "GameNFTCustom",
+        "role": "ERC-721A con contenido del usuario",
+        "body": "Permite a los usuarios aportar su propio URI de IPFS al acuñar. Admite dos modos de pago: con GMB de prueba o con tokens GAME. El URI se almacena permanentemente tras la acuñación — inmutabilidad garantizada de los metadatos."
+      },
+      "marketplace": {
+        "title": "TokenMarketplace",
+        "role": "Comercio peer-to-peer",
+        "body": "Soporta listados de tokens ERC-20 y NFT ERC-721. Los activos quedan en depósito en el mercado mientras dura el listado y se transfieren al comprador al adquirirlos. Los listados privados opcionales restringen la venta a una dirección concreta."
+      },
+      "tracking": {
+        "title": "TrackingContract",
+        "role": "Clasificación en vivo",
+        "body": "Un agregador en tiempo real: lee saldos directamente de los contratos GameToken y NFT en cada petición, calcula puntos con una fórmula configurable por el propietario y devuelve métricas derivadas (puntos totales, rango, valor neto en GMB). Sin estado cacheado."
+      },
+      "faucet": {
+        "title": "ETHFaucet",
+        "role": "Distribuidor de GMB de prueba",
+        "body": "Entrega una cantidad fija de GMB a usuarios en lista blanca a intervalos. El cooldown se aplica en segundos. Unos topes a nivel de contrato evitan errores de configuración: la cantidad no puede superar 1 GMB y el cooldown no puede superar una semana."
+      },
+      "viewOnEtherscan": "Ver en GembaScan"
+    },
+    "security": {
+      "title": "Seguridad",
+      "subtitle": "Defensa multicapa — a nivel de smart contract, a nivel de plataforma, a nivel de aula.",
+      "contractLayer": {
+        "title": "A nivel de smart contract",
+        "item1": "Primitivas de OpenZeppelin v5 — Ownable, ReentrancyGuard, SafeERC20",
+        "item2": "Errores personalizados en lugar de cadenas revert para eficiencia de gas",
+        "item3": "Patrón Checks-Effects-Interactions en cada función que modifica estado",
+        "item4": "La renuncia a la propiedad (renounceOwnership) está explícitamente desactivada — es imposible perder el acceso por accidente",
+        "item5": "Código fuente verificado en GembaScan — abierto a auditoría por cualquiera"
+      },
+      "platformLayer": {
+        "title": "A nivel de plataforma",
+        "item1": "Nunca solicitamos ni recibimos claves privadas o frases semilla",
+        "item2": "Tráfico cifrado por TLS en todo el sitio",
+        "item3": "Sin base de datos de perfiles de usuario — no hay nada que robar",
+        "item4": "Protección DDoS y anti-bot en formularios con Cloudflare",
+        "item5": "Operaciones exclusivamente en testnet — nunca se intercambian fondos reales"
+      },
+      "classroomLayer": {
+        "title": "A nivel de aula",
+        "item1": "Acceso basado en lista blanca — solo los estudiantes aprobados pueden interactuar",
+        "item2": "El docente retira a un alumno con un clic — revocación inmediata del acceso",
+        "item3": "Los límites de tasa en los contratos previenen errores rápidos o grandes",
+        "item4": "Panel de administración para monitorizar la actividad en tiempo real"
+      }
+    },
+    "stack": {
+      "title": "Pila tecnológica",
+      "subtitle": "Tecnologías modernas y probadas en la industria — sin experimentos a costa de la fiabilidad.",
+      "contracts": {
+        "title": "Smart contracts",
+        "items": "Solidity 0.8.28 · OpenZeppelin v5.1 · ERC721A (Chiru Labs) · Hardhat · Cancun EVM"
+      },
+      "frontend": {
+        "title": "Frontend",
+        "items": "React 19 · TypeScript · Vite 8 · Tailwind CSS v4 · wagmi v3 · viem v2 · ethers v6 · react-i18next"
+      },
+      "infrastructure": {
+        "title": "Infraestructura",
+        "items": "Servidor dedicado en Hetzner (Núremberg) · CDN y DDoS de Cloudflare · Apache · TLS de Let's Encrypt · supervisión con systemd · copias de seguridad nocturnas automatizadas"
+      },
+      "integrations": {
+        "title": "Integraciones externas",
+        "items": "Nodo IPFS propio (GEMBA, pasarela ipfs.gembait.com) · GembaScan (verificación) · Cloudflare Turnstile (anti-bot) · Cloudflare (CDN)"
+      }
+    },
+    "openSource": {
+      "title": "Código abierto y licencias",
+      "subtitle": "Todo es transparente. Cualquiera puede inspeccionar, bifurcar y reutilizar.",
+      "code": {
+        "title": "Smart contracts — Licencia MIT",
+        "body": "Todo el código fuente de los smart contracts está publicado en GitHub bajo licencia MIT. Copia, modificación y uso comercial libres."
+      },
+      "curriculum": {
+        "title": "Materiales formativos — CC BY-SA 4.0",
+        "body": "El currículo y los recursos docentes están bajo Creative Commons Attribution-ShareAlike 4.0. Las versiones adaptadas deben mantener la misma licencia."
+      },
+      "verification": {
+        "title": "Verificación en GembaScan",
+        "body": "El código fuente de los 8 contratos es visible públicamente directamente en el explorador de bloques. No hace falta confiar — puedes comprobarlo por ti misma."
+      },
+      "githubCta": "Abrir en GitHub"
+    },
+    "regulatory": {
+      "title": "Posición regulatoria",
+      "subtitle": "EduChain es una herramienta educativa — no un producto financiero.",
+      "financial": {
+        "title": "Estado regulatorio",
+        "body": "GameToken carece de valor de mercado real, no se negocia en mercados externos y no constituye un instrumento financiero. La plataforma se clasifica como herramienta educativa, no como un servicio financiero."
+      },
+      "gdpr": {
+        "title": "RGPD",
+        "body": "No recogemos datos personales. Sin registro, sin base de datos de usuarios, sin tracking ni perfilado. Derechos RGPD completos para los casos limitados en los que tratamos información de contacto."
+      },
+      "minors": {
+        "title": "Protección de menores",
+        "body": "La plataforma es adecuada para alumnado desde 12 años en contextos organizados de aprendizaje escolar bajo supervisión docente. Al no requerir datos personales, no recopilamos información específica sobre menores."
+      }
+    },
+    "cta": {
+      "title": "¿Quieres saber más?",
+      "subtitle": "Si ya entiendes la arquitectura — el siguiente paso depende de quién seas.",
+      "partnership": "Para centros",
+      "teachers": "Para docentes",
+      "contact": "Contacto"
+    }
+  },
+  "contact": {
+    "title": "Contactar con EduChain",
+    "subtitle": "Alianzas, programas piloto o preguntas sobre la plataforma.",
+    "info": {
+      "participate": {
+        "title": "Participar",
+        "body": "Centros educativos y docentes pueden lanzar un piloto — incorporamos a tu alumnado y proporcionamos materiales."
+      },
+      "courses": {
+        "title": "Cursos",
+        "body": "Fundamentos Web3, seguridad de smart contracts y ejercicios on-chain en vivo adaptados a tu currículo."
+      },
+      "response": {
+        "title": "Tiempo de respuesta",
+        "body": "Respondemos en 48 horas en días laborables."
+      },
+      "email": {
+        "title": "Correo"
+      }
+    },
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send": "Enviar mensaje",
+      "sending": "Enviando…",
+      "turnstileMissing": "Turnstile no configurado"
+    },
+    "status": {
+      "sending": "Enviando…",
+      "sent": "Mensaje enviado. Respondemos en 48 horas.",
+      "error": "Error al enviar. Reintenta o escribe a contacts@gembait.com."
+    }
+  },
+  "gallery": {
+    "title": "Mi galería",
+    "subtitle": "Tus tokens y NFT.",
+    "tokens": "Tokens GAME",
+    "predef": "NFT predefinidos",
+    "custom": "NFT personalizados",
+    "points": "Puntos totales",
+    "pts": "ptos",
+    "tabs": {
+      "predef": "Predefinidos",
+      "custom": "Personalizados",
+      "tokens": "Tokens"
+    },
+    "empty": "Aún no tienes NFT — ve a la tienda.",
+    "tokenUri": "URI de metadatos",
+    "tokenId": "Token ID",
+    "contract": "Contrato",
+    "onEtherscan": "Token en GembaScan",
+    "viewToken": "Ver token",
+    "viewRaw": "Ver JSON",
+    "portfolio": "Saldo del monedero",
+    "ethNote": "Se usa para gas y acuñaciones pagadas en GMB."
+  },
+  "marketplace": {
+    "title": "Mercado",
+    "subtitle": "Lista, compra y comercia tokens y NFT.",
+    "tabs": {
+      "browse": "Explorar",
+      "create": "Nuevo listado",
+      "mine": "Mis listados"
+    },
+    "empty": "Sin listados.",
+    "buy": "Comprar",
+    "cancel": "Cancelar listado",
+    "create": {
+      "amount": "Cantidad",
+      "busy": "Creando…",
+      "buyer": "Comprador permitido (opcional)",
+      "buyerPlaceholder": "Deja vacío para venta pública",
+      "contract": "Dirección del contrato",
+      "cta": "Crear listado",
+      "price": "Precio (GMB)",
+      "title": "Crear nuevo listado",
+      "tokenId": "Token ID"
+    },
+    "kind": {
+      "erc20": "ERC20",
+      "erc721": "ERC721",
+      "erc1155": "ERC1155"
+    },
+    "description": "Descripción",
+    "attributes": "Atributos",
+    "metadataJson": "Metadatos",
+    "viewRaw": "Ver sin formato",
+    "contract": "Contrato",
+    "viewContract": "Ver contrato",
+    "allowedBuyer": "Comprador privado",
+    "amount": "Cantidad",
+    "buying": "Comprando…",
+    "buyNow": "Comprar ahora",
+    "cancelConfirm": "¿Cancelar este listado?",
+    "errors": {
+      "buyer": "Dirección del comprador no válida",
+      "contract": "Dirección del contrato no válida",
+      "fields": "Rellena todos los campos obligatorios",
+      "tokenId": "Token ID obligatorio"
+    },
+    "filter": "Filtro",
+    "filters": {
+      "all": "Todos"
+    },
+    "mine": {
+      "empty": "No tienes listados activos."
+    },
+    "notAllowed": "Este listado está restringido a un comprador concreto.",
+    "ownListing": "Este es tu listado",
+    "private": "Venta privada",
+    "seller": "Vendedor",
+    "stats": {
+      "active": "Listados activos",
+      "sales": "Ventas totales",
+      "txs": "Transacciones"
+    },
+    "tokenId": "Token ID"
+  },
+  "shop": {
+    "title": "Tienda de tokens",
+    "subtitle": "Compra tokens GAME y acuña NFT.",
+    "tabs": {
+      "tokens": "Tokens GAME",
+      "predef": "NFT predefinido",
+      "custom": "NFT personalizado",
+      "buy_tokens": "Comprar tokens",
+      "mint_custom": "NFT personalizado",
+      "mint_predefined": "NFT predefinido"
+    },
+    "buy": "Comprar",
+    "mint": "Acuñar",
+    "amount": "Cantidad",
+    "price": "Precio",
+    "limit24h": "Límite 24 h",
+    "custom": {
+      "creative_info": "Modo creativo: acuña un NFT único personalizado con tu propio tokenURI (IPFS o HTTPS). Se paga en GMB.",
+      "batch_warning": "Modo por lotes: acuña varias copias a la vez, pagadas en tokens GAME. Usa un tokenURI fijo preestablecido.",
+      "mint_with_eth": "Acuñar {{q}} NFT ({{cost}} GMB)",
+      "batch_mint": "Acuñar por lote {{qty}} ({{price}} GAME)",
+      "allowance": "Autorización actual",
+      "batch_info": "Usa tokens GAME en lugar de GMB. {{price}} GAME por NFT. Primero se requiere aprobación.",
+      "batchPrice": "Precio / NFT",
+      "maxBatch": "Lote máx.",
+      "mode_batch": "Acuñación por lotes (GAME)",
+      "mode_creative": "Acuñación creativa (GMB)",
+      "price": "Precio / NFT",
+      "quantity": "Cantidad",
+      "remaining": "Suministro restante",
+      "title": "Acuñar NFT personalizado",
+      "tokenUri": "Token URI (metadatos)",
+      "total_eth": "Total: {{cost}} GMB",
+      "total_game": "Total: {{cost}} GAME",
+      "uri_placeholder": "ipfs://... (opcional, dejar vacío para usar por defecto)",
+      "willApprove": "Paso 1/2: aprobar, Paso 2/2: acuñar"
+    },
+    "busy": "Trabajando…",
+    "erc20": {
+      "amount": "Cantidad (tokens enteros)",
+      "cost": "Total: {{cost}} GMB",
+      "cta": "Comprar tokens",
+      "maxPerPurchase": "Máx. {{n}} por compra",
+      "price": "Precio",
+      "purchases": "Compras",
+      "remPurchases": "Compras restantes",
+      "remTokens": "Tokens restantes",
+      "title": "Comprar tokens GAME",
+      "tokensToday": "Tokens hoy"
+    },
+    "errors": {
+      "amount": "Introduce una cantidad positiva",
+      "maxBatch": "Máx. {{n}} por lote",
+      "maxPerPurchase": "Máx. {{n}} por compra"
+    },
+    "eth": "Saldo GMB",
+    "game": "Saldo GAME",
+    "points": "Puntos / NFT",
+    "predef": {
+      "cta": "Acuñar {{q}} ({{p}} GMB)",
+      "maxBatch": "Tamaño máximo de lote",
+      "mintsToday": "Acuñaciones hoy",
+      "price": "Precio",
+      "quantity": "Cantidad",
+      "remMints": "Acuñaciones restantes",
+      "supply": "Suministro",
+      "title": "Acuñar NFT predefinido",
+      "total": "Total: {{cost}} GMB — tokens #{{first}}..#{{last}}",
+      "yourBal": "Tus NFT"
+    }
+  },
+  "faucet": {
+    "title": "Faucet de GMB",
+    "subtitle": "Reclama GMB cada 24 horas.",
+    "claim": "Reclamar 0,05 GMB",
+    "nextIn": "Próxima reclamación en",
+    "balance": "Saldo del faucet",
+    "claimedTotal": "Has reclamado",
+    "wait": "Por favor, espera",
+    "activeUsers": "Reclamadores únicos",
+    "claiming": "Reclamando…",
+    "contractStats": "Estado del faucet",
+    "cooldown": "Próxima reclamación en",
+    "depleted": "Faucet agotado — pide a un admin que lo recargue.",
+    "distributed": "Distribuido",
+    "lastClaim": "Última reclamación",
+    "requests": "Reclamaciones",
+    "totalClaims": "Reclamaciones totales",
+    "totalReceived": "Total recibido",
+    "youGet": "Recibirás",
+    "yourBalance": "GMB en tu monedero",
+    "yourStats": "Tu actividad en el faucet"
+  },
+  "leaderboard": {
+    "title": "Clasificación",
+    "subtitle": "Mejores jugadores ordenados por puntos on-chain.",
+    "yourRank": "Tu posición",
+    "yourPoints": "Tus puntos",
+    "rank": "Posición",
+    "player": "Jugador",
+    "points": "Puntos",
+    "scoring": {
+      "custom": "NFT personalizado",
+      "erc20": "Token ERC20",
+      "example": "Ejemplo: 5 tokens + 2 predefinidos + 1 personalizado = 5 + 20 + 30 = 55 ptos.",
+      "predefined": "NFT predefinido",
+      "title": "Cómo funcionan los puntos"
+    },
+    "empty": "Aún no hay jugadores.",
+    "fullTop10": "Top 10",
+    "netWorth": "Valor neto",
+    "notRanked": "Fuera del top 10",
+    "tier": "Rango",
+    "viewFull": "Ver clasificación completa",
+    "you": "Tú"
+  },
+  "rankings": {
+    "title": "Clasificación completa",
+    "subtitle": "Cada jugador en EduChain.",
+    "search": "Buscar dirección",
+    "minPoints": "Puntos mín.",
+    "rankFrom": "Desde la posición",
+    "rankTo": "Hasta la posición",
+    "sort": "Ordenar",
+    "pageSize": "Tamaño de página",
+    "autoRefresh": "Actualización automática",
+    "copy": "Copiar",
+    "empty": "Sin resultados coincidentes.",
+    "filters": {
+      "activeOnly": "Estado en lista blanca",
+      "activeOnlyLabel": "Solo activos",
+      "autoRefresh": "Actualización automática (30 s)",
+      "clear": "Limpiar",
+      "minPoints": "Puntos mín.",
+      "opt": {
+        "all": "Todos los rangos",
+        "asc": "De menor a mayor",
+        "bronze": "Bronce",
+        "desc": "De mayor a menor",
+        "erc20": "ERC20",
+        "gold": "Oro",
+        "netWorth": "Valor neto",
+        "nftCus": "NFT personalizado",
+        "nftPre": "NFT predefinido",
+        "platinum": "Platino",
+        "points": "Puntos",
+        "silver": "Plata",
+        "tierSort": "Rango",
+        "unranked": "Sin rango"
+      },
+      "perPage": "Por página",
+      "search": "Buscar dirección",
+      "sortBy": "Ordenar por",
+      "sortOrder": "Orden",
+      "tier": "Rango",
+      "title": "Filtros"
+    },
+    "pager": {
+      "first": "« Primera",
+      "last": "Última »",
+      "next": "Siguiente ›",
+      "page": "Página",
+      "prev": "‹ Ant."
+    },
+    "stats": {
+      "filtered": "Tras filtros",
+      "shown": "En esta página",
+      "total": "Usuarios rastreados",
+      "updated": "Actualizado"
+    },
+    "table": {
+      "address": "Dirección",
+      "inactive": "inactivo",
+      "netWorth": "Valor neto",
+      "nftCus": "NFT Per.",
+      "nftPre": "NFT Pre.",
+      "points": "Puntos",
+      "tier": "Rango"
+    }
+  },
+  "admin": {
+    "title": "Panel de administración",
+    "subtitle": "Llama a cualquier función en cualquier contrato desplegado.",
+    "contract": "Contrato",
+    "read": "Leer",
+    "write": "Escribir",
+    "filter": "Filtrar funciones…",
+    "noContract": "El contrato no está disponible en esta red.",
+    "noFunctions": "Sin funciones coincidentes.",
+    "signedAs": "Sesión iniciada como",
+    "form": {
+      "read": "Leer",
+      "write": "Escribir",
+      "value": "Valor (GMB)",
+      "result": "Resultado"
+    },
+    "tx": {
+      "pending": "Enviando {{name}}…",
+      "success": "{{name}} confirmada",
+      "hash": "Tx confirmada: {{hash}}"
+    },
+    "viewOnEtherscan": "Ver en GembaScan",
+    "readFns": "lectura",
+    "writeFns": "escritura",
+    "desc": {
+      "whitelist": "Control de acceso. Añade, retira y comprueba usuarios y administradores en la lista blanca.",
+      "gameToken": "Token GAME ERC20. Transferencias, saldos y operaciones de suministro.",
+      "gameNFTPredefined": "Colección de NFT predefinida con tokenURI fijos. Valen 10 puntos cada uno.",
+      "gameNFTCustom": "NFT creados por el usuario con metadatos personalizados. Valen 30 puntos cada uno.",
+      "marketplace": "Mercado P2P de tokens y NFT entre usuarios en lista blanca.",
+      "trackingContract": "Clasificación, puntos y rangos para todos los usuarios.",
+      "ethFaucet": "Entrega 0,05 GMB cada 24 h a los usuarios en lista blanca.",
+      "certificateRegistry": "Certificados del curso: tokens intransferibles más un registro público. En la cadena solo se guarda un hash."
+    },
+    "cat": {
+      "roles": "Roles y acceso",
+      "balances": "Saldos y suministro",
+      "stats": "Estadísticas y clasificación",
+      "metadata": "Metadatos de tokens",
+      "listings": "Listados",
+      "limits": "Límites y configuración",
+      "governance": "Gobernanza y propiedad",
+      "configure": "Configuración",
+      "mint_burn": "Acuñación y quema",
+      "user_actions": "Acciones de usuario",
+      "other": "Otros"
+    },
+    "cert": {
+      "title": "Certificados",
+      "intro": "Busca un certificado por su número y revócalo indicando un motivo. La revocación se firma con tu propia cartera: el servidor no puede revocar nada.",
+      "notFound": "No existe ese certificado",
+      "needChain": "Conecta la cartera del propietario en GembaBlockchain.",
+      "revoking": "Revocando en la cadena…",
+      "revoked": "Revocado en la cadena",
+      "reinstated": "Restablecido",
+      "noted": "El motivo se ha registrado en el registro de auditoría",
+      "noteFailed": "La cadena se actualizó, pero el motivo no se registró",
+      "failed": "No se pudo",
+      "reasonCode": "Motivo",
+      "reasonText": "Nota para el registro de auditoría (fuera de la cadena)",
+      "revoke": "Revocar",
+      "reinstate": "Restablecer",
+      "privacyNote": "No pongas datos personales en la nota: en la cadena solo va el CÓDIGO del motivo, el texto se queda en nuestro registro de auditoría.",
+      "ownerOnly": "Solo el propietario del contrato puede revocar un certificado."
+    }
+  },
+  "gate": {
+    "notConnectedTitle": "Monedero no conectado",
+    "notConnectedBody": "Conecta tu monedero para acceder a esta página.",
+    "wrongChainTitle": "Red incorrecta",
+    "wrongChainBody": "Cambia a GembaBlockchain para usar esta dApp.",
+    "notWhitelistedTitle": "Acceso denegado",
+    "notWhitelistedBody": "Solo los usuarios en lista blanca acceden a esta página. Pide a un admin que añada tu dirección.",
+    "notAdminTitle": "Solo administradores",
+    "notAdminBody": "Esta página está restringida a administradores y al propietario del contrato.",
+    "notOwnerTitle": "Solo propietario",
+    "notOwnerBody": "Esta página está restringida al propietario del contrato."
+  },
+  "tx": {
+    "pending": {
+      "default": "Enviando transacción...",
+      "buyTokens": "Comprando tokens GAME...",
+      "mintPredefined": "Acuñando NFT predefinido...",
+      "mintCustom": "Acuñando NFT personalizado...",
+      "approve": "Aprobando tokens GAME...",
+      "batchMint": "Acuñando NFT por lote...",
+      "createListing": "Creando listado...",
+      "cancelListing": "Cancelando listado...",
+      "purchase": "Comprando listado...",
+      "update_stats": "Actualizando estadísticas de la clasificación...",
+      "claimEth": "Reclamando GMB del faucet...",
+      "approve_tokens": "Aprobando uso de tokens...",
+      "buy_tokens": "Comprando tokens...",
+      "cancel_listing": "Cancelando listado...",
+      "claim_faucet": "Reclamando GMB...",
+      "create_listing": "Creando listado en el mercado...",
+      "mint_custom_eth": "Acuñando NFT personalizado...",
+      "mint_custom_tok": "Acuñando con tokens GAME...",
+      "mint_predefined": "Acuñando NFT predefinido..."
+    },
+    "success": {
+      "default": "Transacción confirmada",
+      "buyTokens": "Tokens comprados",
+      "mintPredefined": "NFT predefinido acuñado",
+      "mintCustom": "NFT personalizado acuñado",
+      "approve": "Aprobación confirmada",
+      "batchMint": "Acuñación por lote confirmada",
+      "createListing": "Listado creado",
+      "cancelListing": "Listado cancelado",
+      "purchase": "Compra confirmada",
+      "update_stats": "Estadísticas actualizadas",
+      "claimEth": "0,05 GMB reclamados",
+      "approve_tokens": "Aprobación concedida",
+      "buy_tokens": "Tokens comprados",
+      "cancel_listing": "Listado cancelado",
+      "claim_faucet": "GMB reclamado",
+      "create_listing": "Listado creado",
+      "mint_custom_eth": "NFT personalizado acuñado",
+      "mint_custom_tok": "NFT personalizado acuñado con tokens",
+      "mint_predefined": "NFT predefinido acuñado"
+    },
+    "error": {
+      "prefix": "Transacción fallida",
+      "wallet_not_ready": "Cartera no lista. Desconecta y vuelve a conectar la cartera, comprueba que esté desbloqueada y en GembaBlockchain, y vuelve a intentarlo."
+    },
+    "view_on_etherscan": "Ver en GembaScan"
+  },
+  "partnership": {
+    "hero": {
+      "eyebrow": "Para instituciones educativas y comunidades",
+      "title": "Una alianza para la educación Web3 en Europa",
+      "subtitle": "EduChain ofrece un marco listo para usar, seguro y pedagógicamente fundamentado para introducir la alfabetización blockchain en tu institución. Estamos abiertas a distintas formas de colaboración — desde proyectos piloto y solicitudes conjuntas a programas europeos hasta la bifurcación de la plataforma para necesidades locales.",
+      "ctaPrimary": "Contáctanos",
+      "ctaSecondary": "Explora la plataforma"
+    },
+    "intro": {
+      "title": "Por qué la alfabetización Web3 ya es inevitable",
+      "p1": "En los últimos treinta años internet ha pasado de Web1 (páginas estáticas que leemos), por Web2 (plataformas en las que escribimos y publicamos), hasta Web3 — un internet en el que la propiedad digital, la identidad y el valor se atestiguan matemáticamente y on-chain.",
+      "p2": "El Banco Central Europeo prepara el euro digital. La Unión Europea dispone de un marco regulatorio oficial para los activos digitales, una infraestructura europea de servicios blockchain (EBSI) y un programa de cartera de identidad digital europea. Las competencias Web3 dejarán pronto de ser una rareza para convertirse en alfabetización digital básica.",
+      "p3": "La cuestión no es si el alumnado y la juventud europea se encontrarán con Web3, sino si estarán preparados. La tarea del sistema educativo — centros escolares, universidades, centros de formación profesional, organizaciones comunitarias y ministerios competentes — es prepararlos con seguridad, método y antes de enfrentarse a riesgos reales."
+    },
+    "benefits": {
+      "title": "Qué puede aportar la alianza a tu institución",
+      "subtitle": "EduChain está diseñada para dar servicio a un amplio abanico de instituciones educativas — centros de primaria y secundaria, universidades, centros de formación profesional, organizaciones comunitarias y ministerios competentes. El modelo de colaboración se configura al contexto específico y a las necesidades de cada socio.",
+      "director": {
+        "title": "Para el equipo directivo",
+        "body": "Potencial rol de coordinador o socio en proyectos educativos internacionales — en función del diseño del proyecto. Posicionamiento de la institución entre las líderes en educación digital innovadora. Un nuevo proyecto europeo en el portafolio institucional."
+      },
+      "school": {
+        "title": "Para la institución",
+        "body": "Ingresos institucionales al ejercer de coordinador o socio en un proyecto. Potencial de modernización de la base material — equipamiento, software, un espacio dedicado. Movilidades internacionales sujetas a financiación del proyecto. Estatus de adoptante temprano de la educación Web3 en la región."
+      },
+      "teachers": {
+        "title": "Para el profesorado",
+        "body": "Remuneración por funciones oficiales en el proyecto. Formación profesional gratuita y un camino hacia un certificado oficial en alfabetización Web3 y blockchain. Movilidades internacionales sujetas a financiación del proyecto. Desarrollo en un ámbito con fuerte demanda en la próxima década."
+      },
+      "students": {
+        "title": "Para el alumnado y las personas que aprenden",
+        "body": "Exposición práctica gratuita a las tecnologías que dominarán la economía digital. Certificado individual de alfabetización Web3 previsto. Movilidades internacionales sujetas a financiación del proyecto. Una ventaja real al solicitar empleo o estudios superiores en el sector TIC."
+      }
+    },
+    "howItWorks": {
+      "title": "Cómo podría desarrollarse la alianza",
+      "subtitle": "Un itinerario ilustrativo en tres etapas — desde una introducción informal hasta un proyecto europeo completo. El modelo y el calendario concretos se acuerdan según tu contexto.",
+      "step1": {
+        "number": "01",
+        "title": "Piloto informal",
+        "period": "Fase inicial",
+        "body": "Formación de un equipo reducido de docentes o mentores en tu institución y desarrollo de un curso extraescolar, optativa o talleres con un número limitado de personas que aprenden. Recogida de experiencia práctica y documentación para la siguiente etapa. Coste para la institución — mínimo o cero; los principales recursos los aporta GEMBA IT."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Candidatura conjunta",
+        "period": "Prevista",
+        "body": "Preparación y presentación de una propuesta a un programa europeo o nacional adecuado (Erasmus+ KA220, Digital Europe, Horizon Europe, instrumentos nacionales de recuperación y otros). Los roles de coordinador y socio se asignan según el diseño concreto del proyecto. Pueden incluirse socios adicionales — otras instituciones, ONG u organizaciones internacionales."
+      },
+      "step3": {
+        "number": "03",
+        "title": "Ejecución",
+        "period": "Típicamente 24 meses",
+        "body": "Proyecto plurianual con roles, presupuestos y responsabilidades claramente asignados — desarrollo de la plataforma, formación docente, movilidades cuando proceda, difusión de resultados y construcción de una base abierta de recursos educativos."
+      }
+    },
+    "programmes": {
+      "title": "Alineación con los programas europeos",
+      "subtitle": "EduChain está diseñada para cumplir los criterios de los principales fondos europeos y nacionales para la educación digital. El programa aplicable depende del tipo concreto de institución y del diseño del proyecto.",
+      "erasmus": {
+        "title": "Erasmus+ KA220",
+        "body": "El currículo de formación docente y las alianzas interinstitucionales cumplen los criterios de cooperación en educación escolar, profesional y superior."
+      },
+      "digital": {
+        "title": "Digital Europe Programme",
+        "body": "EduChain se alinea con la prioridad «Competencias digitales», especialmente las avanzadas en tecnologías emergentes."
+      },
+      "horizon": {
+        "title": "Horizon Europe",
+        "body": "El potencial de investigación (gamificación, credenciales on-chain, pedagogía de sistemas descentralizados) encaja con los Clusters 2 y 4."
+      },
+      "national": {
+        "title": "Planes nacionales de recuperación",
+        "body": "La mayoría de los Estados miembros han reservado fondos para educación digital. EduChain es una solución ya disponible que puede integrarse directamente en esos planes."
+      }
+    },
+    "safety": {
+      "title": "Seguridad y cumplimiento",
+      "subtitle": "EduChain es una herramienta educativa — no un producto financiero.",
+      "testnet": {
+        "title": "Solo testnet",
+        "body": "La plataforma funciona íntegramente sobre la testnet GembaBlockchain. Nunca se intercambia dinero real. Las personas que aprenden experimentan sin riesgo financiero."
+      },
+      "gdpr": {
+        "title": "Cumplimiento del RGPD",
+        "body": "Se recopilan los datos estrictamente necesarios. Se aplican los principios de transparencia, limitación de la finalidad y protección desde el diseño."
+      },
+      "financial": {
+        "title": "No es un instrumento financiero",
+        "body": "GameToken no tiene valor de mercado real y no se negocia en mercados externos. La plataforma se clasifica como herramienta educativa."
+      },
+      "supervision": {
+        "title": "Supervisión pedagógica completa",
+        "body": "El profesorado dispone de un panel de administración para la lista blanca, seguimiento del progreso y revocación inmediata del acceso si es necesario. Los límites de transacción previenen abusos."
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": {
+        "q": "¿Qué compromisos financieros se requieren de la institución?",
+        "a": "Para el piloto informal — mínimos o cero; la mayor parte de los recursos los aporta GEMBA IT. Para las solicitudes conjuntas a programas europeos, el modelo financiero depende del instrumento concreto; por ejemplo, la mayoría de las líneas Erasmus+ no requieren cofinanciación de la institución, y los fondos los gestiona la parte coordinadora. Las condiciones específicas se acuerdan para cada proyecto."
+      },
+      "q2": {
+        "q": "¿Cuánto tiempo semanal requerirá al profesorado?",
+        "a": "Durante el piloto informal: 2-3 horas por semana (una sesión extraescolar más preparación). Al ejecutar un proyecto completo, el volumen depende del rol, pero en promedio 4-8 horas por semana — con potencial de remuneración adicional sujeta a la financiación del proyecto."
+      },
+      "q3": {
+        "q": "¿El profesorado necesita conocimientos especiales antes de empezar?",
+        "a": "No. EduChain prevé un programa intensivo de formación de 3 días (o su equivalente en línea) con un camino hacia un certificado de docente Web3. No se requieren conocimientos previos de blockchain."
+      },
+      "q4": {
+        "q": "¿Qué ocurre si el proyecto conjunto no se aprueba?",
+        "a": "El piloto informal continúa al margen de la decisión. La candidatura puede mejorarse y volver a presentarse en el mismo programa u otro adecuado. La experiencia adquirida durante la fase piloto sigue siendo valiosa para la institución y su profesorado."
+      },
+      "q5": {
+        "q": "¿Quién es responsable legalmente del alumnado al usar la plataforma?",
+        "a": "La institución mantiene su responsabilidad pedagógica habitual. EduChain opera en un entorno controlado (testnet, sin dinero real, acceso por lista blanca) diseñado para ser más seguro que un acceso a internet ordinario en una clase de informática."
+      },
+      "q6": {
+        "q": "¿Se puede integrar EduChain en el currículo existente?",
+        "a": "Sí. El programa de 16 horas para el alumnado es modular y se puede encajar como optativa, club extraescolar, módulo universitario o componente de asignaturas existentes como informática, economía o comercio electrónico."
+      }
+    },
+    "cta": {
+      "title": "¿Preparados para una conversación?",
+      "subtitle": "Ofrezco una reunión in situ en tu institución o una demostración en línea — unos 60 minutos. Sin compromiso, sin documentos cerrados. Una conversación entre personas que quieren cambiar la educación.",
+      "primary": "Solicitar una reunión",
+      "secondary": "Enviar una consulta"
+    }
+  },
+  "teachers": {
+    "hero": {
+      "eyebrow": "Para el profesorado",
+      "title": "EduChain en el aula",
+      "subtitle": "Un marco docente, formación y un camino hacia la certificación que te preparan para enseñar Web3 y blockchain. No se requieren conocimientos previos del tema — el programa está diseñado para formar primero al profesorado y después al alumnado.",
+      "ctaPrimary": "Ver el currículo",
+      "ctaSecondary": "Solicitar formación"
+    },
+    "philosophy": {
+      "title": "El profesorado se forma primero",
+      "body": "No se puede guiar al alumnado por Web3 si quien lo hace no domina personalmente la tecnología. Es un principio central de EduChain. Por eso, antes de cualquier trabajo con estudiantes, se prevé que el profesorado complete un curso completo, con un camino hacia un certificado y el tiempo para sentirse seguro en el entorno."
+    },
+    "whoFor": {
+      "title": "Para qué perfiles está pensado el programa",
+      "subtitle": "Web3 no es una asignatura nueva — es una extensión natural de disciplinas que ya se enseñan en centros escolares, universidades y centros de formación profesional.",
+      "it": {
+        "title": "Personal docente de informática y programación",
+        "body": "Ves smart contracts en código Solidity real, transacciones en GembaScan y prácticas de seguridad. EduChain es una aplicación de los conceptos de POO y Web3 que ya enseñas."
+      },
+      "ecommerce": {
+        "title": "Personal docente de comercio electrónico",
+        "body": "El mercado descentralizado de EduChain es un ejemplo real de comercio peer-to-peer sin intermediario. El alumnado ve alternativas a los modelos de Amazon y eBay."
+      },
+      "economics": {
+        "title": "Personal docente de economía y emprendimiento",
+        "body": "Los tokens y los NFT son lecciones vivas sobre propiedad, escasez, fijación de precios y gamificación. La economía interna de la plataforma es un experimento microeconómico."
+      },
+      "design": {
+        "title": "Personal docente de diseño gráfico y medios",
+        "body": "Los NFT son obras creativas digitales con metadatos. El alumnado crea una imagen, escribe una descripción en JSON, la publica en IPFS — un portafolio digital con propiedad demostrada."
+      }
+    },
+    "training": {
+      "title": "Formación para el profesorado",
+      "subtitle": "Dos formatos previstos, equivalentes en cuanto a la certificación — elige el que te convenga cuando se lance la sesión correspondiente.",
+      "inPerson": {
+        "badge": "Opción recomendada",
+        "title": "Intensivo presencial — 3 días",
+        "body": "Programa presencial previsto en un centro regional, incluido en las fases piloto del proyecto. Se prevé que los participantes lleguen con un portátil y terminen con un camino hacia un certificado, un monedero configurado y experiencia práctica con la plataforma en vivo.",
+        "day1Title": "Día 1 — Fundamentos",
+        "day1Body": "Evolución de internet (Web1→Web2→Web3). Cómo funciona blockchain — consenso, inmutabilidad, por qué importa la descentralización. Instalación y configuración de MetaMask, protección de las claves privadas. Primera transacción real en GembaBlockchain. Tarifas de gas y mecánica de las transacciones vía GembaScan.",
+        "day2Title": "Día 2 — Smart contracts y activos digitales",
+        "day2Body": "Estándar ERC-20 (tokens fungibles) y estándar ERC-721 (objetos únicos). Cada participante acuña su primer NFT. IPFS como almacenamiento descentralizado — subida víal nodo IPFS propio de EduChain, obtención de un content identifier, enlace con un smart contract. El mercado — listar, comprar, cancelar.",
+        "day3Title": "Día 3 — Pedagogía y administración",
+        "day3Body": "El panel de administración de EduChain — lista blanca del alumnado, seguimiento del progreso, reacción ante incidencias en clase. Seguridad — cómo reconocer estafas, qué autoriza realmente una función approve. Integración de asistentes de IA como herramientas analíticas. Evaluación práctica."
+      },
+      "online": {
+        "badge": "Para agendas ajustadas",
+        "title": "Curso en línea a ritmo propio",
+        "body": "Ocho módulos, alrededor de 15 horas de vídeo en total, ejercicios interactivos y una tarea práctica evaluada. Los temas reflejan el curso presencial. Cada módulo termina con un test (70 % para aprobar), el test final exige un 80 %. Se planifican webinars regulares de Q&A con el equipo de EduChain y un foro comunitario para apoyo entre pares. Al completar con éxito, el camino hacia un certificado es equivalente al del curso presencial."
+      }
+    },
+    "certification": {
+      "title": "Lo que prevemos que recibas",
+      "subtitle": "Un camino hacia la certificación con valor real y apoyo continuado cuando se realice el proyecto.",
+      "cert": {
+        "title": "Certificado de docente Web3",
+        "body": "Emisión prevista por GEMBA IT en forma de un PDF firmado y una credencial NFT on-chain. Está prevista la recertificación anual para reflejar la evolución de los estándares Web3."
+      },
+      "community": {
+        "title": "Una red de pares",
+        "body": "Comunidad prevista de profesorado certificado — foro, encuentros periódicos, intercambio de buenas prácticas y materiales de aula. La red crecerá junto con la adopción de la plataforma."
+      },
+      "support": {
+        "title": "Soporte prioritario",
+        "body": "Cuando se trabaja dentro de un proyecto activo o una alianza formal — un canal prioritario de contacto con el equipo de EduChain, para que no te quedes sola delante del alumnado cuando algo no funcione como se espera."
+      },
+      "development": {
+        "title": "Desarrollo profesional",
+        "body": "Actualizaciones periódicas previstas sobre novedades Web3. Reconocimiento por la participación en movilidades y conferencias internacionales dentro de los programas de proyecto pertinentes (Erasmus+, Digital Europe y otros)."
+      }
+    },
+    "curriculum": {
+      "title": "Qué enseñas al alumnado",
+      "subtitle": "Un programa de 16 horas en 7 módulos — del concepto al proyecto propio.",
+      "modules": {
+        "m1": {
+          "hours": "2 horas",
+          "title": "Introducción a Web3 y fundamentos de blockchain",
+          "body": "Evolución de internet. Blockchain como libro mayor público compartido. Descentralización, transparencia, inmutabilidad. Los smart contracts mediante la analogía de una máquina expendedora. Primera conexión de MetaMask a GembaBlockchain."
+        },
+        "m2": {
+          "hours": "2 horas",
+          "title": "Monederos Web3 y smart contracts en la práctica",
+          "body": "Claves privadas, frases semilla, qué no se hace nunca. Cómo se firman las transacciones. Observación de una transacción en el mempool y en GembaScan. Primera reclamación de GMB de prueba y primera compra de token GAME."
+        },
+        "m3": {
+          "hours": "2 horas",
+          "title": "Tokens ERC-20 y comercio descentralizado",
+          "body": "Qué hace a un token fungible. Suministro total frente al suministro circulante. Pools de liquidez y descubrimiento de precio. Compra y venta de tokens GAME en la plataforma."
+        },
+        "m4": {
+          "hours": "2 horas",
+          "title": "NFT y arte digital (ERC-721)",
+          "body": "Qué hace único a un token. Metadatos e IPFS. Cada estudiante crea una imagen original, escribe una descripción JSON, la sube a través de la plataforma al nodo IPFS propio de EduChain y acuña su primer NFT."
+        },
+        "m5": {
+          "hours": "2 horas",
+          "title": "Economía de tokens y NFT",
+          "body": "Transferencia de activos, aprobación, listado en el mercado. Fijación de precios de activos digitales. Carrera cronometrada en la clasificación — quién alcanzará el rango más alto."
+        },
+        "m6": {
+          "hours": "2 horas",
+          "title": "Seguridad, gestión de claves, reconocer estafas",
+          "body": "Phishing, airdrops falsos, funciones approve maliciosas, rug pulls. Lectura del código fuente de los contratos en GembaScan. Un escenario de estafa simulado en el aula — el alumnado debe reconocer la amenaza antes de firmar. Quienes no lo consiguen aprenden más que quienes lo consiguen."
+        },
+        "m7": {
+          "hours": "4 horas",
+          "title": "Proyecto final e IA como asistente de blockchain",
+          "body": "Uso de asistentes de IA para el análisis de smart contracts — no para sustituir el criterio del alumnado, sino para reforzarlo. Proyecto individual: colección de NFT con narrativa, estrategia económica para la clasificación, plan para el mercado. Presentación ante la clase."
+        }
+      },
+      "outcome": {
+        "title": "Resultados de aprendizaje",
+        "body": "Un alumno que termina el programa puede: explicar los fundamentos de blockchain; crear y proteger un monedero Web3; leer e interpretar transacciones on-chain; crear y publicar activos digitales originales; reconocer estafas; usar herramientas de IA para analizar smart contracts; describir la dinámica económica de sistemas tokenizados; presentar un proyecto Web3 terminado ante un público."
+      }
+    },
+    "tools": {
+      "title": "Las herramientas con las que cuentas",
+      "subtitle": "El docente no está solo en el aula.",
+      "admin": {
+        "title": "Panel de administración",
+        "body": "Lista blanca del alumnado con un clic. Monitorización en tiempo real de la actividad de cada alumno. Retirada de la lista blanca si es necesario — revocación inmediata del acceso."
+      },
+      "limits": {
+        "title": "Límites integrados",
+        "body": "Límites de transacción (3 compras por día, 3 acuñaciones por día, 1 reclamación cada 24 horas). El alumnado no puede cometer un error grande ni saturar el sistema."
+      },
+      "monitoring": {
+        "title": "Clasificación en vivo",
+        "body": "Ves el progreso de cada alumno en una clasificación on-chain en vivo. Identificas fácilmente quién necesita ayuda extra y quién está listo para tareas más exigentes."
+      },
+      "materials": {
+        "title": "Materiales listos",
+        "body": "Planes de lección, ejercicios de aula, tests, escenarios de ejemplo, problemas y soluciones habituales. Recibes todo lo necesario para impartir la clase."
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes del profesorado",
+      "q1": {
+        "q": "Nunca he trabajado con blockchain. ¿Podré con esto?",
+        "a": "Sí. El programa está pensado específicamente para docentes sin conocimientos previos. El curso previsto de 3 días (o su equivalente en línea) empieza desde cero — desde instalar MetaMask hasta administrar una plataforma en vivo. No se requieren conocimientos previos de blockchain."
+      },
+      "q2": {
+        "q": "¿Cuánto tiempo semanal me llevará enseñarlo?",
+        "a": "La clase en sí dura 1-2 horas por semana. La preparación de las primeras clases es más exigente (2-3 horas para los primeros 3-4 módulos), pero después baja a 30-60 minutos. Se prevén planes de lección listos — no escribes un currículo desde cero."
+      },
+      "q3": {
+        "q": "¿Qué hago si un alumno plantea una duda técnica que no sé resolver?",
+        "a": "Primero — es normal. Ni siquiera los expertos saben todo sobre blockchain. Segundo — dentro de una alianza o proyecto activo se prevé un canal prioritario de soporte con el equipo de EduChain. Tercero — el asistente de IA integrado en el currículo está justo para esto: el alumnado aprende a usar la IA como herramienta de investigación, no para que tú lo sepas todo."
+      },
+      "q4": {
+        "q": "¿Es seguro que mis alumnos trabajen con blockchain?",
+        "a": "La plataforma funciona íntegramente sobre la testnet GembaBlockchain — nunca se intercambia dinero real. Tokens y NFT no tienen valor real. El acceso por lista blanca significa que solo tu alumnado usa la plataforma. Los límites de transacción previenen abusos. Es un entorno más controlado que un acceso a internet ordinario en una clase de informática."
+      },
+      "q5": {
+        "q": "¿Recibo remuneración adicional?",
+        "a": "Cuando se materializa un proyecto completo con financiación asegurada — sí, con contrato. El volumen depende del rol (docente principal, co-docente, mentor de movilidades, etc.) y del programa concreto (Erasmus+, Digital Europe, instrumentos nacionales). Las tarifas se acuerdan individualmente con la institución y la parte coordinadora, y suelen situarse en el rango realista para proyectos educativos europeos."
+      },
+      "q6": {
+        "q": "¿Puedo usar EduChain fuera de un proyecto formal?",
+        "a": "Sí. La plataforma y los materiales formativos son abiertos (open source, Creative Commons) — cualquier docente formada puede usarlos en clase sin esperar un proyecto formal. La financiación de proyectos aporta remuneración adicional, movilidades y mayor alcance, pero no es necesaria para enseñar."
+      }
+    },
+    "cta": {
+      "title": "¿Preparada para el primer paso?",
+      "subtitle": "Contacta con nosotros — podemos enviarte materiales demo, un plan de lección de ejemplo e información sobre las sesiones de formación previstas cuando se lancen.",
+      "primary": "Solicitar materiales",
+      "secondary": "Ver alianza"
+    }
+  },
+  "philosophy": {
+    "hero": {
+      "eyebrow": "Principios y visión",
+      "title": "Filosofía y principios",
+      "subtitle": "Por qué EduChain está construida así — para el profesorado, para el alumnado, para la comunidad Web3 y para la sostenibilidad a largo plazo de la economía digital.",
+      "ctaPrimary": "Explora la plataforma",
+      "ctaSecondary": "Ver en GitHub"
+    },
+    "infrastructure": {
+      "title": "La educación es infraestructura esencial",
+      "body1": "La economía digital es tan fuerte como las personas que la usan, la construyen y la comprenden. Cualquier objetivo a largo plazo — custodia segura de activos, bienes comunes duraderos, pensamiento crítico en sistemas descentralizados — depende de un flujo constante de usuarios educados.",
+      "body2": "EduChain cubre una laguna estructural. La mayoría de currículos escolares europeos todavía tratan Web3 como un tema nicho, cuando lo tratan. EduChain entrega un programa completo y listo para el aula: smart contracts de calidad de producción en GembaBlockchain, currículo de 16 horas para el alumnado, itinerario de formación docente y una aplicación web multilingüe pulida.",
+      "body3": "No comercial, neutral respecto a proveedores, abierta a ser bifurcada. EduChain no extrae valor — convierte cada cohorte de docentes formados en un multiplicador que alcanza a cientos de alumnos con el tiempo."
+    },
+    "publicGood": {
+      "title": "Principios de bien común",
+      "subtitle": "Cada decisión de diseño en EduChain refleja los valores del verdadero principio de código abierto.",
+      "mit": {
+        "title": "Licencia MIT para el código",
+        "body": "Los smart contracts están bajo licencia MIT — copia, modificación y uso comercial libres. Cualquier centro, universidad o comunidad puede bifurcar EduChain para su propio país, idioma o contexto."
+      },
+      "cc": {
+        "title": "Creative Commons para los materiales formativos",
+        "body": "El programa de 16 horas, la formación docente y todos los recursos pedagógicos están bajo Creative Commons Attribution-ShareAlike 4.0. Las adaptaciones mantienen la misma licencia — el conocimiento permanece abierto."
+      },
+      "noToken": {
+        "title": "Sin token, sin tarifas",
+        "body": "EduChain no tiene token a la venta, niveles de pago ni funciones premium. Los tokens GAME en la plataforma no tienen valor monetario — son una herramienta pedagógica."
+      },
+      "nonExtractive": {
+        "title": "Diseño no extractivo",
+        "body": "GEMBA EOOD opera como custodio del proyecto, no como buscador de rentas. Toda la financiación va directamente a desarrollo, formación y crecimiento del ecosistema — nunca a dividendos ni a expansión fuera de la misión."
+      }
+    },
+    "canonical": {
+      "title": "Estándares Web3 canónicos",
+      "subtitle": "EduChain utiliza solo tecnologías consolidadas y portables. Nada patentado, nada propietario.",
+      "standards": {
+        "title": "Estándares Ethereum",
+        "body": "ERC-20 para tokens fungibles, ERC-721 y ERC-721A para NFT, mecánica de gas EIP-1559, primitivas de seguridad OpenZeppelin v5. El alumnado aprende estándares que funcionan en cualquier lugar — no las funciones de un producto comercial concreto."
+      },
+      "portable": {
+        "title": "Habilidades portables",
+        "body": "Lo que el alumnado aprende en EduChain se aplica directamente en Ethereum mainnet, cualquier Layer 2 compatible con EVM (Arbitrum, Optimism, Base, zkSync) o una cadena consorciada empresarial. Nada está atado a una plataforma específica."
+      },
+      "verified": {
+        "title": "Verificados en GembaScan",
+        "body": "Los siete smart contracts están verificados en GembaScan. Alumnado, profesorado, auditoras y evaluadores pueden leer el código exacto que se ejecuta on-chain — sin confiar en el frontend. Transparencia pública completa."
+      },
+      "modernStack": {
+        "title": "Pila frontend moderna",
+        "body": "React 19, TypeScript, wagmi, viem, i18next. Multilingüe (BG/EN/ES), accesible por teclado, optimizada para móviles. Diseñada para ser la primera aplicación Web3 que usa un estudiante de 12 años."
+      }
+    },
+    "testnetFirst": {
+      "title": "Realismo testnet",
+      "body1": "EduChain funciona íntegramente sobre la testnet GembaBlockchain. Sin excepciones, sin puentes a mainnet, sin mezclar con fondos reales. Es una decisión consciente — el alumnado interactúa con exactamente la misma tecnología que mueve las redes blockchain reales, pero sin exposición financiera.",
+      "body2": "Cada transacción es una transacción real de GembaBlockchain. Gas real, mempool real, visibilidad real en GembaScan. La única diferencia: el valor es simbólico — el GMB de prueba no tiene valor monetario fuera del entorno experimental.",
+      "body3": "Esto hace a EduChain más segura que un acceso a internet ordinario en una clase de informática. Acceso por lista blanca, límites de tasa para las transacciones, posibilidad de que el docente retire al alumno al instante — todo está pensado para un entorno educativo controlado."
+    },
+    "roadmap": {
+      "title": "Crecimiento por fases y realista",
+      "subtitle": "EduChain no promete una revolución. Promete un crecimiento sostenido, medible y escalonado.",
+      "phase0": {
+        "label": "Fase 0 — Infraestructura lista",
+        "period": "Completada en 2026",
+        "body": "La plataforma está desplegada y operativa. 8 smart contracts verificados en GembaBlockchain. Currículo de 16 horas traducido al búlgaro. Aplicación web en tres idiomas. Repositorio GitHub abierto bajo licencia MIT. Conversaciones iniciales con un centro búlgaro."
+      },
+      "phase1": {
+        "label": "Fase 1 — Año piloto",
+        "period": "2026 — 2027",
+        "body": "Despliegue piloto en 1 centro búlgaro. 10 docentes formadas y certificadas. 250 alumnos completando el programa de 16 horas. Documentación, bucles de retroalimentación y caso de estudio para las fases siguientes."
+      },
+      "phase2": {
+        "label": "Fase 2 — Expansión europea",
+        "period": "2027 — 2029",
+        "body": "Expansión a 3-5 centros en 3 Estados miembros de la UE. 30 docentes certificadas. 750 alumnos terminados. Traducción a 5 idiomas europeos. Alianza con una organización externa de evaluación. Posible financiación Erasmus+ KA220."
+      },
+      "phase3": {
+        "label": "Fase 3 — Escalado y reconocimiento",
+        "period": "2029 — 2030+",
+        "body": "15-20 centros socios. 100+ docentes certificadas. 2 500+ alumnos alcanzados. Primeras publicaciones académicas. Conversaciones para el reconocimiento nacional del certificado. Traducciones a 10+ idiomas. Comunidad sostenible de variantes bifurcadas."
+      }
+    },
+    "sustainability": {
+      "title": "Sostenibilidad más allá de un único financiador",
+      "body1": "EduChain está diseñada para que ninguna fuente de financiación ni organización sea un único punto de fallo. Si GEMBA EOOD se retira, el proyecto continúa — el código abierto y los materiales formativos permiten a cualquier organización asumir la custodia.",
+      "body2": "La financiación es no dilutiva — subvenciones de programas europeos, financiación de bienes comunes, alianzas institucionales. Sin venta de token, sin inversores de capital, sin presión para un giro comercial.",
+      "body3": "La visión a largo plazo es una red de instituciones — centros educativos, universidades, ministerios, organizaciones comunitarias — que se apoyan mutuamente en la educación Web3 en Europa. EduChain es solo una herramienta más, no el centro de esa red."
+    },
+    "cta": {
+      "title": "Abiertos a conversar",
+      "subtitle": "EduChain está lista para ser evaluada, pilotada, bifurcada o integrada en una iniciativa educativa más amplia. Ya seas un centro, una financiadora, una investigadora o un desarrollador — esperamos tu contacto.",
+      "primary": "Contáctanos",
+      "secondary": "Explora en GitHub"
+    }
+  },
+  "privacy": {
+    "hero": {
+      "title": "Política de privacidad",
+      "lastUpdated": "Última actualización: 31 de octubre de 2026",
+      "subtitle": "EduChain está diseñada para no exigir ni recopilar datos personales. Hay una excepción deliberada: un certificado lleva un nombre, por lo que los datos de los certificados se recopilan y se conservan durante un plazo determinado. Este documento describe exactamente qué ocurre con la información: de forma breve, sin plantillas y sin rodeos."
+    },
+    "summary": {
+      "title": "Resumen breve",
+      "body": "No hay registro con nombre o correo y no hay base de datos de usuarios. No almacenamos los mensajes de contacto en el servidor. No usamos analítica, rastreadores publicitarios ni perfilado. Te conectas con una cartera Web3, que es pseudónima por defecto. La ÚNICA excepción: si solicitas un certificado del examen, conservamos tus tres nombres, cargo, organización y correo — el correo solo hasta que se envía el certificado, el resto durante el tiempo en que el certificado debe seguir siendo verificable (5 años). Ningún dato personal llega a la blockchain: solo un hash."
+    },
+    "section1": {
+      "title": "1. Responsable del tratamiento",
+      "body": "En los casos en los que tratamos datos personales en el sentido del RGPD (Reglamento (UE) 2016/679), el responsable es GEMBA EOOD (denominada aquí «GEMBA IT»), sociedad búlgara con EIK 208656371, con sede en Varna, Bulgaria. Contacto para cuestiones de privacidad: contacts@gembait.com."
+    },
+    "section2": {
+      "title": "2. Qué NO recopilamos",
+      "intro": "Lo que EduChain deliberadamente no hace:",
+      "item1": "No exigimos registro con nombre, correo, contraseña u otra información personal",
+      "item2": "No tenemos base de datos de usuarios: ninguna tabla «users», ninguna contraseña y ningún perfil. La única base de datos que existe es la de los certificados (véase la sección 3), y solo entras en ella si tú mismo solicitas un certificado",
+      "item3": "No almacenamos los correos del formulario de contacto en nuestro servidor: se reenvían directamente a nuestro buzón y no permanecen en la infraestructura de la plataforma",
+      "item4": "No usamos Google Analytics, Facebook Pixel ni ningún otro sistema de analítica o tracking",
+      "item5": "No perfilamos usuarios ni mostramos publicidad",
+      "item6": "No vendemos, alquilamos ni compartimos datos personales con terceros con fines de marketing"
+    },
+    "section3": {
+      "title": "3. Qué ocurre realmente",
+      "intro": "Esta es exactamente la información que pasa por la plataforma y qué ocurre con ella:",
+      "walletTitle": "Monedero Web3",
+      "walletBody": "Cuando conectas MetaMask u otro monedero, tu navegador revela a la plataforma la dirección pública (por ejemplo, 0x1234…abcd). Esta dirección es información pública en la blockchain y no te identifica como persona física. Tus claves privadas y tu frase semilla nunca salen de tu navegador y nunca se envían a nosotros.",
+      "contactTitle": "Formulario de contacto",
+      "contactBody": "Si nos escribes mediante el formulario del sitio, lo que rellenas (nombre, correo, mensaje) se reenvía directamente a nuestro correo por SMTP. Los mensajes no se escriben en ninguna base de datos del servidor. Tras recibirlos, permanecen en nuestra bandeja de entrada — para responder y atender tu consulta.",
+      "browserTitle": "Tu navegador",
+      "browserBody": "Tu navegador guarda localmente (en localStorage) tu idioma preferido, el tema (claro/oscuro) y la sesión wagmi del monedero activo. Esta información no se envía a nosotros — vive solo en tu navegador y se borra al limpiar los datos del sitio.",
+      "blockchainTitle": "Transacciones blockchain",
+      "blockchainBody": "Cada una de tus transacciones (reclamación de GMB de prueba, compra de tokens, acuñación de NFT, comercio) se registra públicamente en la blockchain de la testnet GembaBlockchain. Esto es inherente a la tecnología — no es una decisión de EduChain. Los registros blockchain son públicos e irreversibles por diseño.",
+      "certificatesTitle": "Certificados del examen (el único lugar con datos personales)",
+      "certificatesBody": "Si decides presentarte al examen de certificación, introduces tres nombres, un correo, un cargo y una organización. Los nombres, el cargo y la organización se imprimen en el certificado y se muestran en la página pública de verificación: eso es lo que hace útil un certificado, que un tercero pueda comprobarlo. El correo sirve para dos cosas: confirmar tu dirección con un código y entregarte el certificado en PDF. Una vez enviado, el correo se elimina y solo queda un hash con sal (HMAC) — suficiente para aplicar el límite de 3 intentos al día, inútil para localizarte. Un intento que no produjo certificado se elimina por completo a los 30 días. Un certificado emitido se conserva 5 años; después solo quedan el número, la fecha y el resultado, y los nombres desaparecen. 🔑 NINGÚN dato personal llega a la blockchain: solo un hash (keccak256) del contenido del certificado, el número, la fecha y el resultado. El hash permite demostrar que el certificado que te muestran es exactamente el que se emitió, y no permite recuperar nada de él."
+    },
+    "section4": {
+      "title": "4. Registros de servidor y CDN",
+      "intro": "Como cualquier sitio web, EduChain atraviesa capas de infraestructura que mantienen registros técnicos:",
+      "cloudflareTitle": "Cloudflare (CDN y protección DDoS)",
+      "cloudflareBody": "Cloudflare procesa cada petición antes de que llegue a nuestro servidor y mantiene sus propios registros (dirección IP, User-Agent, página visitada). Esos registros los gestiona Cloudflare bajo su política de privacidad y no están bajo nuestro control. Usamos Cloudflare para aceleración y protección — la alternativa haría el sitio lento y vulnerable.",
+      "apacheTitle": "Registros de acceso de Apache (alojamiento)",
+      "apacheBody": "Nuestro servidor web (Apache en Hetzner) puede mantener registros de acceso estándar con direcciones IP y rutas consultadas durante un periodo limitado, necesario para la resolución de incidencias y la seguridad. Estos registros no se asocian a perfiles de usuario (porque no los hay) y no se utilizan para analítica ni ningún fin comercial.",
+      "turnstileTitle": "Cloudflare Turnstile",
+      "turnstileBody": "En el formulario de contacto funciona Cloudflare Turnstile — una protección anti-bot que verifica si la petición procede de una persona real. Turnstile puede comprobar tu navegador y establecer temporalmente una cookie técnica. La comprobación la realiza Cloudflare y no recibimos detalles sobre ti."
+    },
+    "section5": {
+      "title": "5. Base jurídica del tratamiento",
+      "intro": "Cuando tratamos datos (correos del formulario de contacto, registros técnicos), las bases jurídicas según el RGPD son:",
+      "item1": "Consentimiento (art. 6(1)(a)) — al rellenar el formulario de contacto, aportas expresamente tus datos para que podamos responderte",
+      "item2": "Interés legítimo (art. 6(1)(f)) — mantenimiento de registros técnicos por seguridad y resolución de incidencias",
+      "item3": "Obligación legal (art. 6(1)(c)) — cumplir una eventual orden judicial o una obligación legal",
+      "item4": "Contrato e interés legítimo (art. 6(1)(b) y (f)) — para los certificados: sin nombre no hay certificado, y que un tercero pueda verificarlo es su finalidad misma"
+    },
+    "section6": {
+      "title": "6. Tus derechos bajo el RGPD",
+      "intro": "En la medida en que tratamos alguna información tuya, tienes los siguientes derechos:",
+      "right1": "Derecho de acceso — saber si guardamos información sobre ti y de qué tipo",
+      "right2": "Derecho de rectificación — pedir la corrección de datos inexactos",
+      "right3": "Derecho de supresión — pedir la eliminación de los mensajes del formulario de contacto que aún estén en nuestro correo",
+      "right4": "Derecho a la limitación del tratamiento",
+      "right5": "Derecho de oposición",
+      "right6": "Derecho a presentar una reclamación ante la Comisión de Protección de Datos Personales de Bulgaria (KZLD, cpdp.bg)",
+      "contact": "Para ejercer estos derechos — escribe a contacts@gembait.com. Respondemos en un plazo de 30 días.",
+      "blockchainNote": "Importante: las transacciones blockchain no pueden borrarse técnicamente. Es la naturaleza de la tecnología — no una decisión de GEMBA IT.",
+      "right7": "Derecho a la supresión de los datos del certificado: escríbenos y eliminaremos el nombre, el cargo y la organización de nuestro registro; el número, la fecha y el resultado permanecen para no dejar sin sentido un certificado ya emitido y verificado, y el hash en la blockchain es técnicamente imposible de borrar (véase la nota siguiente)"
+    },
+    "section7": {
+      "title": "7. Menores de edad",
+      "body": "EduChain puede utilizarla el alumnado a partir de 12 años en el contexto de aprendizaje escolar organizado bajo supervisión docente. Como no exigimos datos personales (ni registro con nombre), la plataforma no recopila información específica sobre menores — a diferencia de la mayoría de servicios de internet en los que un alumno tendría que crear un perfil con datos personales. Familias y docentes pueden contactar con nosotros en contacts@gembait.com para cualquier cuestión sobre la seguridad de los menores en la plataforma."
+    },
+    "section8": {
+      "title": "8. Seguridad",
+      "body": "Todo el tráfico hacia la plataforma va por TLS (HTTPS), con HSTS y una Content-Security-Policy estricta. La base de datos de certificados es el único lugar con datos personales: es un archivo en el servidor legible solo por el proceso de la aplicación, contiene el mínimo y se limpia según un calendario. La clave con la que el servidor registra certificados en la blockchain solo puede EMITIR: no puede revocar ni cambiar roles; la revocación se firma con una clave separada y fría que no está en el servidor. En caso de incidente de seguridad notificaremos a las autoridades de control competentes y a las personas afectadas conforme a los artículos 33 y 34 del RGPD en un plazo de 72 horas."
+    },
+    "section9": {
+      "title": "9. Cambios en esta política",
+      "body": "Podemos actualizar esta política si cambian la plataforma, la ley o nuestra infraestructura. La fecha de la última actualización figura al inicio del documento. Para cambios sustanciales colocaremos un aviso en la página de inicio."
+    },
+    "section10": {
+      "title": "10. Contacto",
+      "body": "Para cualquier cuestión sobre privacidad:",
+      "company": "GEMBA EOOD",
+      "eik": "EIK: 208656371",
+      "city": "Varna, Bulgaria",
+      "email": "Correo: contacts@gembait.com"
+    }
+  },
+  "terms": {
+    "hero": {
+      "title": "Condiciones de uso",
+      "lastUpdated": "Última actualización: 24 de abril de 2026",
+      "subtitle": "Estas condiciones regulan el acceso y el uso de EduChain. Al usar la plataforma confirmas que las has leído y las aceptas."
+    },
+    "summary": {
+      "title": "Resumen breve",
+      "body": "EduChain es una plataforma educativa gratuita que funciona sobre la testnet GembaBlockchain. Nunca se intercambia dinero real. Los tokens y NFT de la plataforma no tienen valor financiero real. No es un producto financiero y no ofrece servicios de inversión."
+    },
+    "section1": {
+      "title": "1. Qué es EduChain",
+      "body": "EduChain es una herramienta educativa desarrollada por GEMBA EOOD (denominada aquí «GEMBA IT»), destinada a la formación de alumnado, estudiantes y profesorado en tecnología blockchain, smart contracts y activos digitales. La plataforma funciona íntegramente sobre la testnet GembaBlockchain — una red de pruebas sin valor financiero real."
+    },
+    "section2": {
+      "title": "2. Qué NO es EduChain",
+      "intro": "Para evitar malentendidos, declaramos expresamente:",
+      "item1": "EduChain no es un servicio financiero, plataforma de inversión o broker",
+      "item2": "GameToken y los NFT de la plataforma no son valores, ni medio de pago, ni instrumento financiero",
+      "item3": "La plataforma no es un servicio financiero — está clasificada como herramienta educativa",
+      "item4": "Los resultados en la plataforma (puntos, clasificación, certificados) no tienen equivalente monetario y no pueden canjearse por dinero real",
+      "item5": "El uso de EduChain no constituye asesoramiento financiero ni recomendación para ninguna inversión",
+      "item6": "EduChain no recopila, almacena ni trata datos personales con fines de perfil de usuario — no hay registro, no hay base de datos de usuarios"
+    },
+    "section3": {
+      "title": "3. Quién puede usar la plataforma",
+      "body": "EduChain está destinada principalmente a alumnado desde 12 años en el contexto de aprendizaje escolar o extraescolar organizado, así como al profesorado, investigadores y adultos que aprenden. El acceso se produce por aprobación en la lista blanca, normalmente por parte de un docente o administrador. El uso individual solo es posible previa aprobación del equipo de GEMBA IT.",
+      "minorsTitle": "Menores de edad",
+      "minorsBody": "Las personas menores de 18 años pueden usar la plataforma solo en el contexto de una actividad escolar o educativa bajo la supervisión de un docente o de una familia. Las familias pueden solicitar la retirada del menor de la lista blanca en cualquier momento."
+    },
+    "section4": {
+      "title": "4. Tus obligaciones",
+      "intro": "Al usar EduChain aceptas:",
+      "item1": "No intentar vulnerar la seguridad de la plataforma o de los smart contracts (no realizar pen-testing sin consentimiento previo por escrito)",
+      "item2": "No usar la plataforma para fraude, falsificación de actividad, phishing o spam",
+      "item3": "No publicar en los metadatos de los NFT contenido que infrinja derechos de autor de terceros, sea ilegal, violento, pornográfico, discriminatorio o constituya discurso de odio",
+      "item4": "No usar la plataforma para actividades prohibidas por la legislación búlgara o europea",
+      "item5": "Asumir la responsabilidad de proteger tu monedero Web3 — nunca pedimos ni recibimos claves privadas o frases semilla",
+      "item6": "Notificar de inmediato a contacts@gembait.com si descubres una vulnerabilidad de seguridad — agradecemos a las investigadoras de seguridad responsables"
+    },
+    "section5": {
+      "title": "5. Propiedad intelectual",
+      "ours": "El código fuente de los smart contracts se publica bajo licencia MIT y puede usarse libremente. Los materiales formativos están bajo Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0). El nombre «EduChain» y la identidad visual (logotipo, diseño) siguen siendo propiedad de GEMBA EOOD.",
+      "yours": "El contenido que publicas (imágenes NFT, metadatos, mensajes) sigue siendo de tu propiedad. Al publicarlo en la plataforma nos concedes una licencia no exclusiva y gratuita para mostrarlo dentro de la plataforma (mercado, galería, clasificación). Esta licencia termina cuando retiras el contenido o tu cuenta — salvo en el caso de las transacciones blockchain, que son técnicamente irreversibles."
+    },
+    "section6": {
+      "title": "6. Disponibilidad y cese del acceso",
+      "intro": "GEMBA IT se reserva el derecho a:",
+      "item1": "Modificar, actualizar o eliminar funcionalidades de la plataforma",
+      "item2": "Retirar a un usuario de la lista blanca en caso de incumplimiento de estas condiciones",
+      "item3": "Suspender temporal o permanentemente el servicio con un preaviso razonable (salvo en casos de emergencia)",
+      "item4": "Eliminar contenido inapropiado del mercado o de la galería",
+      "note": "En caso de cese — los smart contracts siguen funcionando (son inmutables en la blockchain), pero la interfaz web de EduChain puede quedar fuera de servicio."
+    },
+    "section7": {
+      "title": "7. Limitación de responsabilidad",
+      "body": "EduChain se proporciona «tal cual» (as-is), sin garantías expresas o implícitas. GEMBA IT no es responsable por:",
+      "item1": "Indisponibilidad temporal de la plataforma por problemas técnicos, mantenimiento o problemas en la testnet GembaBlockchain",
+      "item2": "Pérdida de activos de prueba por errores, forks de testnet o errores del usuario",
+      "item3": "Acciones de terceros — proveedores RPC, gateways IPFS, proveedores de monederos",
+      "item4": "Uso inadecuado de la plataforma en contexto educativo por parte de un centro o docente",
+      "item5": "Contenido publicado por los usuarios (metadatos de los NFT)",
+      "note": "En la medida máxima permitida por la legislación búlgara y europea, nuestra responsabilidad se limita a la cantidad que hayamos recibido del usuario concreto (y esa cantidad es 0, al ser el servicio gratuito)."
+    },
+    "section8": {
+      "title": "8. Blockchain — condiciones específicas",
+      "intro": "El uso de tecnología blockchain tiene características específicas que debes comprender:",
+      "item1": "Las transacciones son públicas e irreversibles — una vez registradas no pueden borrarse ni modificarse",
+      "item2": "No podemos recuperar activos de prueba «perdidos» — si envías activos a una dirección equivocada, se pierden de forma irreversible",
+      "item3": "No podemos restablecer el acceso a tu monedero — si pierdes tu frase semilla, no podemos ayudarte",
+      "item4": "La testnet GembaBlockchain es infraestructura experimental y puede resultar inestable, reiniciarse o quedar obsoleta en el futuro"
+    },
+    "section9": {
+      "title": "9. Cambios en las condiciones",
+      "body": "Podemos actualizar estas condiciones. Para cambios sustanciales colocaremos un aviso al inicio del documento y notificaremos a los usuarios activos. El uso continuado de la plataforma tras los cambios significa que los aceptas."
+    },
+    "section10": {
+      "title": "10. Ley aplicable y controversias",
+      "body": "Estas condiciones se rigen por la legislación de la República de Bulgaria y el Derecho de la Unión Europea. Todas las controversias se resuelven primero mediante negociación de buena fe. Si no se alcanza acuerdo, son competentes los tribunales de Varna, Bulgaria. Los consumidores de la UE conservan sus derechos bajo el Derecho del consumo aplicable en su país."
+    },
+    "section11": {
+      "title": "11. Contacto",
+      "body": "Preguntas, comentarios o consultas sobre estas condiciones:",
+      "company": "GEMBA EOOD",
+      "eik": "EIK: 208656371",
+      "city": "Varna, Bulgaria",
+      "email": "Correo: contacts@gembait.com"
+    }
+  },
+  "curriculum": {
+    "hero": {
+      "eyebrow": "16 horas, 7 módulos",
+      "title": "Qué aprende el alumnado en EduChain",
+      "subtitle": "Currículo estructurado para alumnado desde los 12 años. Desde la primera conexión con la blockchain hasta un proyecto final presentado ante la clase. Gratuito, abierto y adaptable a cualquier contexto educativo.",
+      "ctaPrimary": "Conoce la plataforma",
+      "ctaSecondary": "Para docentes"
+    },
+    "philosophy": {
+      "title": "Aprender haciendo",
+      "p1": "EduChain no explica blockchain en la pizarra — deja que el alumnado lo viva. Cada concepto se prueba en un entorno de test seguro, con transacciones reales de blockchain y sin riesgo financiero.",
+      "p2": "La teoría llega después de la práctica. El alumno primero ve qué ocurre, después entiende por qué — y así el conocimiento se asienta. Todos los módulos siguen este principio: práctica, después reflexión."
+    },
+    "overview": {
+      "title": "El programa en cifras",
+      "subtitle": "Currículo de 16 horas estructurado para un cuatrimestre o un intensivo corto.",
+      "hours": {
+        "value": "16",
+        "label": "Horas lectivas en total"
+      },
+      "modules": {
+        "value": "7",
+        "label": "Módulos temáticos"
+      },
+      "age": {
+        "value": "12+",
+        "label": "Edad recomendada"
+      },
+      "cost": {
+        "value": "0 €",
+        "label": "Coste por alumno"
+      }
+    },
+    "modules": {
+      "title": "Siete módulos — de la introducción al proyecto propio",
+      "subtitle": "Cada módulo construye sobre el anterior. La progresión lleva de los conceptos básicos a la creación autónoma.",
+      "m1": {
+        "hours": "2 horas",
+        "title": "Introducción a Web3",
+        "tagline": "Cómo ha evolucionado internet",
+        "description": "El alumnado hace un recorrido por la historia de internet — de las páginas estáticas de Web1, por las plataformas de Web2, hasta las redes descentralizadas de Web3. Se abordan conceptos fundamentales: libro mayor público compartido, inmutabilidad, descentralización. Los smart contracts se presentan mediante la analogía de una máquina expendedora — sencilla, accesible y memorable.",
+        "outcome": "El alumno sabe explicar la diferencia entre Web1, Web2 y Web3 a un compañero."
+      },
+      "m2": {
+        "hours": "2 horas",
+        "title": "Primer contacto con blockchain",
+        "tagline": "Monedero, transacción, GembaScan",
+        "description": "Instalación y configuración de MetaMask. Comprensión real de claves privadas y frases semilla — y de lo que no hay que hacer nunca con ellas. El alumnado recibe su primer GMB de prueba del faucet de la plataforma y realiza su primera transacción blockchain. La sigue en GembaScan — ve con sus propios ojos cómo se confirma en la red.",
+        "outcome": "El alumno dispone de un monedero Web3 operativo y entiende cómo protegerlo."
+      },
+      "m3": {
+        "hours": "2 horas",
+        "title": "Tokens y economía descentralizada",
+        "tagline": "ERC-20, precio, suministro",
+        "description": "Qué hace a un token — qué significa que sea fungible, cuántos tokens existen exactamente, cómo se fija el precio. El alumnado compra tokens GAME en la plataforma, observa cómo cambia su saldo en tiempo real y entiende qué hay detrás de cada número — no solo una cifra en una base de datos, sino un registro público en la blockchain.",
+        "outcome": "El alumnado entiende cómo funcionan las monedas digitales como sistema económico."
+      },
+      "m4": {
+        "hours": "2 horas",
+        "title": "Propiedad digital y NFT",
+        "tagline": "Crear tu primera obra",
+        "description": "La diferencia entre único y fungible — por qué un NFT no es «una imagen en la blockchain» sino algo más profundo. El alumno crea una imagen original, escribe una descripción con atributos en JSON, la sube a IPFS (un sistema de archivos descentralizado) y acuña su primer NFT. Por primera vez tiene una obra digital que es demostrablemente suya — no en la cuenta de una plataforma, sino en la blockchain.",
+        "outcome": "El alumno posee su primer NFT, creado desde cero — suyo, para siempre."
+      },
+      "m5": {
+        "hours": "2 horas",
+        "title": "Mercado, competencia, estrategia",
+        "tagline": "Mercado y clasificación",
+        "description": "El alumno lista su NFT a la venta en el mercado. Compra a sus compañeros. Entiende cómo tasar una obra digital — ¿cuánto vale lo único? Carrera cronometrada al final de la clase: ¿quién alcanzará el rango más alto? La gamificación convierte los conceptos económicos en un juego de estrategia.",
+        "outcome": "El alumnado entiende la lógica de mercado de los activos digitales — demanda, oferta, valor."
+      },
+      "m6": {
+        "hours": "2 horas",
+        "title": "Seguridad y detección de estafas",
+        "tagline": "El módulo más importante",
+        "description": "Este es el módulo por el que las familias agradecerán el programa. Un examen detallado de estafas típicas: phishing, airdrops falsos, funciones approve maliciosas, rug pulls. El alumnado aprende a leer el código fuente de smart contracts en GembaScan y a reconocer señales sospechosas. Al final de la clase — una estafa simulada en el aula: el alumnado debe identificar el vector de ataque antes de firmar la transacción. Quienes no lo consiguen aprenden más que quienes lo consiguen.",
+        "outcome": "El alumnado sabe defenderse en el Web3 real — no por miedo, sino por conocimiento."
+      },
+      "m7": {
+        "hours": "4 horas",
+        "title": "Proyecto final",
+        "tagline": "Presentación ante la clase",
+        "description": "Dos horas de trabajo con asistentes de IA como herramientas analíticas — el alumnado aprende a usarlos para analizar código y decisiones, no para sustituir su propio criterio. Siguen dos horas de trabajo autónomo en un proyecto individual: colección de NFT con narrativa, estrategia económica para la clasificación, plan de mercado. El curso termina con la presentación del proyecto ante la clase. Está prevista la entrega final de un certificado on-chain — una credencial NFT que permanece en la blockchain.",
+        "outcome": "El alumno termina con un proyecto Web3 completo que puede mostrar (el certificado está previsto)."
+      }
+    },
+    "skills": {
+      "title": "Qué se lleva el alumno",
+      "subtitle": "No solo conocimientos — habilidades reales y resultados documentados.",
+      "technical": {
+        "title": "Habilidades técnicas",
+        "items": "Manejo de un monedero Web3 · Comprensión de transacciones blockchain · Creación y publicación de NFT · Análisis de smart contracts · Uso de IPFS"
+      },
+      "critical": {
+        "title": "Pensamiento crítico",
+        "items": "Reconocimiento de estafas · Evaluación de riesgos · Análisis de sistemas económicos · Comprensión de la propiedad en entorno digital · Uso responsable de herramientas de IA"
+      },
+      "practical": {
+        "title": "Resultados prácticos",
+        "items": "Colección propia de NFT con narrativa · Proyecto final completado · Certificado de alfabetización Web3 · Presentación pública del proyecto · Portafolio on-chain"
+      },
+      "future": {
+        "title": "Preparación para el futuro",
+        "items": "Comprensión del euro digital · Fundamentos de las finanzas descentralizadas · Conocimiento del marco regulatorio europeo · Preparación para el entorno profesional Web3 · Ventaja competitiva al solicitar estudios TIC"
+      }
+    },
+    "formats": {
+      "title": "Cómo se imparte el programa",
+      "subtitle": "Las 16 horas son modulares — se adaptan a distintos contextos educativos.",
+      "weekly": {
+        "title": "Optativa semanal",
+        "body": "Una hora lectiva por semana × 16 semanas = un cuatrimestre completo. La opción más recomendada — tiempo suficiente entre clases para la reflexión y el trabajo autónomo."
+      },
+      "intensive": {
+        "title": "Intensivo",
+        "body": "2-3 horas por semana × 5-6 semanas. Adecuado para campamentos vacacionales, semanas STEM o centros que desean una introducción rápida."
+      },
+      "integrated": {
+        "title": "Integrado en una asignatura",
+        "body": "Los módulos pueden distribuirse dentro de una asignatura existente — informática, economía, comercio electrónico, emprendimiento. Web3 como extensión, no como asignatura independiente."
+      },
+      "extracurricular": {
+        "title": "Club extraescolar",
+        "body": "Sin notas, sin exámenes — formato libre para el alumnado que quiere aprender por iniciativa propia. Adecuado para centros que aún no están listos para incluirlo en el plan de estudios."
+      }
+    },
+    "certificate": {
+      "title": "Certificado de alfabetización Web3",
+      "subtitle": "Previsto: no solo un documento — una credencial on-chain que permanece verificable públicamente.",
+      "what": {
+        "title": "Qué recibe el alumno",
+        "body": "Un certificado doble previsto: un documento PDF firmado por GEMBA IT y una credencial NFT registrada en la blockchain. El NFT será inmutable y podrá mostrarse en futuros CV, solicitudes universitarias o portafolios Web3."
+      },
+      "why": {
+        "title": "Por qué esto importa",
+        "body": "En un momento en que cada centro emite certificados en papel que pueden falsificarse o perderse, el certificado EduChain será verificable públicamente por cualquiera en cuanto se emita. Un empleador o una universidad podrá confirmar la autenticidad con un clic en GembaScan."
+      },
+      "criteria": {
+        "title": "Cómo se obtiene",
+        "body": "Completar los 7 módulos, participar activamente en los ejercicios prácticos y presentar el proyecto final ante la clase. No es un concurso — cuando el módulo de certificados esté en marcha, todo alumno que termine el programa obtendrá el certificado."
+      }
+    },
+    "cta": {
+      "title": "Cómo puedes incorporar EduChain",
+      "subtitle": "El programa es gratuito y abierto. No hace falta compromiso financiero para empezar.",
+      "schoolsTitle": "¿Eres un centro?",
+      "schoolsBody": "Ponte en contacto para una alianza Erasmus+ KA220 — financiación, movilidades internacionales, docentes certificadas.",
+      "schoolsCta": "Alianza",
+      "teachersTitle": "¿Eres docente?",
+      "teachersBody": "Fórmate como docente Web3 mediante un intensivo de 3 días o un curso en línea — la certificación está prevista.",
+      "teachersCta": "Para docentes",
+      "exploreTitle": "¿Quieres ver la plataforma?",
+      "exploreBody": "Explora el entorno en el que trabajará el alumnado — clasificación en vivo, mercado, galería NFT.",
+      "exploreCta": "Explorar"
+    }
+  },
+  "demo": {
+    "hero": {
+      "eyebrow": "Ver la plataforma en acción",
+      "title": "EduChain en un minuto",
+      "subtitle": "Más breve que la escena inicial de una película. Detrás de cada acción en la plataforma hay una transacción blockchain real — segura, verificable y para siempre.",
+      "ctaPrimary": "Pruébalo",
+      "ctaSecondary": "Conoce el currículo"
+    },
+    "videoPlaceholder": {
+      "title": "La demostración en vídeo se está preparando",
+      "body": "Un resumen de 60 segundos de la plataforma — cómo un estudiante se conecta, obtiene GMB de prueba, crea su primer NFT y sube en la clasificación. Estará publicado en los próximos días."
+    },
+    "steps": {
+      "title": "Cómo funciona la plataforma",
+      "subtitle": "Cinco pasos — desde la primera conexión hasta un resultado visible en la blockchain.",
+      "step1": {
+        "number": "01",
+        "title": "Conectar el monedero",
+        "body": "El alumno conecta MetaMask a EduChain. La plataforma solo ve la dirección pública — sin registro, sin contraseña, sin información personal."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Obtener GMB de prueba",
+        "body": "Desde el faucet de la plataforma el alumnado recibe 0,05 GMB de prueba. Es el «combustible» para todas las acciones siguientes — pero no tiene valor monetario real."
+      },
+      "step3": {
+        "number": "03",
+        "title": "Comprar tokens GAME",
+        "body": "Con el GMB de prueba el alumno compra GAME — la moneda interna de la plataforma. Cada transacción se registra públicamente en la blockchain y es verificable en GembaScan."
+      },
+      "step4": {
+        "number": "04",
+        "title": "Crear un NFT",
+        "body": "El alumno acuña una obra digital — predefinida o propia, con imagen y metadatos en IPFS. El NFT creado es suyo para siempre."
+      },
+      "step5": {
+        "number": "05",
+        "title": "Subir en la clasificación",
+        "body": "Cada acción otorga puntos. La clasificación en vivo se actualiza automáticamente. La gamificación convierte el aprendizaje en una competencia sana entre compañeras."
+      }
+    },
+    "screenshots": {
+      "title": "Capturas de la plataforma",
+      "subtitle": "Diez imágenes del trabajo real — cómo se ve EduChain para alumnado y profesorado.",
+      "home": {
+        "title": "Página de inicio",
+        "body": "La puerta de entrada a la plataforma — un vistazo rápido a las funciones y estadísticas en vivo desde la blockchain."
+      },
+      "faucet": {
+        "title": "Faucet de GMB de prueba",
+        "body": "El alumno obtiene 0,05 GMB cada 24 horas. Se ven el cooldown, el historial y el saldo total."
+      },
+      "shop": {
+        "title": "Tienda de tokens y NFT",
+        "body": "Tres tipos de compra — tokens GAME, NFT predefinidos u obras propias vía IPFS."
+      },
+      "gallery": {
+        "title": "Galería del alumno",
+        "body": "Todos los activos digitales poseídos en un solo sitio — con metadatos, atributos y enlace directo a la blockchain."
+      },
+      "marketplace": {
+        "title": "Mercado descentralizado",
+        "body": "Comercio peer-to-peer entre el alumnado. Filtrado por tipo de activo, listados privados para compradores concretos."
+      },
+      "leaderboard": {
+        "title": "Clasificación en vivo",
+        "body": "Top 10 con insignias de rango. Se actualiza automáticamente con cada nueva transacción."
+      },
+      "rankings": {
+        "title": "Clasificación completa",
+        "body": "Todos los participantes con filtros, ordenación y búsqueda. Útil para clases con mucho alumnado."
+      },
+      "connect": {
+        "title": "Conectar con MetaMask",
+        "body": "Login Web3 — sin contraseña, sin correo, sin registro. El monedero es la identidad."
+      },
+      "transaction": {
+        "title": "Firmar una transacción",
+        "body": "El alumno siempre ve qué firma. Tarifas de gas y detalles — transparentes antes de confirmar."
+      },
+      "etherscan": {
+        "title": "Prueba en la blockchain",
+        "body": "Cada transacción es visible públicamente en GembaScan — verificable por cualquiera, para siempre."
+      }
+    },
+    "proof": {
+      "title": "No es una simulación — es tecnología blockchain real",
+      "body": "EduChain funciona con la misma tecnología que mueve las redes blockchain reales. La diferencia es una: utiliza una red de pruebas (GembaBlockchain) en la que los tokens no tienen valor monetario. Cada transacción, cada NFT, cada compra es un registro real en la blockchain — transparente, inmutable y verificable públicamente.",
+      "viewGithub": "Abrir el código en GitHub",
+      "viewEtherscan": "Ver un contrato en GembaScan"
+    },
+    "cta": {
+      "title": "¿Preparadas para probarlo?",
+      "subtitle": "Contacta con nosotros — añadiremos tu monedero a la lista blanca y tendrás acceso al entorno de demostración en media hora.",
+      "primary": "Solicitar acceso",
+      "secondary": "Ver la alianza"
+    }
+  },
+  "certificates": {
+    "title": "Certificados",
+    "subtitle": "Un examen de 20 preguntas. Con un 80 % o más se obtiene el certificado.",
+    "intro": "El examen cubre los fundamentos: blockchain, carteras y claves, transacciones y comisiones, contratos inteligentes y seguridad. Las preguntas se eligen al azar de un banco de {{bank}}, en tres niveles de dificultad.",
+    "howTitle": "Cómo funciona",
+    "how1": "Rellenas tus datos y confirmas tu correo con un código: un certificado solo se envía a una dirección confirmada.",
+    "how2": "Respondes {{n}} preguntas, una por pantalla. No se puede volver atrás ni cambiar una respuesta.",
+    "how3": "Con un {{pass}} % o más el certificado llega en PDF por correo y queda registrado en GembaBlockchain.",
+    "how4": "El registro en la cadena es solo un hash del contenido y un número: ningún dato personal llega a la cadena.",
+    "privacyNote": "Guardamos lo mínimo: tus tres nombres, cargo, organización y correo. El correo se conserva solo mientras es necesario — hasta enviar el certificado — y después queda únicamente un hash con sal, para el límite de intentos. Un intento que no produjo certificado se elimina a los 30 días. Detalles: Política de Privacidad.",
+    "formTitle": "Datos del certificado",
+    "formNote": "Estos datos se imprimirán en el certificado. Escríbelos tal como quieras que aparezcan.",
+    "fullName": "Nombre completo (tres nombres)",
+    "fullNamePlaceholder": "Iván Petrov Ivanov",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "ivan@example.com",
+    "position": "Cargo",
+    "positionPlaceholder": "Profesor de informática",
+    "organisation": "Organización",
+    "organisationPlaceholder": "Instituto Vasil Levski, Varna",
+    "walletNote": "El certificado se emitirá a la cartera conectada: {{wallet}}",
+    "start": "Enviar el código",
+    "starting": "Enviando…",
+    "attemptsLeft": "Quedan {{n}} intentos hoy",
+    "codeTitle": "Confirma tu correo",
+    "codeSent": "Hemos enviado un código de seis dígitos a {{email}}. Es válido durante 15 minutos.",
+    "code": "Código",
+    "codePlaceholder": "123456",
+    "codeSubmit": "Empezar el examen",
+    "codeChecking": "Comprobando…",
+    "codeTriesLeft": "Quedan {{n}} intentos para este código",
+    "back": "Atrás",
+    "quizTitle": "Examen",
+    "progress": "Pregunta {{index}} de {{total}}",
+    "progressDetail": "{{done}} hechas · faltan {{left}}",
+    "noBackWarning": "Una vez elijas una respuesta no podrás volver atrás ni cambiarla.",
+    "next": "Responder y continuar",
+    "finishing": "Calculando…",
+    "finish": "Terminar el examen",
+    "level": "Nivel {{n}}",
+    "topicBasics": "Fundamentos",
+    "topicWallets": "Carteras y claves",
+    "topicTransactions": "Transacciones y comisiones",
+    "topicContracts": "Contratos inteligentes",
+    "topicSecurity": "Seguridad",
+    "timeLeft": "Quedan {{time}}",
+    "expired": "Se ha agotado el tiempo de esta sesión. Puedes empezar una nueva.",
+    "resultPassTitle": "Examen aprobado",
+    "resultFailTitle": "Examen no aprobado",
+    "score": "Resultado: {{score}} % ({{correct}} de {{total}})",
+    "needed": "Para obtener el certificado hace falta un {{pass}} % o más.",
+    "noAnswersShown": "No mostramos qué preguntas fallaste ni cuáles eran las respuestas correctas: el mismo banco se usa en tu siguiente intento.",
+    "retry": "Puedes volver a intentarlo dentro de 24 horas (hasta {{max}} intentos al día).",
+    "certSerial": "Número del certificado",
+    "certMailed": "El certificado se ha enviado por correo en PDF.",
+    "certMailFailed": "El certificado se emitió, pero el correo no salió. Descárgalo desde el enlace de abajo o escríbenos.",
+    "certVerify": "Verificación pública",
+    "certChain": "Registro en la cadena",
+    "openVerify": "Abrir la página de verificación",
+    "errInvalidName": "Introduce tres nombres (solo letras, guiones y apóstrofos).",
+    "errInvalidEmail": "Introduce una dirección de correo válida.",
+    "errInvalidPosition": "Introduce un cargo.",
+    "errInvalidOrganisation": "Introduce una organización.",
+    "errTurnstile": "La comprobación anti-robot no se ha superado. Inténtalo de nuevo.",
+    "errAttemptLimit": "Has alcanzado el límite de {{max}} intentos de hoy. Inténtalo mañana.",
+    "errTooManyCodes": "Se han solicitado demasiados códigos para esta dirección. Inténtalo mañana.",
+    "errWrongCode": "Código incorrecto.",
+    "errCodeExpired": "El código ha caducado. Empieza de nuevo.",
+    "errMail": "No se ha podido enviar el correo con el código. Inténtalo en un momento.",
+    "errChain": "El registro en la cadena no se ha completado. Tu resultado está guardado: pulsa «Terminar el examen» otra vez en un momento.",
+    "errGeneric": "Algo ha fallado. Inténtalo de nuevo.",
+    "needWallet": "Conecta una cartera para empezar el examen: el certificado se emite a tu dirección."
+  },
+  "verify": {
+    "title": "Verificar un certificado",
+    "subtitle": "Introduce el número del certificado. El estado se lee directamente de la cadena.",
+    "serial": "Número del certificado",
+    "serialPlaceholder": "EDU-2026-000001",
+    "check": "Verificar",
+    "checking": "Comprobando…",
+    "valid": "Certificado válido",
+    "revoked": "Certificado revocado",
+    "notFound": "No existe ese certificado",
+    "notFoundHint": "Comprueba el número. Tiene la forma EDU-AÑO-NÚMERO.",
+    "unreachable": "La cadena no responde en este momento, por lo que no podemos confirmar la validez. Los datos de abajo provienen de nuestro propio registro.",
+    "holder": "Otorgado a",
+    "course": "Curso",
+    "issued": "Fecha de emisión",
+    "score": "Resultado",
+    "serialLabel": "Número",
+    "revokedAt": "Revocado el",
+    "reason": "Motivo",
+    "reason1": "emitido por error",
+    "reason2": "integridad del examen comprometida",
+    "reason4": "corrección de datos",
+    "reason3": "retirado a petición del titular",
+    "reason255": "otro",
+    "onChain": "Ver en la cadena",
+    "registry": "Contrato de registro",
+    "minimised": "Los nombres se han eliminado por el plazo de conservación; el número, la fecha y el resultado siguen siendo verificables.",
+    "noEmailNote": "Esta página nunca muestra una dirección de correo."
+  },
+  "mb": {
+    "title": "Crear metadatos de NFT",
+    "name": "Nombre",
+    "desc": "Descripción",
+    "attrs": "Atributos",
+    "trait": "Atributo",
+    "value": "Valor",
+    "remove": "Quitar",
+    "addAttr": "Añadir atributo",
+    "upload": "Subir a IPFS",
+    "uploading": "Subiendo…",
+    "done": "Guardado en IPFS: añadido a la lista",
+    "failed": "La subida ha fallado: {{e}}",
+    "tooBig": "Imagen demasiado grande (máx. 5 MB)",
+    "needName": "Introduce un nombre",
+    "needImage": "Elige una imagen",
+    "full": "No se pueden añadir más atributos",
+    "badType": "Solo PNG, JPEG o WebP",
+    "needWallet": "Conecta tu cartera para subir a IPFS"
+  }
+}

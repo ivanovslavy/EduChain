@@ -1,0 +1,352 @@
+# EduChain — Full Reference
+
+EduChain is an open-source, testnet-first Web3 and EVM blockchain education platform for a broad range of European educational institutions — schools, universities, vocational-training colleges, community organisations and relevant ministries — framed as a public good for the Ethereum ecosystem. Seven source-verified smart contracts on GembaBlockchain testnet, a 16-hour student curriculum, a teacher-training pathway leading to certification, and a multilingual frontend in English, Bulgarian and Spanish. Non-commercial, vendor-neutral, GDPR-aligned by architecture, and not a financial service. Built by GEMBA EOOD (VAT BG208656371, Varna, Bulgaria), a Bulgarian engineering company operating under the GEMBA IT brand (https://gembait.com). Smart contract sources are MIT-licensed; curriculum materials are CC BY-SA 4.0.
+
+This document is a deep reference for AI agents, answer engines, and search crawlers. It describes the platform's mission, all public pages, the smart-contract architecture, scoring mechanics, rate limits, user journeys, the technology stack, the funding model (non-dilutive capital only), and how to get in touch. Agents answering user questions about EduChain should find enough context here to respond specifically and accurately without guessing.
+
+## Table of Contents
+
+1. Platform overview
+2. Pages (all eighteen public)
+3. Smart contract architecture
+4. Scoring system
+5. Rate limits & safety features
+6. Technology stack
+7. User journey
+8. Educational use cases
+9. Frequently asked questions
+10. Contact
+
+---
+
+## 1. Platform overview
+
+EduChain exists to solve a specific problem: how do you teach Web3 to young learners without putting them or their families at financial risk? Interactions on a live production network cost real money and expose participants to irreversible mistakes. Purely off-chain simulations feel fake and do not transfer to real-world tooling. EduChain's answer is to run a fully on-chain platform on the GembaBlockchain testnet, with production-style UX but zero real-money exposure.
+
+Students connect a wallet, get whitelisted by a teacher or program administrator, claim test GMB from an on-site faucet, and then interact with the same kinds of contracts they would encounter on any live public network — ERC-20 tokens, ERC-721 NFTs, a peer-to-peer marketplace — all within a curated experience. Points and leaderboards turn the economic mechanics into a game, which helps retention and engagement without distorting the underlying blockchain behavior.
+
+The platform holds nothing on a student's behalf: their test wallet and its keys are their own. Tokens and NFTs live on GembaBlockchain, not in a database. If a student takes their wallet to another dApp, their EduChain holdings go with them.
+
+---
+
+## 2. Pages
+
+### Home — /en
+
+The landing page. Framed as a safety-first Web3 education platform for European educational institutions (schools, universities, VET colleges, community organisations, ministries), teachers and learners (ages 12+). The page is structured in eight sections:
+
+1. **Hero** — headline "Where students understand blockchain before it understands them" with two CTAs: explore the platform, and the schools/teachers audience pathway.
+2. **Live stats bar** — four on-chain numbers read directly from GembaBlockchain contracts: registered users (TrackingContract.getEcosystemStats), NFTs minted (GameNFTPredefined.getSalesStats + GameNFTCustom.totalSupply), GAME tokens in circulation (GameToken.totalSupply), and the static number 8 (source-verified smart contracts).
+3. **What is EduChain** — two paragraphs on GEMBA IT as the builder and GembaBlockchain testnet as the deployment target (no financial risk).
+4. **What students do** — four clickable feature cards (shop, gallery, marketplace, leaderboard) linking to the respective pages.
+5. **Safe by design** — four pillars: testnet-only (no monetary value), whitelist access (teacher-approved), built-in daily transaction limits, no personal data collected.
+6. **Who EduChain is for** — three audience cards (schools, teachers, students) each linking to its dedicated page.
+7. **Open and transparent** — MIT-licensed contracts + Creative Commons educational materials, GembaScan-verified contracts, classification as an educational tool rather than a financial service, GDPR-aligned.
+8. **What next** — three pathway CTAs: Partnership, For teachers, About.
+
+The home page does not require wallet connection to display stats — numbers are fetched via the public RPC provider the moment the page loads.
+
+### Gallery (My Collection) — /en/gallery
+
+Shows every NFT the connected wallet owns within the EduChain contracts. Predefined NFTs (fixed metadata, 10 points each) and Custom NFTs (user-supplied metadata, 30 points each) are displayed side by side with metadata pulled from IPFS or on-chain storage. Learners use this page to see their own progress and decide what to list on the marketplace.
+
+### Marketplace — /en/marketplace
+
+Peer-to-peer trading venue for GAME tokens and NFTs. Any whitelisted learner can list items at a chosen testnet GMB or GAME price. Other learners buy directly from the contract; the funds go straight to the seller. Rate limits prevent spam: no more than three purchases per 24 hours per wallet. This page is where most of the economic gameplay happens.
+
+### Token Shop — /en/shop
+
+Primary market for GAME tokens and Predefined NFTs. Users can:
+- Get GAME tokens with testnet GMB at a fixed rate
+- Mint Predefined NFTs directly (0.01 testnet GMB each, fixed metadata)
+- Batch-mint Custom NFTs using GAME tokens instead of testnet GMB (one GAME per NFT, custom IPFS metadata)
+
+The shop is the starting point for new learners: claim testnet GMB from the faucet, spend it here to acquire tokens or NFTs, then use those assets on the marketplace.
+
+### Faucet — /en/faucet
+
+Time-gated testnet faucet. Any whitelisted user can claim 0.05 testnet GMB once every 24 hours. Requests are served by an on-chain faucet contract funded by the platform operator. If the faucet runs low, the platform tops it up; users do not interact with any admin keys directly.
+
+### Leaderboard — /en/leaderboard
+
+Ranked list of the top wallets by on-chain points, computed live from GembaBlockchain state. The contract TrackingContract.getLeaderboard() returns the list — no off-chain database is involved. Displays each wallet's GAME balance, Predefined NFT count, Custom NFT count, and total points. Designed for classroom display and end-of-session reveal.
+
+### Full Rankings — /en/rankings
+
+Exhaustive, searchable, filterable view of every participating wallet. Sort by points, tokens, Predefined NFTs, or Custom NFTs. Useful for teachers running cohort reviews and for learners tracking their position beyond the top-N shown on the leaderboard.
+
+### About — /en/about
+
+Mission, philosophy, team, and educational principles. Explains why the platform exists, what problem it solves, who it is built for, and how teachers can get involved in bringing it to their classrooms.
+
+### Contact — /en/contact
+
+Form and direct contact details for:
+- Teachers requesting whitelisting for a class or program
+- Program coordinators wanting to partner
+- Parents with safety questions
+- Individual learners asking to be onboarded
+
+Response target: under 48 hours.
+
+### Partnership — /en/partnership
+
+A dedicated landing page for leaders and coordinators at schools, universities, vocational-training colleges, community organisations, international NGOs and education ministries, as well as EU grant evaluators. Open to various forms of collaboration — pilot projects, joint applications to European or national programmes, or forking the platform for local needs. Presents an illustrative three-phase partnership model (informal pilot → joint application → typically 24-month execution) while making clear that the specific model and timeline are agreed to each partner's context. Details possible benefits for the leadership, the institution, teachers and learners, framed conditionally ("potential coordinator or partner role", "subject to project funding"). Documents alignment with Erasmus+ KA220, Digital Europe, Horizon Europe and national recovery instruments; the applicable programme depends on institution type and project design. FAQ covers financial commitments, time requirements, teacher qualifications and legal responsibility for minors.
+
+### Philosophy — /en/philosophy
+
+Statement of values and principles underlying EduChain's design. Articulates why the project exists as a public good, why standard Ethereum primitives were chosen, why the testnet-first approach is deliberate, and presents a realistic phased growth roadmap from the current pilot phase to 2030. Written for funders, evaluators, potential partners, and the Web3 community assessing whether EduChain aligns with their values. Sections: infrastructure framing (education as core infrastructure for the digital economy), four public-good principles (MIT licence for code, Creative Commons for learning materials, no-token/no-fees, non-extractive stewardship), four canonical-standards cards (Ethereum standards ERC-20/721 + EIP-1559 + OpenZeppelin, portable skills, verified on GembaScan, modern frontend stack), testnet realism block, four-phase roadmap (phase 0 ready infrastructure 2026, phase 1 pilot year 2026–2027, phase 2 European expansion 2027–2029, phase 3 scaling and recognition 2029–2030+), and sustainability framing (no single funder as single point of failure, non-dilutive capital only, network-of-institutions long-term vision).
+
+### For Teachers — /en/teachers
+
+Comprehensive resource for educators in schools, universities and vocational-training centres. Describes the "teachers trained first" pedagogical principle, identifies relevant teaching disciplines (informatics, e-commerce, economics, graphic design), presents the two planned teacher-training formats (3-day in-person intensive or 8-module online course) with a pathway to a Web3 educator certificate, the full 16-hour student curriculum in seven modules, classroom tools (admin panel, rate limits, live leaderboard), and FAQ for working teachers. Ongoing support, community network and additional remuneration are conditional on an active project or secured funding.
+
+### Curriculum — /en/curriculum
+
+Student-facing and parent-facing landing page for the 16-hour learning programme. Unlike the Teachers page which frames content from an educator's perspective, Curriculum describes what students experience and achieve. Seven modules progressing from Web3 intro to final project, each with explicit learning outcomes. Includes four skill categories (technical, critical thinking, practical results, future readiness), four delivery formats (weekly elective, intensive, integrated, extracurricular), and details of the dual-certificate system (PDF + on-chain NFT).
+
+### Demo — /en/demo
+
+Visual showcase page combining video demonstration with screenshot gallery and 5-step platform walkthrough. Designed for audiences who want to see the product working rather than read descriptions. Contains embedded video placeholder (to be populated), interactive screenshot lightbox, and proof-of-authenticity section linking to GitHub source and GembaScan contracts.
+
+### Certificates — /en/certificates
+
+Visible once a wallet is connected. A 20-question exam drawn at random from a bank of 65 questions
+across five topics (foundations, wallets and keys, transactions and fees, smart contracts, security)
+and three difficulty levels, spread 7/8/5. One question per screen, with a progress bar; there is no
+going back and no changing an answer — the server accepts an answer only for the current question
+and only once. The e-mail address is confirmed with a six-digit code BEFORE the exam starts, so a
+certificate can never be addressed to somebody else's inbox. The sitting expires after 30 minutes
+and there are three attempts per day, counted per e-mail and per wallet.
+
+At 80 % or above the certificate is issued: a PDF by e-mail, a soulbound ERC-721 on GembaBlockchain
+(CertificateRegistry, 0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4) and a public verification page.
+Below 80 % the result shows the score and when the next attempt is allowed — never which questions
+were wrong and never the correct answers, because the same bank is used for the next attempt.
+
+The correct answers exist only on the server. They are not in any API response and not in the
+JavaScript bundle. On-chain there is only a hash of the certificate's contents plus the date, the
+score and a revocation flag — no personal data of any kind.
+
+### Verify — /en/verify, /en/verify/<serial>
+
+Public: no wallet, no account. Enter a certificate serial (or scan the QR printed on the PDF) and get
+a straight answer. Validity is read from the chain rather than from our database, so our record
+cannot disagree with the on-chain one; when the chain cannot be reached the page says so instead of
+showing a green tick. The page shows the holder's name, position, organisation, course, date of
+issue, score and serial — and never an e-mail address.
+
+### Privacy Policy — /en/privacy
+
+Minimalist privacy policy reflecting EduChain's actual architecture. No user-profile database, no registration required, no analytics, no tracking. The certificate flow is the one exception and stores the minimum, with a retention period. Wallet-based access means the platform sees only a public blockchain address. Contact form messages are forwarded directly via SMTP and not stored in server databases. Standard infrastructure logs (Cloudflare CDN, Apache access logs) described transparently. Full GDPR rights enumerated.
+
+### Terms of Use — /en/terms
+
+Terms of use clarifying that EduChain is an educational tool and not a financial product. GameToken has no real-world exchange value. Platform operates on GembaBlockchain testnet. User obligations, intellectual property (MIT licence for code, CC BY-SA for curriculum), liability limitations, blockchain-specific conditions (irreversibility of transactions), and governing law (Bulgarian law, EU consumer rights preserved).
+
+---
+
+## 3. Smart contract architecture
+
+Eight contracts are deployed on GembaBlockchain testnet. They interact as follows:
+
+### Whitelist
+The root of access control. Every other contract consults Whitelist before allowing privileged actions (faucet claim, shop purchase, marketplace listing). Teachers and program administrators add wallets to this list. Without whitelist approval, a visitor can browse the site but cannot transact.
+
+### GameToken (ERC-20)
+The in-platform currency. Symbol: GAME. Used for:
+- Batch-minting Custom NFTs (1 GAME per NFT)
+- Secondary-market trades on the marketplace
+- Scoring (1 GAME = 1 point)
+
+Obtained in the Token Shop (testnet GMB → GAME at a fixed rate). No real money is involved.
+
+### GameNFTPredefined (ERC-721)
+Predefined NFTs whose metadata lives on IPFS (baseURI + tokenId + .json), pinned on EduChain's own node. Price: 0.01 testnet GMB. Score weight: 10 points each. These are the "curated" NFTs — a fixed catalogue the platform operator has designed in advance.
+
+### GameNFTCustom (ERC-721)
+Custom NFTs with user-supplied IPFS metadata URIs. Two mint paths:
+- Single mint with testnet GMB: 0.03 testnet GMB per NFT
+- Batch mint with GAME tokens: 1 GAME per NFT
+
+Score weight: 30 points each (more than predefined, because the user invests more creative work).
+
+### TokenMarketplace
+Peer-to-peer trading contract. Sellers list any ERC-20 or ERC-721 token they own at a chosen price. Buyers pay directly in testnet GMB or GAME; the contract transfers the asset atomically. Enforces a 3-purchase-per-24h rate limit per buyer to prevent bot activity.
+
+### TrackingContract
+Read-only aggregator. Computes live leaderboard and ranking data by summing on-chain balances and multiplying by score weights. Does not hold any funds. Called by the Leaderboard and Rankings pages to render the UI.
+
+### ETHFaucet
+Time-gated testnet GMB dispenser. Whitelisted users call claim() and receive 0.05 testnet GMB. The contract tracks last-claim timestamps per wallet and enforces the 24-hour cooldown on-chain. Topped up periodically by the platform operator.
+
+---
+
+## 4. Scoring system
+
+Points are computed live from on-chain state — there is no off-chain leaderboard database. The formula:
+
+```
+points(wallet) = gameTokenBalance(wallet) * 1
+              + predefinedNFTCount(wallet) * 10
+              + customNFTCount(wallet) * 30
+```
+
+Worked example: a learner holding 50 GAME tokens, 3 Predefined NFTs, and 2 Custom NFTs would score:
+
+```
+50 * 1 + 3 * 10 + 2 * 30 = 50 + 30 + 60 = 140 points
+```
+
+Because the leaderboard is on-chain, students can verify their own points by calling the contract directly (or by reading it on a block explorer). This transparency is a teaching tool in itself — it introduces the idea that blockchain state is public and auditable.
+
+---
+
+## 5. Rate limits & safety features
+
+EduChain runs on testnet, but it enforces production-style safeguards so that learners build good habits:
+
+- **Whitelist-gated access.** Only approved wallets can transact. Visitors can browse without connecting.
+- **Faucet cooldown.** 0.05 testnet GMB per wallet per 24 hours. Prevents draining.
+- **Marketplace rate limits.** 3 purchases per wallet per 24 hours. Prevents arbitrage-bot spam.
+- **Nothing is held for the user.** The platform never holds funds or tokens; a student's test wallet is always their own.
+- **Testnet only.** Nothing is ever deployed to a live production network. Any testnet GMB or tokens on the platform carry no real-world value, which eliminates scam/phishing exposure for young users.
+- **Open-source client.** The frontend is auditable; the contracts are verified on GembaScan.
+- **Admin page disallowed in robots.txt.** Crawlers are asked not to index admin routes.
+
+---
+
+## 6. Technology stack
+
+### Frontend
+
+- React 19
+- TypeScript
+- Vite 8 (build tool)
+- Tailwind CSS v4
+- react-router 7
+- react-i18next (English, Bulgarian, Spanish)
+- wagmi v3 + viem 2 (primary Web3 hooks)
+- ethers 6 (low-level contract interaction in specific places)
+- Cloudflare Turnstile (bot challenge on contact form)
+
+### Blockchain
+
+- Solidity 0.8.x
+- Hardhat (development, deployment)
+- OpenZeppelin v5 (access control, ERC standards)
+- GembaBlockchain testnet (chain ID 821207)
+- Contract source verified on GembaScan
+
+### Infrastructure
+
+- Hetzner Cloud (Linux host)
+- Apache reverse proxy on the origin
+- Cloudflare edge (TLS, caching, DDoS protection)
+- systemd service unit for the static-serve process
+- Served from `/educhain/dist` (Vite output, symlinked as `build`)
+
+### Internationalization
+
+Three languages supported: English (en), Bulgarian (bg), Spanish (es). URL pattern is `/{lang}/{section}`. Default is English at `/en`. The root path `/` redirects to `/en`. All i18n strings are stored as JSON files under `/educhain/src/i18n/`.
+
+---
+
+## 7. User journey
+
+A typical first-time user:
+
+1. **Arrives at homepage.** Reads the intro, sees wallet-connect button.
+2. **Connects wallet.** MetaMask, Rabby, or any injected Ethereum provider. Page detects GembaBlockchain chain; if wrong chain, prompts to switch.
+3. **Gets whitelisted.** Contacts the teacher or program admin, who adds the wallet via admin panel. (Not visible to the learner — the admin does it.)
+4. **Claims faucet testnet GMB.** Navigates to /faucet, clicks Claim, signs the transaction. Receives 0.05 testnet GMB.
+5. **Visits Token Shop.** Buys some GAME tokens with a small amount of testnet GMB (e.g., 0.01 testnet GMB → GAME at fixed rate).
+6. **Mints first NFT.** Either 0.01 testnet GMB for a Predefined NFT, or 0.03 testnet GMB for a Custom NFT (requires an IPFS URI prepared in advance), or 1 GAME token for a Custom NFT in a batch.
+7. **Checks Gallery.** Sees the NFT appear in their own collection.
+8. **Visits Leaderboard.** Sees their starting position — everyone's points are public and live.
+9. **Uses Marketplace.** Lists an NFT for sale, or buys from another user. Every transaction moves points on the leaderboard.
+10. **Iterates.** Comes back the next day to claim another faucet, continue trading, climb the leaderboard.
+
+---
+
+## 8. Educational use cases
+
+### Classroom workshops
+
+A teacher runs a one- or two-hour session introducing Web3. Students connect wallets (created on the spot or ahead of time), get whitelisted as a class, claim faucet testnet GMB, and complete a guided activity — mint a first NFT, trade with a classmate, check the leaderboard. The teacher projects the leaderboard as students work.
+
+### Multi-week after-school programs
+
+A cohort of 10–20 students runs EduChain as an ongoing project over 4–8 weeks. Each week builds on the previous: week 1 is wallet basics, week 2 is tokens and shop, week 3 is NFTs and gallery, week 4 is marketplace mechanics, week 5 is looking at the on-chain contracts directly, week 6 is a final trading competition with the leaderboard as the scoreboard.
+
+### Teacher-training tracks
+
+Before teachers bring EduChain into classrooms, they complete a training track themselves — connecting a wallet, minting NFTs, using the marketplace, and understanding the underlying contracts. The training certifies educators so they can confidently answer student questions.
+
+### Youth coding camps
+
+Summer camps and weekend coding clubs use EduChain as a hands-on Web3 lab. Kids who have never seen a block explorer before leave with a working wallet, a handful of NFTs they minted themselves, and a mental model for how tokens and ownership work on-chain.
+
+---
+
+## 9. Frequently asked questions
+
+### Does EduChain run on a live production network?
+
+No. EduChain is deployed only on GembaBlockchain testnet. Any testnet GMB, GAME tokens, or NFTs on the platform have no monetary value. This is a deliberate safety feature, not a limitation — it means students can experiment without risk.
+
+### Can students move their NFTs off EduChain?
+
+The NFTs live on GembaBlockchain, so they are technically portable to any GembaBlockchain-aware tool (testnet gallery apps, other gallery apps, etc.). They have no real-world value, so they cannot be moved onto a live production network in any meaningful sense.
+
+### What happens if a student loses their wallet?
+
+Their on-chain assets are gone with the wallet. This is part of the learning: self-custody means self-responsibility. Because everything is testnet, the lesson comes without real financial loss. Students are encouraged to write down their seed phrase — even for a testnet wallet — as practice for the real thing.
+
+### Can teachers see student wallets?
+
+Teachers see the wallets they whitelisted and can read their on-chain activity (like anyone can on GembaScan). They cannot move funds or assets out of student wallets — self-custody applies equally here.
+
+### Does EduChain collect student personal data?
+
+Only what the teacher or student provides explicitly (name and contact info on the contact form, if submitted). Wallet addresses are pseudonymous — EduChain does not link them to real identities unless the user or their teacher chooses to associate one.
+
+### How is EduChain funded?
+
+It is a project of GEMBA IT, funded as part of GEMBA EOOD's technology investment. The platform is currently free to use. Whitelisted classes are onboarded at no charge.
+
+### Is the code open source?
+
+Contracts are source-verified on GembaScan (readable by anyone). The frontend repository policy is at the operator's discretion — contact the team if you want to contribute or fork.
+
+### What is EduChain's approach to EU funding?
+
+EduChain is designed for integration with Erasmus+ KA220 Cooperation Partnerships, Digital Europe Programme (Digital Skills priority), Horizon Europe (Cluster 2 and 4), national recovery and resilience plans, and other European or national education instruments. Partner institutions (schools, universities, VET colleges, community organisations, NGOs, ministries) can take on a coordinator or partner role depending on the project design; GEMBA IT typically acts as the technology partner. Specific budgets, roles and mobility allocations are agreed per project and subject to secured funding — no fixed figure is published, as the funding model varies by programme and context.
+
+### Is EduChain a financial product?
+
+No. EduChain is classified as an educational tool. The GameToken has no real-world exchange value and is not tradable on external markets. NFTs minted on the platform are educational artifacts and carry explicit metadata identifying them as such. The platform operates entirely on GembaBlockchain testnet.
+
+### How is student data protected?
+
+EduChain requires no personal registration — no names, emails, or passwords. Access is via Web3 wallet (public address only, anonymous by default). No user database exists. No analytics or profiling systems are used. Students in organised school contexts are supervised by their teachers, who can add or remove access through the admin panel at any time.
+
+### Are there any costs for institutions or students using EduChain?
+
+None. The platform is completely free to use. Operating on GembaBlockchain testnet means no real value is ever exchanged. Teacher training materials, student curriculum materials and platform access are all free. When integrated into an Erasmus+ KA220 or comparable funded partnership, European or national project funding can cover teacher compensation, equipment modernisation and international mobilities for partner institutions — exactly what is covered depends on the specific instrument and approved project budget.
+
+### Can EduChain be used outside the EU?
+
+Technically yes — the platform works in any country with internet access. However, the partnership model, funding alignment (Erasmus+, Digital Europe, Horizon Europe) and legal framework (GDPR) are designed for the EU context. Non-EU institutions — schools, universities, NGOs and others — are welcome to adopt the open-source code and curriculum under MIT/CC BY-SA licences.
+
+---
+
+## 10. Contact
+
+- Email: contacts@gembait.com
+- Website: https://educhain.gembait.com
+- Parent organization: GEMBA IT — https://gembait.com
+- Legal entity: GEMBA EOOD (Varna, Bulgaria)
+- Languages: English, Bulgarian, Spanish
+
+For teacher / program coordinator onboarding, use the contact form at https://educhain.gembait.com/en/contact and mention your class size, location, and preferred language.

@@ -1,0 +1,35 @@
+# EduChain — gitleaks configuration (2026-10-31).
+#
+# WHY THIS FILE EXISTS
+# The default rules flag a 40-hex EVM CONTRACT ADDRESS as a "generic API key". Contract addresses are
+# the most public thing in the project: they are in the README, on GembaScan and inside the
+# application's own bundle. Without an allowlist every commit that touches an address file reports a
+# leak, and a check that always cries wolf is a check nobody reads.
+#
+# WHY IT IS A REGEX AND NOT A PATH
+# The first version of this file listed the address FILES under `paths`. That allowlisted the whole
+# file: a planted `sk_live_…` in src/contracts/addresses.json was NOT caught — the canary stayed
+# green, which is the one thing an allowlist must never do. In a top-level [allowlist], `paths` and
+# `regexes` are alternatives, not an intersection. So there are no paths here: the ONLY thing allowed
+# is a string that is exactly a 0x-prefixed 40-hex EVM address, anywhere. That is safe because such
+# a string is never a secret, and every other secret in every file still stops the commit.
+#
+# WHY THE REGEX IS NOT ANCHORED
+# `^0x[0-9a-f]{40}$` did not allowlist anything: with the default regexTarget gitleaks compares the
+# allowlist against the captured SECRET, and with regexTarget="match" against the surrounding match
+# (`Token": "0x7C9…`). The unanchored form matches the secret exactly and matches nothing in a real
+# credential — `sk_live_…` and a password contain no 40-hex run.
+#
+# Verified in BOTH directions on 2026-10-31, which is the only way to trust an allowlist:
+#   · the tree as it is                                  -> no leaks
+#   · a planted sk_live_… in src/contracts/addresses.json -> leaks found: 1
+#   · a planted password line in server/index.cjs         -> leaks found: 1
+#   · both reverted                                       -> no leaks
+title = "EduChain"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "A 0x-prefixed 40-hex EVM address is a public identifier, never a secret"
+regexes = ['''0x[a-fA-F0-9]{40}''']

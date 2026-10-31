@@ -8,7 +8,7 @@ Three layers, plus an optional on-chain "live-fire" layer:
 
 | Layer | Tool | What it does |
 |-------|------|--------------|
-| Unit / access / attacks / invariants | Hardhat + Mocha/Chai | 80 tests over every function, guard, event, boundary — plus real attacker contracts |
+| Unit / access / attacks / invariants | Hardhat + Mocha/Chai | 119 tests over every function, guard, event, boundary — plus real attacker contracts |
 | Property fuzzing + stateful invariants | Foundry (`forge`) | 3 fuzz tests × 10 000 runs, 4 invariants × 12 800 calls |
 | Static analysis | Slither | 0 high-severity over the production contracts |
 | Symbolic execution | Mythril | all 7 production contracts — 0 issues |
@@ -38,7 +38,7 @@ pipx install slither-analyzer
 ## 1. Hardhat suite (unit + access + attacks + invariants)
 
 ```bash
-npx hardhat test                 # all 80 tests
+npx hardhat test                 # all 119 tests
 npx hardhat test test/08-attacks.test.js   # just the adversarial suite
 npx hardhat coverage             # line/branch coverage (the H1-closing metric)
 ```
@@ -125,6 +125,14 @@ All 7 production contracts return "No issues were detected."
 
 ## 4. Live-fire — real on-chain attacks (optional, gemba testnet 821207)
 
+
+> **2026-10-31 — the Foundry layer was not runnable.** `lib/forge-std` was absent from the server, so
+> every `forge test` failed to compile and the documented fuzz/invariant layer had not run for some
+> time. Fixed with `forge install foundry-rs/forge-std --no-git`; `lib/` stays gitignored, as Foundry
+> intends. `forge` itself is at `/home/slavy/.foundry/bin/forge` and is not on the default PATH —
+> prefix it, or the command looks like it is missing.
+
+
 Runs the same scenarios as **real broadcast transactions** against a **fresh**
 deployment. It deploys its own instances and does NOT touch the production EduChain
 contracts. See `scripts/live-fire/README.md`. Order:
@@ -161,3 +169,49 @@ funding wallet used to provision the distributor once.
 **Status: all fixed and verified** — 80 Hardhat + 7 Foundry green, and the live-fire
 run reports every scenario DEFEATED on gemba testnet after redeploy. Each fix
 preserves existing behaviour (happy-path + invariant suites unchanged and passing).
+
+---
+
+## 5. Certificates (added 2026-10-31)
+
+The certificate feature spans a contract, a server module, a PDF, an e-mail and a public page, so it
+has its own layers. Everything below ran against the LIVE database and the LIVE testnet — the only
+part ever replaced by a double is the SMTP connection, because a test must not send mail to a real
+person.
+
+| layer | what it checks | command | result |
+|---|---|---|---|
+| Hardhat | 39 unit / access / soulbound / invariant / privacy tests | `npx hardhat test test/10-certificates.test.js` | **39/39** |
+| Foundry | 7 properties × 10 000 random runs (only-issuer, score bounds, hash uniqueness, soulbound against any caller, validCount, unknown serials, issuer-cannot-revoke) | `forge test --match-path test-forge/FuzzCertificateRegistry.t.sol` | **7/7** |
+| Slither | static analysis of `CertificateRegistry.sol` | `slither contracts/CertificateRegistry.sol --solc-remaps …` | 2 Low, both by design |
+| Mythril | symbolic execution | `myth analyze contracts/CertificateRegistry.sol --solc-json myth-solc.json --solv 0.8.28` | **0 issues** |
+| E2E | the whole journey: form → code → 20 questions → 80 % → on-chain issue → PDF → e-mail → `/verify` → revoke → reinstate → retention | `certificates-e2e.js` (laptop) | **72/72** |
+| Canaries | 8 guards broken one at a time on a COPY outside the live tree | `certificates-canaries.js` | **8/8 red** |
+| Browser | the gate, the nav, the public verification page in bg/en/es, plus the exam UI with an injected wallet | `certificates-browser.js` | **37/37** |
+| Mail | the real SMTP path with a real PDF, to a test address, read back over IMAP | `certificates-mail-live.js` | **6/6** |
+
+### What the tests are really defending
+
+**The correct answers never leave the server.** The E2E suite asserts the exact key set of every
+question payload (`index,level,options,text,topic,total` — nothing else), that an answer's reply says
+nothing about right or wrong, and that a FAILED attempt returns no answer key. The browser test
+scans every `/api/certificates/*` response the page received during a full 20-question exam for
+`"correct"` and `"why"`. The build is grepped for the question text and for the bank's filenames.
+
+**The exam cannot be gamed.** No going back, no changing an answer, no answering out of order, no
+resubmitting, three attempts a day per e-mail AND per wallet, and a sitting that expires. Each of
+those has a canary.
+
+**A compromised server cannot rewrite history.** The hot issuer key may only `issue()`; revocation
+needs the cold owner key, which is not on the server. The canary that removes the owner check on the
+revocation-note endpoint goes red.
+
+**No personal data on-chain.** A test reads the contract's raw storage slots looking for readable
+text, and asserts that the only function taking a string is `setBaseURI`.
+
+### The question bank
+
+65 questions × 3 languages, in `server/certificates/questions/` — **server-side only, and excluded
+from git by name.** The certificate is worth something only while the answer key is not public. A
+test asserts the three banks have identical ids, topics, levels and correct answers, so a translation
+cannot move the answer, and that the EN/ES banks honour the house terminology rule (no "crypto*").
