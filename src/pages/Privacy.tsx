@@ -115,7 +115,7 @@ export default function Privacy() {
             {t('privacy.section4.intro', '')}
           </p>
           <div className="space-y-3">
-            {['cloudflare', 'apache', 'turnstile'].map((sub) => (
+            {['cloudflare', 'apache', 'turnstile', 'mail', 'walletconnect', 'rpc'].map((sub) => (
               <div key={sub} className="card" style={{ padding: '16px' }}>
                 <h3 className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>
                   {t(`privacy.section4.${sub}Title`, '')}
