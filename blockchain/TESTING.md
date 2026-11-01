@@ -14,6 +14,7 @@ Three layers, plus an optional on-chain "live-fire" layer:
 | Static analysis | Slither | 0 high-severity over the production contracts |
 | Symbolic execution | Mythril | all 8 production contracts — 0 issues |
 | **Live-fire (optional)** | Hardhat scripts | the same attacks as REAL transactions on gemba testnet 821207 |
+| Web tier | Puppeteer + Chromium | the exam end to end, the IPFS endpoint, the CSP sweep, the network check — see §5 and §6 |
 
 **No production contract is modified by any of this.** The attacker/mock contracts
 live in `contracts/test/` and are never deployed by `scripts/deploy.js`.
@@ -191,9 +192,9 @@ person.
 | Foundry | 7 properties × 10 000 random runs (only-issuer, score bounds, hash uniqueness, soulbound against any caller, validCount, unknown serials, issuer-cannot-revoke) | `forge test --match-path test-forge/FuzzCertificateRegistry.t.sol` | **7/7** |
 | Slither | static analysis of `CertificateRegistry.sol` | `slither contracts/CertificateRegistry.sol --solc-remaps …` | 2 Low, both by design |
 | Mythril | symbolic execution | `myth analyze contracts/CertificateRegistry.sol --solc-json myth-solc.json --solv 0.8.28` | **0 issues** |
-| E2E | the whole journey: form → code → 20 questions → 80 % → on-chain issue → PDF → e-mail → `/verify` → revoke → reinstate → retention | `certificates-e2e.js` (laptop) | **72/72** |
+| E2E | the whole journey: form → code → 20 questions → 80 % → on-chain issue → PDF → e-mail → `/verify` → revoke → reinstate → **re-revoke** → retention | `certificates-e2e.js` (laptop) | **73/73** |
 | Canaries | 8 guards broken one at a time on a COPY outside the live tree | `certificates-canaries.js` | **8/8 red** |
-| Browser | the gate, the nav, the public verification page in bg/en/es, plus the exam UI with an injected wallet | `certificates-browser.js` | **37/37** |
+| Browser | the gate, the nav, the public verification page in bg/en/es, plus the exam UI with an injected wallet | `certificates-browser.js` | **40/40** |
 | Mail | the real SMTP path with a real PDF, to a test address, read back over IMAP | `certificates-mail-live.js` | **6/6** |
 
 ### What the tests are really defending
@@ -221,3 +222,73 @@ text, and asserts that the only function taking a string is `setBaseURI`.
 from git by name.** The certificate is worth something only while the answer key is not public. A
 test asserts the three banks have identical ids, topics, levels and correct answers, so a translation
 cannot move the answer, and that the EN/ES banks honour the house terminology rule (no "crypto*").
+
+---
+
+> **Counts corrected 2026-11-01.** The E2E is 72 → **73**: it now re-revokes the certificate it
+> issued instead of leaving it reinstated, and asserts that it did. The browser suite is 37 → **40**,
+> and the old 37/37 was stale rather than passing: it hardcoded `EDU-2026-000001` and asserted that
+> serial renders as "Valid certificate" with the test holder's name, so when those four test
+> certificates were revoked and de-personalised on 2026-10-31 the suite silently dropped to 31/37.
+> It now reads the serial's real state from the verify API and asserts the page agrees with it,
+> covering both the valid and the revoked rendering without requiring a publicly valid TEST
+> certificate to exist — a requirement that was in direct conflict with leaving no test data live.
+
+## 6. The network check and the backup (added 2026-11-01)
+
+Two guards that existed only on paper until today, each now with a test that goes red when the
+bug is put back.
+
+### 6a. The wrong-network check — `network-check-e2e.js`
+
+`Web3Context` used `useChainId()` to decide "are we on the right network". That value is
+`config.state.chainId`, which createConfig pins to `chains[0]`, so with one supported chain it
+could never disagree with `DEFAULT_CHAIN.id`: `correctChain` was a constant `true` and twelve
+downstream guards were dead code. The detector is now `useAccount().chain`, where `undefined`
+means an unsupported network.
+
+| # | property | result |
+|---|---|---|
+| 1 | wallet on 821207 → no banner, never flashed, `/certificates` nav link present, chain gate passed | 5/5 |
+| 2 | wallet on chain 1 with the switch REJECTED → banner shown, naming `1 → 821207`; gated page shows the wrong-network notice; no enabled transaction button; member nav withdrawn | 5/5 |
+| 3 | wallet on chain 1 with the switch ACCEPTED → the banner **never** appears, not even for a frame (MutationObserver + 50 ms poll from first paint) | 3/3 |
+| 4 | `chainChanged` back to 821207 → banner clears, gated page recovers, **no page reload** (a `window` sentinel set at first paint is still present) | 3/3 |
+
+**16/16** against the live build. Canary: `canary-c-usechainid.sh` puts `useChainId()` back in that
+one line, builds it to `dist-canary` (asserting the live `dist/index.html` sha256 is unchanged),
+serves it on `127.0.0.1:3099` and re-runs the suite — **12/16, 4 red**: `2a` banner shown, `2b`
+banner contents, `2c` gated-page notice, `2e` member-nav withdrawal. With the bug back the chain
+events list is empty too, i.e. the auto-switch is never attempted.
+
+Harness note: the injected `eth_chainId` in `browser-check.js`, `certificates-browser.js` and
+`certificates-browser-full.js` was `0xc8757` = **821079** — transposed digits — so every
+`EDU_WALLET=1` run was a wrong-network run that passed only because the old detector could not
+notice. Corrected to `0xc87d7`, and the seeded `wagmi.store` bumped from `version: 2` to `3`
+(@wagmi/core is 3.x and derives the store version from the major, so a v2 blob was being migrated
+away and the seeded connection silently dropped).
+
+The new harness also replaces the no-op `on: () => {}` of the older scripts with a real EIP-1193
+event registry, which is what makes property 4 testable at all: without it wagmi subscribes to a
+`chainChanged` that can never fire.
+
+### 6b. The certificate-database backup — restore and failure path
+
+`/usr/local/bin/educhain-backup.sh`, 04:50 UTC daily. Documented in
+[`../docs/backup.md`](../docs/backup.md). Tested with the three scripts in
+`EduChain-scripts/restore-test/` on the laptop; nothing is left on the server.
+
+| # | probe | expected | result |
+|---|---|---|---|
+| 1 | a writer holds the db open, a certificate is committed, the WAL is not checkpointed, and only the main file is copied — what `cp`, `rsync` or `tar` would capture | the record is missing | `certificates = 0` — **lost** |
+| 2 | the same database through the real job (paths redirected, everything else byte-identical — the diff is shown), decrypted on the laptop with the private key | the record survives | `integrity_check ok`, serial 20269001 → full_name / position / organisation / issued_date / score_pct all present |
+| 3 | pre-existing production rows | carried through | 5 revocations, `meta.email_salt` present |
+| 4 | archive transferred to the laptop | sha256 matches the manifest | matches |
+| 5 | the server decrypting its own backup | refused | `no identity matched any of the recipients`, exit 1 |
+| 6 | recipient key missing | FAIL in the operator log, mail to `alerts@`, non-zero exit, nothing written | `FAIL public key … missing`, exit **1**, SMTP `250 2.0.0 OK`, output dir never created |
+| 7 | the key restored | a real run is green again | `OK … (off-site verified)`, exit 0 |
+
+Probe 1 is the reason the job uses `VACUUM INTO` rather than a file copy, and it is the half that
+is easy to get wrong: `sqlite3_close()` checkpoints the WAL on the **last** connection closing
+regardless of `wal_autocheckpoint`, so a test that closes its writer before copying will "prove"
+that a byte-wise copy is safe. The writer has to stay open, which is also the state the live file
+is permanently in, because `educhain-api` holds it.

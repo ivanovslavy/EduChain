@@ -212,7 +212,7 @@ Explorer: <https://testnet.gembascan.io>
 - Cloudflare as CDN and DDoS protection
 - Apache with Let's Encrypt TLS
 - systemd service supervision
-- Automated nightly backups of the certificate database and the service configuration — age-encrypted, checksum-verified and copied off-site (`/usr/local/bin/educhain-backup.sh`, 04:50 daily)
+- Automated nightly backups of the certificate database and the service configuration — age-encrypted, checksum-verified and copied off-site, with the private key held off the server (`/usr/local/bin/educhain-backup.sh`, 04:50 daily). What it covers, why `VACUUM INTO` rather than a file copy, the retention windows and the restore procedure: [`docs/backup.md`](./docs/backup.md)
 
 ---
 

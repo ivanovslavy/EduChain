@@ -244,10 +244,121 @@ An external audit remains scoped for any deployment beyond a testnet.
   `proxy-addr`'s IP-spoofing advisory, which is exactly the control the IPFS endpoint used to lean
   on. `express` 5.2.1→5.3.0, `nodemailer` 8→10.3.1 (CRLF injection), `react-router-dom`
   7.14.1→7.18.5 (arbitrary constructor via turbo-stream), `vite` 8.0.8→8.3.5, `wagmi`/`viem`/
-  `@walletconnect/ethereum-provider` lifted, `ws` pinned to ^8.22.0 by override. The remaining 14 all
-  trace to one root: `zod` 3 under `@reown/appkit`, whose fix is a major version jump inside the
-  wallet-connection path. **Accepted, not fixed** — it is a client-side DoS in the visitor's own tab,
-  and lifting it blind in a path that cannot be tested headlessly would be the riskier change.
+  `@walletconnect/ethereum-provider` lifted, `ws` pinned to ^8.22.0 by override. The remaining 14
+  are re-examined below.
+
+* **The 14 remaining frontend advisories are one advisory, and it is not reachable.** Measured
+  2026-11-01, on disk and in the shipped bundle rather than from the manifest.
+
+  All 14 `npm audit` findings dedup to a single `via`: **GHSA-mrhx-c7xc-m3w5 / CVE-2023-54404**,
+  `zod <4.6.6`, high, CWE-770, CVSS 7.5 (`AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H`) — uncontrolled
+  resource consumption in `$ZodArray`'s `handleArrayResult`, which accumulates an issue per failing
+  element of an unbounded array with no cap.
+
+  | question | measured answer |
+  |---|---|
+  | copies of zod on disk | exactly two: `node_modules/zod` **3.25.76**, `node_modules/@reown/appkit-wallet/node_modules/zod` **3.22.4** |
+  | does our code use zod | no — zero `zod` imports in `src/`, `server/`, `static-server.cjs`, `vite.config.ts` |
+  | is the vulnerable function present | `handleArrayResult` exists only in `node_modules/zod/v4/core/schemas.js:616`; the appkit copy (3.22.4) predates zod-v4 core and does not contain it at all |
+  | is that file imported | no — nothing outside `node_modules/zod/` imports `zod/v4`, and `zod/index.js:1` resolves the bare entry to `./v3/external.js` |
+  | is zod in the shipped bundle | **no.** 0 occurrences of `ZodError`, `ZodType`, `safeParse`, `invalid_string`, `invalid_type`, `ZodIssueCode`, `W3mFrameSchema` across 3.43 MB of built JS — while `AppKit` (44), `w3m-modal` (9) and `@w3m-frame` (49) are present, so this is not a missed chunk |
+  | what calls zod in appkit | `@reown/appkit-wallet/.../W3mFrameSchema.js`, validating messages from Reown's `secure-site` auth iframe (email/social login). It is reached only from the **full** `appkit.js` client; `@walletconnect/ethereum-provider` lazily imports `@reown/appkit/core` → `appkit-core.js`, which has zero `appkit-wallet` references. We never call `createAppKit` and never enable email/social login |
+
+  **Is there an upgrade? No.** Every published `@reown/appkit-wallet`, up to and including the
+  newest stable **1.8.24**, pins `zod` to the exact string `3.22.4`; zod's fix landed only in
+  **4.6.6** and there is no 3.x backport. We are already on the newest `wagmi` (3.7.9) and
+  `@walletconnect/ethereum-provider` (2.26.0). `npm audit fix --force` does not fix this either —
+  it proposes EP 2.26.0 → **2.19.4** and wagmi 3.7.9 → **2.15.0**, i.e. a downgrade to before
+  appkit entered the tree, losing every security fix in between.
+
+  **An `overrides` to a fixed zod was considered and rejected.** It would force zod-4 semantics
+  onto `W3mFrameSchema.js`, which is written against the v3 API (`z.string().email()`,
+  `ctx.addIssue`, `.or()`), inside the wallet-connection path — breaking wallet connection to
+  remove a finding whose code is not shipped is a net loss.
+
+  **Accepted, with a deadline.** Accepted 2026-11-01 on the measured ground that the vulnerable
+  code is neither present in the appkit copy nor shipped to any browser — not merely on the ground
+  that the fix is awkward. **Review by 2026-02-01**, or sooner if any of these changes:
+  `@reown/appkit-wallet` publishes a release whose `zod` is ≥ 4.6.6; we enable AppKit email/social
+  login (which would load `appkit.js` and with it the schema module); or `zod` strings start
+  appearing in the built bundle. The bundle check is the cheap recurring test: if
+  `grep -c ZodError dist/assets/*.js` is ever non-zero, this acceptance is void.
+
+* **The contracts' 65 advisories are all dev tooling.** `/educhain/blockchain` reports 18 low /
+  20 moderate / 26 high / 1 critical, and every flagged package is a `devDependency` of the Hardhat
+  toolchain (`hardhat`, `hardhat-toolbox`, `hardhat-etherscan`, `hardhat-gas-reporter`,
+  `solidity-coverage`); the critical is `handlebars` via `eth-gas-reporter`. The 11 production
+  dependencies — `@openzeppelin/contracts`, `erc721a`, `azuki`, `dotenv` — carry **zero** findings,
+  and nothing in this tree is served to a visitor or runs on the server: it compiles and tests
+  contracts on a developer machine. `fixAvailable: false` on `eth-gas-reporter`, `mocha`, `glob`,
+  `minimatch` and `serialize-javascript`, so `npm audit fix` cannot clear them without replacing the
+  gas reporter. **Accepted as dev-only, review 2026-02-01.** No zod anywhere in this part.
+
+* **The wrong-network check asked the wrong question, and so never fired (fixed 2026-11-01).**
+  `Web3Context` decided "is the wallet on our chain" with `useChainId()`. `createConfig` refuses to
+  record a chain outside its own `chains` list (`@wagmi/core` `createConfig.js`, `syncConnectedChain`:
+  `if (!isChainConfigured) return`, plus `validatePersistedChainId`), and `SUPPORTED_CHAINS` has one
+  member — so `useChainId()` was pinned to 821207 and `correctChain` was a constant `true`. Twelve
+  downstream guards were therefore **dead code**: the full-page wrong-network notice in `PageGate`,
+  the navbar pill, the member-nav withdrawal, the one-shot auto-switch, and the `return
+  emptyContracts` that is supposed to null all eight contracts on a foreign chain. What a user hit
+  instead was `getConnectorClient` throwing `ConnectorChainMismatchError` against the connector's
+  real chain id — a connected wallet with a green dot and every write failing as
+  `WALLET_NOT_READY`, unrecoverable without a page reload because `getWalletClient` carries
+  `staleTime: Infinity` and invalidates on **address**, not chain.
+
+  The detector is now `useAccount().chain`, which is resolved from the connector's real chain id
+  (`getConnection.js`: `config.chains.find(c => c.id === connection?.chainId)`), so `undefined`
+  means "a network this app does not support". Three consequences were handled deliberately:
+  `withSigner()` now throws `WRONG_NETWORK` before it will hand out a signer, so a signature cannot
+  be requested on a foreign chain even by a contract instance that outlived a switch; the banner is
+  latched on `status === 'connected'` **and** on the one-shot auto-switch having settled, so a
+  correct wallet never flashes a warning during the connect handshake; and the public read provider
+  in `publicReader.ts` — one hardcoded `rpc1.gembascan.io`, which also served every whitelist role
+  check — is now an ethers `FallbackProvider` across rpc1/rpc2/rpc3 with `quorum: 1`.
+
+  Verified in a real browser against a real build, 16/16 (`network-check-e2e.js`), and
+  canary-verified: with `useChainId()` put back in that one line and built to a separate output
+  directory, 4 of the 16 go red — the banner, its contents, the gated-page notice and the member-nav
+  withdrawal — and the auto-switch is never even attempted. Note for anyone reusing the wallet
+  harness: the injected `eth_chainId` in the three older browser scripts was `0xc8757` = **821079**,
+  transposed digits, so every `EDU_WALLET=1` run had been a silent wrong-network run that passed
+  because the old detector could not notice. Corrected to `0xc87d7`.
+
+* **The certificate database now has a backup, and the backup has been restored (2026-11-01).**
+  `/var/lib/educhain/certificates.db` is the only store of personal data on the platform — the
+  holder name, position, organisation and salted e-mail hash behind every issued certificate. The
+  chain holds a keccak256 hash and nothing else, so losing that file makes every issued PDF
+  unverifiable in its human-readable fields. There was no backup job for EduChain anywhere on the
+  host while `README.md` and `i18n:384` claimed "automated nightly backups"; the claim was removed
+  on 2026-10-31 and restored once it was true. The job is
+  `/usr/local/bin/educhain-backup.sh`, 04:50 UTC daily; see [`docs/backup.md`](../docs/backup.md)
+  for what it does and why. Security properties that matter here:
+
+  - **The server can make backups but cannot read them.** Only the age **public** key is on the box
+    (`/etc/educhain/backup.age.pub`, recipient `age1r6lf…fl5n3c`); the private key exists only on the
+    owner's laptop. Verified: `age -d` on the server exits non-zero with "no identity matched any of
+    the recipients", and `grep -rl AGE-SECRET-KEY` over `/etc /root /home /usr/local /var/backups
+    /var/lib` finds nothing.
+  - **No secret and no exam answer is in the archive.** Only variable *names* are recorded, never
+    values; `.env`/`.env.server`/`blockchain/.env`, the TLS private key and
+    `server/certificates/questions/*.json` are excluded by an explicit list, and then asserted again
+    by tar member name — a match is a hard failure, not a warning. The question banks stay 640
+    root:www-data and are never copied anywhere more readable.
+  - **The copy is consistent.** The database runs in WAL mode, so a byte-wise `cp`/`rsync`/`tar` of
+    the main file is not a backup. The copy is taken with SQLite's own `VACUUM INTO` on a read-only
+    connection, then re-opened and required to answer `PRAGMA integrity_check` = `ok` with all five
+    tables present before anything is encrypted.
+
+  | probe | expected | result |
+  |---|---|---|
+  | byte-wise copy of the main file while a writer holds the db open | the committed record is missing | `certificates = 0` — **lost**, as predicted |
+  | the same database through the real job, then decrypted on the laptop | the record is there | `integrity_check ok`; serial 20269001 → name, position, organisation, date, score all intact |
+  | pre-existing production rows carried through | 5 revocations + the e-mail salt | 5 revocations, salt present |
+  | off-site copy on the backup host | sha256 equal to local | equal for all 3 files, verified by the job itself |
+  | recipient key missing | FAIL logged, mail to `alerts@`, non-zero exit | `FAIL public key … missing`, exit **1**, SMTP `250 2.0.0 OK`, nothing written |
+  | server tries to decrypt its own backup | refused | `age: error: no identity matched any of the recipients` |
+
 * **A third-party gateway removed from the path.** NFT images were rendered through the public
   `ipfs.io` gateway while the platform pins to its own node. That both broke the gallery whenever
   ipfs.io was down (it was, from 2026-09-21) and told a third party which CIDs each visitor was
@@ -277,4 +388,7 @@ An external audit remains scoped for any deployment beyond a testnet.
 
   A green scan on a config nobody has tried to defeat is not evidence. There is no `pre-commit`
   hook — the scan is a deliberate manual step in the commit procedure, so it cannot be silently
-  skipped by a `--no-verify`.
+  skipped by a `--no-verify`. One gap to be honest about: `gitleaks version` on this host prints
+  `version is set by build process`, an unstamped distro build, so the ruleset the canary validated
+  cannot be pinned to a version number. Re-run the two-direction canary after any `gitleaks`
+  upgrade rather than assuming the allowlist still behaves.
