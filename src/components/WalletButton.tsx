@@ -21,7 +21,7 @@ export default function WalletButton() {
   const { connectors, connect, isPending } = useConnect();
   const { disconnect } = useDisconnect();
   const { switchChain } = useSwitchChain();
-  const { correctChain, chainId } = useWeb3();
+  const { wrongNetwork, chainId } = useWeb3();
   // Balance reads via publicnode, not the Infura-backed wagmi provider —
   // avoids quota contention with MetaMask transactions.
   const provider = publicReadProvider;
@@ -117,7 +117,6 @@ export default function WalletButton() {
     );
   }
 
-  const wrongNetwork = !correctChain;
   const dotColor = wrongNetwork ? 'var(--color-accent-danger)' : 'var(--color-accent-success)';
 
   return (

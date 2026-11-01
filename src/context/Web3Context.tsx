@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useEffect, useState, useCallback, useRef, ReactNode } from 'react';
 import { Contract, Signer } from 'ethers';
-import { useAccount, useChainId, useSwitchChain } from 'wagmi';
+import { useAccount, useSwitchChain } from 'wagmi';
 import { useEthersSigner, useEthersProvider } from '../lib/ethersAdapter';
 import { DEFAULT_CHAIN } from '../config/wagmi';
 import { publicReadContracts } from '../lib/publicReader';
@@ -31,6 +31,12 @@ interface Web3ContextValue {
   chainId: number | undefined;
   isConnected: boolean;
   correctChain: boolean;
+  /**
+   * True only when the wallet really is on another network: the chain has been read back, it is
+   * not ours, and the one-shot auto-switch has already settled. Use this for anything the user
+   * SEES; use `correctChain` for anything that LOCKS, because a lock may not wait for a latch.
+   */
+  wrongNetwork: boolean;
   contracts: Contracts;
   // Raw ethers Signer when the wallet is connected and on the correct chain.
   // Use `withSigner(contracts.foo)` (or `.connect(signer)`) for write methods,
@@ -56,13 +62,34 @@ const emptyContracts: Contracts = {
 const Web3Context = createContext<Web3ContextValue | null>(null);
 
 export function Web3Provider({ children }: { children: ReactNode }) {
-  const { address, isConnected } = useAccount();
-  const chainId = useChainId();
+  // The network check reads `useAccount().chain`, NOT `useChainId()`.
+  //
+  // `useChainId()` returns `config.state.chainId`, and createConfig refuses to record a chain that
+  // is not in its own `chains` list (@wagmi/core createConfig.js, syncConnectedChain:
+  // `if (!isChainConfigured) return`, plus validatePersistedChainId). SUPPORTED_CHAINS has exactly
+  // one member, so `useChainId()` was pinned to 821207 and could never disagree with
+  // DEFAULT_CHAIN.id — `correctChain` was a constant `true` and every gate below it was dead code.
+  // What the user actually hit instead was `getConnectorClient` throwing ConnectorChainMismatchError
+  // against the connector's real chain id, i.e. a connected wallet with a green dot and every
+  // write failing as WALLET_NOT_READY.
+  //
+  // `chain` is resolved from the connector's REAL chain id (@wagmi/core getConnection.js:
+  // `config.chains.find((chain) => chain.id === connection?.chainId)`), so `chain === undefined`
+  // means exactly "the wallet is on a network this app does not support". `chainId` is kept as the
+  // raw wallet chain id — unlike `chain`, it is still populated on a foreign network, so the
+  // banner can name the chain the user is actually on.
+  const { address, isConnected, status, chain, chainId } = useAccount();
   const signer = useEthersSigner();
   const provider = useEthersProvider();
-  const { switchChain } = useSwitchChain();
+  const { switchChain, isPending: switchPending } = useSwitchChain();
 
-  const correctChain = chainId === DEFAULT_CHAIN.id;
+  const correctChain = chain?.id === DEFAULT_CHAIN.id;
+
+  // `chain === undefined` only says something about the WALLET once wagmi reports 'connected'.
+  // During 'connecting'/'reconnecting' it just means the chain id has not been read back yet — and
+  // `isConnected` is already true while reconnecting (getConnection.js: `isConnected: !!address`),
+  // so `isConnected` on its own cannot tell "still resolving" from "unsupported network".
+  const chainResolved = status === 'connected';
 
   // Auto-switch to GembaBlockchain on connect. If the wallet connects on any other
   // chain (MetaMask default is Ethereum Mainnet), fire the switchChain prompt
@@ -71,16 +98,29 @@ export function Web3Provider({ children }: { children: ReactNode }) {
   // and they can switch manually from there. The ref prevents repeated prompts
   // on re-renders; it resets on disconnect so the next connect can retry.
   const autoSwitchTried = useRef(false);
+  const [autoSwitchSettled, setAutoSwitchSettled] = useState(false);
   useEffect(() => {
-    if (!isConnected) {
+    if (!chainResolved) {
       autoSwitchTried.current = false;
+      setAutoSwitchSettled(false);
       return;
     }
-    if (!correctChain && !autoSwitchTried.current) {
-      autoSwitchTried.current = true;
-      switchChain({ chainId: DEFAULT_CHAIN.id });
+    if (correctChain) {
+      setAutoSwitchSettled(true);
+      return;
     }
-  }, [isConnected, correctChain, switchChain]);
+    if (!autoSwitchTried.current) {
+      autoSwitchTried.current = true;
+      // onSettled fires on accept AND on reject, so a rejected prompt still unlatches the banner.
+      switchChain({ chainId: DEFAULT_CHAIN.id }, { onSettled: () => setAutoSwitchSettled(true) });
+    }
+  }, [chainResolved, correctChain, switchChain]);
+
+  // The only thing allowed to claim "wrong network" on screen. All four conditions matter:
+  // the chain has actually been read back, it is not ours, the one-shot auto-switch has finished
+  // (accepted or rejected), and no switch is in flight. Without the last two a wallet that is
+  // about to be switched flashes a warning during the handshake, which is noise, not information.
+  const wrongNetwork = chainResolved && !correctChain && autoSwitchSettled && !switchPending;
 
   const contracts = useMemo<Contracts>(() => {
     if (!correctChain) return emptyContracts;
@@ -171,12 +211,16 @@ export function Web3Provider({ children }: { children: ReactNode }) {
   // the read-only provider as their runner.
   const withSigner = useCallback(<T extends Contract | null>(contract: T): T => {
     if (!contract) return contract;
+    // A signature must never be requested on a foreign chain. `contracts` is already emptied when
+    // `correctChain` is false, but this is the lock that matters: it is on the one path every
+    // write goes through, so a contract instance that outlived a network switch cannot be used.
+    if (!correctChain) throw new Error('WRONG_NETWORK');
     if (!signer) throw new Error('WALLET_NOT_READY');
     return contract.connect(signer) as T;
-  }, [signer]);
+  }, [signer, correctChain]);
 
   const value: Web3ContextValue = {
-    account: address, chainId, isConnected, correctChain,
+    account: address, chainId, isConnected, correctChain, wrongNetwork,
     contracts, signer: signer ?? null, withSigner,
     isWhitelisted, isOwner, isAdmin, refreshRoles, addresses,
   };

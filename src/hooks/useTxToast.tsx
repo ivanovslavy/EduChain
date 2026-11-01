@@ -107,7 +107,12 @@ export function useTxToast() {
       // `withSigner()` in Web3Context throws this sentinel when wagmi reports
       // connected but `useWalletClient` hasn't hydrated yet — surface a clean
       // localised hint instead of the ethers UNSUPPORTED_OPERATION text.
-      const msg = raw === 'WALLET_NOT_READY'
+      // `withSigner()` throws WRONG_NETWORK when the wallet is on a chain this app does not
+      // support, and WALLET_NOT_READY when wagmi says connected but useWalletClient has not
+      // hydrated. Both are our own sentinels, not ethers text, so both get a localised line.
+      const msg = raw === 'WRONG_NETWORK'
+        ? t('gate.wrongChainBody', 'Switch to GembaBlockchain to use this dApp.')
+        : raw === 'WALLET_NOT_READY'
         ? t('tx.error.wallet_not_ready', 'Wallet not ready. Disconnect and reconnect your wallet, make sure it is unlocked and on GembaBlockchain, then try again.')
         : raw;
       const shortMsg = msg.length > 140 ? msg.slice(0, 137) + '...' : msg;

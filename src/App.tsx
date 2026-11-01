@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useParams, Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import SafetyBanner from './components/SafetyBanner';
+import NetworkBanner from './components/NetworkBanner';
 import Footer from './components/Footer';
 import SEOHead from './components/SEOHead';
 import Home from './pages/Home';
@@ -48,6 +49,7 @@ function LangWrapper() {
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
       <SEOHead />
       <Navbar />
+      <NetworkBanner />
       <SafetyBanner />
       <main className="flex-1">
         <Outlet />

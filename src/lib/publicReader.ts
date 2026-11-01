@@ -16,7 +16,8 @@
  * Do not import this from pages that perform transactions — use the
  * signer-backed contracts from `useWeb3()` for writes.
  */
-import { JsonRpcProvider, Contract, Network } from 'ethers';
+import { FallbackProvider, JsonRpcProvider, Contract, Network } from 'ethers';
+import { DEFAULT_CHAIN } from '../config/wagmi';
 import addresses from '../contracts/addresses.json';
 import TrackingContractABI from '../contracts/abis/TrackingContract.json';
 import GameNFTPredefinedABI from '../contracts/abis/GameNFTPredefined.json';
@@ -25,26 +26,47 @@ import GameTokenABI from '../contracts/abis/GameToken.json';
 import WhitelistABI from '../contracts/abis/Whitelist.json';
 import TokenMarketplaceABI from '../contracts/abis/TokenMarketplace.json';
 
-// Hardcoded public endpoint — intentionally does NOT read `VITE_RPC_URL`
-// from env because that value is an Infura key shared with wagmi / MetaMask
-// for transactions. Concurrent loads (MetaMask JSON-RPC + page stats + hot
-// reload during dev) were hitting the Infura free-tier rate limits and the
-// homepage stats silently stopped resolving. This module-scoped provider
-// stays on a public, unauthenticated endpoint so public stats never share
-// quota with user transactions.
-const RPC_URL = 'https://rpc1.gembascan.io';
+// Our own keyless GembaBlockchain endpoints, free ones first. This used to be a single
+// hardcoded `https://rpc1.gembascan.io`: one endpoint having a bad minute took the homepage
+// stats AND every role check with it, because `refreshRoles` reads the whitelist through here.
+// A 502 from rpc1 is born at Cloudflare's edge rather than at our origin, which is exactly the
+// transient a fallback is for. Shares the wagmi list so there is one place to edit.
+const RPC_URLS = (
+  (import.meta.env.VITE_RPC_URLS as string) ||
+  (import.meta.env.VITE_RPC_URL as string) ||
+  'https://rpc1.gembascan.io,https://rpc2.gembascan.io,https://rpc3.gembascan.io'
+)
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
 
 // Static GembaBlockchain network — skip runtime eth_chainId detection on first call,
 // which otherwise adds latency and an extra RPC round-trip.
-const SEPOLIA = new Network('gemba', 821207);
+// One definition of the chain id, shared with the wagmi config, instead of a second literal.
+const CHAIN_ID = DEFAULT_CHAIN.id;
+const GEMBA_NETWORK = new Network('gemba', CHAIN_ID);
 
 /**
- * Module-scoped GembaBlockchain JsonRpcProvider backed by publicnode.com.
- * Exported so callers like `Faucet.tsx` can run `.getBalance(address)`
- * without going through the Infura-backed wagmi publicClient (which
- * gets rate-limited by parallel MetaMask traffic).
+ * Module-scoped GembaBlockchain read provider over ALL of our endpoints.
+ * Exported so callers like `Faucet.tsx` can run `.getBalance(address)` without going through the
+ * wagmi publicClient, which shares its quota with MetaMask traffic.
+ *
+ * A single endpoint is a single point of failure for the homepage stats and for the whitelist
+ * role lookup, so this is a FallbackProvider: `quorum: 1` means the first healthy answer wins,
+ * and `priority` ascending keeps rpc1 preferred while rpc2/rpc3 cover it. With one URL
+ * configured a FallbackProvider would just add overhead, so that case stays a plain provider.
  */
-export const publicReadProvider = new JsonRpcProvider(RPC_URL, SEPOLIA, { staticNetwork: SEPOLIA });
+const makeProvider = () => {
+  const one = (url: string) => new JsonRpcProvider(url, GEMBA_NETWORK, { staticNetwork: GEMBA_NETWORK });
+  if (RPC_URLS.length === 1) return one(RPC_URLS[0]);
+  return new FallbackProvider(
+    RPC_URLS.map((url, i) => ({ provider: one(url), priority: i + 1, stallTimeout: 4000, weight: 1 })),
+    GEMBA_NETWORK,
+    { quorum: 1 },
+  );
+};
+
+export const publicReadProvider = makeProvider();
 const provider = publicReadProvider;
 
 export const publicReadContracts = {
