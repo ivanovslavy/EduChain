@@ -115,14 +115,14 @@ Any failure:
    `contacts@gembait.com` — never through a personal mailbox;
 3. exits **non-zero**.
 
-Until 1 November 2026 the alert reused the APIs SMTP settings in , i.e. the owners
+Until 1 November 2026 the alert reused the API's SMTP settings in `.env.server`, i.e. the owner's
 personal Gmail. It now reads its own `/etc/educhain/backup-alert.env` (600 root; `SMTP_HOST`,
 `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM` — quoted, its `<>` would break sourcing) and sends
 with `curl`; the credential reaches curl on stdin, never in `argv`, so it is not visible in `ps`.
 It is best-effort: if the mail itself cannot be sent, that is logged as a `WARN … rc=N` and the
 original failure is still reported. Proven on 1 November 2026: a forced failure (impossible target)
-exited 1 and the relay delivered the mail (`status=sent … Saved`); a normal run sent nothing. The failure path is tested, not
-assumed — see `blockchain/TESTING.md` §6b.
+exited 1 and the relay delivered the mail (`status=sent … Saved`); a normal run sent nothing.
+The failure path is tested, not assumed — see `blockchain/TESTING.md` §6b.
 
 ## Restoring
 
