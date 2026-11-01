@@ -177,14 +177,14 @@ export default function About() {
         </div>
       </section>
 
-      {/* SMART CONTRACTS — 7 deployed */}
+      {/* SMART CONTRACTS — 8 deployed */}
       <section className="mb-16 animate-fade-up delay-200">
         <div className="mb-8 text-center">
           <h2
             className="font-display text-2xl md:text-3xl font-semibold mb-3"
             style={{ color: 'var(--text-primary)' }}
           >
-            {t('about.contracts.title', 'Seven smart contracts')}
+            {t('about.contracts.title', 'Eight smart contracts')}
           </h2>
           <p className="text-base" style={{ color: 'var(--text-secondary)' }}>
             {t('about.contracts.subtitle', '')}

@@ -238,7 +238,7 @@ export default function Philosophy() {
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               {t(
                 'philosophy.canonical.verified.body',
-                'All seven smart contracts are verified on GembaScan. Students, teachers, auditors, and evaluators can read the exact code that runs on-chain — no trusted frontend required. Full public transparency.'
+                'All eight smart contracts are verified on GembaScan. Students, teachers, auditors, and evaluators can read the exact code that runs on-chain — no trusted frontend required. Full public transparency.'
               )}
             </p>
           </div>

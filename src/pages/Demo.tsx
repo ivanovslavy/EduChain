@@ -175,7 +175,7 @@ export default function Demo() {
               className="font-display text-xl font-semibold mb-2"
               style={{ color: 'var(--text-primary)' }}
             >
-              {t('demo.videoPlaceholder.title', 'Video demo coming soon')}
+              {t('demo.videoPlaceholder.title', 'Video demonstration')}
             </h3>
             <p
               className="text-sm max-w-lg leading-relaxed"

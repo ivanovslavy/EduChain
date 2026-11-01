@@ -37,7 +37,7 @@
     },
     "about": {
       "title": "About EduChain — architecture, smart contracts, security",
-      "description": "7 production smart contracts on GembaBlockchain (OpenZeppelin v5, ERC-721A). Three-layer security model, 4-category tech stack, open-source MIT code. EduChain is designed for audit and fork."
+      "description": "8 production smart contracts on GembaBlockchain (OpenZeppelin v5, ERC-721A). Three-layer security model, 4-category tech stack, open-source MIT code. EduChain is designed for audit and fork."
     },
     "contact": {
       "title": "Contact — EduChain | Partnerships and EU grants",
@@ -61,7 +61,7 @@
     },
     "curriculum": {
       "title": "Curriculum — EduChain | 16 hours of Web3 for students",
-      "description": "A structured 16-hour programme in 7 modules — from Web3 fundamentals to a final project. For students aged 12+. A dual certificate (PDF + on-chain NFT) is planned, four-plus delivery formats."
+      "description": "A structured 16-hour programme in 7 modules — from Web3 fundamentals to a final project. For students aged 12+. A dual certificate (PDF + on-chain NFT) through a self-service exam, four-plus delivery formats."
     },
     "demo": {
       "title": "Demo — EduChain in action | Video and screenshots",
@@ -268,7 +268,7 @@
     },
     "overview": {
       "title": "Overview",
-      "p1": "EduChain is a safe Web3 sandbox built on the GembaBlockchain testnet. The platform is composed of 7 interconnected smart contracts covering access control, digital assets, peer-to-peer trading, leaderboards and test GMB distribution.",
+      "p1": "EduChain is a safe Web3 sandbox built on the GembaBlockchain testnet. The platform is composed of 8 interconnected smart contracts covering access control, digital assets, peer-to-peer trading, leaderboards and test GMB distribution.",
       "p2": "All contracts are written in Solidity 0.8.28, compiled against the Cancun EVM, and use audited primitives from OpenZeppelin v5. Every contract is publicly verified on GembaScan and the source code can be reviewed line by line.",
       "p3": "The frontend is a React 19 + TypeScript application with Tailwind v4, hosted on Hetzner with a Cloudflare CDN. Blockchain interaction is via wagmi + viem + ethers."
     },
@@ -418,7 +418,7 @@
       },
       "minors": {
         "title": "Protection of minors",
-        "body": "The platform is suitable for students aged 12 and above in the context of organised school learning under teacher supervision. Because we require no personal data, we collect no child-specific information."
+        "body": "The platform is suitable for students aged 12 and above in the context of organised school learning under teacher supervision. Browsing the site and the on-chain exercises require no personal data. If a student sits the certificate exam, we do collect three names, an e-mail address, a position and an organisation, and the name is printed on the certificate and shown on the public verification page — which is why the exam is meant to be taken under a teacher's or a parent's supervision. Retention periods are in section 3 of the Privacy Policy."
       }
     },
     "cta": {
@@ -1120,7 +1120,7 @@
       },
       "materials": {
         "title": "Ready-made materials",
-        "body": "Lesson plans, classroom exercises, tests, example scenarios, common problems and solutions. You get everything you need to run the lesson."
+        "body": "Lesson plans, classroom exercises, tests, example scenarios, common problems and solutions. This teaching pack is planned — it is not available yet."
       }
     },
     "faq": {
@@ -1294,17 +1294,23 @@
     },
     "section4": {
       "title": "4. Server and CDN logs",
-      "intro": "Like every website, EduChain passes through infrastructure layers that keep technical logs:",
+      "intro": "Like every website, EduChain passes through infrastructure layers that keep technical logs. Beyond those, a few providers see your traffic or your mail. This is the complete list:",
       "cloudflareTitle": "Cloudflare (CDN and DDoS protection)",
       "cloudflareBody": "Cloudflare processes every request before it reaches our server and keeps its own logs (IP address, User-Agent, page requested). Those logs are managed by Cloudflare under their privacy policy and are not under our control. We use Cloudflare for acceleration and protection — an alternative would make the site slow and vulnerable.",
       "apacheTitle": "Apache access logs (hosting)",
       "apacheBody": "Our web server (Apache on Hetzner) may keep standard access logs with IP addresses and requested paths for a limited period, as needed for troubleshooting and security. These logs are not linked to user profiles (because there are none) and are not used for any analytics or commercial purpose.",
       "turnstileTitle": "Cloudflare Turnstile",
-      "turnstileBody": "The contact form runs Cloudflare Turnstile — an anti-bot check that verifies whether the request comes from a real human. Turnstile may inspect your browser and temporarily set a technical cookie. The check is performed by Cloudflare and we receive no details about you."
+      "turnstileBody": "The contact form runs Cloudflare Turnstile — an anti-bot check that verifies whether the request comes from a real human. Turnstile may inspect your browser and temporarily set a technical cookie. The check is performed by Cloudflare and we receive no details about you.",
+      "mailTitle": "Google (Gmail) as the mail relay",
+      "mailBody": "Outgoing e-mail from EduChain is sent through Google's SMTP service (smtp.gmail.com) from a Gmail account. Two kinds of message go through it: what you submit on the contact form, and the exam certificate e-mail — which carries your name and the certificate PDF, as well as the six-digit confirmation code. Google therefore processes that mail in transit and stores it in the sending mailbox, under its own privacy policy and outside our control. It is the only processor that touches the certificate personal data. We use a hosted relay because mail sent directly from a small server is rejected as spam; we do not use Google for analytics and no Google tracking script runs on the site.",
+      "walletconnectTitle": "WalletConnect / Reown (wallet connection)",
+      "walletconnectBody": "If you connect a wallet with WalletConnect rather than a browser extension, your browser talks to Reown's infrastructure — the relay (relay.walletconnect.com and relay.walletconnect.org), the wallet directory (api.web3modal.org, explorer-api.walletconnect.com), domain verification (verify.walletconnect.com and verify.walletconnect.org), wallet icons (imagedelivery.net) and a telemetry endpoint (pulse.walletconnect.org). Those services see your IP address, your browser and the fact that you are connecting a wallet to this site. They are operated by Reown under its own privacy policy. Using a browser-extension wallet such as MetaMask avoids them entirely.",
+      "rpcTitle": "Blockchain RPC providers",
+      "rpcBody": "To show balances, NFTs, the leaderboard and certificate status, the site queries GembaBlockchain RPC endpoints (rpc1.gembascan.io, rpc2.gembascan.io, rpc3.gembascan.io and testnet.gembascan.io). An RPC endpoint sees the IP address making the request and the addresses and contracts being queried, so it can link an IP to a wallet address looked up through it. These endpoints are operated by GembaScan for the GembaBlockchain testnet, which also serves the block-explorer links you follow."
     },
     "section5": {
       "title": "5. Legal basis for processing",
-      "intro": "When we do process data (contact-form emails, technical logs), the GDPR legal bases are:",
+      "intro": "When we do process data (contact-form emails, exam certificate data, technical logs), the GDPR legal bases are:",
       "item1": "Consent (Art. 6(1)(a)) — when filling the contact form you explicitly provide your data so we can reply",
       "item2": "Legitimate interest (Art. 6(1)(f)) — maintaining technical logs for security and troubleshooting",
       "item3": "Legal obligation (Art. 6(1)(c)) — complying with any court order or statutory duty",
@@ -1325,7 +1331,7 @@
     },
     "section7": {
       "title": "7. Minors",
-      "body": "EduChain can be used by students aged 12 and above in the context of organised school learning under teacher supervision. Because we require no personal data (and no name-based registration), the platform collects no child-specific information — unlike most internet services where a student would have to create a profile with personal details. Parents and teachers can contact us at contacts@gembait.com with any questions about child safety on the platform."
+      "body": "EduChain can be used by students aged 12 and above in the context of organised school learning under teacher supervision. Using the platform needs no registration and no name: browsing, the wallet exercises and the on-chain activities collect no child-specific information — unlike most internet services where a student would have to create a profile with personal details. There is one exception. If a student sits the certificate exam, the form asks for three names, an e-mail address, a position and an organisation; the certificate is then e-mailed as a PDF, and the holder's name is shown on the public verification page for that serial. For a student under 18 the exam is therefore meant to be taken under the supervision of a teacher or a parent, who should decide whether the name ought to appear publicly. Exam data is kept for the periods stated in section 3, a certificate can be revoked on request, and the name can be removed from the public record by minimisation. Parents and teachers can contact us at contacts@gembait.com with any questions about child safety on the platform, including a request to erase a certificate record."
     },
     "section8": {
       "title": "8. Security",
@@ -1347,7 +1353,7 @@
   "terms": {
     "hero": {
       "title": "Terms of Use",
-      "lastUpdated": "Last updated: 24 April 2026",
+      "lastUpdated": "Last updated: 31 October 2026",
       "subtitle": "These terms govern access to and use of EduChain. By using the platform you confirm that you have read and accept these terms."
     },
     "summary": {
@@ -1403,7 +1409,7 @@
       "body": "EduChain is provided “as is”, without any express or implied warranty. GEMBA IT is not liable for:",
       "item1": "Temporary unavailability of the platform due to technical issues, maintenance or GembaBlockchain testnet problems",
       "item2": "Loss of test assets due to bugs, testnet forks or user error",
-      "item3": "Actions of third parties — RPC providers, IPFS gateways, wallet providers",
+      "item3": "Actions of third parties — RPC providers (rpc1/2/3.gembascan.io), wallet providers and the WalletConnect/Reown infrastructure, and the mail relay that delivers certificates",
       "item4": "Improper use of the platform in an educational context by a school or teacher",
       "item5": "Content published by users (NFT metadata)",
       "note": "To the maximum extent permitted by Bulgarian and European law, our liability is limited to the amount we have received from the specific user (which is 0, as the service is free)."
@@ -1561,14 +1567,14 @@
     },
     "certificate": {
       "title": "Web3 literacy certificate",
-      "subtitle": "Planned: not just a document — an on-chain credential that stays publicly verifiable.",
+      "subtitle": "Not just a document — an on-chain credential that stays publicly verifiable.",
       "what": {
         "title": "What the student receives",
-        "body": "A planned dual certificate: a signed PDF document from GEMBA IT and an NFT credential recorded on the blockchain. The NFT will be immutable and can be shown in future CVs, university applications or Web3 portfolios."
+        "body": "A dual certificate: a signed PDF document from GEMBA IT and an NFT credential recorded on the blockchain. The NFT is immutable and can be shown in CVs, university applications or Web3 portfolios."
       },
       "why": {
         "title": "Why this matters",
-        "body": "At a time when every school issues paper certificates that can be forged or lost, the EduChain certificate will be publicly verifiable by anyone once it is issued. An employer or a university will be able to confirm authenticity with one click on GembaScan."
+        "body": "At a time when every school issues paper certificates that can be forged or lost, the EduChain certificate is publicly verifiable by anyone. An employer or a university can confirm authenticity with one click on GembaScan."
       },
       "criteria": {
         "title": "How it is earned",
@@ -1598,8 +1604,8 @@
       "ctaSecondary": "Meet the curriculum"
     },
     "videoPlaceholder": {
-      "title": "Video demonstration coming soon",
-      "body": "A 60-second summary of the platform — how a student connects, claims test GMB, mints their first NFT and climbs the leaderboard. It will be published in the coming days."
+      "title": "Video demonstration",
+      "body": "A 60-second summary of the platform — how a student connects, claims test GMB, mints their first NFT and climbs the leaderboard. If the player does not start, your browser may not support MP4 playback."
     },
     "steps": {
       "title": "How the platform works",
@@ -1739,7 +1745,7 @@
     "score": "Score: {{score}} % ({{correct}} of {{total}})",
     "needed": "A certificate needs {{pass}} % or above.",
     "noAnswersShown": "We do not show which questions were wrong or what the right answers were — the same bank is used for your next attempt.",
-    "retry": "You can try again after 24 hours (up to {{max}} attempts a day).",
+    "retry": "You can try again straight away, up to {{max}} attempts in 24 hours. Once all {{max}} are used, the next attempt is possible 24 hours after the first one.",
     "certSerial": "Certificate serial",
     "certMailed": "The certificate has been e-mailed to you as a PDF.",
     "certMailFailed": "The certificate was issued but the e-mail did not go out. Download it from the link below, or write to us.",

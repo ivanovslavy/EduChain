@@ -397,7 +397,7 @@ export default function Home() {
               </h3>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              {t('home.trust.verified.body', 'All 7 smart contracts are verified on GembaScan. Every function is publicly inspectable.')}
+              {t('home.trust.verified.body', 'All 8 smart contracts are verified on GembaScan. Every function is publicly inspectable.')}
             </p>
           </div>
 
@@ -479,7 +479,7 @@ export default function Home() {
               {t('home.cta.exploreTitle', 'Want to see the platform?')}
             </h3>
             <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
-              {t('home.cta.exploreBody', 'Explore the technical architecture, the 7 smart contracts, and how everything works live.')}
+              {t('home.cta.exploreBody', 'Explore the technical architecture, the 8 smart contracts, and how everything works live.')}
             </p>
             <Link
               to={`/${lang}/about`}

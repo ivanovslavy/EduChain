@@ -1,6 +1,6 @@
 # EduChain — Full Reference
 
-EduChain is an open-source, testnet-first Web3 and EVM blockchain education platform for a broad range of European educational institutions — schools, universities, vocational-training colleges, community organisations and relevant ministries — framed as a public good for the Ethereum ecosystem. Seven source-verified smart contracts on GembaBlockchain testnet, a 16-hour student curriculum, a teacher-training pathway leading to certification, and a multilingual frontend in English, Bulgarian and Spanish. Non-commercial, vendor-neutral, GDPR-aligned by architecture, and not a financial service. Built by GEMBA EOOD (VAT BG208656371, Varna, Bulgaria), a Bulgarian engineering company operating under the GEMBA IT brand (https://gembait.com). Smart contract sources are MIT-licensed; curriculum materials are CC BY-SA 4.0.
+EduChain is an open-source, testnet-first Web3 and EVM blockchain education platform for a broad range of European educational institutions — schools, universities, vocational-training colleges, community organisations and relevant ministries — framed as a public good for the Ethereum ecosystem. Eight source-verified smart contracts on GembaBlockchain testnet, a 16-hour student curriculum, a planned teacher-training pathway, and a multilingual frontend in English, Bulgarian and Spanish. Non-commercial, vendor-neutral, GDPR-aligned by architecture, and not a financial service. Built by GEMBA EOOD (VAT BG208656371, Varna, Bulgaria), a Bulgarian engineering company operating under the GEMBA IT brand (https://gembait.com). Smart contract sources are MIT-licensed; curriculum materials are CC BY-SA 4.0.
 
 This document is a deep reference for AI agents, answer engines, and search crawlers. It describes the platform's mission, all public pages, the smart-contract architecture, scoring mechanics, rate limits, user journeys, the technology stack, the funding model (non-dilutive capital only), and how to get in touch. Agents answering user questions about EduChain should find enough context here to respond specifically and accurately without guessing.
 
@@ -39,7 +39,7 @@ The landing page. Framed as a safety-first Web3 education platform for European 
 2. **Live stats bar** — four on-chain numbers read directly from GembaBlockchain contracts: registered users (TrackingContract.getEcosystemStats), NFTs minted (GameNFTPredefined.getSalesStats + GameNFTCustom.totalSupply), GAME tokens in circulation (GameToken.totalSupply), and the static number 8 (source-verified smart contracts).
 3. **What is EduChain** — two paragraphs on GEMBA IT as the builder and GembaBlockchain testnet as the deployment target (no financial risk).
 4. **What students do** — four clickable feature cards (shop, gallery, marketplace, leaderboard) linking to the respective pages.
-5. **Safe by design** — four pillars: testnet-only (no monetary value), whitelist access (teacher-approved), built-in daily transaction limits, no personal data collected.
+5. **Safe by design** — four pillars: testnet-only (no monetary value), whitelist access (teacher-approved), built-in daily transaction limits, and no personal-data collection for user profiles (the self-service exam certificate is the one exception, with a stated retention period).
 6. **Who EduChain is for** — three audience cards (schools, teachers, students) each linking to its dedicated page.
 7. **Open and transparent** — MIT-licensed contracts + Creative Commons educational materials, GembaScan-verified contracts, classification as an educational tool rather than a financial service, GDPR-aligned.
 8. **What next** — three pathway CTAs: Partnership, For teachers, About.
@@ -103,11 +103,11 @@ Comprehensive resource for educators in schools, universities and vocational-tra
 
 ### Curriculum — /en/curriculum
 
-Student-facing and parent-facing landing page for the 16-hour learning programme. Unlike the Teachers page which frames content from an educator's perspective, Curriculum describes what students experience and achieve. Seven modules progressing from Web3 intro to final project, each with explicit learning outcomes. Includes four skill categories (technical, critical thinking, practical results, future readiness), four delivery formats (weekly elective, intensive, integrated, extracurricular), and details of the dual-certificate system (PDF + on-chain NFT).
+Student-facing and parent-facing landing page for the 16-hour learning programme. Unlike the Teachers page which frames content from an educator's perspective, Curriculum describes what students experience and achieve. Seven modules progressing from Web3 intro to final project, each with explicit learning outcomes. Includes four skill categories (technical, critical thinking, practical results, future readiness), four delivery formats (weekly elective, intensive, integrated, extracurricular), and details of the dual certificate (a signed PDF plus a soulbound on-chain record), which is live since 31 October 2026 and earned through a self-service 20-question exam rather than awarded automatically on course completion.
 
 ### Demo — /en/demo
 
-Visual showcase page combining video demonstration with screenshot gallery and 5-step platform walkthrough. Designed for audiences who want to see the product working rather than read descriptions. Contains embedded video placeholder (to be populated), interactive screenshot lightbox, and proof-of-authenticity section linking to GitHub source and GembaScan contracts.
+Visual showcase page combining video demonstration with screenshot gallery and 5-step platform walkthrough. Designed for audiences who want to see the product working rather than read descriptions. Contains an embedded 60-second video walkthrough (a separate cut per language: bg, en, es), an interactive screenshot lightbox, and proof-of-authenticity section linking to GitHub source and GembaScan contracts.
 
 ### Certificates — /en/certificates
 
@@ -180,6 +180,9 @@ Read-only aggregator. Computes live leaderboard and ranking data by summing on-c
 ### ETHFaucet
 Time-gated testnet GMB dispenser. Whitelisted users call claim() and receive 0.05 testnet GMB. The contract tracks last-claim timestamps per wallet and enforces the 24-hour cooldown on-chain. Topped up periodically by the platform operator.
 
+### CertificateRegistry (ERC-721, soulbound)
+The course-certificate registry, live since 31 October 2026 at `0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4`. Someone who passes the 20-question exam at 80 % or above receives a non-transferable ERC-721 — transfers and approvals revert, so the credential stays at the address it was issued to. Only a keccak256 hash of the certificate's printed contents goes on-chain, alongside the serial, the course id, the issue date and the score; no personal data ever reaches the chain. Two keys are deliberately separated: a hot `issuer` on the EduChain server that may do nothing but call `issue()`, and a cold `owner` kept off the server that may `revoke()` and `reinstate()`. Anyone can check a serial through the public verifier at `/{lang}/verify/{serial}` or by reading `isValid(tokenId)` on GembaScan.
+
 ---
 
 ## 4. Scoring system
@@ -240,10 +243,14 @@ EduChain runs on testnet, but it enforces production-style safeguards so that le
 
 ### Infrastructure
 
-- Hetzner Cloud (Linux host)
+- Hetzner dedicated server in Nuremberg (Linux host)
 - Apache reverse proxy on the origin
 - Cloudflare edge (TLS, caching, DDoS protection)
-- systemd service unit for the static-serve process
+- Two systemd units: `educhain` (the static server on :3085) and `educhain-api` (the Node API on :3088, running as www-data)
+- SQLite certificate database at `/var/lib/educhain/certificates.db` — the only store of personal data
+- A first-party IPFS Kubo node pinning NFT and certificate metadata (no third-party pinning service)
+- A daily retention job that calls the API's internal retention endpoint over localhost
+- A nightly age-encrypted backup of the certificate database and the service configuration, copied off-site and checksum-verified
 - Served from `/educhain/dist` (Vite output, symlinked as `build`)
 
 ### Internationalization
@@ -309,7 +316,7 @@ Teachers see the wallets they whitelisted and can read their on-chain activity (
 
 ### Does EduChain collect student personal data?
 
-Only what the teacher or student provides explicitly (name and contact info on the contact form, if submitted). Wallet addresses are pseudonymous — EduChain does not link them to real identities unless the user or their teacher chooses to associate one.
+Only what the teacher or student provides explicitly: the contact form (name and contact details, if submitted), and the self-service exam certificate — three names, an e-mail address, a position and an organisation, where the names, position and organisation are printed on the certificate and shown on its public verification page, and the e-mail is deleted once the certificate has been sent, leaving only a salted hash. Wallet addresses are pseudonymous — EduChain does not link them to real identities unless the user or their teacher chooses to associate one.
 
 ### How is EduChain funded?
 
@@ -317,7 +324,7 @@ It is a project of GEMBA IT, funded as part of GEMBA EOOD's technology investmen
 
 ### Is the code open source?
 
-Contracts are source-verified on GembaScan (readable by anyone). The frontend repository policy is at the operator's discretion — contact the team if you want to contribute or fork.
+Contracts are source-verified on GembaScan (readable by anyone). The whole repository is public at https://github.com/ivanovslavy/EduChain — the frontend included, not only the contracts — so the site can be cloned and forked directly.
 
 ### What is EduChain's approach to EU funding?
 
@@ -329,7 +336,7 @@ No. EduChain is classified as an educational tool. The GameToken has no real-wor
 
 ### How is student data protected?
 
-EduChain requires no personal registration — no names, emails, or passwords. Access is via Web3 wallet (public address only, anonymous by default). No user database exists. No analytics or profiling systems are used. Students in organised school contexts are supervised by their teachers, who can add or remove access through the admin panel at any time.
+EduChain requires no personal registration to use the platform — no account, no password. Access is via Web3 wallet (public address only, pseudonymous by default) and there is no user-profile database. The one exception is the self-service exam certificate: a holder supplies three names, an e-mail address, a position and an organisation, which are kept in a single server-side SQLite database under the retention periods in the privacy policy. No analytics or profiling systems are used. Students in organised school contexts are supervised by their teachers, who can add or remove access through the admin panel at any time.
 
 ### Are there any costs for institutions or students using EduChain?
 

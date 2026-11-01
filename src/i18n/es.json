@@ -37,7 +37,7 @@
     },
     "about": {
       "title": "Acerca de EduChain — arquitectura, smart contracts, seguridad",
-      "description": "7 smart contracts de producción en GembaBlockchain (OpenZeppelin v5, ERC-721A). Modelo de seguridad en tres capas, pila tecnológica de 4 categorías, código abierto MIT. EduChain está diseñado para ser auditado y bifurcado."
+      "description": "8 smart contracts de producción en GembaBlockchain (OpenZeppelin v5, ERC-721A). Modelo de seguridad en tres capas, pila tecnológica de 4 categorías, código abierto MIT. EduChain está diseñado para ser auditado y bifurcado."
     },
     "contact": {
       "title": "Contacto — EduChain | Alianzas y fondos UE",
@@ -61,7 +61,7 @@
     },
     "curriculum": {
       "title": "Currículo — EduChain | 16 horas de Web3 para el alumnado",
-      "description": "Currículo estructurado de 16 horas en 7 módulos — desde los fundamentos de Web3 hasta un proyecto final. Para alumnado desde 12 años. Doble certificado previsto (PDF + NFT on-chain), más de 4 formatos de entrega."
+      "description": "Currículo estructurado de 16 horas en 7 módulos — desde los fundamentos de Web3 hasta un proyecto final. Para alumnado desde 12 años. Doble certificado (PDF + NFT on-chain) mediante un examen autoservicio, más de 4 formatos de entrega."
     },
     "demo": {
       "title": "Demo — EduChain en acción | Vídeo y capturas",
@@ -222,7 +222,7 @@
       },
       "item4": {
         "title": "Sin datos personales",
-        "body": "Sin registro, sin base de datos de usuarios. El acceso es mediante un monedero Web3 anónimo."
+        "body": "Sin registro y sin base de datos de perfiles de usuario. El acceso es mediante un monedero Web3, pseudónimo por defecto. La única excepción son los datos del certificado, si tú mismo pides hacer el examen."
       }
     },
     "audiences": {
@@ -302,7 +302,7 @@
       }
     },
     "contracts": {
-      "title": "Siete smart contracts",
+      "title": "Ocho smart contracts",
       "subtitle": "Cada contrato tiene una responsabilidad clara y un código fuente verificable públicamente.",
       "whitelist": {
         "title": "Whitelist",
@@ -356,7 +356,7 @@
         "title": "A nivel de plataforma",
         "item1": "Nunca solicitamos ni recibimos claves privadas o frases semilla",
         "item2": "Tráfico cifrado por TLS en todo el sitio",
-        "item3": "Sin base de datos de perfiles de usuario — no hay nada que robar",
+        "item3": "Sin base de datos de perfiles de usuario — los únicos datos personales son los del certificado, mínimos y con plazo limitado",
         "item4": "Protección DDoS y anti-bot en formularios con Cloudflare",
         "item5": "Operaciones exclusivamente en testnet — nunca se intercambian fondos reales"
       },
@@ -414,11 +414,11 @@
       },
       "gdpr": {
         "title": "RGPD",
-        "body": "No recogemos datos personales. Sin registro, sin base de datos de usuarios, sin tracking ni perfilado. Derechos RGPD completos para los casos limitados en los que tratamos información de contacto."
+        "body": "No recogemos datos personales con fines de perfil: sin registro, sin base de datos de usuarios, sin tracking ni perfilado. La única excepción es el certificado del examen — tres nombres, puesto, organización y correo electrónico, con un plazo de conservación declarado (véase la Política de Privacidad). Derechos RGPD completos para los casos limitados en los que tratamos información de contacto."
       },
       "minors": {
         "title": "Protección de menores",
-        "body": "La plataforma es adecuada para alumnado desde 12 años en contextos organizados de aprendizaje escolar bajo supervisión docente. Al no requerir datos personales, no recopilamos información específica sobre menores."
+        "body": "La plataforma es adecuada para alumnado desde 12 años en contextos organizados de aprendizaje escolar bajo supervisión docente. Navegar por el sitio y los ejercicios on-chain no requieren datos personales. Si un alumno se presenta al examen de certificación, sí recogemos tres nombres, una dirección de correo electrónico, un puesto y una organización, y el nombre se imprime en el certificado y se muestra en la página pública de verificación — por eso el examen está pensado para realizarse bajo la supervisión de un docente o de la familia. Los plazos de conservación están en la sección 3 de la Política de Privacidad."
       }
     },
     "cta": {
@@ -887,7 +887,7 @@
       },
       "students": {
         "title": "Para el alumnado y las personas que aprenden",
-        "body": "Exposición práctica gratuita a las tecnologías que dominarán la economía digital. Certificado individual de alfabetización Web3 previsto. Movilidades internacionales sujetas a financiación del proyecto. Una ventaja real al solicitar empleo o estudios superiores en el sector TIC."
+        "body": "Exposición práctica gratuita a las tecnologías que dominarán la economía digital. Certificado individual de alfabetización Web3 — un examen de 20 preguntas, un PDF por correo electrónico y un registro intransferible en la blockchain. Movilidades internacionales sujetas a financiación del proyecto. Una ventaja real al solicitar empleo o estudios superiores en el sector TIC."
       }
     },
     "howItWorks": {
@@ -949,7 +949,7 @@
       },
       "supervision": {
         "title": "Supervisión pedagógica completa",
-        "body": "El profesorado dispone de un panel de administración para la lista blanca, seguimiento del progreso y revocación inmediata del acceso si es necesario. Los límites de transacción previenen abusos."
+        "body": "El profesorado dispone de un panel de administración para la lista blanca, la clasificación por puntos y la revocación inmediata del acceso si es necesario. Los límites de transacción previenen abusos."
       }
     },
     "faq": {
@@ -1120,7 +1120,7 @@
       },
       "materials": {
         "title": "Materiales listos",
-        "body": "Planes de lección, ejercicios de aula, tests, escenarios de ejemplo, problemas y soluciones habituales. Recibes todo lo necesario para impartir la clase."
+        "body": "Planes de lección, ejercicios de aula, tests, escenarios de ejemplo, problemas y soluciones habituales. Este paquete docente está previsto — todavía no está disponible."
       }
     },
     "faq": {
@@ -1204,7 +1204,7 @@
       },
       "verified": {
         "title": "Verificados en GembaScan",
-        "body": "Los siete smart contracts están verificados en GembaScan. Alumnado, profesorado, auditoras y evaluadores pueden leer el código exacto que se ejecuta on-chain — sin confiar en el frontend. Transparencia pública completa."
+        "body": "Los ocho smart contracts están verificados en GembaScan. Alumnado, profesorado, auditoras y evaluadores pueden leer el código exacto que se ejecuta on-chain — sin confiar en el frontend. Transparencia pública completa."
       },
       "modernStack": {
         "title": "Pila frontend moderna",
@@ -1294,17 +1294,23 @@
     },
     "section4": {
       "title": "4. Registros de servidor y CDN",
-      "intro": "Como cualquier sitio web, EduChain atraviesa capas de infraestructura que mantienen registros técnicos:",
+      "intro": "Como cualquier sitio web, EduChain atraviesa capas de infraestructura que mantienen registros técnicos. Además de ellas, algunos proveedores ven tu tráfico o tu correo. Esta es la lista completa:",
       "cloudflareTitle": "Cloudflare (CDN y protección DDoS)",
       "cloudflareBody": "Cloudflare procesa cada petición antes de que llegue a nuestro servidor y mantiene sus propios registros (dirección IP, User-Agent, página visitada). Esos registros los gestiona Cloudflare bajo su política de privacidad y no están bajo nuestro control. Usamos Cloudflare para aceleración y protección — la alternativa haría el sitio lento y vulnerable.",
       "apacheTitle": "Registros de acceso de Apache (alojamiento)",
       "apacheBody": "Nuestro servidor web (Apache en Hetzner) puede mantener registros de acceso estándar con direcciones IP y rutas consultadas durante un periodo limitado, necesario para la resolución de incidencias y la seguridad. Estos registros no se asocian a perfiles de usuario (porque no los hay) y no se utilizan para analítica ni ningún fin comercial.",
       "turnstileTitle": "Cloudflare Turnstile",
-      "turnstileBody": "En el formulario de contacto funciona Cloudflare Turnstile — una protección anti-bot que verifica si la petición procede de una persona real. Turnstile puede comprobar tu navegador y establecer temporalmente una cookie técnica. La comprobación la realiza Cloudflare y no recibimos detalles sobre ti."
+      "turnstileBody": "En el formulario de contacto funciona Cloudflare Turnstile — una protección anti-bot que verifica si la petición procede de una persona real. Turnstile puede comprobar tu navegador y establecer temporalmente una cookie técnica. La comprobación la realiza Cloudflare y no recibimos detalles sobre ti.",
+      "mailTitle": "Google (Gmail) como relé de correo",
+      "mailBody": "El correo saliente de EduChain se envía a través del servicio SMTP de Google (smtp.gmail.com) desde una cuenta de Gmail. Por él pasan dos tipos de mensaje: lo que envías en el formulario de contacto y el correo del certificado del examen — que lleva tu nombre y el PDF del certificado, además del código de confirmación de seis dígitos. Google trata por tanto ese correo en tránsito y lo almacena en el buzón remitente, bajo su propia política de privacidad y fuera de nuestro control. Es el único encargado que toca los datos personales del certificado. Usamos un relé alojado porque el correo enviado directamente desde un servidor pequeño se rechaza como spam; no usamos Google para analítica y en el sitio no se ejecuta ningún script de seguimiento de Google.",
+      "walletconnectTitle": "WalletConnect / Reown (conexión del monedero)",
+      "walletconnectBody": "Si conectas un monedero con WalletConnect en lugar de una extensión del navegador, tu navegador se comunica con la infraestructura de Reown — el relé (relay.walletconnect.com y relay.walletconnect.org), el directorio de monederos (api.web3modal.org, explorer-api.walletconnect.com), la verificación de dominio (verify.walletconnect.com y verify.walletconnect.org), los iconos de monedero (imagedelivery.net) y un punto final de telemetría (pulse.walletconnect.org). Esos servicios ven tu dirección IP, tu navegador y el hecho de que estás conectando un monedero a este sitio. Los opera Reown bajo su propia política de privacidad. Usar un monedero como extensión del navegador, por ejemplo MetaMask, los evita por completo.",
+      "rpcTitle": "Proveedores RPC de blockchain",
+      "rpcBody": "Para mostrar saldos, NFT, la clasificación y el estado de un certificado, el sitio consulta los puntos RPC de GembaBlockchain (rpc1.gembascan.io, rpc2.gembascan.io, rpc3.gembascan.io y testnet.gembascan.io). Un punto RPC ve la dirección IP desde la que llega la petición y las direcciones y contratos consultados, por lo que puede vincular una IP con la dirección de monedero que se consulta a través de él. Esos puntos los opera GembaScan para la testnet de GembaBlockchain, que también sirve los enlaces al explorador de bloques que abres."
     },
     "section5": {
       "title": "5. Base jurídica del tratamiento",
-      "intro": "Cuando tratamos datos (correos del formulario de contacto, registros técnicos), las bases jurídicas según el RGPD son:",
+      "intro": "Cuando tratamos datos (correos del formulario de contacto, datos de los certificados de examen, registros técnicos), las bases jurídicas según el RGPD son:",
       "item1": "Consentimiento (art. 6(1)(a)) — al rellenar el formulario de contacto, aportas expresamente tus datos para que podamos responderte",
       "item2": "Interés legítimo (art. 6(1)(f)) — mantenimiento de registros técnicos por seguridad y resolución de incidencias",
       "item3": "Obligación legal (art. 6(1)(c)) — cumplir una eventual orden judicial o una obligación legal",
@@ -1325,7 +1331,7 @@
     },
     "section7": {
       "title": "7. Menores de edad",
-      "body": "EduChain puede utilizarla el alumnado a partir de 12 años en el contexto de aprendizaje escolar organizado bajo supervisión docente. Como no exigimos datos personales (ni registro con nombre), la plataforma no recopila información específica sobre menores — a diferencia de la mayoría de servicios de internet en los que un alumno tendría que crear un perfil con datos personales. Familias y docentes pueden contactar con nosotros en contacts@gembait.com para cualquier cuestión sobre la seguridad de los menores en la plataforma."
+      "body": "EduChain puede utilizarla el alumnado a partir de 12 años en el contexto de aprendizaje escolar organizado bajo supervisión docente. Usar la plataforma no exige registro ni nombre: la navegación, los ejercicios con monedero y las actividades on-chain no recopilan información específica sobre menores — a diferencia de la mayoría de servicios de internet en los que un alumno tendría que crear un perfil con datos personales. Hay una excepción. Si un alumno se presenta al examen de certificación, el formulario pide tres nombres, una dirección de correo electrónico, un puesto y una organización; el certificado se envía después como PDF por correo, y el nombre de la persona titular se muestra en la página pública de verificación de ese número. Por eso, para un alumno menor de 18 años, el examen está pensado para realizarse bajo la supervisión de un docente o de la familia, que debe decidir si el nombre ha de aparecer públicamente. Los datos del examen se conservan durante los plazos indicados en la sección 3, un certificado puede revocarse a petición, y el nombre puede retirarse del registro público mediante minimización. Familias y docentes pueden contactar con nosotros en contacts@gembait.com para cualquier cuestión sobre la seguridad de los menores en la plataforma, incluida la solicitud de supresión de un registro de certificado."
     },
     "section8": {
       "title": "8. Seguridad",
@@ -1347,7 +1353,7 @@
   "terms": {
     "hero": {
       "title": "Condiciones de uso",
-      "lastUpdated": "Última actualización: 24 de abril de 2026",
+      "lastUpdated": "Última actualización: 31 de octubre de 2026",
       "subtitle": "Estas condiciones regulan el acceso y el uso de EduChain. Al usar la plataforma confirmas que las has leído y las aceptas."
     },
     "summary": {
@@ -1366,7 +1372,7 @@
       "item3": "La plataforma no es un servicio financiero — está clasificada como herramienta educativa",
       "item4": "Los resultados en la plataforma (puntos, clasificación, certificados) no tienen equivalente monetario y no pueden canjearse por dinero real",
       "item5": "El uso de EduChain no constituye asesoramiento financiero ni recomendación para ninguna inversión",
-      "item6": "EduChain no recopila, almacena ni trata datos personales con fines de perfil de usuario — no hay registro, no hay base de datos de usuarios"
+      "item6": "EduChain no recopila, almacena ni trata datos personales con fines de perfil de usuario — no hay registro, no hay base de datos de usuarios. Los datos necesarios para emitir un certificado son la excepción y se rigen por la Política de Privacidad"
     },
     "section3": {
       "title": "3. Quién puede usar la plataforma",
@@ -1403,7 +1409,7 @@
       "body": "EduChain se proporciona «tal cual» (as-is), sin garantías expresas o implícitas. GEMBA IT no es responsable por:",
       "item1": "Indisponibilidad temporal de la plataforma por problemas técnicos, mantenimiento o problemas en la testnet GembaBlockchain",
       "item2": "Pérdida de activos de prueba por errores, forks de testnet o errores del usuario",
-      "item3": "Acciones de terceros — proveedores RPC, gateways IPFS, proveedores de monederos",
+      "item3": "Acciones de terceros — proveedores RPC (rpc1/2/3.gembascan.io), proveedores de monederos y la infraestructura de WalletConnect/Reown, y el relé de correo que entrega los certificados",
       "item4": "Uso inadecuado de la plataforma en contexto educativo por parte de un centro o docente",
       "item5": "Contenido publicado por los usuarios (metadatos de los NFT)",
       "note": "En la medida máxima permitida por la legislación búlgara y europea, nuestra responsabilidad se limita a la cantidad que hayamos recibido del usuario concreto (y esa cantidad es 0, al ser el servicio gratuito)."
@@ -1561,18 +1567,18 @@
     },
     "certificate": {
       "title": "Certificado de alfabetización Web3",
-      "subtitle": "Previsto: no solo un documento — una credencial on-chain que permanece verificable públicamente.",
+      "subtitle": "No solo un documento — una credencial on-chain que permanece verificable públicamente.",
       "what": {
         "title": "Qué recibe el alumno",
-        "body": "Un certificado doble previsto: un documento PDF firmado por GEMBA IT y una credencial NFT registrada en la blockchain. El NFT será inmutable y podrá mostrarse en futuros CV, solicitudes universitarias o portafolios Web3."
+        "body": "Un certificado doble: un documento PDF firmado por GEMBA IT y una credencial NFT registrada en la blockchain. El NFT es inmutable y puede mostrarse en CV, solicitudes universitarias o portafolios Web3."
       },
       "why": {
         "title": "Por qué esto importa",
-        "body": "En un momento en que cada centro emite certificados en papel que pueden falsificarse o perderse, el certificado EduChain será verificable públicamente por cualquiera en cuanto se emita. Un empleador o una universidad podrá confirmar la autenticidad con un clic en GembaScan."
+        "body": "En un momento en que cada centro emite certificados en papel que pueden falsificarse o perderse, el certificado EduChain es verificable públicamente por cualquiera. Un empleador o una universidad puede confirmar la autenticidad con un clic en GembaScan."
       },
       "criteria": {
         "title": "Cómo se obtiene",
-        "body": "Completar los 7 módulos, participar activamente en los ejercicios prácticos y presentar el proyecto final ante la clase. No es un concurso — cuando el módulo de certificados esté en marcha, todo alumno que termine el programa obtendrá el certificado."
+        "body": "Completar los 7 módulos, participar activamente en los ejercicios prácticos y presentar el proyecto final ante la clase. No es un concurso — desde el 31 de octubre de 2026, cuando el módulo de certificados entró en funcionamiento, todo alumno que termine el programa obtiene el certificado."
       }
     },
     "cta": {
@@ -1598,8 +1604,8 @@
       "ctaSecondary": "Conoce el currículo"
     },
     "videoPlaceholder": {
-      "title": "La demostración en vídeo se está preparando",
-      "body": "Un resumen de 60 segundos de la plataforma — cómo un estudiante se conecta, obtiene GMB de prueba, crea su primer NFT y sube en la clasificación. Estará publicado en los próximos días."
+      "title": "Demostración en vídeo",
+      "body": "Un resumen de 60 segundos de la plataforma — cómo un estudiante se conecta, obtiene GMB de prueba, crea su primer NFT y sube en la clasificación. Si el reproductor no se inicia, puede que tu navegador no admita la reproducción de MP4."
     },
     "steps": {
       "title": "Cómo funciona la plataforma",
@@ -1739,7 +1745,7 @@
     "score": "Resultado: {{score}} % ({{correct}} de {{total}})",
     "needed": "Para obtener el certificado hace falta un {{pass}} % o más.",
     "noAnswersShown": "No mostramos qué preguntas fallaste ni cuáles eran las respuestas correctas: el mismo banco se usa en tu siguiente intento.",
-    "retry": "Puedes volver a intentarlo dentro de 24 horas (hasta {{max}} intentos al día).",
+    "retry": "Puedes volver a intentarlo de inmediato, hasta {{max}} intentos en 24 horas. Una vez agotados los {{max}}, el siguiente intento es posible 24 horas después del primero.",
     "certSerial": "Número del certificado",
     "certMailed": "El certificado se ha enviado por correo en PDF.",
     "certMailFailed": "El certificado se emitió, pero el correo no salió. Descárgalo desde el enlace de abajo o escríbenos.",
