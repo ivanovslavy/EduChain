@@ -104,17 +104,24 @@ an operator and something for an attacker.
 
 ### Failure is loud
 
-`set -Eeuo pipefail`, plus an `ERR` trap, so no step can fail silently and no `&&` can swallow it.
+`set -Eeuo pipefail`, plus an `ERR` trap, so no step can fail silently. Steps are written as separate
+statements, never `a && b`: a failure inside an `&&` list does **not** fire the `ERR` trap (found on
+1 November 2026 — `mkdir -p "$OUT" && chmod 700 "$OUT"` let a run go on into a target that did not exist).
 Any failure:
 
 1. writes a `FAIL <reason>` line to `/var/log/educhain-backup.log`, where an operator sees it;
-2. e-mails **`alerts@`** — and only `alerts@`, which is a machine mailbox — with the reason and the
-   log path;
+2. e-mails **`slavy@gembamail.com`** with the reason and the log path, through **our own relay**
+   (`mail.gembamail.com:587`, STARTTLS required, certificate verified) as the service sender
+   `contacts@gembait.com` — never through a personal mailbox;
 3. exits **non-zero**.
 
-The alert runs as `www-data` (the only account that may read `.env.server`) and is fully redirected,
-so no credential can reach the log. It is best-effort: if the mail itself cannot be sent, that is
-logged as a `WARN` and the original failure is still reported. The failure path is tested, not
+Until 1 November 2026 the alert reused the APIs SMTP settings in , i.e. the owners
+personal Gmail. It now reads its own `/etc/educhain/backup-alert.env` (600 root; `SMTP_HOST`,
+`SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM` — quoted, its `<>` would break sourcing) and sends
+with `curl`; the credential reaches curl on stdin, never in `argv`, so it is not visible in `ps`.
+It is best-effort: if the mail itself cannot be sent, that is logged as a `WARN … rc=N` and the
+original failure is still reported. Proven on 1 November 2026: a forced failure (impossible target)
+exited 1 and the relay delivered the mail (`status=sent … Saved`); a normal run sent nothing. The failure path is tested, not
 assumed — see `blockchain/TESTING.md` §6b.
 
 ## Restoring
