@@ -1108,7 +1108,7 @@
       "subtitle": "The teacher is not alone in the classroom.",
       "admin": {
         "title": "Admin panel",
-        "body": "One-click student whitelisting. Real-time monitoring of every student. Remove from whitelist when needed — instant access revocation."
+        "body": "One-click student whitelisting. Every student's activity is visible in the live on-chain leaderboard. Remove from whitelist when needed — instant access revocation."
       },
       "limits": {
         "title": "Built-in limits",

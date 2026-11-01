@@ -2,7 +2,7 @@
 
 > Moved out of the root README on 2026-10-31 so that the README documents the product and this document keeps the positioning. The transparency commitments and how success is measured.
 
-EduChain operates under full transparency. The public repository at `github.com/ivanovslavy/EduChain` tracks 197 files (measured 2026-10-31): the complete smart contract source code, deployment scripts, compiled ABIs, platform architecture documentation, and the whole frontend — 60 of those files are under `src/`.
+EduChain operates under full transparency. The public repository at `github.com/ivanovslavy/EduChain` tracks 201 files (measured 2026-11-01): the complete smart contract source code, deployment scripts, compiled ABIs, platform architecture documentation, and the whole frontend — 60 of those files are under `src/`.
 
 The commitment to open source extends beyond code:
 

@@ -1108,7 +1108,7 @@
       "subtitle": "El docente no está solo en el aula.",
       "admin": {
         "title": "Panel de administración",
-        "body": "Lista blanca del alumnado con un clic. Monitorización en tiempo real de la actividad de cada alumno. Retirada de la lista blanca si es necesario — revocación inmediata del acceso."
+        "body": "Lista blanca del alumnado con un clic. La actividad de cada alumno se ve en la clasificación en vivo de la cadena. Retirada de la lista blanca si es necesario — revocación inmediata del acceso."
       },
       "limits": {
         "title": "Límites integrados",
