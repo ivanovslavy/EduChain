@@ -2,7 +2,7 @@
 
 **Project:** EduChain — on-chain educational game economy (tokens, NFTs, marketplace,
 faucet, whitelist, progress tracking)
-**Scope:** the 7 production Solidity contracts in [`contracts/`](contracts/)
+**Scope:** the 8 production Solidity contracts in [`contracts/`](contracts/)
 **Network:** Gemba testnet (chainId **821207**); contracts verified on gembascan
 **Date:** 2026-08-02
 **Auditor / sign-off:** **Slavcho Ivanov — Tech Lead, GembaIT**
@@ -23,15 +23,42 @@ code and re-verified. Final state:
 
 | Layer | Result |
 |-------|--------|
-| Hardhat unit / access / attack / invariant tests | **80 / 80 pass** |
-| Foundry property fuzzing | **3 fuzz × 10 000 runs — pass** |
+| Hardhat unit / access / attack / invariant tests | **119 / 119 pass** |
+| Foundry property fuzzing | **10 fuzz × 10 000 runs — pass** |
 | Foundry stateful invariants | **4 invariants × 12 800 calls — pass** |
 | Slither static analysis | **0 high (reentrancy-eth = 0)** |
-| Mythril symbolic execution | **7 / 7 contracts — 0 issues** |
+| Mythril symbolic execution | **8 / 8 contracts — 0 issues** |
 | Gemba testnet live-fire (fixed bytecode) | **every attack DEFEATED** |
 
-The full test sources are committed to this repository and reproducible with the
-commands in [`TESTING.md`](TESTING.md).
+**Where the evidence lives — and what is reproducible from a clone.**
+
+| Layer | Source | Reproducible from this repo? |
+|---|---|---|
+| Hardhat 119, Foundry 14, attacker contracts, Slither, Mythril, live-fire | `test/`, `test-forge/`, `contracts/test/`, `slither.sh`, `myth-solc.json`, `scripts/live-fire/` — all committed | **Yes**, with the commands in [`TESTING.md`](TESTING.md) |
+| 72-check certificate end-to-end, 8 red canaries, 37-check browser sweep, 6 mail checks | `~/Documents/Claude/EduChain-scripts/` on the maintainer's laptop — **not committed** | **No** — reported figures, not reproducible |
+
+The contract layers are the audited scope and they are fully in the repository. The four
+certificate figures above are **asserted, not reproducible**, and are deliberately not committed.
+The reason is not secrecy about the code — none of those scripts hardcodes a secret; they read what
+they need at runtime from gitignored files. The reason is what they depend on:
+
+* three of them (`certificates-e2e.js`, `certificates-canaries.js`, `certificates-browser-full.js`)
+  build their answer oracle by reading `server/certificates/questions/questions.bg.json` — the bank
+  **including the `correct` index**. The bank is `640 root:www-data` and excluded from git by name.
+  Committing the suites would not commit the bank, but it would publish the exact recipe for
+  extracting an answer key, and the suites would still not run for anyone without the bank — so
+  "reproducible" would remain false while the exam got easier to attack.
+* two of them read the **cold owner key** from `blockchain/.env` at run time, and one reads SMTP
+  credentials from the environment. No value is in the source, but a committed script whose
+  documented path is *read the production owner key from this absolute path* is an invitation.
+* they address absolute production paths and act on live state: the canary suite revokes and
+  reinstates real serials. That is precisely how four test certificates ended up live on the public
+  verification page on 2026-10-31 and had to be revoked.
+
+**Decision: they stay off the repository**, and this document states the figures as measured rather
+than as reproducible. Committing them would require first rewriting them to take the bank and every
+path by injection and to refuse to touch a production serial — worth doing, tracked as an open item,
+not done here. See [`docs/certificates.md`](../docs/certificates.md).
 
 ## 2. Scope — contracts audited
 
@@ -44,6 +71,7 @@ commands in [`TESTING.md`](TESTING.md).
 | `TokenMarketplace` | ERC721/ERC20 listing → escrow → purchase |
 | `TrackingContract` | points / tier / net-worth progress tracking |
 | `ETHFaucet` | rate-limited testnet ETH faucet |
+| `CertificateRegistry` | soulbound course certificates + public registry (hot `issuer` / cold `owner`) |
 
 Solidity `0.8.28`, optimizer runs 200. Attacker/mock contracts live in
 [`contracts/test/`](contracts/test/) and are **never** deployed by `scripts/deploy.js`.
@@ -52,8 +80,8 @@ Solidity `0.8.28`, optimizer runs 200. Attacker/mock contracts live in
 
 | # | Layer | Tooling | Files |
 |---|-------|---------|-------|
-| 1 | Unit, access-control, events, boundaries, real attacker contracts | Hardhat + Mocha/Chai | [`test/`](test/) (`01`–`09`) |
-| 2 | Property fuzzing | Foundry `forge` | [`test-forge/FuzzGameToken.t.sol`](test-forge/FuzzGameToken.t.sol) |
+| 1 | Unit, access-control, events, boundaries, real attacker contracts | Hardhat + Mocha/Chai | [`test/`](test/) (`01`–`10`) |
+| 2 | Property fuzzing | Foundry `forge` | [`test-forge/FuzzGameToken.t.sol`](test-forge/FuzzGameToken.t.sol), [`FuzzCertificateRegistry.t.sol`](test-forge/FuzzCertificateRegistry.t.sol) |
 | 3 | Stateful invariants | Foundry `forge` | [`test-forge/InvariantGameToken.t.sol`](test-forge/InvariantGameToken.t.sol), [`InvariantMarketplace.t.sol`](test-forge/InvariantMarketplace.t.sol) |
 | 4 | Static analysis | Slither | [`slither.sh`](slither.sh) |
 | 5 | Symbolic execution | Mythril | [`myth-solc.json`](myth-solc.json) |
@@ -85,7 +113,7 @@ stopped and the chain is on gembascan.
 
 ## 5. Static-analysis classification
 
-- **Mythril** — symbolic execution over all 7 production contracts: **0 issues**.
+- **Mythril** — symbolic execution over all 8 production contracts: **0 issues**.
 - **Slither** — **0 high**; `reentrancy-eth = 0`. The `reentrancy-benign` / events items
   (e.g. `TokenMarketplace.createERC721Listing`) write state after the escrow transfer
   but are guarded by `nonReentrant` + checks-effects-interactions and move no attacker
@@ -103,8 +131,10 @@ stopped and the chain is on gembascan.
 | TokenMarketplace | `0x965d745e3fc0a7c2c9648dDaed0eb6EF276e8972` |
 | TrackingContract | `0x9f5349e8514726b394fDEcEf16C1E8122f909397` |
 | ETHFaucet | `0x76c46FF20A2770e564052A60dcB3990f2D8082AB` |
+| CertificateRegistry | `0x88f09c990E75958A84c4920a6AA03587Aa2DBdF4` |
 
-All seven were redeployed on the fixed code and verified on gembascan. The live-fire
+The first seven were redeployed on the fixed code and verified on gembascan; CertificateRegistry
+was deployed on 2026-10-31 and verified there too (solc 0.8.28) — see §9. The live-fire
 harness ([`scripts/live-fire/`](scripts/live-fire/)) reproduces the attacks against a
 disposable fresh deploy so production is never touched.
 
@@ -115,7 +145,7 @@ Everything is in this repository. See [`TESTING.md`](TESTING.md) for full detail
 cd blockchain
 npm install
 git clone --depth 1 https://github.com/foundry-rs/forge-std.git lib/forge-std
-npx hardhat test                     # 80 unit/access/attack/invariant tests
+npx hardhat test                     # 119 unit/access/attack/invariant tests
 forge test                           # fuzz + invariants
 ./slither.sh                         # static analysis
 # Mythril: myth analyze contracts/<C>.sol --solc-json myth-solc.json --solv 0.8.28
@@ -222,3 +252,29 @@ An external audit remains scoped for any deployment beyond a testnet.
   `ipfs.io` gateway while the platform pins to its own node. That both broke the gallery whenever
   ipfs.io was down (it was, from 2026-09-21) and told a third party which CIDs each visitor was
   reading. One place now decides, and it is ours.
+* **Secret scanning, with a canary in both directions.** `gitleaks` (default ruleset via
+  `[extend] useDefault = true`) is run over the tree before every commit; the configuration is
+  [`.gitleaks.toml`](../.gitleaks.toml) at the repository root. It exists because the default rules
+  classify a 40-hex EVM **contract address** as a generic API key, and a check that always cries
+  wolf is a check nobody reads. The allowlist is therefore exactly one unanchored regex,
+  `0x[a-fA-F0-9]{40}` — nothing else, and in particular **no `paths` entry**.
+
+  That last detail is the finding, not a footnote. The first version of the file allowlisted the
+  address *files* under `paths`, which in a top-level `[allowlist]` is an **alternative** to
+  `regexes`, not an intersection — so the whole file was exempt and a planted `sk_live_…` in
+  `src/contracts/addresses.json` was **not** caught. An allowlist that can do that is worse than no
+  allowlist, because it reports green. The regex form matches the captured secret exactly, and a
+  real credential (`sk_live_…`, a password) contains no 40-hex run, so nothing else is exempted.
+
+  Verified on 2026-10-31 in **both** directions, which is the only way an allowlist can be trusted:
+
+  | probe | expected | result |
+  |---|---|---|
+  | the tree as it stands | no leaks | no leaks |
+  | planted `sk_live_…` in `src/contracts/addresses.json` | 1 leak | **leaks found: 1** |
+  | planted password line in `server/index.cjs` | 1 leak | **leaks found: 1** |
+  | both reverted | no leaks | no leaks |
+
+  A green scan on a config nobody has tried to defeat is not evidence. There is no `pre-commit`
+  hook — the scan is a deliberate manual step in the commit procedure, so it cannot be silently
+  skipped by a `--no-verify`.

@@ -39,6 +39,12 @@ function init() {
   fs.mkdirSync(DATA_DIR, { recursive: true, mode: 0o750 });
   db = new Database(DB_PATH);
   db.pragma("journal_mode = WAL");
+  // The privacy policy promises this file is readable only by the application process, so say so in
+  // code rather than trusting the unit's umask: SQLite creates the db and its -wal/-shm siblings
+  // with 0644 & ~umask. 0640 keeps group www-data (the service user) and shuts out everybody else.
+  for (const f of [DB_PATH, DB_PATH + "-wal", DB_PATH + "-shm"]) {
+    try { fs.chmodSync(f, 0o640); } catch { /* -wal/-shm may not exist yet; the umask covers those */ }
+  }
   db.pragma("foreign_keys = ON");
   db.exec(SCHEMA);
   emailSalt = loadOrCreateSalt();

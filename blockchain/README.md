@@ -53,7 +53,7 @@ Deployment output is written to `deployed/latest.json` and to a timestamped snap
 |---|---|
 | `Whitelist.sol` | Central access-control registry. Other contracts consult it before executing privileged actions. |
 | `GameToken.sol` | ERC-20 utility token (`GAME`). Priced at 0.01 GMB, with per-address purchase limits and on-chain sale stats. |
-| `GameNFTPredefined.sol` | ERC-721A collection with fixed metadata and a hard cap of 50 items (price: 0.01 GMB). |
+| `GameNFTPredefined.sol` | ERC-721A collection with fixed metadata and an owner-adjustable supply cap, deployed at **10 000** items to match the Kotkata metadata collection (`0.json`..`9999.json`); price 0.01 GMB. |
 | `GameNFTCustom.sol` | ERC-721A collection where users supply their own metadata URI. Mintable with GMB (0.03 GMB) or GAME tokens (1 GAME). |
 | `TokenMarketplace.sol` | Non-custodial P2P marketplace for GAME and both NFT collections. Fixed-price listings with `ReentrancyGuard` + `SafeERC20`. |
 | `TrackingContract.sol` | Aggregates per-address activity (buys, mints, trades) and exposes leaderboard queries. |

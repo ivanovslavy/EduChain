@@ -1,7 +1,8 @@
 # EduChain — Contract Test & Audit Suite
 
-A full, adversarial test suite for the 7 EduChain contracts (Whitelist, GameToken,
-GameNFTPredefined, GameNFTCustom, TokenMarketplace, TrackingContract, ETHFaucet).
+A full, adversarial test suite for the 8 EduChain contracts (Whitelist, GameToken,
+GameNFTPredefined, GameNFTCustom, TokenMarketplace, TrackingContract, ETHFaucet,
+CertificateRegistry).
 It closes audit finding **H1** ("zero tests on ~3.2k LOC of value-moving contracts").
 
 Three layers, plus an optional on-chain "live-fire" layer:
@@ -9,9 +10,9 @@ Three layers, plus an optional on-chain "live-fire" layer:
 | Layer | Tool | What it does |
 |-------|------|--------------|
 | Unit / access / attacks / invariants | Hardhat + Mocha/Chai | 119 tests over every function, guard, event, boundary — plus real attacker contracts |
-| Property fuzzing + stateful invariants | Foundry (`forge`) | 3 fuzz tests × 10 000 runs, 4 invariants × 12 800 calls |
+| Property fuzzing + stateful invariants | Foundry (`forge`) | 10 fuzz tests × 10 000 runs, 4 invariants × 12 800 calls |
 | Static analysis | Slither | 0 high-severity over the production contracts |
-| Symbolic execution | Mythril | all 7 production contracts — 0 issues |
+| Symbolic execution | Mythril | all 8 production contracts — 0 issues |
 | **Live-fire (optional)** | Hardhat scripts | the same attacks as REAL transactions on gemba testnet 821207 |
 
 **No production contract is modified by any of this.** The attacker/mock contracts
@@ -57,6 +58,7 @@ Files (`test/`):
 | `07-tracking.test.js` | points/tier/net-worth computation, pagination, tier ordering, **probe: `setPointsFormula` has no bounds**. |
 | `08-attacks.test.js` | **the hacker-contract suite** — see below. |
 | `09-invariants.test.js` | supply conservation, escrow-ownership, faucet drain rate, whitelist consistency. |
+| `10-certificates.test.js` | **CertificateRegistry** (39 tests): construction, issue (role separation — the owner cannot issue, the issuer cannot revoke), bounds (zero holder/hash refused, score > 100 refused, 0 and 100 both accepted), one-hash-one-serial, soulbound (transfer/safeTransfer/approve/setApprovalForAll all revert, not even the contract owner can move one), revoke/reinstate with both events kept, administration (`setIssuer`, `setBaseURI`, `tokenURI`), verification (`isValid` false for unknown and revoked alike, hash → serial lookup), invariants (`validCount` == issued − revoked, `balanceOf` never decreases), and **privacy** (the whole record is a hash, two dates, a score and two small numbers; no function but `setBaseURI` takes a string; raw storage slots contain no readable text). |
 
 ### The attacker contracts (`contracts/test/`)
 
@@ -79,7 +81,7 @@ Files (`test/`):
 ## 2. Foundry fuzz + invariants
 
 ```bash
-forge test            # all 7
+forge test            # all 14 (10 fuzz + 4 invariants)
 forge test -vvv       # with traces
 forge test --match-contract InvariantMarketplace
 ```
@@ -93,6 +95,10 @@ Files (`test-forge/`):
 - `InvariantMarketplace.t.sol` — random list/purchase/cancel of ERC721s;
   asserts every ACTIVE listing's token is really escrowed, and the marketplace
   never traps ETH between txs.
+- `FuzzCertificateRegistry.t.sol` — 7 properties over the registry: only the issuer
+  can issue; the issuer can never revoke; a certificate is never transferable; a
+  content hash is unique for ever; the score is bounded and round-trips; an unknown
+  serial is never valid; `validCount` always matches issued minus revoked.
 
 Fuzz depth is set in `foundry.toml` (`runs = 10000`, invariant `runs=256 depth=50`).
 
@@ -115,11 +121,11 @@ transfer but are guarded by `nonReentrant` + CEI and move no attacker value.
 
 ```bash
 # myth-solc.json carries the OZ/erc721a remappings + optimizer
-for C in Whitelist GameToken GameNFTPredefined GameNFTCustom TokenMarketplace TrackingContract ETHFaucet; do
+for C in Whitelist GameToken GameNFTPredefined GameNFTCustom TokenMarketplace TrackingContract ETHFaucet CertificateRegistry; do
   myth analyze contracts/$C.sol --solc-json myth-solc.json --solv 0.8.28 --execution-timeout 200
 done
 ```
-All 7 production contracts return "No issues were detected."
+All 8 production contracts return "No issues were detected."
 
 ---
 
@@ -166,7 +172,7 @@ funding wallet used to provision the distributor once.
 | M1 | 🟢 | `GameToken.mintToContract` uncapped | `MAX_SUPPLY` cap (100M) |
 | L8 | 🟢 | Leaderboard view gas (`calls-in-loop`) | `MAX_BATCH_VIEW` 500 → 100 |
 
-**Status: all fixed and verified** — 80 Hardhat + 7 Foundry green, and the live-fire
+**Status: all fixed and verified** — 119 Hardhat + 14 Foundry green, and the live-fire
 run reports every scenario DEFEATED on gemba testnet after redeploy. Each fix
 preserves existing behaviour (happy-path + invariant suites unchanged and passing).
 
