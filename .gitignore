@@ -52,3 +52,11 @@ PROGRESS.md
 
 # "build" is a symlink to dist/ kept for an older serve setup; dist/ is ignored, so this must be too.
 build
+
+# Internal review checklists. CODE-REVIEW-FINDINGS-2026-07-19.md is a 3-agent to-do list whose own
+# header says it must stay mode 0600 and cannot be committed, because it maps where the key files
+# live and carries still-open findings. The 2026-10-31 rewrite of this file from a whitelist to a
+# blocklist swept it into a PUBLIC repository. No secret was exposed — the only .env ever committed
+# holds VITE_* client identifiers that ship in the browser anyway, and a search of every commit for
+# private-key material finds none — but a map of the key locations is not something to publish.
+CODE-REVIEW-FINDINGS-*.md

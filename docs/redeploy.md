@@ -29,17 +29,21 @@ What cannot be brought back:
 The script exists in two places: the laptop copy in `~/Documents/Claude/EduChain-scripts/redeploy-all.sh`,
 and a copy on the server at `/educhain/blockchain/scripts/redeploy-all.sh`. Either can be used.
 
+> The origin is reachable only through Cloudflare, so its address is not published here.
+> Set `EDU_HOST` to the `claude@<origin>` login before running these — the value is in the
+> operator notes (`CLAUDE.md`, which is not published), not in this repository.
+
 ```bash
 # from the laptop, piping the laptop copy in
-ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 'sudo -u slavy -H bash -s' \
+ssh -i ~/.ssh/gemba_claude "$EDU_HOST" 'sudo -u slavy -H bash -s' \
   < ~/Documents/Claude/EduChain-scripts/redeploy-all.sh
 
 # or, to see what it WOULD do without doing it
-ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 'sudo -u slavy -H bash -s -- --dry-run' \
+ssh -i ~/.ssh/gemba_claude "$EDU_HOST" 'sudo -u slavy -H bash -s -- --dry-run' \
   < ~/Documents/Claude/EduChain-scripts/redeploy-all.sh
 
 # or run the copy that already sits on the server
-ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 \
+ssh -i ~/.ssh/gemba_claude "$EDU_HOST" \
   'sudo -u slavy -H /educhain/blockchain/scripts/redeploy-all.sh'          # add --dry-run to rehearse
 ```
 
