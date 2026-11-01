@@ -2,7 +2,7 @@
 # EduChain — bring the whole deployment back from nothing (т.3, 2026-10-31).
 #
 #   scp this to the server, then:   sudo -u slavy -H bash redeploy-all.sh [--dry-run]
-#   or from the laptop:             ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 \
+#   or from the laptop:             ssh -i ~/.ssh/gemba_claude "$EDU_HOST" \
 #                                     'sudo -u slavy -H bash -s' < redeploy-all.sh
 #
 # ──────────────────────────────────────────────────────────────────────────────────────────────────
