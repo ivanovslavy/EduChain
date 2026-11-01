@@ -11,7 +11,7 @@ If Europe does not begin preparing students for this environment, four outcomes 
 1. **Competitiveness.** European graduates will enter the workforce less prepared than peers trained in jurisdictions where Web3 education is already mainstream.
 2. **Safety.** A generation will face digital finance tools, tokenised assets, and decentralised identity systems without the critical thinking skills to navigate them safely, leaving them exposed to fraud, scams, and exploitation.
 3. **Leadership.** Europe will cede leadership in a technology sector it could otherwise define, with innovation concentrating elsewhere.
-4. **Ecosystem growth.** Ethereum specifically needs new builders. Every student who completes EduChain leaves not merely knowing what a smart contract is, but having deployed one. They become potential contributors to the ecosystem — whether as developers, project founders, auditors, educators, or informed community members.
+4. **Ecosystem growth.** Ethereum specifically needs new builders. Every student who completes EduChain leaves not merely knowing what a smart contract is, but having used several — minting an NFT, trading tokens, and verifying their own transactions on-chain. They become potential contributors to the ecosystem — whether as developers, project founders, auditors, educators, or informed community members.
 
 EduChain treats Web3 literacy as a core competence, alongside internet literacy, financial literacy, and media literacy. It teaches not only how blockchain works, but also how to evaluate risk, recognise fraudulent patterns, and make informed decisions in a decentralised environment.
 

@@ -212,7 +212,7 @@ Explorer: <https://testnet.gembascan.io>
 - Cloudflare as CDN and DDoS protection
 - Apache with Let's Encrypt TLS
 - systemd service supervision
-- Automated nightly backups
+- Automated nightly backups of the certificate database and the service configuration — age-encrypted, checksum-verified and copied off-site (`/usr/local/bin/educhain-backup.sh`, 04:50 daily)
 
 ---
 
@@ -220,7 +220,7 @@ Explorer: <https://testnet.gembascan.io>
 
 **Smart contract security.** Every contract uses OpenZeppelin's audited primitives: Ownable for access control, ReentrancyGuard for reentrancy protection, and SafeERC20 for token movement. Custom errors replace revert strings for gas efficiency. The Checks-Effects-Interactions pattern is enforced in every state-changing function. Ownership renunciation is explicitly disabled in every contract to prevent accidental lockout. External security audit is scoped for any deployment beyond testnet.
 
-**Platform security.** The application never stores or requests private keys. All authentication is wallet-based. Communication is TLS-encrypted. No user-identifiable data is collected without explicit consent. The platform operates in compliance with the GDPR and the EU Data Act.
+**Platform security.** The application never stores or requests private keys. All authentication is wallet-based. Communication is TLS-encrypted. The platform itself needs no personal data: there is no registration, no account and no user-profile database. The one exception is the self-service exam certificate — a holder supplies three names, an e-mail, a position and an organisation, which are stored in a single server-side SQLite database readable only by the application process, kept under the retention periods in the privacy policy, and never written to the blockchain (only a hash of the certificate goes on-chain). No other user-identifiable data is collected without explicit consent. The platform operates in compliance with the GDPR and the EU Data Act.
 
 **Classroom safety.** Testnet-only operation means no real financial exposure. Rate limits prevent students from making large or rapid-fire mistakes. Whitelist gating ensures only approved participants can interact with the contracts. Teachers can remove a student from the whitelist at any time, immediately halting their ability to mint, trade, or claim testnet GMB.
 

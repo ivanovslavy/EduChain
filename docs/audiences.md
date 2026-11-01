@@ -4,7 +4,7 @@
 
 EduChain is designed as a modular solution that adapts to diverse educational contexts.
 
-**Primary and secondary schools.** The 16-hour student programme fits into technology, informatics, or elective courses for students aged 12 and above. Teachers use the admin dashboard to manage student access, monitor progress, and deliver lessons.
+**Primary and secondary schools.** The 16-hour student programme fits into technology, informatics, or elective courses for students aged 12 and above. Teachers use the admin panel to manage student access on-chain, whitelisting wallets through its contract-function forms. Lessons and progress tracking stay with the teacher — the platform does neither.
 
 **Universities and colleges.** Computer science, economics, business administration, and law faculties can integrate EduChain into modules on fintech, digital law, decentralised finance, and software engineering. The smart contracts themselves are teaching material for advanced courses.
 

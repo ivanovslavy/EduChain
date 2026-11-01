@@ -14,7 +14,7 @@ EduChain fits the Ethereum Foundation's priorities for public goods, developer o
 
 **Public Goods funding.** EduChain is open-source, non-commercial, and built for adoption rather than extraction. It produces positive externalities — informed users, trained teachers, new developers — that accrue to the entire Ethereum ecosystem, not to any single operator.
 
-**Devcon scholarships and community initiatives.** Certified teachers and advanced students are strong candidates for Devcon scholarships, developer bootcamp sponsorships, and ecosystem community programmes. EduChain actively supports its graduates in engaging with the wider Ethereum community.
+**Devcon scholarships and community initiatives.** Certified teachers and advanced students would be strong candidates for Devcon scholarships, developer bootcamp sponsorships, and ecosystem community programmes. EduChain has no graduates yet; supporting them in engaging with the wider Ethereum community is part of the programme's intent.
 
 ### European Union Programmes
 

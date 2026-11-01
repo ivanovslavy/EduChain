@@ -24,9 +24,9 @@ Practical work: students buy and sell GameToken on the platform, observe how the
 
 ### Module 4: Non-Fungible Tokens and Digital Art (ERC-721) (2 hours)
 
-The fourth module introduces the ERC-721 standard. Students learn what makes a token unique, how tokenId and metadata interact, and why the metadata JSON file is the actual artistic payload of most NFTs. IPFS is explained as the decentralised filesystem that makes digital assets permanent. Students practise with Pinata, uploading an image and a metadata file, obtaining content identifiers, and assembling a valid tokenURI.
+The fourth module introduces the ERC-721 standard. Students learn what makes a token unique, how tokenId and metadata interact, and why the metadata JSON file is the actual artistic payload of most NFTs. IPFS is explained as the decentralised filesystem that makes digital assets permanent. Students practise with the platform's own IPFS endpoint, uploading an image and a metadata file, obtaining content identifiers, and assembling a valid tokenURI.
 
-Practical work: each student creates an original image, writes a structured metadata JSON file with attributes such as name, description, and rarity, uploads both to IPFS via Pinata, and mints a Custom NFT on the EduChain platform. The newly minted NFT appears in the gallery within seconds.
+Practical work: each student creates an original image, writes a structured metadata JSON file with attributes such as name, description, and rarity, uploads both to IPFS through the platform's `/api/ipfs/metadata` endpoint — which takes the upload against a wallet signature and pins it to EduChain's own Kubo node — and mints a Custom NFT on the EduChain platform. The newly minted NFT appears in the gallery within seconds.
 
 ### Module 5: Economics of Tokens and NFTs (2 hours)
 
@@ -44,11 +44,11 @@ Practical work: a simulated scam scenario is run in the classroom. Students must
 
 The final module synthesises every prior lesson into a presented project.
 
-In the first hour, students create an advanced NFT collection with rich metadata, integrating attributes such as traits, rarity tiers, and narrative elements. Pinata file management is refined. Discussion examines common mistakes in NFT projects and how to avoid them.
+In the first hour, students create an advanced NFT collection with rich metadata, integrating attributes such as traits, rarity tiers, and narrative elements. Pinning and metadata management through the platform's own IPFS endpoint are refined. Discussion examines common mistakes in NFT projects and how to avoid them.
 
 In the second hour, students use AI assistants to analyse smart contract source code. A standard OpenZeppelin template is examined alongside a deliberately crafted scam contract. Students practise using AI to identify risks, not to replace their own judgement but to augment it. The concept of AI as daily Web3 infrastructure is introduced.
 
-In the third and fourth hours, students work on their individual final project. Each project has three components: a small NFT collection with a coherent narrative, an economic strategy intended to reach a target leaderboard position, and a market integration plan. Students work individually with teacher support and AI assistance. The course concludes with each student presenting their project to the class, followed by a forward-looking discussion on continuing Web3 education, and the award of course completion certificates as on-chain NFTs.
+In the third and fourth hours, students work on their individual final project. Each project has three components: a small NFT collection with a coherent narrative, an economic strategy intended to reach a target leaderboard position, and a market integration plan. Students work individually with teacher support and AI assistance. The course concludes with each student presenting their project to the class, followed by a forward-looking discussion on continuing Web3 education. The course itself awards no certificate: certification is a separate, self-service exam on the platform — twenty questions, eighty percent to pass — after which the holder receives a signed PDF by e-mail and a soulbound on-chain record.
 
 ### Learning Outcomes
 

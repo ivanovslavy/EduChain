@@ -26,14 +26,21 @@ What cannot be brought back:
 
 ## The procedure
 
+The script exists in two places: the laptop copy in `~/Documents/Claude/EduChain-scripts/redeploy-all.sh`,
+and a copy on the server at `/educhain/blockchain/scripts/redeploy-all.sh`. Either can be used.
+
 ```bash
-# from the laptop
+# from the laptop, piping the laptop copy in
 ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 'sudo -u slavy -H bash -s' \
   < ~/Documents/Claude/EduChain-scripts/redeploy-all.sh
 
 # or, to see what it WOULD do without doing it
 ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 'sudo -u slavy -H bash -s -- --dry-run' \
   < ~/Documents/Claude/EduChain-scripts/redeploy-all.sh
+
+# or run the copy that already sits on the server
+ssh -i ~/.ssh/gemba_claude claude@46.225.1.162 \
+  'sudo -u slavy -H /educhain/blockchain/scripts/redeploy-all.sh'          # add --dry-run to rehearse
 ```
 
 The script is **idempotent**. Every step checks the chain first and skips itself when the chain
